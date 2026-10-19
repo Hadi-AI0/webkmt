@@ -1,0 +1,41 @@
+mutation CreateMovieList($name: String!, $description: String, $isPublic: Boolean!) @auth(level: USER) {
+  movieList_insert(data: {
+    name: $name,
+    description: $description,
+    isPublic: $isPublic,
+    userId_expr: "auth.uid",
+    createdAt_expr: "request.time",
+    updatedAt_expr: "request.time"
+  })
+}
+
+query GetPublicMovieLists @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  movieLists(where: {isPublic: {eq: true}}) {
+    id
+    name
+    description
+    createdAt
+    updatedAt
+  }
+}
+
+mutation AddMovieToList($movieListId: UUID!, $movieId: UUID!, $note: String, $position: Int!) @auth(level: USER) {
+  movieListEntry_insert(data: {
+    movieListId: $movieListId,
+    movieId: $movieId,
+    note: $note,
+    position: $position
+  })
+}
+
+mutation CreateReview($movieId: UUID!, $rating: Int!, $reviewText: String, $isPublic: Boolean!) @auth(level: USER) {
+  review_insert(data: {
+    movieId: $movieId,
+    rating: $rating,
+    reviewText: $reviewText,
+    isPublic: $isPublic,
+    userId_expr: "auth.uid",
+    createdAt_expr: "request.time",
+    updatedAt_expr: "request.time"
+  })
+}

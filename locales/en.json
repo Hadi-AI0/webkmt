@@ -1,0 +1,401 @@
+{
+  "meta": {
+    "title": "WebKMT - Communicate Your Business | Digital Solutions & Automation",
+    "description": "We help businesses communicate effectively through strategic digital transformation, workflow automation, and comprehensive online presence solutions.",
+    "keywords": "business communication, digital transformation, workflow automation, online presence, business solutions, ERP systems"
+  },
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "process": "Process",
+    "testimonials": "Testimonials",
+    "tools": "Tools",
+    "insights": "Insights",
+    "about": "About",
+    "contact": "Contact",
+    "get_started": "Get Started",
+    "toggle_theme": "Toggle dark mode",
+    "switch_language": "Switch to Arabic"
+  },
+  "hero": {
+    "title": "Communicate Your Business",
+    "title_highlight": "With Digital Excellence",
+    "title_full": "Communicate Your Business Digitally",
+    "description": "Premium web development & digital marketing solutions that boost your business growth",
+    "start_project": "Start Project",
+    "view_portfolio": "View Portfolio",
+    "explore_services": "Explore Services",
+    "explore_mini_apps": "Try Our Free Tools",
+    "website_analyzer": "Website Analyzer",
+    "roi_calculator": "ROI Calculator",
+    "color_palette": "Color Palette",
+    "kmt_link": "KMT Link"
+  },
+  "services": {
+    "title": "How We Help You Communicate",
+    "description": "Strategic solutions to amplify your business voice and automate your success",
+    "key_features": "Key Features",
+    "starting_at": "Starting at",
+    "detailed_info": "Detailed Information",
+    "technologies_used": "Technologies Used",
+    "typical_timeline": "Typical Timeline",
+    "get_quote": "Get Quote",
+    "view_examples": "View Examples",
+    "learn_more": "Learn More",
+    "web_development": {
+      "title": "Digital Presence Solutions",
+      "description": "Professional websites and web applications that communicate your brand effectively to your target audience",
+      "short_desc": "Strategic web presence that converts",
+      "detailed_description": "Transform how your business communicates online with custom-built platforms that drive engagement and conversions. Our solutions increase brand visibility and streamline customer interactions, delivering measurable business growth.",
+      "price": "$250",
+      "timeline": "4-8 weeks depending on complexity",
+      "feature1": "Responsive Design",
+      "feature2": "Performance Optimization",
+      "feature3": "SEO Integration",
+      "feature4": "Security Best Practices"
+    },
+    "mobile_apps": {
+      "title": "Mobile Communication Platforms",
+      "description": "Connect with your customers anywhere through powerful mobile applications that enhance business communication",
+      "short_desc": "Strategic mobile presence solutions",
+      "detailed_description": "Extend your business communication reach with custom mobile applications. Our solutions help you stay connected with customers, streamline operations, and provide exceptional service experiences that drive loyalty and growth.",
+      "price": "$500",
+      "timeline": "6-12 weeks including app store submission",
+      "feature1": "Cross-Platform Development",
+      "feature2": "Native Performance",
+      "feature3": "Push Notifications",
+      "feature4": "App Store Optimization"
+    },
+    "marketing_automation": {
+      "title": "Business Communication Automation",
+      "description": "Intelligent workflows that help your business communicate consistently and efficiently with customers",
+      "short_desc": "Automated communication systems",
+      "detailed_description": "Streamline how your business communicates with customers through smart automation. Our systems handle lead nurturing, customer onboarding, and retention campaigns, allowing your team to focus on growth while maintaining personal touch.",
+      "price": "$150/mo",
+      "timeline": "2-4 weeks setup + ongoing optimization",
+      "feature1": "Email Automation",
+      "feature2": "Lead Scoring",
+      "feature3": "Campaign Analytics",
+      "feature4": "CRM Integration"
+    },
+    "seo_optimization": {
+      "title": "Search Communication Optimization",
+      "description": "Help your business communicate effectively with potential customers through strategic search optimization",
+      "short_desc": "Strategic search visibility solutions",
+      "detailed_description": "Ensure your business communicates its value when customers search online. Our data-driven approach improves your visibility, helping the right customers find and choose your services over competitors.",
+      "price": "$80/mo",
+      "timeline": "3-6 months for significant results",
+      "feature1": "Keyword Research",
+      "feature2": "Technical SEO Audit",
+      "feature3": "Content Optimization",
+      "feature4": "Link Building"
+    },
+    "brand_strategy": {
+      "title": "Brand Communication Strategy",
+      "description": "Develop a compelling brand voice and visual identity that communicates your business values effectively",
+      "short_desc": "Strategic brand communication development",
+      "detailed_description": "Help your business communicate its unique value proposition through strategic branding. We analyze your market position and craft messaging that resonates with your audience, ensuring consistent communication across all touchpoints.",
+      "price": "$350",
+      "timeline": "4-6 weeks including research and revisions",
+      "feature1": "Brand Identity Design",
+      "feature2": "Market Research",
+      "feature3": "Brand Guidelines",
+      "feature4": "Logo & Collateral"
+    }
+  },
+  "portfolio": {
+    "title": "Featured Projects",
+    "description": "Showcasing our latest work and successful collaborations with measurable results",
+    "filters": {
+      "all": "All",
+      "websites": "Websites",
+      "branding": "Branding",
+      "automation": "Automation",
+      "mobile": "Mobile Apps"
+    },
+    "view_details": "View Details",
+    "load_more": "Load More Projects",
+    "showing": "Showing",
+    "of": "of",
+    "projects": "projects",
+    "modal": {
+      "close": "Close modal",
+      "client": "Client",
+      "category": "Category",
+      "duration": "Duration",
+      "team_size": "Team Size",
+      "launch_date": "Launch Date",
+      "platform": "Platform",
+      "overview": "Project Overview",
+      "services": "Services Provided",
+      "technologies": "Technologies Used",
+      "description": "Project Description",
+      "results": "Key Results & Metrics",
+      "testimonial": "Client Testimonial",
+      "view_live": "View Live",
+      "case_study": "Case Study",
+      "visit_website": "Visit Live Website",
+      "read_case_study": "Read Case Study",
+      "share_project": "Share Project",
+      "discuss_project": "Discuss Similar Project"
+    }
+  },
+  "process": {
+    "title": "Our Process",
+    "description": "A proven methodology that ensures successful project delivery",
+    "steps": {
+      "discovery": {
+        "title": "Discovery & Strategy",
+        "description": "We begin by understanding your business goals, target audience, and project requirements"
+      },
+      "design": {
+        "title": "Design & Planning",
+        "description": "Creating wireframes, prototypes, and detailed project plans with clear timelines"
+      },
+      "development": {
+        "title": "Development",
+        "description": "Building your solution using cutting-edge technologies and best practices"
+      },
+      "testing": {
+        "title": "Testing & Quality Assurance",
+        "description": "Rigorous testing across devices and browsers to ensure optimal performance"
+      },
+      "launch": {
+        "title": "Launch & Support",
+        "description": "Deploying your project and providing ongoing maintenance and support"
+      }
+    }
+  },
+  "testimonials": {
+    "title": "Client Testimonials",
+    "description": "Hear what our clients say about working with WebKMT",
+    "client_1": {
+      "quote": "WebKMT transformed our online presence completely. Their attention to detail and innovative approach exceeded our expectations.",
+      "name": "Sarah Johnson",
+      "title": "CEO, TechStart Inc."
+    },
+    "client_2": {
+      "quote": "The mobile app they developed for us has significantly improved our customer engagement. Highly recommend their services!",
+      "name": "Michael Chen",
+      "title": "Founder, FitLife Pro"
+    },
+    "client_3": {
+      "quote": "Professional, reliable, and innovative. WebKMT delivered our e-commerce platform on time and within budget.",
+      "name": "Emily Rodriguez",
+      "title": "Marketing Director, Fashion Forward"
+    },
+    "previous": "Previous testimonial",
+    "next": "Next testimonial"
+  },
+  "tools": {
+    "title": "Technologies We Use",
+    "description": "Cutting-edge tools and frameworks that power our solutions",
+    "categories": {
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "mobile": "Mobile",
+      "devops": "DevOps & Cloud"
+    }
+  },
+  "insights": {
+    "title": "Latest Insights",
+    "description": "Stay updated with the latest trends and insights in technology and digital marketing",
+    "view_all": "View All Articles",
+    "read_more": "Read More",
+    "articles": {
+      "article_1": {
+        "title": "The Future of Web Development: Trends to Watch in 2024",
+        "excerpt": "Explore the emerging technologies and frameworks that are shaping the future of web development...",
+        "category": "Web Development",
+        "date": "January 15, 2024"
+      },
+      "article_2": {
+        "title": "Optimizing Mobile App Performance: Best Practices",
+        "excerpt": "Learn essential techniques to improve your mobile application's performance and user experience...",
+        "category": "Mobile Development",
+        "date": "January 10, 2024"
+      },
+      "article_3": {
+        "title": "Building a Comprehensive Digital Marketing Strategy",
+        "excerpt": "A step-by-step guide to creating an effective digital marketing strategy that drives results...",
+        "category": "Digital Marketing",
+        "date": "January 5, 2024"
+      }
+    }
+  },
+  "contact": {
+    "title": "Let's Build Something Amazing",
+    "description": "Ready to transform your ideas into reality? Our multi-step process ensures we understand your needs perfectly.",
+    "step1": {
+      "label": "Service",
+      "title": "What service do you need?",
+      "description": "Choose the primary service you're interested in. This helps us understand your project better."
+    },
+    "step2": {
+      "label": "Project Details",
+      "title": "Tell us about your project",
+      "description": "Help us understand your project scope, timeline, and budget to provide the best solution."
+    },
+    "step3": {
+      "label": "Contact Info",
+      "title": "How can we reach you?",
+      "description": "We'll use this information to send you a detailed proposal and schedule a consultation call."
+    },
+    "success": "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.",
+    "error": "Failed to send message. Please try again or contact us directly.",
+    "services": {
+      "consulting": "Digital Consulting",
+      "consulting_desc": "Strategic guidance and planning"
+    },
+    "info": {
+      "location": {
+        "title": "Office Location",
+        "address": "Beylikdüzü\nIstanbul, Turkey"
+      },
+      "phone": {
+        "title": "Phone",
+        "number": "+90 501 361 7795"
+      },
+      "email": {
+        "title": "Email",
+        "address": "info@webkmt.com"
+      },
+      "follow_us": "Follow Us"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "company": "Company",
+      "service": "Service Interest",
+      "budget": "Project Budget",
+      "message": "Project Details",
+      "newsletter": "Subscribe to our newsletter for industry insights and updates",
+      "send": "Send Message",
+      "required": "*",
+      "placeholder": {
+        "name": "Your full name",
+        "email": "your.email@example.com",
+        "phone": "+90 501 361 7795",
+        "company": "Your company name",
+        "message": "Tell us about your project requirements, goals, and timeline..."
+      },
+      "options": {
+        "service": {
+          "default": "Select a service",
+          "web_development": "Web Development",
+          "mobile_apps": "Mobile Applications",
+          "digital_marketing": "Digital Marketing",
+          "ui_ux": "UI/UX Design",
+          "ecommerce": "E-commerce Solutions",
+          "consulting": "Digital Consulting"
+        },
+        "budget": {
+          "default": "Select budget range",
+          "under_10k": "Under $10,000",
+          "10k_25k": "$10,000 - $25,000",
+          "25k_50k": "$25,000 - $50,000",
+          "50k_100k": "$50,000 - $100,000",
+          "over_100k": "Over $100,000"
+        }
+      }
+    },
+    "social": {
+      "title": "Follow Us"
+    }
+  },
+  "newsletter": {
+    "title": "Stay Ahead of the Curve",
+    "description": "Join 10,000+ professionals receiving our exclusive insights on web development, digital marketing strategies, and the latest technology trends.",
+    "email_placeholder": "Enter your email address",
+    "name_placeholder": "Your full name",
+    "subscribe": "Subscribe to Newsletter",
+    "success": "Thank you for subscribing! You'll receive our latest updates and exclusive content.",
+    "error": "Something went wrong. Please try again or contact us directly.",
+    "privacy": "We respect your privacy. Unsubscribe anytime with one click."
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "phone": "Please enter a valid phone number",
+    "name_min": "Name must be at least 2 characters",
+    "description_min": "Please provide more details (minimum 10 characters)"
+  },
+  "common": {
+    "sending": "Sending...",
+    "loading": "Loading..."
+  },
+  "footer": {
+    "description": "Crafting digital excellence for modern businesses through innovative web development, mobile applications, and strategic digital marketing solutions.",
+    "company": {
+      "title": "Company",
+      "about": "About Us",
+      "portfolio": "Portfolio",
+      "process": "Our Process",
+      "testimonials": "Testimonials",
+      "careers": "Careers",
+      "contact": "Contact"
+    },
+    "resources": {
+      "title": "Resources",
+      "blog": "Blog",
+      "case_studies": "Case Studies",
+      "whitepapers": "Whitepapers",
+      "documentation": "Documentation",
+      "support": "Support",
+      "faq": "FAQ"
+    },
+    "contact_info": {
+      "title": "Contact Info"
+    },
+    "legal": {
+      "copyright": "© 2024 WebKMT. All rights reserved.",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy",
+      "accessibility": "Accessibility"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to main content",
+    "view_project": "View project details",
+    "toggle_navigation": "Toggle navigation menu",
+    "switch_theme": "Switch to light mode",
+    "email_newsletter": "Email address for newsletter"
+  },
+  "chatbot": {
+    "open_chat": "Open chat",
+    "close_chat": "Close chat",
+    "title": "WebKMT Assistant",
+    "status": "Online",
+    "typing": "AI is typing",
+    "input_placeholder": "Type your message...",
+    "welcome": {
+      "title": "Welcome to WebKMT!",
+      "subtitle": "How can I help you today?"
+    },
+    "actions": {
+      "schedule_call": "Schedule Call",
+      "get_quote": "Get Quote",
+      "view_portfolio": "View Portfolio"
+    },
+    "quick_actions": {
+      "schedule_call": "I would like to schedule a call to discuss my project.",
+      "get_quote": "I would like to get a quote for my project.",
+      "view_portfolio": "Can you show me some examples of your work?"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "close": "Close",
+    "open": "Open",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "more": "More",
+    "less": "Less"
+  }
+}

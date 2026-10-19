@@ -1,0 +1,51 @@
+{
+  "name": "WebKMT",
+  "version": "1.0.0",
+  "deployment": {
+    "type": "node",
+    "port": 8083,
+    "domain": "webkmt.com",
+    "ssl": true,
+    "pm2": {
+      "name": "webkmt",
+      "script": "server/app.js",
+      "instances": "max",
+      "exec_mode": "cluster",
+      "env": {
+        "NODE_ENV": "production",
+        "PORT": 8083
+      },
+      "log_date_format": "YYYY-MM-DD HH:mm Z",
+      "error_file": "logs/err.log",
+      "out_file": "logs/out.log",
+      "pid_file": "logs/pid",
+      "max_memory_restart": "1G"
+    }
+  },
+  "requirements": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "build": {
+    "commands": [
+      "npm install --production",
+      "mkdir -p logs"
+    ]
+  },
+  "static": {
+    "directory": "public",
+    "files": [
+      "index.html",
+      "css/",
+      "js/",
+      "assets/",
+      "mini-apps/",
+      "locales/"
+    ]
+  },
+  "security": {
+    "helmet": true,
+    "rateLimit": true,
+    "cors": true
+  }
+}

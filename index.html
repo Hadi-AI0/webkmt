@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WebKMT - Custom software solutions company building websites, mobile apps, AI tools, CRMs, POS systems, and automation pipelines for modern businesses.">
+    <meta name="keywords" content="custom software development, web applications, mobile apps, AI tools, CRM development, POS systems, automation pipelines, internal tools, software solutions">
+    <meta name="author" content="WebKMT">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="WebKMT — Custom Software Solutions for Modern Businesses">
+    <meta property="og:description" content="We build the software your business runs on. Websites, apps, AI tools, CRMs, POS, and automation — engineered for real-world results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkmt.com">
+    <meta property="og:image" content="https://webkmt.com/assets/og-image.jpg">
+    <meta property="og:site_name" content="WebKMT">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WebKMT — Custom Software Solutions for Modern Businesses">
+    <meta name="twitter:description" content="We build the software your business runs on. Websites, apps, AI tools, CRMs, POS, and automation — engineered for real-world results.">
+    <meta name="twitter:image" content="https://webkmt.com/assets/twitter-image.jpg">
+    
+    <title>WebKMT — Custom Software Solutions for Modern Businesses</title>
+
+    <!-- Supabase SDK Import Map -->
+    <script type="importmap">
+    {
+      "imports": {
+        "@supabase/supabase-js": "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"
+      }
+    }
+    </script>
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Arabic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Simple inline SVG icons - No external dependencies -->
+
+    <!-- CSS - Optimized loading order: critical (inline), main (includes all imports) -->
+    <!-- Initialize theme before CSS to prevent FOUC -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <style>
+      /* Inline critical CSS to prevent FOUC */
+      :root { --color-primary: #0aacb8; --bg-primary: #ffffff; --text-primary: #111827; }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme]) { --color-primary: #7c3aed; --bg-primary: #0a0a0a; --text-primary: #f9fafb; }
+      }
+      body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: all 300ms ease; }
+      .theme-loading * { transition: none !important; }
+
+      /* Admin Toggle Button Styles */
+      .admin-toggle-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: var(--color-primary);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-right: 12px;
+        z-index: 999;
+        position: relative;
+        pointer-events: auto;
+      }
+
+      .admin-toggle-btn:hover {
+        background: var(--color-primary-dark, #0891a7);
+        transform: translateY(-1px);
+      }
+
+      .admin-toggle-btn.active {
+        background: #10b981;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        .admin-toggle-btn {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="css/main-bundle.css">
+    <link rel="stylesheet" href="css/components-bundle.css">
+    <link rel="stylesheet" href="css/portfolio-bundle.css">
+    <link rel="stylesheet" href="css/forms-auth-bundle.css">
+    <link rel="stylesheet" href="css/mini-apps-integrated.css">
+    <link rel="stylesheet" href="css/hero-enhanced.css">
+    <link rel="stylesheet" href="css/blog-dynamic.css">
+    <link rel="stylesheet" href="css/admin-blog.css">
+    <link rel="stylesheet" href="css/mobile-collapse.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KBFEXZKMWV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KBFEXZKMWV');
+</script>
+
+
+<body>
+    <header class="header-enhanced" role="banner">
+        <div class="container">
+            <nav class="nav-enhanced" role="navigation" aria-label="Main navigation">
+                <a href="#home" class="logo-enhanced" aria-label="WebKMT Home" style="display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/logo.svg" alt="WebKMT Logo" width="200" height="70">
+                    <span style="font-size: 24px; font-weight: 700; color: var(--text-primary); letter-spacing: 1px;">WEBKMT</span>
+                </a>
+                
+                <ul class="nav-menu-enhanced">
+                    <li class="nav-item-enhanced"><a href="#services" class="nav-link-enhanced" data-i18n="navigation.services">Services</a></li>
+                    <li class="nav-item-enhanced"><a href="#portfolio" class="nav-link-enhanced" data-i18n="navigation.portfolio">Portfolio</a></li>
+                    <li class="nav-item-enhanced"><a href="#process" class="nav-link-enhanced" data-i18n="navigation.process">Process</a></li>
+                    <li class="nav-item-enhanced"><a href="#mini-apps" class="nav-link-enhanced" data-i18n="navigation.tools">Free Tools</a></li>
+                    <li class="nav-item-enhanced"><a href="#tools" class="nav-link-enhanced" data-i18n="navigation.technologies">Technologies</a></li>
+                    <li class="nav-item-enhanced"><a href="#contact" class="nav-link-enhanced" data-i18n="navigation.contact">Contact</a></li>
+                </ul>
+                
+                <div class="nav-controls-enhanced">
+
+                    <!-- Authentication Controls -->
+                    <div class="auth-controls" id="authControls">
+                        <button class="auth-btn login-btn glass-btn" id="loginBtn" aria-label="Sign In">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            <span>Sign In</span>
+                        </button>
+                        
+                        <!-- User Menu (hidden by default, shown when authenticated) -->
+                        <div class="user-menu" id="userMenu" style="display: none;">
+                            <button class="user-avatar-btn" id="userAvatarBtn">
+                                <img src="" alt="User Avatar" id="userAvatar" class="user-avatar">
+                                <span id="userName">User</span>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                            </button>
+                            <div class="user-dropdown" id="userDropdown">
+                                <div class="user-info">
+                                    <span id="userEmail">user@example.com</span>
+                                </div>
+                                <div class="user-actions">
+                                    <button class="dropdown-item" id="profileBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                                        Profile
+                                    </button>
+                                    <button class="dropdown-item" id="settingsBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M8.5 3.5l3.5 3.5 3.5-3.5M8.5 20.5l3.5-3.5 3.5 3.5"/></svg>
+                                        Settings
+                                    </button>
+                                    <button class="dropdown-item admin-access-btn admin-only" id="adminPanelBtn" title="Admin Blog Management (info@webkmt.com only)" style="display: none;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                        Admin Blog Management
+                                    </button>
+                                    <div class="dropdown-divider"></div>
+                                    <button class="dropdown-item logout-btn" id="logoutBtn">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                                        Sign Out
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="theme-toggle-enhanced" aria-label="Toggle dark mode" data-i18n-aria="navigation.toggle_theme">
+                        <svg class="theme-toggle__icon theme-toggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="theme-toggle__icon theme-toggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    <button class="lang-toggle-enhanced" aria-label="Switch language" data-i18n-aria="navigation.switch_language">EN</button>
+                </div>
+                
+                <button class="hamburger-enhanced" aria-label="Toggle navigation menu" aria-expanded="false">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu-overlay"></div>
+        <div class="mobile-menu-enhanced">
+            <ul class="mobile-nav-menu">
+                <li><a href="#services" class="mobile-nav-link" data-i18n="navigation.services">Services</a></li>
+                <li><a href="#portfolio" class="mobile-nav-link" data-i18n="navigation.portfolio">Portfolio</a></li>
+                <li><a href="#process" class="mobile-nav-link" data-i18n="navigation.process">Process</a></li>
+                <li><a href="#mini-apps" class="mobile-nav-link" data-i18n="navigation.tools">Free Tools</a></li>
+                <li><a href="#tools" class="mobile-nav-link" data-i18n="navigation.technologies">Technologies</a></li>
+                <li><a href="#contact" class="mobile-nav-link" data-i18n="navigation.contact">Contact</a></li>
+            </ul>
+            <div class="mobile-controls">
+                <button class="theme-toggle-enhanced" aria-label="Toggle dark mode">
+                    <svg class="theme-toggle__icon theme-toggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="theme-toggle__icon theme-toggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="lang-toggle-enhanced" aria-label="Switch language">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <!-- Enhanced Hero Section -->
+        <section class="hero-enhanced" id="home">
+            <div class="hero-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <div class="container">
+                <div class="hero-layout" style="display: grid; grid-template-columns: 1fr auto; gap: 4rem; align-items: center; min-height: 80vh;"> 
+                    <style>
+                        @media (max-width: 1024px) {
+                            .hero-layout { grid-template-columns: 1fr !important; gap: 2rem !important; }
+                            .hero-tools-buttons { margin-top: 2rem; }
+                        }
+                        .hero-tool-btn:hover { 
+                            transform: translateY(-3px) scale(1.02); 
+                            box-shadow: 0 12px 35px rgba(0,0,0,0.25); 
+                            filter: brightness(1.1);
+                        }
+                    </style>
+                    <div class="hero-content-enhanced">
+                        <h1 class="hero-title-enhanced">
+                            <span data-i18n="hero.title_full">
+                                We Build the Software Your Business Runs On
+                            </span>
+                        </h1>
+                        <p class="hero-subtitle" data-i18n="hero.description">
+                            Custom websites, mobile apps, AI tools, CRMs, POS systems,<br>
+                            and automation pipelines — engineered for real-world results
+                        </p>
+                        <div class="hero-cta-group">
+                            <a href="https://wa.me/905013617795?text=Hello! I'm interested in starting a project with WebKMT." class="cta-primary" target="_blank" rel="noopener">
+                                <span>Start Your Project</span>
+                            </a>
+                            <a href="#portfolio" class="cta-secondary" data-i18n="hero.view_portfolio">
+                                <span>View Our Work</span>
+                            </a>
+                            <a href="#mini-apps" class="cta-tertiary">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                                <span>Free Tools</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-tools-buttons" style="display: flex; flex-direction: column; gap: 1.5rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border-radius: 16px; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <h3 style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;" data-i18n="hero.explore_mini_apps">Tools We've Built</h3>
+                        
+                        <button class="hero-tool-btn mini-app-card" data-app="website-analyzer" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; min-width: 220px; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4); border: none; cursor: pointer;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                            <span data-i18n="hero.website_analyzer">Website Analyzer</span>
+                        </button>
+                        
+                        <button class="hero-tool-btn mini-app-card" data-app="roi-calculator" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%); color: white; border-radius: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; min-width: 220px; box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4); border: none; cursor: pointer;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            <span data-i18n="hero.roi_calculator">ROI Calculator</span>
+                        </button>
+                        
+                        <button class="hero-tool-btn mini-app-card" data-app="color-palette" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; border-radius: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; min-width: 220px; box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4); border: none; cursor: pointer;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>
+                            <span data-i18n="hero.color_palette">Color Palette</span>
+                        </button>
+                        
+                        <button class="hero-tool-btn mini-app-card" data-app="kmt-link" style="display: flex; align-items: center; gap: 12px; padding: 14px 18px; background: linear-gradient(135deg, #a8e6cf 0%, #56ab2f 100%); color: white; border-radius: 16px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; min-width: 220px; box-shadow: 0 4px 15px rgba(86, 171, 47, 0.4); border: none; cursor: pointer;">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                            <span data-i18n="hero.kmt_link">KMT Link</span>
+                        </button>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Services Section -->
+        <section class="services-enhanced" id="services">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title" data-i18n="services.title">What We Build</h2>
+                    <p class="section__description" data-i18n="services.description">
+                        End-to-end software solutions — from concept to deployment and beyond
+                    </p>
+                </header>
+                
+                <div class="services__grid-enhanced" id="servicesGrid">
+
+                    <!-- Web & Mobile Apps -->
+                    <article class="service-card-enhanced" data-service="web-development" data-animation-delay="0">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">Web & Mobile Apps</h3>
+                                    <p class="service-card__description">
+                                        Full-stack web applications and cross-platform mobile apps built for performance, scalability, and great user experience
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Web or Mobile App project." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Custom AI Tools -->
+                    <article class="service-card-enhanced" data-service="ai-tools" data-animation-delay="100">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">Custom AI Tools</h3>
+                                    <p class="service-card__description">
+                                        Dedicated AI-powered tools tailored to your business — chatbots, automation assistants, document processors, and intelligent workflows
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Custom AI Tool." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- CRM & ERP Systems -->
+                    <article class="service-card-enhanced" data-service="crm-erp" data-animation-delay="200">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">CRM & ERP Systems</h3>
+                                    <p class="service-card__description">
+                                        Custom CRM and ERP solutions built around your actual business processes — a powerful alternative to expensive off-the-shelf platforms
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Custom CRM or ERP system." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- POS Solutions -->
+                    <article class="service-card-enhanced" data-service="pos" data-animation-delay="300">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0m5 0h0m5 0h0M7 11h0m5 0h0m5 0h0M7 7h10"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">POS Systems</h3>
+                                    <p class="service-card__description">
+                                        Tailored point-of-sale software for retail, hospitality, and service businesses — inventory, billing, and reporting built your way
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a custom POS system." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Automation Pipelines -->
+                    <article class="service-card-enhanced" data-service="automation" data-animation-delay="400">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">Automation Pipelines</h3>
+                                    <p class="service-card__description">
+                                        End-to-end business process automation — eliminate manual work, connect your tools, and let your systems run themselves
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in automation pipeline solutions." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Internal Tools -->
+                    <article class="service-card-enhanced" data-service="internal-tools" data-animation-delay="500">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">Internal Tools</h3>
+                                    <p class="service-card__description">
+                                        Custom dashboards, admin panels, and internal portals that give your team exactly the tools they need — nothing more, nothing less
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in custom internal tools." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- System Optimization -->
+                    <article class="service-card-enhanced" data-service="optimization" data-animation-delay="600">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">System Optimization</h3>
+                                    <p class="service-card__description">
+                                        Performance audits and targeted improvements for existing software — faster load times, cleaner architecture, and lower infrastructure costs
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I need help optimizing our existing software." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Tech Consulting -->
+                    <article class="service-card-enhanced" data-service="consulting" data-animation-delay="700">
+                        <div class="service-card__inner">
+                            <div class="service-card__front">
+                                <div class="service-card__icon-container">
+                                    <div class="service-card__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
+                                            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/>
+                                        </svg>
+                                    </div>
+                                    <div class="service-card__glow"></div>
+                                </div>
+                                <div class="service-card__content">
+                                    <h3 class="service-card__title">Tech Consulting</h3>
+                                    <p class="service-card__description">
+                                        Strategic technology advice — architecture decisions, technology stack selection, vendor evaluation, and digital transformation roadmaps
+                                    </p>
+                                    <a href="https://wa.me/905013617795?text=Hi! I'm looking for tech consulting services." class="service-card__cta" target="_blank" rel="noopener">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
+                                        Discuss Your Project
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Enhanced Portfolio Section -->
+        <section class="portfolio-enhanced" id="portfolio">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title" data-i18n="portfolio.title">Featured Projects</h2>
+                    <p class="section__description" data-i18n="portfolio.description">
+                        Showcasing our latest work and successful collaborations with measurable results
+                    </p>
+                </header>
+                
+                <!-- Flexible Masonry Portfolio Grid -->
+                <div class="portfolio__grid-masonry" id="portfolioGrid">
+                    <!-- Portfolio items will be dynamically loaded here -->
+                </div>
+            </div>
+            
+            <!-- Enhanced Portfolio Modal/Lightbox -->
+            <div class="portfolio-modal-enhanced" id="portfolioModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <div class="portfolio-modal__backdrop" aria-hidden="true"></div>
+                <div class="portfolio-modal__container">
+                    <div class="portfolio-modal__content">
+                        <!-- Modal Header -->
+                        <div class="portfolio-modal__header">
+                            <div class="modal-header__info">
+                                <h2 class="portfolio-modal__title" id="modalTitle"></h2>
+                                <div class="modal-header__meta">
+                                    <span class="modal-category"></span>
+                                    <span class="modal-separator">•</span>
+                                    <span class="modal-client"></span>
+                                </div>
+                            </div>
+                            <button class="portfolio-modal__close" aria-label="Close modal">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                            </button>
+                        </div>
+
+                        <!-- Modal Body -->
+                        <div class="portfolio-modal__body">
+                            <!-- Simple Image Display -->
+                            <div class="modal-image-container">
+                                <img id="modalImage" class="modal-image" src="" alt="Project Image">
+                            </div>
+
+                            <!-- Project Information Section -->
+                            <div class="portfolio-modal__info">
+                                <!-- Project Overview -->
+                                <div class="info-section project-overview">
+                                    <h3 class="section-title" data-i18n="portfolio.modal.overview">Project Overview</h3>
+                                    <p class="modal-description-text"></p>
+                                    
+                                    <div class="project-details-grid">
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="portfolio.modal.duration">Duration</span>
+                                            <span class="detail-value modal-duration"></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="portfolio.modal.team_size">Team Size</span>
+                                            <span class="detail-value modal-team-size"></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="portfolio.modal.launch_date">Launch Date</span>
+                                            <span class="detail-value modal-launch-date"></span>
+                                        </div>
+                                        <div class="detail-item">
+                                            <span class="detail-label" data-i18n="portfolio.modal.platform">Platform</span>
+                                            <span class="detail-value modal-platform"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Services Provided -->
+                                <div class="info-section services-provided">
+                                    <h3 class="section-title" data-i18n="portfolio.modal.services">Services Provided</h3>
+                                    <div class="services-grid" id="servicesGridModal">
+                                        <!-- Services will be dynamically inserted here -->
+                                    </div>
+                                </div>
+
+                                <!-- Technologies Used -->
+                                <div class="info-section technologies-section">
+                                    <h3 class="section-title" data-i18n="portfolio.modal.technologies">Technologies Used</h3>
+                                    <div class="technologies-grid" id="technologiesGrid">
+                                        <!-- Technologies will be dynamically inserted here -->
+                                    </div>
+                                </div>
+
+                                <!-- Key Metrics & Results -->
+                                <div class="info-section metrics-section">
+                                    <h3 class="section-title" data-i18n="portfolio.modal.results">Key Results & Metrics</h3>
+                                    <div class="metrics-grid-enhanced" id="metricsGrid">
+                                        <!-- Metrics will be dynamically inserted here -->
+                                    </div>
+                                </div>
+
+                                <!-- Client Testimonial -->
+                                <div class="info-section testimonial-section">
+                                    <h3 class="section-title" data-i18n="portfolio.modal.testimonial">Client Testimonial</h3>
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-quote">
+                                            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/></svg>
+                                            <p class="testimonial-text"></p>
+                                        </div>
+                                        <div class="testimonial-author">
+                                            <div class="author-avatar">
+                                                <img src="" alt="" class="avatar-image">
+                                            </div>
+                                            <div class="author-info">
+                                                <h4 class="author-name"></h4>
+                                                <p class="author-position"></p>
+                                                <div class="testimonial-rating">
+                                                    <div class="stars">
+                                                        <span class="star">★</span>
+                                                        <span class="star">★</span>
+                                                        <span class="star">★</span>
+                                                        <span class="star">★</span>
+                                                        <span class="star">★</span>
+                                                    </div>
+                                                    <span class="rating-text">5.0</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Project Links & Actions -->
+                                <div class="info-section actions-section">
+                                    <div class="modal-actions-enhanced">
+                                        <a href="#" class="action-btn action-btn--primary" id="liveWebsiteBtn" target="_blank" rel="noopener">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                                            <span data-i18n="portfolio.modal.visit_website">Visit Live Website</span>
+                                        </a>
+                                        
+                                        <a href="#" class="action-btn action-btn--secondary" id="caseStudyBtn" target="_blank" rel="noopener">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                                            <span data-i18n="portfolio.modal.read_case_study">Read Case Study</span>
+                                        </a>
+                                        
+                                        <button class="action-btn action-btn--outline" id="shareProjectBtn">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                                            <span data-i18n="portfolio.modal.share_project">Share Project</span>
+                                        </button>
+                                        
+                                        <a href="https://wa.me/905013617795?text=Hello! I'm interested in learning more about your projects and services." class="action-btn action-btn--outline" target="_blank" rel="noopener">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                                            <span>Contact via WhatsApp</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Loading Overlay -->
+                <div class="modal-loading" id="modalLoading">
+                    <div class="loading-spinner">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="process" id="process">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title" data-i18n="process.title">How We Work</h2>
+                    <p class="section__description" data-i18n="process.description">
+                        A structured engineering approach — from your first idea to a running system
+                    </p>
+                </header>
+                
+                <div class="process__timeline">
+                    <div class="process-step">
+                        <div class="process-step__number">01</div>
+                        <div class="process-step__content">
+                            <h3 class="process-step__title" data-i18n="process.steps.discovery.title">Requirements & Discovery</h3>
+                            <p class="process-step__description" data-i18n="process.steps.discovery.description">
+                                We map your business workflows, pain points, and goals into a clear technical scope — so we build exactly what you need, nothing you don't
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-step__number">02</div>
+                        <div class="process-step__content">
+                            <h3 class="process-step__title" data-i18n="process.steps.design.title">Architecture & Design</h3>
+                            <p class="process-step__description" data-i18n="process.steps.design.description">
+                                We design the system architecture, database schema, and UI — sharing prototypes with you before a single line of production code is written
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-step__number">03</div>
+                        <div class="process-step__content">
+                            <h3 class="process-step__title" data-i18n="process.steps.development.title">Build & Iterate</h3>
+                            <p class="process-step__description" data-i18n="process.steps.development.description">
+                                We develop in short cycles, shipping working features for your review throughout the build — keeping you in control at every stage
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-step__number">04</div>
+                        <div class="process-step__content">
+                            <h3 class="process-step__title" data-i18n="process.steps.testing.title">Testing & QA</h3>
+                            <p class="process-step__description" data-i18n="process.steps.testing.description">
+                                Every feature is tested against real use cases — functional tests, load testing, security review, and cross-device validation before release
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="process-step__number">05</div>
+                        <div class="process-step__content">
+                            <h3 class="process-step__title" data-i18n="process.steps.launch.title">Deploy & Support</h3>
+                            <p class="process-step__description" data-i18n="process.steps.launch.description">
+                                We handle deployment, monitoring setup, and onboarding — then stay on call for ongoing maintenance, updates, and feature expansions
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Tools Section -->
+        <section class="tools" id="tools">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Technologies We Use</h2>
+                    <p class="section__description">
+                        Cutting-edge tools and frameworks that power our solutions
+                    </p>
+                </header>
+                
+                <div class="tools__categories">
+                    <div class="tool-category">
+                        <h3 class="tool-category__title">Frontend</h3>
+                        <div class="tool-category__items">
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #61DAFB; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">R</div>
+                                <span class="tool-item__name">React</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #4FC08D; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">V</div>
+                                <span class="tool-item__name">Vue.js</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #3178C6; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">TS</div>
+                                <span class="tool-item__name">TypeScript</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #06B6D4; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px;">TW</div>
+                                <span class="tool-item__name">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3 class="tool-category__title">Backend</h3>
+                        <div class="tool-category__items">
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #339933; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">JS</div>
+                                <span class="tool-item__name">Node.js</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #3776AB; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">Py</div>
+                                <span class="tool-item__name">Python</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #336791; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px;">PG</div>
+                                <span class="tool-item__name">PostgreSQL</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #47A248; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">M</div>
+                                <span class="tool-item__name">MongoDB</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3 class="tool-category__title">Mobile</h3>
+                        <div class="tool-category__items">
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #61DAFB; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px;">RN</div>
+                                <span class="tool-item__name">React Native</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #02569B; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">F</div>
+                                <span class="tool-item__name">Flutter</span>
+                            </div>
+                            <div class="tool-item">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="#FA7343" class="tool-icon">
+                                    <path d="M7.508 0c-.287 0-.573.084-.813.252L.948 4.951C.32 5.394 0 6.081 0 6.815v10.369c0 .734.32 1.421.948 1.864l5.747 4.7c.48.392 1.146.392 1.626 0l5.747-4.7c.628-.443.948-1.13.948-1.864V6.815c0-.734-.32-1.421-.948-1.864L8.321.252C8.081.084 7.795 0 7.508 0zm4.439 5.635c2.114 0 3.837 1.668 3.837 3.729 0 2.06-1.723 3.729-3.837 3.729-2.114 0-3.837-1.669-3.837-3.729 0-2.061 1.723-3.729 3.837-3.729z" fill="#FA7343"/>
+                                </svg>
+                                <span class="tool-item__name">Swift</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #7F52FF; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">K</div>
+                                <span class="tool-item__name">Kotlin</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="tool-category">
+                        <h3 class="tool-category__title">DevOps & Cloud</h3>
+                        <div class="tool-category__items">
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #FF9900; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 10px;">AWS</div>
+                                <span class="tool-item__name">AWS</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #2496ED; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">D</div>
+                                <span class="tool-item__name">Docker</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #326CE5; color: white; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">K8</div>
+                                <span class="tool-item__name">Kubernetes</span>
+                            </div>
+                            <div class="tool-item">
+                                <div class="tool-icon" style="background: #000000; color: white; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">▲</div>
+                                <span class="tool-item__name">Vercel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini-Apps Section -->
+        <section class="mini-apps" id="mini-apps">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Tools We've Built For You</h2>
+                    <p class="section__description">Free to use — each one is a real product we developed, showcasing what we can build for your company.<br>Sign up for a free account to unlock full access.</p>
+                </header>
+                
+                <div class="mini-apps-grid">
+                    <button class="mini-app-card" data-app="website-analyzer">
+                        <div class="app-icon analyzer-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                                <path d="M12 7v5l3 3"/>
+                            </svg>
+                        </div>
+                        <h3>Website Analyzer</h3>
+                        <p>Comprehensive website analysis - performance, SEO, and accessibility</p>
+                    </button>
+                    
+                    <button class="mini-app-card" data-app="color-palette">
+                        <div class="app-icon palette-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="13.5" cy="6.5" r=".5"/>
+                                <circle cx="17.5" cy="10.5" r=".5"/>
+                                <circle cx="8.5" cy="7.5" r=".5"/>
+                                <circle cx="6.5" cy="12.5" r=".5"/>
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+                            </svg>
+                        </div>
+                        <h3>Color Palette</h3>
+                        <p>Generate beautiful color palettes</p>
+                    </button>
+
+                    <button class="mini-app-card" data-app="roi-calculator">
+                        <div class="app-icon roi-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"/>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                            </svg>
+                        </div>
+                        <h3>ROI Calculator</h3>
+                        <p>Calculate marketing return on investment</p>
+                    </button>
+
+                    <button class="mini-app-card" data-app="kmt-link">
+                        <div class="app-icon link-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                        </div>
+                        <h3>KMT Link</h3>
+                        <p>Smart link management tool</p>
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Mini-Apps Modal -->
+        <div class="mini-apps-modal" id="miniAppsModal">
+            <div class="modal-backdrop"></div>
+            <div class="modal-container">
+                <header class="modal-header">
+                    <div class="app-selector" id="appSelector">
+                        <button class="app-tab active" data-app="seo-analyzer">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                            SEO Analyzer
+                        </button>
+                        <button class="app-tab" data-app="speed-tester">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="m14.31 8 5.74 9.94"/>
+                                <path d="M9.69 8h11.48"/>
+                                <path d="m8.21 13.89 7.5-4.32"/>
+                                <path d="M12 2v6"/>
+                                <path d="M12 8l-4 4"/>
+                            </svg>
+                            Speed Tester
+                        </button>
+                        <button class="app-tab" data-app="color-palette">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="13.5" cy="6.5" r=".5"/>
+                                <circle cx="17.5" cy="10.5" r=".5"/>
+                                <circle cx="8.5" cy="7.5" r=".5"/>
+                                <circle cx="6.5" cy="12.5" r=".5"/>
+                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+                            </svg>
+                            Color Palette
+                        </button>
+                        <button class="app-tab" data-app="kmt-link">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                            </svg>
+                            KMT Link
+                        </button>
+                    </div>
+                    <button class="modal-close" id="miniAppsModalClose">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </header>
+                
+                <div class="modal-content" id="modalContent">
+                    <div class="app-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Loading app...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insights Section -->
+        <section class="insights" id="insights">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title">Latest Insights</h2>
+                    <p class="section__description">
+                        Practical guides and deep dives on software engineering, AI tooling, and business automation
+                    </p>
+                </header>
+                
+                <div class="insights__grid">
+                    <!-- Blog posts will be dynamically loaded here -->
+                    <div class="blog-loading">
+                        <p>Loading latest insights...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title" data-i18n="contact.title">Let's Build Something</h2>
+                    <p class="section__description" data-i18n="contact.description">
+                        Tell us about your project and we'll get back to you within one business day
+                    </p>
+                </header>
+                
+                <div class="contact__content">
+                    <div class="contact__info">
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h3 class="contact-item__title">WhatsApp</h3>
+                                <p class="contact-item__details">
+                                    <a href="https://wa.me/905013617795" target="_blank" rel="noopener">+90 501 361 77 95</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item">
+                            <div class="contact-item__icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="contact-icon">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </div>
+                            <div class="contact-item__content">
+                                <h3 class="contact-item__title">Email</h3>
+                                <p class="contact-item__details">
+                                    <a href="mailto:hello@webkmt.com">hello@webkmt.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form class="quote__form multi-step-form" id="quoteForm">
+                        <!-- Progress Bar -->
+                        <div class="form-progress">
+                            <div class="progress-bar" style="width: 20%;" id="quoteProgress"></div>
+                            <span class="progress-text" id="quoteProgressText">Step 1 of 5</span>
+                        </div>
+
+                        <!-- Step 1: Project Type -->
+                        <div class="form-step active" data-step="1">
+                            <h3>What are you looking to build?</h3>
+                            <div class="checkbox-grid">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="Web App">
+                                    <span class="checkmark"></span> Web App
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="Mobile App">
+                                    <span class="checkmark"></span> Mobile App
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="AI Tool">
+                                    <span class="checkmark"></span> Custom AI Tool
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="CRM/ERP">
+                                    <span class="checkmark"></span> CRM or ERP
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="POS">
+                                    <span class="checkmark"></span> POS System
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="Automation">
+                                    <span class="checkmark"></span> Automation Pipeline
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="Internal Tool">
+                                    <span class="checkmark"></span> Internal Tool
+                                </label>
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" name="project_type" value="Not Sure">
+                                    <span class="checkmark"></span> Not Sure Yet
+                                </label>
+                            </div>
+                            <button type="button" class="btn btn--primary next-step">Next</button>
+                        </div>
+
+                        <!-- Step 2: System Status -->
+                        <div class="form-step" data-step="2" style="display: none;">
+                            <h3>Are we starting from scratch?</h3>
+                            <div class="radio-group radio-cards">
+                                <label class="radio-card">
+                                    <input type="radio" name="system_status" value="New Build" required>
+                                    <div class="card-content">
+                                        <h4>New Build</h4>
+                                        <p>Starting from scratch</p>
+                                    </div>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="system_status" value="Existing System">
+                                    <div class="card-content">
+                                        <h4>Existing System</h4>
+                                        <p>Need upgrades or fixes</p>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn--secondary prev-step">Back</button>
+                                <button type="button" class="btn btn--primary next-step">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Timeline -->
+                        <div class="form-step" data-step="3" style="display: none;">
+                            <h3>What's your rough timeline?</h3>
+                            <div class="radio-group vertical">
+                                <label class="custom-radio">
+                                    <input type="radio" name="timeline" value="ASAP" required>
+                                    <span class="radio-mark"></span> ASAP
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="timeline" value="1-3 months">
+                                    <span class="radio-mark"></span> 1–3 months
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="timeline" value="3-6 months">
+                                    <span class="radio-mark"></span> 3–6 months
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="timeline" value="Flexible">
+                                    <span class="radio-mark"></span> Flexible
+                                </label>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn--secondary prev-step">Back</button>
+                                <button type="button" class="btn btn--primary next-step">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Budget -->
+                        <div class="form-step" data-step="4" style="display: none;">
+                            <h3>What's your approximate budget range?</h3>
+                            <div class="radio-group vertical">
+                                <label class="custom-radio">
+                                    <input type="radio" name="budget" value="Under $5k" required>
+                                    <span class="radio-mark"></span> Under $5k
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="budget" value="$5k-$15k">
+                                    <span class="radio-mark"></span> $5k – $15k
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="budget" value="$15k-$50k">
+                                    <span class="radio-mark"></span> $15k – $50k
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="budget" value="$50k+">
+                                    <span class="radio-mark"></span> $50k+
+                                </label>
+                                <label class="custom-radio">
+                                    <input type="radio" name="budget" value="Let's discuss">
+                                    <span class="radio-mark"></span> Let's discuss
+                                </label>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn--secondary prev-step">Back</button>
+                                <button type="button" class="btn btn--primary next-step">Next</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Contact Details -->
+                        <div class="form-step" data-step="5" style="display: none;">
+                            <h3>How do we reach you?</h3>
+                            <div class="form-group">
+                                <input type="text" name="name" class="form-input" required placeholder="Your Name *">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" name="email" class="form-input" required placeholder="Email Address *">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" name="phone" class="form-input" placeholder="Phone / WhatsApp (Optional)">
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" class="form-textarea" rows="3" placeholder="Any extra details? (Optional)"></textarea>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn--secondary prev-step">Back</button>
+                                <button type="submit" class="btn btn--primary" id="quoteSubmitBtn">Request Quote</button>
+                            </div>
+                        </div>
+
+                        <!-- Success State -->
+                        <div class="form-step success-state" data-step="success" style="display: none; text-align: center; padding: 2rem 0;">
+                            <div class="success-icon" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;">✓</div>
+                            <h3>Got it!</h3>
+                            <p style="margin-bottom: 1.5rem;">We'll review your brief and reach out within 1 business day.</p>
+                            <a href="https://wa.me/905013617795" target="_blank" class="btn btn--secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                                Message us on WhatsApp
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter" id="newsletter">
+            <div class="container">
+                <div class="newsletter__content">
+                    <div class="newsletter__text">
+                        <h2 class="newsletter__title" data-i18n="newsletter.title">Stay in the Loop</h2>
+                        <p class="newsletter__description" data-i18n="newsletter.description">
+                            Get practical insights on custom software, AI tooling, and business automation — delivered to your inbox
+                        </p>
+                    </div>
+                    
+                    <form class="newsletter__form" action="/api/contact/newsletter" method="POST">
+                        <div class="newsletter__input-group">
+                            <label for="newsletter-email" class="sr-only">Email address for newsletter</label>
+                            <input type="email" id="newsletter-email" name="email" class="newsletter__input" 
+                                data-i18n-placeholder="newsletter.email_placeholder" required>
+                            <button type="submit" class="newsletter__button" data-i18n="newsletter.subscribe">Subscribe</button>
+                        </div>
+                        <p class="newsletter__privacy">
+                            We respect your privacy. Unsubscribe at any time.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer footer--minimal" id="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <a href="#home" class="footer__logo">
+                        <img src="assets/logo-white.svg" alt="WebKMT" width="120" height="40">
+                        <span class="footer__logo-text">WEBKMT</span>
+                    </a>
+                    <p class="footer__description" data-i18n="footer.description">
+                        Custom software that powers modern businesses — from startups to enterprises
+                    </p>
+                </div>
+                
+                <div class="footer__links">
+                    <div class="footer__column">
+                        <ul class="footer__list">
+                            <li><a href="#services" class="footer__link">Services</a></li>
+                            <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+                            <li><a href="#contact" class="footer__link">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer__column">
+                        <address class="footer__address">
+                            <p><a href="mailto:hello@webkmt.com">hello@webkmt.com</a></p>
+                            <p><a href="tel:+905013617795">+90 501 361 7795</a></p>
+                        </address>
+                    </div>
+                </div>
+
+                <div class="footer__social">
+                    <a href="https://www.linkedin.com/in/webkmt-agency-530303290/" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/webkemet" class="footer__social-link" aria-label="X (Twitter)" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/webkmt/" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/webkmt" class="footer__social-link" aria-label="GitHub" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61554827676179" class="footer__social-link" aria-label="Facebook" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@webkmt" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <div class="footer__bottom-content">
+                    <p class="footer__copyright" data-i18n="footer.legal.copyright">
+                        © 2024 WebKMT. All rights reserved.
+                    </p>
+                    <nav class="footer__legal" aria-label="Legal navigation">
+                        <a href="#" class="footer__legal-link">Privacy</a>
+                        <a href="#" class="footer__legal-link">Terms</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Authentication Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-modal__backdrop" id="authModalBackdrop"></div>
+        <div class="auth-modal__content glass-card">
+            <div class="auth-modal__header">
+                <h2 class="auth-modal__title" id="authModalTitle">Sign In</h2>
+                <button class="auth-modal__close" id="authModalClose" aria-label="Close">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="auth-modal__body">
+                <!-- Social Login Options -->
+                <div class="auth-social">
+                    <button class="auth-social__btn google-btn" id="googleSignInBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24">
+                            <path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                        <span>Continue with Google</span>
+                    </button>
+                    
+                    <button class="auth-social__btn github-btn" id="githubSignInBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>Continue with GitHub</span>
+                    </button>
+                </div>
+                
+                <div class="auth-divider">
+                    <span>Or continue with email</span>
+                </div>
+                
+                <!-- Email/Password Form -->
+                <form class="auth-form" id="authForm">
+                    <div class="form-group">
+                        <label for="authEmail" class="form-label">Email Address</label>
+                        <input type="email" id="authEmail" class="form-input glass-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="authPassword" class="form-label">Password</label>
+                        <input type="password" id="authPassword" class="form-input glass-input" required>
+                        <button type="button" class="password-toggle" id="passwordToggle">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <!-- Sign Up additional fields (hidden by default) -->
+                    <div class="form-group" id="displayNameGroup" style="display: none;">
+                        <label for="authDisplayName" class="form-label">Full Name</label>
+                        <input type="text" id="authDisplayName" class="form-input glass-input">
+                    </div>
+                    
+                    <div class="form-group auth-options">
+                        <label class="checkbox-wrapper">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            <span class="checkbox-text">Remember me</span>
+                        </label>
+                        <button type="button" class="link-btn" id="forgotPasswordBtn">Forgot password?</button>
+                    </div>
+                    
+                    <button type="submit" class="auth-submit-btn glass-btn" id="authSubmitBtn">
+                        <span class="btn-text">Sign In</span>
+                        <div class="btn-loader" style="display: none;">
+                            <div class="spinner"></div>
+                        </div>
+                    </button>
+                    
+                    <div class="auth-switch">
+                        <span id="authSwitchText">Don't have an account?</span>
+                        <button type="button" class="link-btn" id="authSwitchBtn">Sign up</button>
+                    </div>
+                </form>
+                
+                <!-- Error/Success Messages -->
+                <div class="auth-messages" id="authMessages"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Chatbot Widget (Dynamic) -->
+    <div class="chatbot-container">
+        <button class="chatbot-trigger" aria-label="Open chat assistant">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span class="chatbot-label">Chat with AI</span>
+        </button>
+
+        <div class="chatbot-widget">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">🤖</div>
+                    <div class="chatbot-title">
+                        <h3>WebKMT AI Assistant</h3>
+                        <div class="chatbot-status">Online</div>
+                    </div>
+                </div>
+                <button class="chatbot-close" aria-label="Close chat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/>
+                        <line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="chatbot-messages"></div>
+
+            <div class="chatbot-input-area">
+                <form class="chatbot-form">
+                    <input type="text" class="chatbot-input" placeholder="Ask me anything about WebKMT...">
+                    <button type="submit" class="chatbot-send-btn" aria-label="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Blog Management Panel -->
+    <div class="admin-panel" id="adminPanel" style="display: none;">
+        <div class="admin-panel__backdrop" id="adminPanelBackdrop"></div>
+        <div class="admin-panel__content glass-card">
+            <div class="admin-panel__header" style="flex-direction: column; align-items: stretch; gap: 1rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2 class="admin-panel__title" id="adminPanelTitle">Operations Dashboard</h2>
+                    <button class="admin-panel__close" id="adminPanelClose" aria-label="Close">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+                <div class="admin-tabs" style="display: flex; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                    <button class="admin-tab active" data-tab="blog" style="background: none; border: none; color: white; padding: 0.5rem 1rem; cursor: pointer; border-bottom: 2px solid var(--color-primary);">Blog</button>
+                    <button class="admin-tab" data-tab="leads" style="background: none; border: none; color: rgba(255, 255, 255, 0.7); padding: 0.5rem 1rem; cursor: pointer;">Leads</button>
+                    <button class="admin-tab" data-tab="users" style="background: none; border: none; color: rgba(255, 255, 255, 0.7); padding: 0.5rem 1rem; cursor: pointer;">Users</button>
+                </div>
+            </div>
+
+            <div class="admin-panel__body">
+                <!-- Blog List View (Tab Content) -->
+                <div class="admin-tab-content active" id="tab-blog">
+                    <div class="blog-list-view" id="blogListView">
+                    <div class="blog-actions">
+                        <button class="btn-primary" id="newBlogBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            New Blog Post
+                        </button>
+                        <div class="blog-filters">
+                            <select id="blogStatusFilter" class="form-input">
+                                <option value="all">All Posts</option>
+                                <option value="published">Published</option>
+                                <option value="draft">Drafts</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="blog-list" id="blogList">
+                        <div class="blog-list-loading" id="blogListLoading">
+                            <div class="spinner"></div>
+                            <p>Loading blog posts...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blog Editor View -->
+                <div class="blog-editor-view" id="blogEditorView" style="display: none;">
+                    <form class="blog-form" id="blogForm">
+                        <div class="blog-form__actions">
+                            <button type="button" class="btn-secondary" id="backToBlogList">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="m12 19-7-7 7-7"/>
+                                    <path d="m19 12H5"/>
+                                </svg>
+                                Back to List
+                            </button>
+                            <div class="blog-form__save-actions">
+                                <button type="button" class="btn-outline" id="saveDraftBtn">Save as Draft</button>
+                                <button type="button" class="btn-primary" id="publishBtn">Publish</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogTitle" class="form-label">Blog Title</label>
+                            <input type="text" id="blogTitle" class="form-input glass-input" required placeholder="Enter blog title...">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogSlug" class="form-label">URL Slug</label>
+                            <input type="text" id="blogSlug" class="form-input glass-input" placeholder="auto-generated-from-title">
+                            <small class="form-help">URL-friendly version of the title</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogExcerpt" class="form-label">Excerpt</label>
+                            <textarea id="blogExcerpt" class="form-input glass-input" rows="3" placeholder="Brief description for previews..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="blogContent" class="form-label">Content</label>
+                            <div class="blog-editor">
+                                <div class="editor-toolbar">
+                                    <button type="button" class="editor-btn" data-action="bold" title="Bold">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 4h8a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/>
+                                            <path d="M6 12h9a4 4 0 0 1 4 4 4 4 0 0 1-4 4H6z"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-action="italic" title="Italic">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="19" y1="4" x2="10" y2="4"/>
+                                            <line x1="14" y1="20" x2="5" y2="20"/>
+                                            <line x1="15" y1="4" x2="9" y2="20"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-action="formatBlock" data-value="h2" title="Heading">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M6 12h12"/>
+                                            <path d="M6 20V4"/>
+                                            <path d="M18 20V4"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-action="insertUnorderedList" title="Bullet List">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="8" y1="6" x2="21" y2="6"/>
+                                            <line x1="8" y1="12" x2="21" y2="12"/>
+                                            <line x1="8" y1="18" x2="21" y2="18"/>
+                                            <line x1="3" y1="6" x2="3.01" y2="6"/>
+                                            <line x1="3" y1="12" x2="3.01" y2="12"/>
+                                            <line x1="3" y1="18" x2="3.01" y2="18"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="editor-btn" data-action="createLink" title="Add Link">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div id="blogContent" class="blog-content-editor" contenteditable="true" placeholder="Write your blog content here..."></div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="blogCategory" class="form-label">Category</label>
+                                <select id="blogCategory" class="form-input glass-input">
+                                    <option value="general">General</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                    <option value="business-automation">Business Automation</option>
+                                    <option value="industry-insights">Industry Insights</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="blogTags" class="form-label">Tags</label>
+                                <input type="text" id="blogTags" class="form-input glass-input" placeholder="web, design, automation (comma separated)">
+                            </div>
+                        </div>
+
+                        <div class="blog-meta">
+                            <div class="meta-item">
+                                <strong>Status:</strong> <span id="blogStatus">Draft</span>
+                            </div>
+                            <div class="meta-item" id="blogLastSaved" style="display: none;">
+                                <strong>Last Saved:</strong> <span id="lastSavedTime">-</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div> <!-- End tab-blog -->
+
+                <!-- Leads View -->
+                <div class="admin-tab-content" id="tab-leads" style="display: none; padding: 1rem 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3>Lead Captures & Quotes</h3>
+                        <button class="btn btn--secondary btn--small" id="refreshLeadsBtn">Refresh</button>
+                    </div>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table style="width: 100%; text-align: left; border-collapse: collapse; color: white;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th style="padding: 0.75rem;">Date</th>
+                                    <th style="padding: 0.75rem;">Name</th>
+                                    <th style="padding: 0.75rem;">Email</th>
+                                    <th style="padding: 0.75rem;">Source</th>
+                                    <th style="padding: 0.75rem;">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leadsTableBody">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Users View -->
+                <div class="admin-tab-content" id="tab-users" style="display: none; padding: 1rem 0;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <h3>Registered Users</h3>
+                        <button class="btn btn--secondary btn--small" id="refreshUsersBtn">Refresh</button>
+                    </div>
+                    <div class="table-container" style="overflow-x: auto;">
+                        <table style="width: 100%; text-align: left; border-collapse: collapse; color: white;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th style="padding: 0.75rem;">Joined</th>
+                                    <th style="padding: 0.75rem;">Email</th>
+                                    <th style="padding: 0.75rem;">ID</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Populated via JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Supabase SDK v2 (modular) -->
+    <script type="module" src="js/supabase-config.js"></script>
+    
+    <!-- Core Supabase Services -->
+    <script type="module" src="js/shared/supabase-auth-manager.js"></script>
+    
+    <!-- Performance Modules -->
+    <script src="js/performance-utils.js" defer></script>
+    <script src="js/modules/language-manager.js" defer></script>
+
+    <!-- UI Enhancement Bundle -->
+    <script src="js/ui-enhancements.js" defer></script>
+
+    <!-- Enhanced Components -->
+    <script src="js/portfolio-simple.js" defer></script>
+    <script src="js/forms-enhanced.js" defer></script>
+    <script src="js/mini-apps-integrated.js" defer></script>
+    <script type="module" src="js/auth-ui.js"></script>
+
+    <!-- Main Application -->
+    <script src="js/main.js" defer></script>
+
+    <!-- Admin Toggle Function -->
+    <script>
+    // Admin button update function
+    function updateAdminButton(isAdmin = false, user = null) {
+        const adminBtn = document.getElementById('adminToggleBtn');
+        if (!adminBtn) return;
+
+        if (isAdmin && user) {
+            adminBtn.classList.add('active');
+            adminBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                Admin ON
+            `;
+            adminBtn.title = `Admin: ${user.email}`;
+        } else {
+            adminBtn.classList.remove('active');
+            adminBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 1v6m0 6v6M8.5 3.5l3.5 3.5 3.5-3.5M8.5 20.5l3.5-3.5 3.5 3.5"/>
+                </svg>
+                Admin
+            `;
+            adminBtn.title = 'Admin Access';
+        }
+    }
+
+    // Listen for auth state changes to update admin status
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 Setting up admin authentication listener...');
+
+        // Wait for auth manager and blog manager to be available
+        function setupAdminListener() {
+            if (window.authManager && window.blogManager) {
+                // Subscribe to auth state changes
+                window.authManager.subscribe(async (authData) => {
+                    console.log('🔐 Auth state changed, checking admin status...');
+
+                    if (authData.isAuthenticated && authData.user) {
+                        // Re-check admin status when user logs in
+                        await window.blogManager.checkAdminStatus();
+
+                        // Update button if user is admin
+                        if (window.blogManager.isAdmin) {
+                            updateAdminButton(true, authData.user);
+                        } else {
+                            updateAdminButton(false);
+                        }
+                    } else {
+                        // User logged out
+                        updateAdminButton(false);
+                        window.blogManager.isAdmin = false;
+
+                        // Remove admin panel if visible
+                        const adminPanel = document.querySelector('.blog-admin-panel');
+                        if (adminPanel) {
+                            adminPanel.remove();
+                        }
+                    }
+                });
+
+                console.log('✅ Admin authentication listener setup complete');
+            } else {
+                // Retry in 500ms
+                setTimeout(setupAdminListener, 500);
+            }
+        }
+
+        setupAdminListener();
+    });
+    </script>
+    
+    <!-- Screen reader only class for accessibility -->
+    <style>
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+    </style>
+    
+    <!-- Initialization Manager - Must load first -->
+    <script src="js/initialization-manager.js" defer></script>
+
+    <!-- Blog Manager Script -->
+    <script src="js/blog-manager.js" defer></script>
+
+    <!-- Admin Dashboard Script -->
+    <script src="js/admin-dashboard.js" defer></script>
+
+    <!-- AI Chatbot Script -->
+    <script src="js/chatbot.js" defer></script>
+
+
+</body>
+</html>

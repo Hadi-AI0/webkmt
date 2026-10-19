@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title id="pageTitle">Case Study — WebKMT</title>
+    <meta name="description" id="pageDescription" content="Deep dive case study from WebKMT — custom software solutions agency.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="WebKMT">
+    <meta property="og:title" id="ogTitle" content="Case Study — WebKMT">
+    <meta property="og:description" id="ogDesc" content="Deep dive case study from WebKMT.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Theme init (prevents FOUC) -->
+    <script>
+      (function() {
+        const t = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/main-bundle.css">
+    <link rel="stylesheet" href="css/components-bundle.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <style>
+      body { font-family: 'Inter', sans-serif; }
+
+      .cs-hero {
+        min-height: 60vh;
+        display: flex;
+        align-items: flex-end;
+        padding: 6rem 0 3rem;
+        background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(59, 130, 246, 0.08) 100%);
+        border-bottom: 1px solid var(--glass-border, rgba(255,255,255,0.1));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cs-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 70% 70% at 80% 20%, rgba(124,58,237,0.1) 0%, transparent 60%);
+        pointer-events: none;
+      }
+
+      .cs-breadcrumb {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .cs-breadcrumb a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .cs-category-badge {
+        display: inline-block;
+        padding: 0.35rem 1rem;
+        background: rgba(124, 58, 237, 0.15);
+        border: 1px solid rgba(124, 58, 237, 0.3);
+        border-radius: 100px;
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .cs-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--text-primary);
+        margin: 0 0 1rem 0;
+        max-width: 800px;
+      }
+
+      .cs-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .cs-meta-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .cs-meta-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+      }
+
+      .cs-meta-value {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+      }
+
+      .cs-content {
+        padding: 5rem 0;
+      }
+
+      .cs-grid {
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 4rem;
+        align-items: start;
+      }
+
+      @media (max-width: 900px) {
+        .cs-grid { grid-template-columns: 1fr; }
+      }
+
+      .cs-section {
+        margin-bottom: 3rem;
+      }
+
+      .cs-section-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-primary);
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+      }
+
+      .cs-section h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin: 0 0 1rem 0;
+      }
+
+      .cs-section p {
+        color: var(--text-secondary);
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .cs-sidebar {
+        position: sticky;
+        top: 100px;
+      }
+
+      .cs-sidebar-card {
+        background: var(--bg-glass, rgba(255,255,255,0.05));
+        border: 1px solid var(--glass-border, rgba(255,255,255,0.1));
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        backdrop-filter: blur(12px);
+      }
+
+      .cs-sidebar-card h3 {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-secondary);
+        margin: 0 0 1rem 0;
+      }
+
+      .tech-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .tech-tag {
+        background: rgba(124, 58, 237, 0.12);
+        border: 1px solid rgba(124, 58, 237, 0.25);
+        color: var(--color-primary);
+        padding: 0.3rem 0.75rem;
+        border-radius: 100px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .results-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .result-card {
+        background: var(--bg-glass, rgba(255,255,255,0.04));
+        border: 1px solid var(--glass-border, rgba(255,255,255,0.08));
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        text-align: center;
+      }
+
+      .result-number {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        line-height: 1;
+        margin-bottom: 0.25rem;
+      }
+
+      .result-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        line-height: 1.3;
+      }
+
+      .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .features-list li {
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--glass-border, rgba(255,255,255,0.06));
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .features-list li::before {
+        content: '✓';
+        color: #10b981;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      .cs-cta {
+        background: linear-gradient(135deg, var(--color-primary) 0%, #3b82f6 100%);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        text-align: center;
+        margin-top: 4rem;
+        color: white;
+      }
+
+      .cs-cta h2 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin: 0 0 1rem 0;
+      }
+
+      .cs-cta p {
+        opacity: 0.85;
+        margin-bottom: 2rem;
+      }
+
+      .cs-not-found {
+        text-align: center;
+        padding: 10rem 2rem;
+        color: var(--text-secondary);
+      }
+
+      /* Nav bar (simplified) */
+      .cs-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 2rem;
+        background: rgba(0,0,0,0.7);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      .cs-nav-logo {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        text-decoration: none;
+      }
+
+      .cs-nav-logo span { color: var(--color-primary); }
+
+      .cs-nav-back {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.2s;
+      }
+
+      .cs-nav-back:hover { color: var(--color-primary); }
+
+      .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Minimal Nav -->
+    <nav class="cs-nav">
+        <a href="/" class="cs-nav-logo">Web<span>KMT</span></a>
+        <a href="/#portfolio" class="cs-nav-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
+            </svg>
+            Back to Portfolio
+        </a>
+    </nav>
+
+    <!-- Hero -->
+    <header class="cs-hero" id="csHero">
+        <div class="container">
+            <nav class="cs-breadcrumb">
+                <a href="/">WebKMT</a>
+                <span>›</span>
+                <a href="/#portfolio">Portfolio</a>
+                <span>›</span>
+                <span id="breadcrumbTitle">Case Study</span>
+            </nav>
+            <div class="cs-category-badge" id="csCategory">Project</div>
+            <h1 class="cs-title" id="csTitle">Loading...</h1>
+            <p id="csClient" style="color:var(--text-secondary);font-size:1.1rem;"></p>
+            <div class="cs-meta" id="csMeta"></div>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="cs-content">
+        <div class="container">
+            <div id="csNotFound" class="cs-not-found" style="display:none;">
+                <h2>Case Study Not Found</h2>
+                <p>This project may have been moved or doesn't exist.</p>
+                <a href="/#portfolio" class="btn btn--primary" style="margin-top:2rem;display:inline-block;">View All Projects</a>
+            </div>
+
+            <div class="cs-grid" id="csGrid">
+                <!-- Main Content -->
+                <div>
+                    <section class="cs-section">
+                        <div class="cs-section-label">Overview</div>
+                        <p id="csDescription"></p>
+                    </section>
+
+                    <section class="cs-section">
+                        <div class="cs-section-label">The Challenge</div>
+                        <h2>What we were solving</h2>
+                        <p id="csChallenge"></p>
+                    </section>
+
+                    <section class="cs-section">
+                        <div class="cs-section-label">Our Approach</div>
+                        <h2>How we built it</h2>
+                        <p id="csSolution"></p>
+                    </section>
+
+                    <section class="cs-section">
+                        <div class="cs-section-label">Key Features</div>
+                        <h2>What was delivered</h2>
+                        <ul class="features-list" id="csFeatures"></ul>
+                    </section>
+
+                    <section class="cs-section">
+                        <div class="cs-section-label">Results</div>
+                        <h2>The impact</h2>
+                        <p id="csResults"></p>
+                        <div class="results-grid" id="csResultsGrid"></div>
+                    </section>
+
+                    <!-- CTA -->
+                    <div class="cs-cta">
+                        <h2>Ready to build something similar?</h2>
+                        <p>Tell us what you need and we'll put together a custom scope for your business.</p>
+                        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                            <a href="/#contact" class="btn" style="background:white;color:#7c3aed;padding:0.875rem 2rem;border-radius:0.5rem;font-weight:600;text-decoration:none;">Get a Quote</a>
+                            <a href="https://wa.me/905013617795" target="_blank" class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);padding:0.875rem 2rem;border-radius:0.5rem;font-weight:600;text-decoration:none;">WhatsApp Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="cs-sidebar">
+                    <div class="cs-sidebar-card">
+                        <h3>Technologies Used</h3>
+                        <div class="tech-grid" id="csTechGrid"></div>
+                    </div>
+
+                    <div class="cs-sidebar-card">
+                        <h3>Project Details</h3>
+                        <div id="csProjectDetails" style="display:flex;flex-direction:column;gap:1rem;"></div>
+                    </div>
+
+                    <a href="/#contact" class="btn btn--primary" style="display:block;text-align:center;padding:1rem;border-radius:0.75rem;text-decoration:none;background:var(--color-primary);color:white;font-weight:600;margin-top:0.5rem;">
+                        Start a Similar Project →
+                    </a>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align:center;padding:3rem 2rem;border-top:1px solid var(--glass-border,rgba(255,255,255,0.08));color:var(--text-secondary);font-size:0.9rem;">
+        <p>© 2024 WebKMT. All rights reserved. <a href="/" style="color:var(--color-primary);">Back to Home</a></p>
+    </footer>
+
+    <script src="js/portfolio-simple.js" defer></script>
+    <script>
+    // Embed portfolio data directly so we don't need to re-init the full portfolio manager
+    const PORTFOLIO_DATA = [
+      {
+        id: 1,
+        category: 'ERP / CRM',
+        title: { en: 'Next-Gen Corporate ERP System' },
+        client: { en: 'Global Manufacturing Corp' },
+        description: { en: 'Revolutionary ERP system that is 50% more efficient than Odoo and Brightpearl. We developed a comprehensive business management platform that streamlines operations, inventory tracking, financial management, and employee scheduling with real-time analytics and automated reporting.' },
+        duration: { en: '6 months' },
+        year: { en: '2024' },
+        challenge: { en: 'The client needed a unified system to replace multiple disconnected business tools, reduce operational costs by 40%, and improve data accuracy across all departments.' },
+        solution: { en: 'We built a modular ERP system with microservices architecture, enabling seamless scaling and customization. The platform includes advanced automation, real-time data synchronization, and intelligent workflow management.' },
+        results: { en: '52% improvement in operational efficiency, 60% reduction in manual data entry, and $2.3M annual cost savings.' },
+        features: { en: ['Real-time inventory tracking', 'Automated financial reporting', 'Employee scheduling system', 'Custom dashboard builder', 'Multi-currency support', 'Advanced analytics engine'] },
+        technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
+        metrics: [{ number: '52%', label: 'Efficiency Gain' }, { number: '60%', label: 'Less Manual Work' }, { number: '$2.3M', label: 'Annual Savings' }, { number: '6mo', label: 'Delivery Time' }]
+      },
+      {
+        id: 2,
+        category: 'E-Commerce / Mobile',
+        title: { en: 'Premium Saudi Poultry E-Commerce' },
+        client: { en: 'Al-Wadi Premium Poultry' },
+        description: { en: 'Modern e-commerce platform for a premium Saudi poultry brand featuring online ordering, real-time delivery tracking, quality assurance integration, and halal certification verification. Serves over 50,000 customers across the Kingdom with 99.8% uptime.' },
+        duration: { en: '4 months' },
+        year: { en: '2024' },
+        challenge: { en: 'Building trust in online poultry purchasing while ensuring freshness, implementing complex logistics for temperature-controlled delivery, and integrating with Islamic dietary requirements.' },
+        solution: { en: 'We developed a comprehensive platform with AI-powered freshness prediction, IoT integration for cold chain monitoring, and blockchain-based halal certification tracking.' },
+        results: { en: '300% increase in online sales, 95% customer satisfaction rate, and expansion to 3 new cities within 6 months of launch.' },
+        features: { en: ['Real-time freshness tracking', 'Halal certification verification', 'Temperature-controlled delivery', 'AI-powered quality prediction', 'Customer loyalty program', 'Multi-payment gateway'] },
+        technologies: ['React Native', 'Node.js', 'MongoDB', 'Supabase', 'IoT Sensors', 'Blockchain'],
+        metrics: [{ number: '300%', label: 'Online Sales Growth' }, { number: '95%', label: 'Customer Satisfaction' }, { number: '50k+', label: 'Active Users' }, { number: '4mo', label: 'Delivery Time' }]
+      },
+      {
+        id: 3,
+        category: 'Branding / Design',
+        title: { en: 'Coffee Jadla — Brand Identity' },
+        client: { en: 'Coffee Jadla Specialty Roasters' },
+        description: { en: 'Complete brand identity design for a premium Saudi coffee roastery combining traditional Arabic heritage with modern specialty coffee culture. Including logo, packaging systems, interior design concepts, and digital brand guidelines.' },
+        duration: { en: '3 months' },
+        year: { en: '2024' },
+        challenge: { en: 'Creating a brand that appeals to both traditional Saudi coffee lovers and modern specialty coffee enthusiasts, while standing out in a competitive market dominated by international chains.' },
+        solution: { en: 'We developed a sophisticated brand identity that seamlessly blends Arabic calligraphy with contemporary design elements, creating packaging that tells the story of Saudi coffee heritage.' },
+        results: { en: '200% increase in brand recognition, successful launch of 3 retail locations, and featured in Saudi Design Week 2024.' },
+        features: { en: ['Custom Arabic typography', 'Sustainable packaging design', 'Interior concept development', 'Brand guidelines manual', 'Digital asset library', 'Marketing collateral suite'] },
+        technologies: ['Adobe Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Figma', '3D Modeling'],
+        metrics: [{ number: '200%', label: 'Brand Recognition' }, { number: '3', label: 'Retail Locations' }, { number: '3mo', label: 'Delivery Time' }, { number: '2024', label: 'Design Week Feature' }]
+      },
+      {
+        id: 4,
+        category: 'AI / SaaS Platform',
+        title: { en: 'AI-Powered Content Management Platform' },
+        client: { en: 'Digital Content Creators Network' },
+        description: { en: 'Advanced multi-platform content management system with AI-powered content suggestions, automated publishing workflows, advanced analytics dashboard, and collaborative editing tools for content creators, agencies, and enterprises.' },
+        duration: { en: '5 months' },
+        year: { en: '2024' },
+        challenge: { en: 'Content creators needed a unified platform to manage content across 15+ social media platforms, with AI assistance for content optimization and real-time performance tracking.' },
+        solution: { en: 'We built an intelligent content management platform with machine learning algorithms for content optimization, automated scheduling, and predictive analytics for optimal posting times.' },
+        results: { en: '400% increase in content engagement, 70% time savings in content management, and adoption by 500+ content creators in the first quarter.' },
+        features: { en: ['AI content optimization', 'Multi-platform publishing', 'Real-time analytics dashboard', 'Collaborative editing tools', 'Automated scheduling', 'Performance prediction'] },
+        technologies: ['Vue.js', 'Laravel', 'Python', 'TensorFlow', 'OpenAI API', 'Redis'],
+        metrics: [{ number: '400%', label: 'Engagement Increase' }, { number: '70%', label: 'Time Saved' }, { number: '500+', label: 'Creators Onboarded' }, { number: '5mo', label: 'Delivery Time' }]
+      }
+    ];
+
+    function initCaseStudy() {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      const project = PORTFOLIO_DATA.find(p => p.id === id);
+
+      if (!project) {
+        document.getElementById('csGrid').style.display = 'none';
+        document.getElementById('csNotFound').style.display = 'block';
+        document.getElementById('csTitle').textContent = 'Not Found';
+        return;
+      }
+
+      const lang = 'en';
+      const get = (obj) => obj?.[lang] || obj?.en || '';
+
+      // Page meta
+      const title = get(project.title);
+      document.getElementById('pageTitle').textContent = title + ' — WebKMT Case Study';
+      document.getElementById('pageDescription').content = get(project.description).slice(0, 155);
+      document.getElementById('ogTitle').content = title + ' — WebKMT';
+      document.getElementById('ogDesc').content = get(project.description).slice(0, 155);
+
+      // Hero
+      document.getElementById('breadcrumbTitle').textContent = title;
+      document.getElementById('csCategory').textContent = project.category;
+      document.getElementById('csTitle').textContent = title;
+      document.getElementById('csClient').textContent = 'Client: ' + get(project.client);
+
+      document.getElementById('csMeta').innerHTML = `
+        <div class="cs-meta-item"><span class="cs-meta-label">Duration</span><span class="cs-meta-value">${get(project.duration)}</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-value">${get(project.year)}</span></div>
+        <div class="cs-meta-item"><span class="cs-meta-label">Category</span><span class="cs-meta-value">${project.category}</span></div>
+      `;
+
+      // Main content
+      document.getElementById('csDescription').textContent = get(project.description);
+      document.getElementById('csChallenge').textContent = get(project.challenge);
+      document.getElementById('csSolution').textContent = get(project.solution);
+      document.getElementById('csResults').textContent = get(project.results);
+
+      // Features list
+      const features = get(project.features);
+      document.getElementById('csFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join('');
+
+      // Metrics
+      if (project.metrics) {
+        document.getElementById('csResultsGrid').innerHTML = project.metrics.map(m => `
+          <div class="result-card">
+            <div class="result-number">${m.number}</div>
+            <div class="result-label">${m.label}</div>
+          </div>
+        `).join('');
+      }
+
+      // Tech
+      document.getElementById('csTechGrid').innerHTML = (project.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
+
+      // Sidebar details
+      document.getElementById('csProjectDetails').innerHTML = `
+        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">CLIENT</span><strong>${get(project.client)}</strong></div>
+        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">DURATION</span><strong>${get(project.duration)}</strong></div>
+        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">YEAR</span><strong>${get(project.year)}</strong></div>
+        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">CATEGORY</span><strong>${project.category}</strong></div>
+      `;
+    }
+
+    initCaseStudy();
+    </script>
+</body>
+</html>

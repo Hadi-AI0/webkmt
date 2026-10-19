@@ -1,0 +1,96 @@
+mutation CreateDemoData @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") @transaction {
+  user_insertMany(data: [
+    {
+      id: "550e8400-e29b-41d4-a716-446655440000",
+      displayName: "demouser1",
+      createdAt: "2024-04-26T10:00:00Z",
+      email: "demo1@example.com",
+      photoUrl: "http://example.com/demo1.jpg"
+    },
+    {
+      id: "550e8400-e29b-41d4-a716-446655440001",
+      displayName: "demouser2",
+      createdAt: "2024-04-26T11:00:00Z",
+      email: "demo2@example.com",
+      photoUrl: "http://example.com/demo2.jpg"
+    }
+  ])
+  movie_insertMany(data: [
+    {
+      id: "650e8400-e29b-41d4-a716-446655440002",
+      title: "Inception",
+      year: 2010,
+      createdAt: "2024-04-26T12:00:00Z"
+    },
+    {
+      id: "750e8400-e29b-41d4-a716-446655440003",
+      title: "The Matrix",
+      year: 1999,
+      createdAt: "2024-04-26T13:00:00Z"
+    }
+  ])
+  movieList_insertMany(data: [
+    {
+      id: "850e8400-e29b-41d4-a716-446655440004",
+      name: "My Favorite Movies",
+      createdAt: "2024-04-26T14:00:00Z",
+      updatedAt: "2024-04-26T14:00:00Z",
+      isPublic: true,
+      userId: "550e8400-e29b-41d4-a716-446655440000"
+    },
+    {
+      id: "950e8400-e29b-41d4-a716-446655440005",
+      name: "Sci-Fi Classics",
+      createdAt: "2024-04-26T15:00:00Z",
+      updatedAt: "2024-04-26T15:00:00Z",
+      isPublic: true,
+      userId: "550e8400-e29b-41d4-a716-446655440001"
+    }
+  ])
+  movieListEntry_insertMany(data: [
+    {
+      movieListId: "850e8400-e29b-41d4-a716-446655440004",
+      movieId: "650e8400-e29b-41d4-a716-446655440002",
+      position: 1
+    },
+    {
+      movieListId: "950e8400-e29b-41d4-a716-446655440005",
+      movieId: "750e8400-e29b-41d4-a716-446655440003",
+      position: 1
+    }
+  ])
+  watch_insertMany(data: [
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      movieId: "650e8400-e29b-41d4-a716-446655440002",
+      createdAt: "2024-04-26T16:00:00Z",
+      watchDate: "2024-04-25"
+    },
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      movieId: "750e8400-e29b-41d4-a716-446655440003",
+      createdAt: "2024-04-26T17:00:00Z",
+      watchDate: "2024-04-24"
+    }
+  ])
+  review_insertMany(data: [
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440000",
+      movieId: "650e8400-e29b-41d4-a716-446655440002",
+      watchId: "550e8400-e29b-41d4-a716-446655440000",
+      createdAt: "2024-04-26T18:00:00Z",
+      updatedAt: "2024-04-26T18:00:00Z",
+      rating: 5,
+      isPublic: true
+    },
+    {
+      userId: "550e8400-e29b-41d4-a716-446655440001",
+      movieId: "750e8400-e29b-41d4-a716-446655440003",
+      watchId: "550e8400-e29b-41d4-a716-446655440001",
+      createdAt: "2024-04-26T19:00:00Z",
+      updatedAt: "2024-04-26T19:00:00Z",
+      rating: 4,
+      isPublic: true
+    }
+  ])
+}

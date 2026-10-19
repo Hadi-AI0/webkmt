@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Performance optimizations
+Crawl-delay: 1
+
+# Important pages
+Sitemap: https://webkmt.com/sitemap.xml
+
+# Disallow private directories
+Disallow: /server/
+Disallow: /config/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /reports/
+Disallow: /test-*
+
+# Allow important assets
+Allow: /assets/
+Allow: /css/
+Allow: /js/
+Allow: /mini-apps/

@@ -1,0 +1,586 @@
+/**
+ * Enhanced Hero Section JavaScript
+ * Handles typewriter effect, scroll effects, navigation, and animations
+ */
+
+class HeroEnhanced {
+  constructor() {
+    this.header = document.querySelector('.header-enhanced');
+    this.hamburger = document.querySelector('.hamburger-enhanced');
+    this.mobileMenu = document.querySelector('.mobile-menu-enhanced');
+    this.mobileOverlay = document.querySelector('.mobile-menu-overlay');
+    this.navLinks = document.querySelectorAll('.nav-link-enhanced, .mobile-nav-link');
+    this.themeToggles = document.querySelectorAll('.theme-toggle-enhanced');
+    this.langToggles = document.querySelectorAll('.lang-toggle-enhanced');
+    this.typewriter = document.querySelector('.typewriter');
+    
+    this.isMenuOpen = false;
+    this.lastScrollY = 0;
+    this.scrollThreshold = 100;
+    
+    this.init();
+  }
+
+  init() {
+    this.setupScrollEffects();
+    this.setupMobileMenu();
+    this.setupNavigation();
+    this.setupTypewriter();
+    this.setupThemeToggles();
+    this.setupLanguageToggles();
+    this.setupLanguageChangeListener();
+    this.setupKeyboardShortcuts();
+    this.setupIntersectionObserver();
+    this.setupSmoothScrolling();
+  }
+
+  /**
+   * Setup scroll effects for header
+   */
+  setupScrollEffects() {
+    let ticking = false;
+
+    const updateHeader = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Add scrolled class when scrolled down
+      if (currentScrollY > 50) {
+        this.header.classList.add('scrolled');
+      } else {
+        this.header.classList.remove('scrolled');
+      }
+      
+      // Hide/show header based on scroll direction
+      if (currentScrollY > this.scrollThreshold) {
+        if (currentScrollY > this.lastScrollY && !this.isMenuOpen) {
+          // Scrolling down - hide header
+          this.header.classList.add('hidden');
+        } else {
+          // Scrolling up - show header
+          this.header.classList.remove('hidden');
+        }
+      } else {
+        this.header.classList.remove('hidden');
+      }
+      
+      this.lastScrollY = currentScrollY;
+      ticking = false;
+    };
+
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+  }
+
+  /**
+   * Setup mobile menu functionality
+   */
+  setupMobileMenu() {
+    // Hamburger click handler with improved responsiveness
+    this.hamburger?.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      this.toggleMobileMenu();
+    });
+
+    // Add touch event for mobile devices
+    this.hamburger?.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+    }, { passive: false });
+
+    // Overlay click handler
+    this.mobileOverlay?.addEventListener('click', () => {
+      this.closeMobileMenu();
+    });
+
+    // Close menu when clicking mobile nav links
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        this.closeMobileMenu();
+      });
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.isMenuOpen) {
+        this.closeMobileMenu();
+      }
+    });
+  }
+
+  /**
+   * Toggle mobile menu
+   */
+  toggleMobileMenu() {
+    if (this.isMenuOpen) {
+      this.closeMobileMenu();
+    } else {
+      this.openMobileMenu();
+    }
+  }
+
+  /**
+   * Open mobile menu
+   */
+  openMobileMenu() {
+    this.isMenuOpen = true;
+    this.hamburger?.classList.add('active');
+    this.mobileMenu?.classList.add('active');
+    this.mobileOverlay?.classList.add('active');
+    this.hamburger?.setAttribute('aria-expanded', 'true');
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Focus first menu item
+    const firstMenuItem = this.mobileMenu?.querySelector('.mobile-nav-link');
+    firstMenuItem?.focus();
+  }
+
+  /**
+   * Close mobile menu
+   */
+  closeMobileMenu() {
+    this.isMenuOpen = false;
+    this.hamburger?.classList.remove('active');
+    this.mobileMenu?.classList.remove('active');
+    this.mobileOverlay?.classList.remove('active');
+    this.hamburger?.setAttribute('aria-expanded', 'false');
+    
+    // Restore body scroll
+    document.body.style.overflow = '';
+  }
+
+  /**
+   * Setup navigation active states
+   */
+  setupNavigation() {
+    // Update active nav link based on current section
+    const updateActiveNav = () => {
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPosition = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          // Remove active class from all nav links
+          this.navLinks.forEach(link => link.classList.remove('active'));
+          
+          // Add active class to current section's nav link
+          const activeLinks = document.querySelectorAll(`[href="#${sectionId}"]`);
+          activeLinks.forEach(link => {
+            if (link.classList.contains('nav-link-enhanced') || link.classList.contains('mobile-nav-link')) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    };
+
+    let ticking = false;
+    const requestTick = () => {
+      if (!ticking) {
+        requestAnimationFrame(updateActiveNav);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
+  }
+
+  /**
+   * Setup typewriter effect
+   */
+  setupTypewriter() {
+    if (!this.typewriter) return;
+
+    const text = this.typewriter.getAttribute('data-typewriter') || this.typewriter.textContent;
+    const i18nKey = this.typewriter.getAttribute('data-i18n-typewriter');
+    
+    // Get translated text if available
+    let finalText = text;
+    if (i18nKey && window.languageManager) {
+      const translatedText = window.languageManager.getTranslation(i18nKey);
+      if (translatedText) {
+        finalText = translatedText;
+      }
+    }
+
+    this.animateTypewriter(finalText);
+
+    // Re-animate on language change
+    document.addEventListener('languageChanged', () => {
+      if (i18nKey && window.languageManager) {
+        const newText = window.languageManager.getTranslation(i18nKey);
+        if (newText) {
+          this.animateTypewriter(newText);
+        }
+      }
+    });
+  }
+
+  /**
+   * Animate typewriter effect
+   */
+  animateTypewriter(text) {
+    if (!this.typewriter) return;
+
+    // Check if current language is Arabic - if so, skip animation
+    const isArabic = window.languageManager && window.languageManager.getCurrentLanguage() === 'ar';
+    
+    if (isArabic) {
+      // For Arabic, just set the text directly without animation
+      this.typewriter.textContent = text;
+      this.typewriter.classList.remove('typing');
+      this.typewriter.classList.add('finished');
+      return;
+    }
+
+    // Reset typewriter
+    this.typewriter.textContent = '';
+    this.typewriter.classList.remove('finished');
+    this.typewriter.classList.add('typing');
+
+    let index = 0;
+    const speed = 50; // milliseconds per character
+
+    const type = () => {
+      if (index < text.length) {
+        this.typewriter.textContent = text.slice(0, index + 1);
+        index++;
+        setTimeout(type, speed);
+      } else {
+        // Typing finished
+        this.typewriter.classList.remove('typing');
+        setTimeout(() => {
+          this.typewriter.classList.add('finished');
+        }, 1000);
+      }
+    };
+
+    // Start typing after a short delay
+    setTimeout(type, 500);
+  }
+
+  /**
+   * Setup theme toggle functionality
+   */
+  setupThemeToggles() {
+    // Initialize theme management first
+    this.initializeThemeSystem();
+    
+    this.themeToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        this.toggleTheme();
+      });
+    });
+  }
+
+  /**
+   * Initialize theme system
+   */
+  initializeThemeSystem() {
+    // Apply saved theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    } else {
+      // Respect system preference
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    }
+
+    // Listen for system theme changes
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+        if (!localStorage.getItem('theme')) {
+          document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        }
+      });
+    }
+  }
+
+  /**
+   * Toggle theme
+   */
+  toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Dispatch theme change event
+    document.dispatchEvent(new CustomEvent('themeChanged', {
+      detail: { theme: newTheme }
+    }));
+
+    // Track theme change
+    if (window.gtag) {
+      gtag('event', 'theme_change', {
+        'theme': newTheme
+      });
+    }
+  }
+
+  /**
+   * Setup language toggle functionality
+   */
+  setupLanguageToggles() {
+    this.langToggles.forEach(toggle => {
+      toggle.addEventListener('click', async () => {
+        if (window.languageManager) {
+          await window.languageManager.toggleLanguage();
+        }
+      });
+    });
+  }
+
+  /**
+   * Setup language change event listener
+   */
+  setupLanguageChangeListener() {
+    document.addEventListener('languageChanged', (e) => {
+      this.updateForLanguage(e.detail.language);
+    });
+  }
+
+  /**
+   * Setup keyboard shortcuts
+   */
+  setupKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+      // Alt + M to toggle mobile menu
+      if (e.altKey && e.key === 'm') {
+        e.preventDefault();
+        this.toggleMobileMenu();
+      }
+      
+      // Alt + H to scroll to hero
+      if (e.altKey && e.key === 'h') {
+        e.preventDefault();
+        this.scrollToSection('home');
+      }
+    });
+  }
+
+  /**
+   * Setup intersection observer for animations
+   */
+  setupIntersectionObserver() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements that should animate in
+    const animateElements = document.querySelectorAll('.hero-subtitle, .hero-cta-group, .service-card, .portfolio-item');
+    animateElements.forEach(el => observer.observe(el));
+  }
+
+  /**
+   * Setup smooth scrolling for navigation links
+   */
+  setupSmoothScrolling() {
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href?.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          this.scrollToSection(targetId);
+        }
+      });
+    });
+  }
+
+  /**
+   * Smooth scroll to section
+   */
+  scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const headerHeight = this.header?.offsetHeight || 0;
+      const targetPosition = section.offsetTop - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  /**
+   * Update for theme changes
+   */
+  updateForTheme(theme) {
+    // Add any theme-specific hero updates here
+    console.log(`Hero updated for theme: ${theme}`);
+  }
+
+  /**
+   * Update for language changes
+   */
+  updateForLanguage(language) {
+    // Update language toggle buttons
+    this.langToggles.forEach(toggle => {
+      const newText = language === 'en' ? 'عر' : 'EN';
+      toggle.textContent = newText;
+    });
+
+    // Re-animate typewriter with new language
+    if (this.typewriter) {
+      const i18nKey = this.typewriter.getAttribute('data-i18n-typewriter');
+      if (i18nKey && window.languageManager) {
+        const newText = window.languageManager.getTranslation(i18nKey);
+        if (newText) {
+          setTimeout(() => {
+            this.animateTypewriter(newText);
+          }, 300);
+        }
+      }
+    }
+  }
+
+  /**
+   * Cleanup method
+   */
+  destroy() {
+    // Remove event listeners and cleanup
+    document.body.style.overflow = '';
+    this.closeMobileMenu();
+  }
+}
+
+/**
+ * Particle System for Hero Background
+ */
+class ParticleSystem {
+  constructor() {
+    this.container = document.querySelector('.hero-particles');
+    this.particles = [];
+    this.animationId = null;
+    
+    if (this.container && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.init();
+    }
+  }
+
+  init() {
+    this.createParticles();
+    this.animate();
+    
+    // Handle resize
+    window.addEventListener('resize', () => {
+      this.handleResize();
+    });
+  }
+
+  createParticles() {
+    const particleCount = window.innerWidth < 768 ? 5 : 10;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // Random position and animation delay
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.animationDelay = `${Math.random() * -15}s`;
+      particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+      
+      this.container.appendChild(particle);
+      this.particles.push(particle);
+    }
+  }
+
+  handleResize() {
+    // Adjust particle count based on screen size
+    const targetCount = window.innerWidth < 768 ? 5 : 10;
+    const currentCount = this.particles.length;
+    
+    if (targetCount > currentCount) {
+      // Add particles
+      for (let i = currentCount; i < targetCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * -15}s`;
+        particle.style.animationDuration = `${15 + Math.random() * 10}s`;
+        
+        this.container.appendChild(particle);
+        this.particles.push(particle);
+      }
+    } else if (targetCount < currentCount) {
+      // Remove particles
+      for (let i = currentCount - 1; i >= targetCount; i--) {
+        const particle = this.particles[i];
+        if (particle && particle.parentNode) {
+          particle.parentNode.removeChild(particle);
+        }
+        this.particles.splice(i, 1);
+      }
+    }
+  }
+
+  animate() {
+    // This could be used for custom particle animations
+    // Currently using CSS animations for better performance
+    this.animationId = requestAnimationFrame(() => this.animate());
+  }
+
+  destroy() {
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+    }
+    this.particles.forEach(particle => {
+      if (particle && particle.parentNode) {
+        particle.parentNode.removeChild(particle);
+      }
+    });
+    this.particles = [];
+  }
+}
+
+/**
+ * Initialize Enhanced Hero
+ */
+function initHeroEnhanced() {
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.heroEnhanced = new HeroEnhanced();
+      window.particleSystem = new ParticleSystem();
+    });
+  } else {
+    window.heroEnhanced = new HeroEnhanced();
+    window.particleSystem = new ParticleSystem();
+  }
+}
+
+// Auto-initialize
+initHeroEnhanced();
+
+// Export for module systems
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { HeroEnhanced, ParticleSystem };
+}

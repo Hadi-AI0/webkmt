@@ -1,0 +1,534 @@
+/**
+ * Enhanced Services Section JavaScript
+ * Features: Staggered animations, expandable cards, micro-interactions, scroll-based triggers
+ */
+
+class EnhancedServicesManager {
+  constructor() {
+    this.servicesGrid = null;
+    this.serviceCards = [];
+    this.observer = null;
+    this.expandedCard = null;
+    this.animationQueue = [];
+    this.isAnimating = false;
+    
+    this.init();
+  }
+
+  /**
+   * Initialize the enhanced services manager
+   */
+  init() {
+    try {
+      this.setupElements();
+      this.setupScrollAnimations();
+      this.setupExpandableCards();
+      this.setupMicroInteractions();
+      this.setupAccessibility();
+      
+      console.log('Enhanced Services Manager initialized successfully');
+    } catch (error) {
+      console.error('Enhanced Services Manager initialization failed:', error);
+    }
+  }
+
+  /**
+   * Setup DOM elements
+   */
+  setupElements() {
+    this.servicesGrid = document.getElementById('servicesGrid');
+    this.serviceCards = Array.from(document.querySelectorAll('.service-card-enhanced'));
+    
+    if (!this.servicesGrid || this.serviceCards.length === 0) {
+      throw new Error('Services elements not found');
+    }
+  }
+
+  /**
+   * Setup scroll-based staggered animations
+   */
+  setupScrollAnimations() {
+    // Create intersection observer for scroll animations
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.animateCard(entry.target);
+          this.observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '50px'
+    });
+
+    // Observe all service cards
+    this.serviceCards.forEach(card => {
+      this.observer.observe(card);
+    });
+  }
+
+  /**
+   * Animate individual card with staggered timing
+   */
+  animateCard(card) {
+    const delay = parseInt(card.dataset.animationDelay) || 0;
+    
+    setTimeout(() => {
+      card.classList.add('animate-in');
+      // Micro-interactions can be added here if needed
+    }, delay);
+  }
+
+  /**
+   * Setup expandable card functionality
+   */
+  setupExpandableCards() {
+    this.serviceCards.forEach(card => {
+      const expandBtn = card.querySelector('.service-card__expand-btn');
+      const expandableSection = card.querySelector('.service-card__expandable');
+      
+      if (expandBtn && expandableSection) {
+        expandBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          this.toggleCardExpansion(card, expandBtn, expandableSection);
+        });
+
+        // Add keyboard support
+        expandBtn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.toggleCardExpansion(card, expandBtn, expandableSection);
+          }
+        });
+      }
+    });
+  }
+
+  /**
+   * Toggle card expansion with smooth animations
+   */
+  toggleCardExpansion(card, button, expandableSection) {
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    const serviceType = card.dataset.service;
+    
+    if (isExpanded) {
+      this.collapseCard(card, button, expandableSection);
+    } else {
+      // Collapse any other expanded card first
+      if (this.expandedCard && this.expandedCard !== card) {
+        this.collapseExpandedCard();
+      }
+      
+      this.expandCard(card, button, expandableSection);
+      this.expandedCard = card;
+      
+      // Track expansion for analytics
+      this.trackServiceInteraction('expand', serviceType);
+    }
+  }
+
+  /**
+   * Expand card with animation
+   */
+  expandCard(card, button, expandableSection) {
+    if (this.isAnimating) return;
+    
+    this.isAnimating = true;
+    
+    // Update button state
+    button.setAttribute('aria-expanded', 'true');
+    
+    // Add expanded class with animation
+    expandableSection.classList.add('expanded');
+    
+    // Add 3D tilt effect
+    card.style.transform = 'perspective(1000px) rotateX(-2deg) translateY(-5px)';
+    
+    // Smooth scroll to show expanded content
+    setTimeout(() => {
+      this.smoothScrollToCard(card);
+      this.isAnimating = false;
+      
+      // Announce expansion for screen readers
+      this.announceChange(`${this.getServiceTitle(card)} details expanded`);
+    }, 300);
+  }
+
+  /**
+   * Collapse card with animation
+   */
+  collapseCard(card, button, expandableSection) {
+    if (this.isAnimating) return;
+    
+    this.isAnimating = true;
+    
+    // Update button state
+    button.setAttribute('aria-expanded', 'false');
+    
+    // Remove expanded class
+    expandableSection.classList.remove('expanded');
+    
+    // Reset 3D transform
+    card.style.transform = '';
+    
+    setTimeout(() => {
+      if (this.expandedCard === card) {
+        this.expandedCard = null;
+      }
+      this.isAnimating = false;
+      
+      // Announce collapse for screen readers
+      this.announceChange(`${this.getServiceTitle(card)} details collapsed`);
+    }, 300);
+  }
+
+  /**
+   * Collapse currently expanded card
+   */
+  collapseExpandedCard() {
+    if (!this.expandedCard) return;
+    
+    const button = this.expandedCard.querySelector('.service-card__expand-btn');
+    const expandableSection = this.expandedCard.querySelector('.service-card__expandable');
+    
+    if (button && expandableSection) {
+      this.collapseCard(this.expandedCard, button, expandableSection);
+    }
+  }
+
+  /**
+   * Setup micro-interactions
+   */
+  setupMicroInteractions() {
+    this.serviceCards.forEach(card => {
+      // Icon glow effect on hover
+      card.addEventListener('mouseenter', () => {
+        this.triggerIconGlow(card);
+      });
+
+      // Feature list animation on hover
+      card.addEventListener('mouseenter', () => {
+        this.animateFeatureList(card);
+      });
+
+      // Tech tags hover animation
+      const techTags = card.querySelectorAll('.tech-tag');
+      techTags.forEach((tag, index) => {
+        tag.addEventListener('mouseenter', () => {
+          setTimeout(() => {
+            tag.style.transform = 'translateY(-3px) scale(1.05)';
+          }, index * 50);
+        });
+
+        tag.addEventListener('mouseleave', () => {
+          tag.style.transform = '';
+        });
+      });
+
+      // Action buttons interaction
+      const actionBtns = card.querySelectorAll('.action-btn');
+      actionBtns.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+          this.triggerButtonRipple(btn);
+        });
+      });
+    });
+  }
+
+  /**
+   * Trigger icon glow effect
+   */
+  triggerIconGlow(card) {
+    const glow = card.querySelector('.service-card__glow');
+    if (glow) {
+      glow.style.animation = 'pulse 2s infinite';
+    }
+  }
+
+  /**
+   * Animate feature list items
+   */
+  animateFeatureList(card) {
+    const featureItems = card.querySelectorAll('.features-list li');
+    featureItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.style.transform = 'translateX(5px)';
+        item.style.color = 'var(--color-text)';
+      }, index * 100);
+    });
+  }
+
+  /**
+   * Trigger button ripple effect
+   */
+  triggerButtonRipple(button) {
+    const ripple = document.createElement('div');
+    ripple.classList.add('ripple-effect');
+    ripple.style.cssText = `
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(0);
+      animation: ripple 0.6s linear;
+      pointer-events: none;
+      width: 100px;
+      height: 100px;
+      left: 50%;
+      top: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+    `;
+    
+    button.style.position = 'relative';
+    button.style.overflow = 'hidden';
+    button.appendChild(ripple);
+    
+    // Add ripple animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+    `;
+    if (!document.querySelector('#ripple-styles')) {
+      style.id = 'ripple-styles';
+      document.head.appendChild(style);
+    }
+    
+    setTimeout(() => {
+      ripple.remove();
+    }, 600);
+  }
+
+  /**
+   * Smooth scroll to card
+   */
+  smoothScrollToCard(card) {
+    const cardRect = card.getBoundingClientRect();
+    const offset = window.pageYOffset + cardRect.top - 100;
+    
+    window.scrollTo({
+      top: offset,
+      behavior: 'smooth'
+    });
+  }
+
+  /**
+   * Setup accessibility features
+   */
+  setupAccessibility() {
+    // Add ARIA labels and keyboard navigation
+    this.serviceCards.forEach(card => {
+      const expandBtn = card.querySelector('.service-card__expand-btn');
+      const serviceTitle = this.getServiceTitle(card);
+      
+      if (expandBtn) {
+        expandBtn.setAttribute('aria-label', `Learn more about ${serviceTitle}`);
+        expandBtn.setAttribute('role', 'button');
+        expandBtn.setAttribute('tabindex', '0');
+      }
+    });
+
+    // Create announcement region for screen readers
+    if (!document.getElementById('servicesAnnouncer')) {
+      const announcer = document.createElement('div');
+      announcer.id = 'servicesAnnouncer';
+      announcer.setAttribute('aria-live', 'polite');
+      announcer.setAttribute('aria-atomic', 'true');
+      announcer.className = 'sr-only';
+      document.body.appendChild(announcer);
+    }
+
+    // Handle escape key to collapse expanded cards
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.expandedCard) {
+        const button = this.expandedCard.querySelector('.service-card__expand-btn');
+        const expandableSection = this.expandedCard.querySelector('.service-card__expandable');
+        if (button && expandableSection) {
+          this.collapseCard(this.expandedCard, button, expandableSection);
+        }
+      }
+    });
+  }
+
+  /**
+   * Handle language changes
+   */
+  updateLanguage() {
+    // Re-setup accessibility labels with new language
+    this.serviceCards.forEach(card => {
+      const expandBtn = card.querySelector('.service-card__expand-btn');
+      const serviceTitle = this.getServiceTitle(card);
+      
+      if (expandBtn) {
+        expandBtn.setAttribute('aria-label', `Learn more about ${serviceTitle}`);
+      }
+    });
+    
+    console.log('Services language updated');
+  }
+
+  /**
+   * Handle theme changes
+   */
+  updateTheme(theme) {
+    // Update any theme-specific interactions
+    console.log(`Services updated for theme: ${theme}`);
+  }
+
+  /**
+   * Get service title from card
+   */
+  getServiceTitle(card) {
+    const titleElement = card.querySelector('.service-card__title');
+    return titleElement ? titleElement.textContent.trim() : 'Service';
+  }
+
+  /**
+   * Announce changes for screen readers
+   */
+  announceChange(message) {
+    const announcer = document.getElementById('servicesAnnouncer');
+    if (announcer) {
+      announcer.textContent = message;
+    }
+  }
+
+  /**
+   * Track service interactions for analytics
+   */
+  trackServiceInteraction(action, serviceType) {
+    // Analytics tracking would go here
+    console.log(`Service interaction: ${action} - ${serviceType}`);
+    
+    // Example: Google Analytics tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'service_interaction', {
+        'event_category': 'Services',
+        'event_label': serviceType,
+        'value': action === 'expand' ? 1 : 0
+      });
+    }
+  }
+
+  /**
+   * Trigger initial animations for visible cards
+   */
+  triggerInitialAnimations() {
+    this.serviceCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      
+      if (isVisible) {
+        this.animateCard(card);
+      }
+    });
+  }
+
+  /**
+   * Reset all animations
+   */
+  resetAnimations() {
+    this.serviceCards.forEach(card => {
+      card.classList.remove('animate-in');
+      card.style.transform = '';
+    });
+  }
+
+  /**
+   * Refresh services (useful for dynamic content updates)
+   */
+  refresh() {
+    this.resetAnimations();
+    setTimeout(() => {
+      this.triggerInitialAnimations();
+    }, 100);
+  }
+
+  /**
+   * Destroy the services manager
+   */
+  destroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+    
+    // Remove event listeners
+    this.serviceCards.forEach(card => {
+      const expandBtn = card.querySelector('.service-card__expand-btn');
+      if (expandBtn) {
+        expandBtn.replaceWith(expandBtn.cloneNode(true));
+      }
+    });
+  }
+
+  /**
+   * Public API methods
+   */
+  expandService(serviceType) {
+    const card = this.serviceCards.find(card => card.dataset.service === serviceType);
+    if (card) {
+      const button = card.querySelector('.service-card__expand-btn');
+      const expandableSection = card.querySelector('.service-card__expandable');
+      if (button && expandableSection) {
+        this.expandCard(card, button, expandableSection);
+      }
+    }
+  }
+
+  collapseAllServices() {
+    this.collapseExpandedCard();
+  }
+
+  getExpandedService() {
+    return this.expandedCard ? this.expandedCard.dataset.service : null;
+  }
+
+  isServiceExpanded(serviceType) {
+    const card = this.serviceCards.find(card => card.dataset.service === serviceType);
+    if (card) {
+      const button = card.querySelector('.service-card__expand-btn');
+      return button ? button.getAttribute('aria-expanded') === 'true' : false;
+    }
+    return false;
+  }
+}
+
+/**
+ * Initialize Enhanced Services Manager
+ */
+function initEnhancedServices() {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      window.enhancedServices = new EnhancedServicesManager();
+    });
+  } else {
+    window.enhancedServices = new EnhancedServicesManager();
+  }
+}
+
+/**
+ * Integration with language and theme systems
+ */
+document.addEventListener('languageChanged', () => {
+  if (window.enhancedServices) {
+    window.enhancedServices.updateLanguage();
+  }
+});
+
+document.addEventListener('themeChanged', (e) => {
+  if (window.enhancedServices) {
+    window.enhancedServices.updateTheme(e.detail.theme);
+  }
+});
+
+// Auto-initialize
+initEnhancedServices();
+
+// Export for module systems
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = EnhancedServicesManager;
+}

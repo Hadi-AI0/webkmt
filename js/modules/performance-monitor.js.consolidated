@@ -1,0 +1,630 @@
+/**
+ * Performance Monitoring and Core Web Vitals Tracking
+ * Monitors and reports website performance metrics
+ */
+
+class PerformanceMonitor {
+  constructor() {
+    this.metrics = new Map();
+    this.observers = new Map();
+    this.reportingQueue = [];
+    this.isReporting = false;
+    this.reportingEndpoint = '/api/analytics/performance';
+    
+    this.init();
+  }
+
+  init() {
+    if (typeof window === 'undefined') return;
+
+    this.setupCoreWebVitals();
+    this.setupResourceObserver();
+    this.setupNavigationObserver();
+    this.setupLongTaskObserver();
+    this.setupMemoryObserver();
+    this.setupCustomMetrics();
+    this.scheduleReporting();
+  }
+
+  setupCoreWebVitals() {
+    // Largest Contentful Paint (LCP)
+    this.observeLCP();
+    
+    // First Input Delay (FID) 
+    this.observeFID();
+    
+    // Cumulative Layout Shift (CLS)
+    this.observeCLS();
+    
+    // First Contentful Paint (FCP)
+    this.observeFCP();
+    
+    // Time to First Byte (TTFB)
+    this.observeTTFB();
+  }
+
+  observeLCP() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const lastEntry = entries[entries.length - 1];
+        
+        this.recordMetric('LCP', {
+          value: lastEntry.startTime,
+          element: lastEntry.element?.tagName || 'unknown',
+          url: lastEntry.url || 'unknown',
+          timestamp: Date.now()
+        });
+      });
+      
+      observer.observe({ entryTypes: ['largest-contentful-paint'] });
+      this.observers.set('lcp', observer);
+    } catch (error) {
+      console.warn('LCP observation failed:', error);
+    }
+  }
+
+  observeFID() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          this.recordMetric('FID', {
+            value: entry.processingStart - entry.startTime,
+            name: entry.name,
+            timestamp: Date.now()
+          });
+        });
+      });
+      
+      observer.observe({ entryTypes: ['first-input'] });
+      this.observers.set('fid', observer);
+    } catch (error) {
+      console.warn('FID observation failed:', error);
+    }
+  }
+
+  observeCLS() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      let clsValue = 0;
+      let sessionValue = 0;
+      let sessionEntries = [];
+
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        
+        entries.forEach(entry => {
+          if (!entry.hadRecentInput) {
+            const firstSessionEntry = sessionEntries[0];
+            const lastSessionEntry = sessionEntries[sessionEntries.length - 1];
+            
+            if (sessionValue && 
+                entry.startTime - lastSessionEntry.startTime < 1000 &&
+                entry.startTime - firstSessionEntry.startTime < 5000) {
+              sessionValue += entry.value;
+              sessionEntries.push(entry);
+            } else {
+              sessionValue = entry.value;
+              sessionEntries = [entry];
+            }
+            
+            if (sessionValue > clsValue) {
+              clsValue = sessionValue;
+              
+              this.recordMetric('CLS', {
+                value: clsValue,
+                entries: sessionEntries.length,
+                timestamp: Date.now()
+              });
+            }
+          }
+        });
+      });
+      
+      observer.observe({ entryTypes: ['layout-shift'] });
+      this.observers.set('cls', observer);
+    } catch (error) {
+      console.warn('CLS observation failed:', error);
+    }
+  }
+
+  observeFCP() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          if (entry.name === 'first-contentful-paint') {
+            this.recordMetric('FCP', {
+              value: entry.startTime,
+              timestamp: Date.now()
+            });
+          }
+        });
+      });
+      
+      observer.observe({ entryTypes: ['paint'] });
+      this.observers.set('fcp', observer);
+    } catch (error) {
+      console.warn('FCP observation failed:', error);
+    }
+  }
+
+  observeTTFB() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          if (entry.entryType === 'navigation') {
+            this.recordMetric('TTFB', {
+              value: entry.responseStart - entry.requestStart,
+              timestamp: Date.now()
+            });
+          }
+        });
+      });
+      
+      observer.observe({ entryTypes: ['navigation'] });
+      this.observers.set('ttfb', observer);
+    } catch (error) {
+      console.warn('TTFB observation failed:', error);
+    }
+  }
+
+  setupResourceObserver() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        
+        entries.forEach(entry => {
+          // Track slow resources
+          if (entry.duration > 1000) {
+            this.recordMetric('SLOW_RESOURCE', {
+              name: entry.name,
+              duration: entry.duration,
+              size: entry.transferSize || 0,
+              type: entry.initiatorType,
+              timestamp: Date.now()
+            });
+          }
+          
+          // Track failed resources
+          if (entry.transferSize === 0 && entry.duration > 0) {
+            this.recordMetric('FAILED_RESOURCE', {
+              name: entry.name,
+              type: entry.initiatorType,
+              timestamp: Date.now()
+            });
+          }
+        });
+        
+        // Calculate resource timing summary
+        this.calculateResourceSummary(entries);
+      });
+      
+      observer.observe({ entryTypes: ['resource'] });
+      this.observers.set('resource', observer);
+    } catch (error) {
+      console.warn('Resource observation failed:', error);
+    }
+  }
+
+  setupNavigationObserver() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        
+        entries.forEach(entry => {
+          this.recordMetric('NAVIGATION', {
+            type: entry.type,
+            redirectCount: entry.redirectCount,
+            domContentLoaded: entry.domContentLoadedEventStart - entry.navigationStart,
+            loadComplete: entry.loadEventStart - entry.navigationStart,
+            dns: entry.domainLookupEnd - entry.domainLookupStart,
+            tcp: entry.connectEnd - entry.connectStart,
+            ssl: entry.secureConnectionStart > 0 ? entry.connectEnd - entry.secureConnectionStart : 0,
+            ttfb: entry.responseStart - entry.requestStart,
+            download: entry.responseEnd - entry.responseStart,
+            dom: entry.domComplete - entry.domLoading,
+            timestamp: Date.now()
+          });
+        });
+      });
+      
+      observer.observe({ entryTypes: ['navigation'] });
+      this.observers.set('navigation', observer);
+    } catch (error) {
+      console.warn('Navigation observation failed:', error);
+    }
+  }
+
+  setupLongTaskObserver() {
+    if (!('PerformanceObserver' in window)) return;
+
+    try {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        
+        entries.forEach(entry => {
+          this.recordMetric('LONG_TASK', {
+            duration: entry.duration,
+            startTime: entry.startTime,
+            attribution: entry.attribution?.map(attr => ({
+              name: attr.name,
+              entryType: attr.entryType,
+              startTime: attr.startTime,
+              duration: attr.duration
+            })) || [],
+            timestamp: Date.now()
+          });
+        });
+      });
+      
+      observer.observe({ entryTypes: ['longtask'] });
+      this.observers.set('longtask', observer);
+    } catch (error) {
+      console.warn('Long task observation failed:', error);
+    }
+  }
+
+  setupMemoryObserver() {
+    // Monitor memory usage
+    if ('memory' in performance) {
+      setInterval(() => {
+        this.recordMetric('MEMORY', {
+          used: performance.memory.usedJSHeapSize,
+          total: performance.memory.totalJSHeapSize,
+          limit: performance.memory.jsHeapSizeLimit,
+          timestamp: Date.now()
+        });
+      }, 30000); // Every 30 seconds
+    }
+  }
+
+  setupCustomMetrics() {
+    // Time to Interactive (TTI) approximation
+    this.observeTTI();
+    
+    // Bundle loading metrics
+    this.observeBundleLoading();
+    
+    // User interaction metrics
+    this.observeUserInteractions();
+    
+    // Core feature loading
+    this.observeFeatureLoading();
+  }
+
+  observeTTI() {
+    // Simplified TTI calculation
+    let lastLongTaskEnd = 0;
+    let fcpTime = 0;
+    
+    // Get FCP time
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          if (entry.name === 'first-contentful-paint') {
+            fcpTime = entry.startTime;
+            this.calculateTTI(fcpTime, lastLongTaskEnd);
+          }
+        });
+      });
+      observer.observe({ entryTypes: ['paint'] });
+    }
+    
+    // Track long tasks
+    if ('PerformanceObserver' in window) {
+      const longTaskObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        entries.forEach(entry => {
+          lastLongTaskEnd = Math.max(lastLongTaskEnd, entry.startTime + entry.duration);
+        });
+      });
+      longTaskObserver.observe({ entryTypes: ['longtask'] });
+    }
+  }
+
+  calculateTTI(fcpTime, lastLongTaskEnd) {
+    // TTI is approximately when there are no long tasks for 5 seconds after FCP
+    const potentialTTI = Math.max(fcpTime, lastLongTaskEnd);
+    
+    setTimeout(() => {
+      this.recordMetric('TTI', {
+        value: potentialTTI,
+        timestamp: Date.now()
+      });
+    }, 5000);
+  }
+
+  observeBundleLoading() {
+    // Track when main JavaScript bundles load
+    const bundleStartTime = performance.now();
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      this.recordMetric('BUNDLE_LOAD', {
+        domContentLoaded: performance.now() - bundleStartTime,
+        timestamp: Date.now()
+      });
+    });
+    
+    window.addEventListener('load', () => {
+      this.recordMetric('BUNDLE_LOAD', {
+        windowLoad: performance.now() - bundleStartTime,
+        timestamp: Date.now()
+      });
+    });
+  }
+
+  observeUserInteractions() {
+    let firstInteraction = null;
+    
+    const recordFirstInteraction = (event) => {
+      if (!firstInteraction) {
+        firstInteraction = performance.now();
+        this.recordMetric('FIRST_INTERACTION', {
+          type: event.type,
+          time: firstInteraction,
+          timestamp: Date.now()
+        });
+      }
+    };
+    
+    ['click', 'keydown', 'touchstart', 'scroll'].forEach(eventType => {
+      document.addEventListener(eventType, recordFirstInteraction, { once: true, passive: true });
+    });
+  }
+
+  observeFeatureLoading() {
+    // Track when key features become available
+    const features = ['supabase', 'lazyLoader', 'authManager', 'dataSyncManager'];
+    
+    features.forEach(feature => {
+      const checkFeature = () => {
+        if (window[feature]) {
+          this.recordMetric('FEATURE_READY', {
+            feature,
+            time: performance.now(),
+            timestamp: Date.now()
+          });
+        } else {
+          setTimeout(checkFeature, 100);
+        }
+      };
+      checkFeature();
+    });
+  }
+
+  calculateResourceSummary(entries) {
+    const summary = {
+      totalResources: entries.length,
+      totalSize: 0,
+      totalDuration: 0,
+      byType: {},
+      slowResources: 0
+    };
+    
+    entries.forEach(entry => {
+      summary.totalSize += entry.transferSize || 0;
+      summary.totalDuration += entry.duration;
+      
+      if (entry.duration > 1000) {
+        summary.slowResources++;
+      }
+      
+      const type = entry.initiatorType || 'other';
+      if (!summary.byType[type]) {
+        summary.byType[type] = { count: 0, size: 0, duration: 0 };
+      }
+      
+      summary.byType[type].count++;
+      summary.byType[type].size += entry.transferSize || 0;
+      summary.byType[type].duration += entry.duration;
+    });
+    
+    this.recordMetric('RESOURCE_SUMMARY', {
+      ...summary,
+      timestamp: Date.now()
+    });
+  }
+
+  recordMetric(name, data) {
+    const metric = {
+      name,
+      data,
+      url: window.location.href,
+      userAgent: navigator.userAgent,
+      connection: this.getConnectionInfo(),
+      viewport: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    };
+    
+    this.metrics.set(`${name}_${Date.now()}`, metric);
+    this.queueForReporting(metric);
+    
+    // Dispatch event for real-time monitoring
+    document.dispatchEvent(new CustomEvent('performancemetric', {
+      detail: metric
+    }));
+  }
+
+  getConnectionInfo() {
+    if ('connection' in navigator) {
+      const conn = navigator.connection;
+      return {
+        effectiveType: conn.effectiveType,
+        downlink: conn.downlink,
+        rtt: conn.rtt,
+        saveData: conn.saveData
+      };
+    }
+    return null;
+  }
+
+  queueForReporting(metric) {
+    this.reportingQueue.push(metric);
+    
+    // Send immediately for critical metrics
+    const criticalMetrics = ['LCP', 'FID', 'CLS', 'FAILED_RESOURCE'];
+    if (criticalMetrics.includes(metric.name)) {
+      this.sendReport([metric]);
+    }
+  }
+
+  scheduleReporting() {
+    // Send reports every 30 seconds
+    setInterval(() => {
+      if (this.reportingQueue.length > 0) {
+        this.sendBatchReport();
+      }
+    }, 30000);
+    
+    // Send report on page unload
+    window.addEventListener('beforeunload', () => {
+      if (this.reportingQueue.length > 0) {
+        this.sendBeaconReport();
+      }
+    });
+    
+    // Send report on page visibility change
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && this.reportingQueue.length > 0) {
+        this.sendBeaconReport();
+      }
+    });
+  }
+
+  sendBatchReport() {
+    if (this.isReporting || this.reportingQueue.length === 0) return;
+    
+    const batch = this.reportingQueue.splice(0, 20); // Send max 20 metrics
+    this.sendReport(batch);
+  }
+
+  async sendReport(metrics) {
+    if (this.isReporting) return;
+    
+    this.isReporting = true;
+    
+    try {
+      // Try to send via Fetch API
+      await fetch(this.reportingEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          metrics,
+          session: this.getSessionId(),
+          timestamp: Date.now()
+        })
+      });
+    } catch (error) {
+      console.warn('Performance reporting failed:', error);
+      
+    } finally {
+      this.isReporting = false;
+    }
+  }
+
+  sendBeaconReport() {
+    if (this.reportingQueue.length === 0) return;
+    
+    const data = JSON.stringify({
+      metrics: this.reportingQueue.splice(0),
+      session: this.getSessionId(),
+      timestamp: Date.now()
+    });
+    
+    if ('sendBeacon' in navigator) {
+      navigator.sendBeacon(this.reportingEndpoint, data);
+    }
+  }
+
+  getSessionId() {
+    if (!this.sessionId) {
+      this.sessionId = sessionStorage.getItem('performance_session_id');
+      if (!this.sessionId) {
+        this.sessionId = `perf_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+        sessionStorage.setItem('performance_session_id', this.sessionId);
+      }
+    }
+    return this.sessionId;
+  }
+
+  // Public API
+  getMetrics() {
+    return Array.from(this.metrics.values());
+  }
+
+  getMetricsByName(name) {
+    return this.getMetrics().filter(metric => metric.name === name);
+  }
+
+  getCoreWebVitals() {
+    const vitals = {};
+    ['LCP', 'FID', 'CLS', 'FCP', 'TTFB', 'TTI'].forEach(vital => {
+      const metrics = this.getMetricsByName(vital);
+      if (metrics.length > 0) {
+        vitals[vital] = metrics[metrics.length - 1].data.value;
+      }
+    });
+    return vitals;
+  }
+
+  getScore() {
+    const vitals = this.getCoreWebVitals();
+    let score = 100;
+    
+    // LCP scoring
+    if (vitals.LCP > 4000) score -= 30;
+    else if (vitals.LCP > 2500) score -= 15;
+    
+    // FID scoring
+    if (vitals.FID > 300) score -= 25;
+    else if (vitals.FID > 100) score -= 10;
+    
+    // CLS scoring
+    if (vitals.CLS > 0.25) score -= 25;
+    else if (vitals.CLS > 0.1) score -= 10;
+    
+    // FCP scoring
+    if (vitals.FCP > 3000) score -= 20;
+    else if (vitals.FCP > 1800) score -= 10;
+    
+    return Math.max(0, Math.round(score));
+  }
+
+  destroy() {
+    // Clean up observers
+    this.observers.forEach(observer => observer.disconnect());
+    this.observers.clear();
+    
+    // Send final report
+    if (this.reportingQueue.length > 0) {
+      this.sendBeaconReport();
+    }
+  }
+}
+
+// Initialize performance monitor
+const performanceMonitor = new PerformanceMonitor();
+
+// Make available globally
+window.performanceMonitor = performanceMonitor;

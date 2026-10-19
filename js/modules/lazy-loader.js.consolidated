@@ -1,0 +1,437 @@
+/**
+ * Advanced Lazy Loading System with Intersection Observer
+ * Optimizes images, videos, and content sections for performance
+ */
+
+class LazyLoader {
+  constructor() {
+    this.imageObserver = null;
+    this.contentObserver = null;
+    this.videoObserver = null;
+    this.loadedImages = new Set();
+    this.loadedContent = new Set();
+    this.retryQueue = new Map();
+    this.maxRetries = 3;
+    
+    this.init();
+  }
+
+  init() {
+    // Check for Intersection Observer support
+    if (!('IntersectionObserver' in window)) {
+      this.fallbackLoad();
+      return;
+    }
+
+    this.setupImageObserver();
+    this.setupContentObserver();
+    this.setupVideoObserver();
+    this.observeExistingElements();
+    this.setupMutationObserver();
+  }
+
+  setupImageObserver() {
+    const options = {
+      root: null,
+      rootMargin: '50px 0px 50px 0px', // Start loading 50px before entering viewport
+      threshold: 0.01
+    };
+
+    this.imageObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.loadImage(entry.target);
+          this.imageObserver.unobserve(entry.target);
+        }
+      });
+    }, options);
+  }
+
+  setupContentObserver() {
+    const options = {
+      root: null,
+      rootMargin: '100px 0px 100px 0px', // Start loading 100px before entering viewport
+      threshold: 0.1
+    };
+
+    this.contentObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.loadContent(entry.target);
+          this.contentObserver.unobserve(entry.target);
+        }
+      });
+    }, options);
+  }
+
+  setupVideoObserver() {
+    const options = {
+      root: null,
+      rootMargin: '200px 0px 200px 0px',
+      threshold: 0.25
+    };
+
+    this.videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.loadVideo(entry.target);
+          this.videoObserver.unobserve(entry.target);
+        }
+      });
+    }, options);
+  }
+
+  setupMutationObserver() {
+    // Watch for dynamically added elements
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            this.observeElement(node);
+            // Also check children
+            const lazyElements = node.querySelectorAll('[data-lazy], .lazy-load');
+            lazyElements.forEach(el => this.observeElement(el));
+          }
+        });
+      });
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  observeExistingElements() {
+    // Observe images with data-lazy or lazy-load class
+    const lazyImages = document.querySelectorAll('img[data-lazy], img.lazy-load');
+    lazyImages.forEach(img => this.imageObserver.observe(img));
+
+    // Observe content sections
+    const lazyContent = document.querySelectorAll('[data-lazy-content], .lazy-content');
+    lazyContent.forEach(content => this.contentObserver.observe(content));
+
+    // Observe videos
+    const lazyVideos = document.querySelectorAll('video[data-lazy], video.lazy-load');
+    lazyVideos.forEach(video => this.videoObserver.observe(video));
+  }
+
+  observeElement(element) {
+    if (element.tagName === 'IMG' && (element.hasAttribute('data-lazy') || element.classList.contains('lazy-load'))) {
+      this.imageObserver.observe(element);
+    } else if (element.tagName === 'VIDEO' && (element.hasAttribute('data-lazy') || element.classList.contains('lazy-load'))) {
+      this.videoObserver.observe(element);
+    } else if (element.hasAttribute('data-lazy-content') || element.classList.contains('lazy-content')) {
+      this.contentObserver.observe(element);
+    }
+  }
+
+  async loadImage(img) {
+    if (this.loadedImages.has(img)) return;
+
+    const src = img.dataset.src || img.dataset.lazy;
+    const srcset = img.dataset.srcset;
+    const sizes = img.dataset.sizes;
+
+    if (!src) return;
+
+    try {
+      // Add loading class
+      img.classList.add('loading');
+
+      // Create a new image to preload
+      const imageLoader = new Image();
+      
+      // Set up srcset and sizes if available
+      if (srcset) imageLoader.srcset = srcset;
+      if (sizes) imageLoader.sizes = sizes;
+
+      // Wait for image to load
+      await new Promise((resolve, reject) => {
+        imageLoader.onload = resolve;
+        imageLoader.onerror = reject;
+        imageLoader.src = src;
+      });
+
+      // Apply loaded image
+      if (srcset) img.srcset = srcset;
+      if (sizes) img.sizes = sizes;
+      img.src = src;
+
+      // Update classes
+      img.classList.remove('loading');
+      img.classList.add('loaded');
+
+      // Remove data attributes
+      delete img.dataset.src;
+      delete img.dataset.srcset;
+      delete img.dataset.sizes;
+      delete img.dataset.lazy;
+
+      this.loadedImages.add(img);
+
+      // Dispatch load event
+      img.dispatchEvent(new CustomEvent('lazyloaded', {
+        detail: { element: img }
+      }));
+
+    } catch (error) {
+      this.handleImageError(img, src, error);
+    }
+  }
+
+  handleImageError(img, src, error) {
+    console.warn('Failed to load image:', src, error);
+    
+    const retryKey = img.dataset.retryKey || this.generateRetryKey();
+    img.dataset.retryKey = retryKey;
+    
+    const retryCount = this.retryQueue.get(retryKey) || 0;
+    
+    if (retryCount < this.maxRetries) {
+      this.retryQueue.set(retryKey, retryCount + 1);
+      
+      // Retry after delay
+      setTimeout(() => {
+        this.loadImage(img);
+      }, Math.pow(2, retryCount) * 1000); // Exponential backoff
+    } else {
+      // Show fallback or placeholder
+      img.classList.add('error');
+      img.classList.remove('loading');
+      
+      // Try fallback image
+      const fallback = img.dataset.fallback;
+      if (fallback && fallback !== src) {
+        img.src = fallback;
+      }
+    }
+  }
+
+  async loadContent(element) {
+    if (this.loadedContent.has(element)) return;
+
+    const contentSrc = element.dataset.lazyContent;
+    const modulePath = element.dataset.module;
+
+    try {
+      element.classList.add('loading');
+
+      if (modulePath) {
+        // Load JavaScript module
+        const module = await import(modulePath);
+        if (module.default && typeof module.default === 'function') {
+          await module.default(element);
+        }
+      } else if (contentSrc) {
+        // Load HTML content
+        const response = await fetch(contentSrc);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        
+        const html = await response.text();
+        element.innerHTML = html;
+        
+        // Process any scripts in the loaded content
+        this.processScripts(element);
+      }
+
+      element.classList.remove('loading');
+      element.classList.add('loaded');
+      this.loadedContent.add(element);
+
+      // Observe any new lazy elements in the loaded content
+      const newLazyElements = element.querySelectorAll('[data-lazy], .lazy-load');
+      newLazyElements.forEach(el => this.observeElement(el));
+
+      // Dispatch load event
+      element.dispatchEvent(new CustomEvent('contentloaded', {
+        detail: { element }
+      }));
+
+    } catch (error) {
+      console.error('Failed to load content:', error);
+      element.classList.add('error');
+      element.classList.remove('loading');
+    }
+  }
+
+  async loadVideo(video) {
+    const src = video.dataset.src || video.dataset.lazy;
+    const poster = video.dataset.poster;
+
+    if (!src) return;
+
+    try {
+      video.classList.add('loading');
+
+      if (poster) video.poster = poster;
+      video.src = src;
+
+      // Wait for video to be ready
+      await new Promise((resolve) => {
+        video.addEventListener('canplaythrough', resolve, { once: true });
+        video.load();
+      });
+
+      video.classList.remove('loading');
+      video.classList.add('loaded');
+
+      // Remove data attributes
+      delete video.dataset.src;
+      delete video.dataset.poster;
+      delete video.dataset.lazy;
+
+      // Dispatch load event
+      video.dispatchEvent(new CustomEvent('videoloaded', {
+        detail: { element: video }
+      }));
+
+    } catch (error) {
+      console.error('Failed to load video:', error);
+      video.classList.add('error');
+      video.classList.remove('loading');
+    }
+  }
+
+  processScripts(container) {
+    const scripts = container.querySelectorAll('script');
+    scripts.forEach(script => {
+      const newScript = document.createElement('script');
+      if (script.src) {
+        newScript.src = script.src;
+      } else {
+        newScript.textContent = script.textContent;
+      }
+      if (script.type) newScript.type = script.type;
+      script.parentNode.replaceChild(newScript, script);
+    });
+  }
+
+  generateRetryKey() {
+    return Math.random().toString(36).substring(2, 15);
+  }
+
+  fallbackLoad() {
+    // Fallback for browsers without Intersection Observer
+    const lazyElements = document.querySelectorAll('[data-lazy], .lazy-load');
+    
+    lazyElements.forEach(element => {
+      if (element.tagName === 'IMG') {
+        const src = element.dataset.src || element.dataset.lazy;
+        if (src) {
+          element.src = src;
+          element.classList.add('loaded');
+        }
+      }
+    });
+  }
+
+  // Public API methods
+  loadAll() {
+    // Force load all lazy elements
+    this.fallbackLoad();
+  }
+
+  refresh() {
+    // Re-observe elements
+    this.observeExistingElements();
+  }
+
+  destroy() {
+    // Clean up observers
+    if (this.imageObserver) this.imageObserver.disconnect();
+    if (this.contentObserver) this.contentObserver.disconnect();
+    if (this.videoObserver) this.videoObserver.disconnect();
+  }
+
+  // WebP support detection
+  static supportsWebP() {
+    return new Promise((resolve) => {
+      const webP = new Image();
+      webP.onload = webP.onerror = () => resolve(webP.height === 2);
+      webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+    });
+  }
+
+  // Modern image format support
+  static async getSupportedFormats() {
+    const formats = {
+      webp: await LazyLoader.supportsWebP(),
+      avif: await LazyLoader.supportsAVIF()
+    };
+    return formats;
+  }
+
+  static supportsAVIF() {
+    return new Promise((resolve) => {
+      const avif = new Image();
+      avif.onload = avif.onerror = () => resolve(avif.height === 2);
+      avif.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
+    });
+  }
+}
+
+// Helper function to create responsive images with WebP support
+export function createResponsiveImage(src, alt, options = {}) {
+  const {
+    webpSrc,
+    avifSrc,
+    srcset,
+    sizes = '100vw',
+    className = '',
+    loading = 'lazy',
+    width,
+    height
+  } = options;
+
+  const picture = document.createElement('picture');
+  
+  // AVIF source (if supported and provided)
+  if (avifSrc) {
+    const avifSource = document.createElement('source');
+    avifSource.srcset = avifSrc;
+    avifSource.type = 'image/avif';
+    picture.appendChild(avifSource);
+  }
+  
+  // WebP source (if supported and provided)
+  if (webpSrc) {
+    const webpSource = document.createElement('source');
+    webpSource.srcset = webpSrc;
+    webpSource.type = 'image/webp';
+    picture.appendChild(webpSource);
+  }
+  
+  // Fallback image
+  const img = document.createElement('img');
+  
+  if (loading === 'lazy') {
+    img.dataset.src = src;
+    if (srcset) img.dataset.srcset = srcset;
+    if (sizes) img.dataset.sizes = sizes;
+    img.classList.add('lazy-load');
+  } else {
+    img.src = src;
+    if (srcset) img.srcset = srcset;
+    if (sizes) img.sizes = sizes;
+  }
+  
+  img.alt = alt;
+  if (className) img.className = className;
+  if (width) img.width = width;
+  if (height) img.height = height;
+  
+  picture.appendChild(img);
+  return picture;
+}
+
+// Initialize lazy loader when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    window.lazyLoader = new LazyLoader();
+  });
+} else {
+  window.lazyLoader = new LazyLoader();
+}
+
+export default LazyLoader;

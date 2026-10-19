@@ -1,0 +1,330 @@
+/**
+ * Mobile Collapse System
+ * Handles collapsible sections for mobile devices
+ */
+
+class MobileCollapseManager {
+    constructor() {
+        this.sections = new Map();
+        this.isMobile = false;
+        this.breakpoint = 768;
+        
+        this.init();
+    }
+    
+    init() {
+        console.log('🔄 MobileCollapseManager: Initializing...');
+        
+        this.checkMobile();
+        this.setupEventListeners();
+        this.initializeSections();
+        
+        console.log('✅ MobileCollapseManager: Ready');
+    }
+    
+    checkMobile() {
+        this.isMobile = window.innerWidth <= this.breakpoint;
+        return this.isMobile;
+    }
+    
+    setupEventListeners() {
+        // Resize listener
+        let resizeTimeout;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                const wasMobile = this.isMobile;
+                this.checkMobile();
+                
+                if (wasMobile !== this.isMobile) {
+                    this.handleBreakpointChange();
+                }
+            }, 150);
+        });
+    }
+    
+    initializeSections() {
+        // Only initialize on mobile
+        if (!this.isMobile) return;
+        
+        // Services section
+        this.setupSection('services', {
+            selector: '.services-enhanced',
+            gridSelector: '.services__grid-enhanced',
+            itemSelector: '.service-card-enhanced',
+            buttonText: 'View All Services',
+            buttonTextCollapsed: 'Show Less Services'
+        });
+        
+        // Portfolio section  
+        this.setupSection('portfolio', {
+            selector: '.portfolio-enhanced',
+            gridSelector: '.portfolio__grid-masonry',
+            itemSelector: '.portfolio-card-masonry',
+            buttonText: 'View All Projects',
+            buttonTextCollapsed: 'Show Less Projects',
+            showCount: 2, // Show first project + testimonial
+            isPortfolio: true // Special handling for portfolio with testimonials
+        });
+        
+        // Insights section
+        this.setupSection('insights', {
+            selector: '.insights',
+            gridSelector: '.insights__grid',
+            itemSelector: '.insight-card',
+            buttonText: 'Read All Articles',
+            buttonTextCollapsed: 'Show Less Articles'
+        });
+        
+        // Tools section
+        this.setupSection('tools', {
+            selector: '.tools',
+            gridSelector: '.tools__categories',
+            itemSelector: '.tool-category',
+            buttonText: 'View All Technologies',
+            buttonTextCollapsed: 'Show Less Technologies'
+        });
+    }
+    
+    setupSection(sectionId, config) {
+        const section = document.querySelector(config.selector);
+        if (!section) {
+            console.warn(`Section not found: ${config.selector}`);
+            return;
+        }
+        
+        const grid = section.querySelector(config.gridSelector);
+        if (!grid) {
+            console.warn(`Grid not found: ${config.gridSelector}`);
+            return;
+        }
+        
+        // Create show more button
+        const button = this.createShowMoreButton(sectionId, config);
+        
+        // Insert button after grid
+        grid.parentNode.insertBefore(button, grid.nextSibling);
+        
+        // Store section data
+        this.sections.set(sectionId, {
+            section,
+            grid,
+            button,
+            config,
+            isExpanded: false
+        });
+        
+        // Initialize collapsed state
+        this.collapseSection(sectionId);
+        
+        console.log(`📱 Section initialized: ${sectionId}`);
+    }
+    
+    createShowMoreButton(sectionId, config) {
+        const button = document.createElement('button');
+        button.className = 'show-more-btn';
+        button.setAttribute('data-section', sectionId);
+        button.innerHTML = `
+            <span class="btn-text">${config.buttonText}</span>
+            <span class="btn-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+            </span>
+        `;
+        
+        button.addEventListener('click', () => this.toggleSection(sectionId));
+        
+        return button;
+    }
+    
+    toggleSection(sectionId) {
+        const sectionData = this.sections.get(sectionId);
+        if (!sectionData) return;
+        
+        if (sectionData.isExpanded) {
+            this.collapseSection(sectionId);
+        } else {
+            this.expandSection(sectionId);
+        }
+    }
+    
+    collapseSection(sectionId) {
+        const sectionData = this.sections.get(sectionId);
+        if (!sectionData) return;
+        
+        const { section, grid, button, config } = sectionData;
+        const items = grid.querySelectorAll(config.itemSelector);
+        const showCount = config.showCount || 1;
+        
+        // Special handling for portfolio with testimonials
+        if (config.isPortfolio) {
+            items.forEach((item, index) => {
+                const isProject = item.classList.contains('portfolio-card-masonry') && !item.classList.contains('testimonial');
+                const isTestimonial = item.classList.contains('testimonial') || item.querySelector('.testimonial');
+                
+                // Show first project and testimonials carousel
+                if ((isProject && index === 0) || isTestimonial) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        } else {
+            // Standard collapse behavior for other sections
+            items.forEach((item, index) => {
+                if (index >= showCount) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = '';
+                }
+            });
+        }
+        
+        // Update section class
+        section.classList.add('collapsed');
+        section.classList.remove('expanded');
+        
+        // Update button
+        button.classList.remove('expanded');
+        button.querySelector('.btn-text').textContent = config.buttonText;
+        
+        sectionData.isExpanded = false;
+        
+        console.log(`📱 Section collapsed: ${sectionId}`);
+    }
+    
+    expandSection(sectionId) {
+        const sectionData = this.sections.get(sectionId);
+        if (!sectionData) return;
+        
+        const { section, grid, button, config } = sectionData;
+        const items = grid.querySelectorAll(config.itemSelector);
+        
+        // Show all items with animation
+        section.classList.add('expanding');
+        
+        items.forEach((item, index) => {
+            if (item.style.display === 'none') {
+                item.style.display = '';
+                
+                // Add entrance animation
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.3s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 50);
+                }, 10);
+            }
+        });
+        
+        // Update section class
+        section.classList.remove('collapsed');
+        section.classList.add('expanded');
+        
+        // Update button
+        button.classList.add('expanded');
+        button.querySelector('.btn-text').textContent = config.buttonTextCollapsed;
+        
+        sectionData.isExpanded = true;
+        
+        // Clean up expanding class
+        setTimeout(() => {
+            section.classList.remove('expanding');
+        }, 500);
+        
+        console.log(`📱 Section expanded: ${sectionId}`);
+    }
+    
+    handleBreakpointChange() {
+        if (this.isMobile) {
+            // Switched to mobile - initialize sections
+            this.initializeSections();
+        } else {
+            // Switched to desktop - clean up mobile features
+            this.cleanupMobileFeatures();
+        }
+    }
+    
+    cleanupMobileFeatures() {
+        // Remove all show more buttons and restore original layout
+        this.sections.forEach((sectionData, sectionId) => {
+            const { section, grid, button } = sectionData;
+            
+            // Show all items
+            const items = grid.querySelectorAll(sectionData.config.itemSelector);
+            items.forEach(item => {
+                item.style.display = '';
+                item.style.opacity = '';
+                item.style.transform = '';
+                item.style.transition = '';
+            });
+            
+            // Remove classes
+            section.classList.remove('collapsed', 'expanded', 'expanding');
+            
+            // Remove button
+            if (button && button.parentNode) {
+                button.parentNode.removeChild(button);
+            }
+        });
+        
+        // Clear sections map
+        this.sections.clear();
+        
+        console.log('🖥️ Mobile features cleaned up for desktop view');
+    }
+    
+    // Public API
+    getSection(sectionId) {
+        return this.sections.get(sectionId);
+    }
+    
+    isExpanded(sectionId) {
+        const sectionData = this.sections.get(sectionId);
+        return sectionData ? sectionData.isExpanded : false;
+    }
+    
+    expandAll() {
+        if (!this.isMobile) return;
+        
+        this.sections.forEach((_, sectionId) => {
+            if (!this.isExpanded(sectionId)) {
+                this.expandSection(sectionId);
+            }
+        });
+    }
+    
+    collapseAll() {
+        if (!this.isMobile) return;
+        
+        this.sections.forEach((_, sectionId) => {
+            if (this.isExpanded(sectionId)) {
+                this.collapseSection(sectionId);
+            }
+        });
+    }
+}
+
+// Auto-initialize when DOM is ready
+function initMobileCollapse() {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.mobileCollapseManager = new MobileCollapseManager();
+        });
+    } else {
+        window.mobileCollapseManager = new MobileCollapseManager();
+    }
+}
+
+// Initialize
+initMobileCollapse();
+
+// Export for module usage
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = MobileCollapseManager;
+}

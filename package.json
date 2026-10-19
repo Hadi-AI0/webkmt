@@ -1,0 +1,41 @@
+{
+  "name": "webkmt",
+  "version": "1.0.0",
+  "description": "High-performance marketing and software development agency website",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server/app.js",
+    "server": "node server/app.js"
+  },
+  "keywords": [
+    "performance",
+    "optimization",
+    "web-vitals",
+    "lighthouse",
+    "supabase",
+    "lazy-loading",
+    "code-splitting",
+    "pwa"
+  ],
+  "author": "WebKMT",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2",
+    "cheerio": "^1.0.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.8.1",
+    "helmet": "^7.0.0",
+    "node-fetch": "^3.3.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webkmt/website.git"
+  },
+  "homepage": "https://webkmt.com"
+}

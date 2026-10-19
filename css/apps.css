@@ -1,0 +1,55 @@
+/**
+ * Combined Apps Styles
+ * Mini-apps container and inline apps (ROI Calculator, Color Palette) styles
+ * Note: Mini-apps styles are in mini-apps-integrated.css, chatbot styles in auth.css
+ */
+
+/* Additional app utilities */
+.app-container {
+  position: relative;
+  z-index: 1;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--text-secondary);
+}
+
+.app-error {
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--color-error, #ef4444);
+  background-color: var(--color-error-bg, #fef2f2);
+  border-radius: var(--border-radius);
+  margin: var(--space-4) 0;
+}
+
+.app-placeholder {
+  background: var(--bg-secondary);
+  border-radius: var(--border-radius);
+  padding: var(--space-8);
+  text-align: center;
+  color: var(--text-tertiary);
+  border: 2px dashed var(--border-secondary);
+}
+
+/* Responsive app layout */
+@media (max-width: 768px) {
+  .calculator-layout,
+  .app-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .mini-apps-title {
+    font-size: 2rem;
+  }
+  
+  .roi-calculator-app,
+  .color-palette-app {
+    padding: 1.5rem;
+  }
+}
