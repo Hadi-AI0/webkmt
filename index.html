@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="WebKMT - Custom software solutions company building websites, mobile apps, AI tools, CRMs, POS systems, and automation pipelines for modern businesses.">
+    <meta name="description" content="WebKMT installs ready-to-run business systems — websites from templates, WhatsApp AI receptionists, booking, invoicing &amp; ERP — live in days for one monthly fee.">
     <meta name="keywords" content="custom software development, web applications, mobile apps, AI tools, CRM development, POS systems, automation pipelines, internal tools, software solutions">
     <meta name="author" content="WebKMT">
     <meta name="robots" content="index, follow">
@@ -23,7 +23,7 @@
     <meta name="twitter:description" content="We build the software your business runs on. Websites, apps, AI tools, CRMs, POS, and automation — engineered for real-world results.">
     <meta name="twitter:image" content="https://webkmt.com/assets/twitter-image.jpg">
     
-    <title>WebKMT — Custom Software Solutions for Modern Businesses</title>
+    <title>WebKMT — Ready-to-Run Business Systems: Websites, WhatsApp AI, ERP &amp; Automation</title>
 
     <!-- Supabase SDK Import Map -->
     <script type="importmap">
@@ -110,6 +110,8 @@
     <link rel="stylesheet" href="css/admin-blog.css">
     <link rel="stylesheet" href="css/mobile-collapse.css">
     <link rel="stylesheet" href="css/responsive-fixes.css">
+    <link rel="stylesheet" href="css/offers-templates.css">
+    <link rel="stylesheet" href="css/booking.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -139,8 +141,9 @@
                 </a>
                 
                 <ul class="nav-menu-enhanced">
-                    <li class="nav-item-enhanced"><a href="#services" class="nav-link-enhanced" data-i18n="navigation.services">Services</a></li>
-                    <li class="nav-item-enhanced"><a href="#portfolio" class="nav-link-enhanced" data-i18n="navigation.portfolio">Portfolio</a></li>
+                    <li class="nav-item-enhanced"><a href="#services" class="nav-link-enhanced" data-i18n="navigation.services">Offers</a></li>
+                    <li class="nav-item-enhanced"><a href="/templates" class="nav-link-enhanced" data-i18n="navigation.templates">Templates</a></li>
+                    <li class="nav-item-enhanced"><a href="#portfolio" class="nav-link-enhanced" data-i18n="navigation.portfolio">Live Demos</a></li>
                     <li class="nav-item-enhanced"><a href="#process" class="nav-link-enhanced" data-i18n="navigation.process">Process</a></li>
                     <li class="nav-item-enhanced"><a href="#mini-apps" class="nav-link-enhanced" data-i18n="navigation.tools">Free Tools</a></li>
                     <li class="nav-item-enhanced"><a href="#tools" class="nav-link-enhanced" data-i18n="navigation.technologies">Technologies</a></li>
@@ -209,8 +212,9 @@
         <div class="mobile-menu-overlay"></div>
         <div class="mobile-menu-enhanced">
             <ul class="mobile-nav-menu">
-                <li><a href="#services" class="mobile-nav-link" data-i18n="navigation.services">Services</a></li>
-                <li><a href="#portfolio" class="mobile-nav-link" data-i18n="navigation.portfolio">Portfolio</a></li>
+                <li><a href="#services" class="mobile-nav-link" data-i18n="navigation.services">Offers</a></li>
+                <li><a href="/templates" class="mobile-nav-link" data-i18n="navigation.templates">Templates</a></li>
+                <li><a href="#portfolio" class="mobile-nav-link" data-i18n="navigation.portfolio">Live Demos</a></li>
                 <li><a href="#process" class="mobile-nav-link" data-i18n="navigation.process">Process</a></li>
                 <li><a href="#mini-apps" class="mobile-nav-link" data-i18n="navigation.tools">Free Tools</a></li>
                 <li><a href="#tools" class="mobile-nav-link" data-i18n="navigation.technologies">Technologies</a></li>
@@ -257,19 +261,18 @@
                     <div class="hero-content-enhanced">
                         <h1 class="hero-title-enhanced">
                             <span data-i18n="hero.title_full">
-                                We Build the Software Your Business Runs On
+                                Ready-to-Run Business Systems, Installed for You
                             </span>
                         </h1>
                         <p class="hero-subtitle" data-i18n="hero.description">
-                            Custom websites, mobile apps, AI tools, CRMs, POS systems,<br>
-                            and automation pipelines — engineered for real-world results
+                            Website, WhatsApp AI receptionist, online booking, invoicing &amp; CRM — live in days, for one monthly fee.
                         </p>
                         <div class="hero-cta-group">
-                            <a href="https://wa.me/905013617795?text=Hello! I'm interested in starting a project with WebKMT." class="cta-primary" target="_blank" rel="noopener">
-                                <span>Start Your Project</span>
+                            <a href="https://wa.me/905013617795?text=Hello! I'd like a free audit of my business systems." class="cta-primary" target="_blank" rel="noopener" data-book-call>
+                                <span data-i18n="hero.book_audit">Book a Free Audit Call</span>
                             </a>
-                            <a href="#portfolio" class="cta-secondary" data-i18n="hero.view_portfolio">
-                                <span>View Our Work</span>
+                            <a href="/templates" class="cta-secondary" data-i18n="hero.view_portfolio">
+                                <span>Templates &amp; Live Demos</span>
                             </a>
                             <a href="#mini-apps" class="cta-tertiary">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -313,223 +316,116 @@
         <section class="services-enhanced" id="services">
             <div class="container">
                 <header class="section__header">
-                    <h2 class="section__title" data-i18n="services.title">What We Build</h2>
-                    <p class="section__description" data-i18n="services.description">
-                        End-to-end software solutions — from concept to deployment and beyond
+                    <h2 class="section__title" data-i18n="offers.title">Ready-to-Run Business Systems</h2>
+                    <p class="section__description" data-i18n="offers.description">
+                        Fixed-price packages, installed and managed for you — live in days, not months. Every package includes hosting, backups, and updates.
                     </p>
                 </header>
-                
+
                 <div class="services__grid-enhanced" id="servicesGrid">
-
-                    <!-- Web & Mobile Apps -->
-                    <article class="service-card-enhanced" data-service="web-development" data-animation-delay="0">
+                    <article class="service-card-enhanced offer-card" data-offer="presence" data-animation-delay="0">
                         <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <polyline points="16,18 22,12 16,6"/><polyline points="8,6 2,12 8,18"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
+                            <div class="service-card__front offer-card__front">
+                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+                                <h3 class="offer-card__title" data-i18n="offers.presence.title">Presence — Business Website</h3>
+                                <p class="offer-card__desc" data-i18n="offers.presence.desc">A fast website that turns visitors into calls, bookings, and WhatsApp conversations.</p>
+                                <div class="offer-card__price">
+                                    <span class="offer-card__setup" data-i18n="offers.presence.setup">$399–$899 setup</span>
+                                    <span class="offer-card__care" data-i18n="offers.presence.care">+ $29–$49/mo care plan</span>
                                 </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">Web & Mobile Apps</h3>
-                                    <p class="service-card__description">
-                                        Full-stack web applications and cross-platform mobile apps built for performance, scalability, and great user experience
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Web or Mobile App project." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
+                                <ul class="offer-card__features">
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f1">Pick from ready designs in the Template Gallery</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f2">WhatsApp chat & Google Maps built in</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f3">Online booking or quote form</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f4">Local SEO + Google Business Profile setup</span></li>
+                                </ul>
+                                <div class="offer-card__actions">
+                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in the Presence website package." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
+                                    <a class="offer-btn offer-btn--ghost" href="/templates" data-i18n="offers.presence.cta2">Browse templates →</a>
                                 </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- Custom AI Tools -->
-                    <article class="service-card-enhanced" data-service="ai-tools" data-animation-delay="100">
+                    <article class="service-card-enhanced offer-card offer-card--featured" data-offer="receptionist" data-animation-delay="100">
                         <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
+                            <div class="service-card__front offer-card__front">
+                                <span class="offer-card__badge" data-i18n="offers.badge_popular">Most Popular</span>
+                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><path d="M9.5 16.5h5"/></svg></div>
+                                <h3 class="offer-card__title" data-i18n="offers.receptionist.title">Receptionist — WhatsApp AI Assistant</h3>
+                                <p class="offer-card__desc" data-i18n="offers.receptionist.desc">An AI employee that answers customers 24/7 on WhatsApp and your website — and books appointments for you.</p>
+                                <div class="offer-card__price">
+                                    <span class="offer-card__setup" data-i18n="offers.receptionist.setup">$499–$1,200 setup</span>
+                                    <span class="offer-card__care" data-i18n="offers.receptionist.care">+ $79–$149/mo</span>
                                 </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">Custom AI Tools</h3>
-                                    <p class="service-card__description">
-                                        Dedicated AI-powered tools tailored to your business — chatbots, automation assistants, document processors, and intelligent workflows
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Custom AI Tool." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
+                                <ul class="offer-card__features">
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f1">Trained on your services, prices & FAQs</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f2">Books into your calendar, sends reminders</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f3">One shared inbox with human handoff</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f4">Speaks Arabic, Turkish & English</span></li>
+                                </ul>
+                                <div class="offer-card__actions">
+                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in the WhatsApp AI Receptionist package." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
+                                    <a class="offer-btn offer-btn--ghost" href="#portfolio" data-i18n="offers.receptionist.cta2">See the live demo →</a>
                                 </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- CRM & ERP Systems -->
-                    <article class="service-card-enhanced" data-service="crm-erp" data-animation-delay="200">
+                    <article class="service-card-enhanced offer-card" data-offer="business_os" data-animation-delay="200">
                         <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
+                            <div class="service-card__front offer-card__front">
+                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
+                                <h3 class="offer-card__title" data-i18n="offers.business_os.title">Kemet Business OS — ERP & CRM</h3>
+                                <p class="offer-card__desc" data-i18n="offers.business_os.desc">Invoicing, inventory, POS, and HR in one system — everything Odoo does, with no per-user fees.</p>
+                                <div class="offer-card__price">
+                                    <span class="offer-card__setup" data-i18n="offers.business_os.setup">$800–$4,000 setup</span>
+                                    <span class="offer-card__care" data-i18n="offers.business_os.care">+ $49–$299/mo flat</span>
                                 </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">CRM & ERP Systems</h3>
-                                    <p class="service-card__description">
-                                        Custom CRM and ERP solutions built around your actual business processes — a powerful alternative to expensive off-the-shelf platforms
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a Custom CRM or ERP system." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
+                                <ul class="offer-card__features">
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f1">Unlimited users — one flat monthly fee</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f2">Pre-configured for your industry</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f3">WhatsApp invoice & stock alerts</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f4">Your data on your own server</span></li>
+                                </ul>
+                                <div class="offer-card__actions">
+                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in Kemet Business OS (ERP and CRM)." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
+                                    <a class="offer-btn offer-btn--ghost" href="#portfolio" data-i18n="offers.business_os.cta2">See the live demo →</a>
                                 </div>
                             </div>
                         </div>
                     </article>
 
-                    <!-- POS Solutions -->
-                    <article class="service-card-enhanced" data-service="pos" data-animation-delay="300">
+                    <article class="service-card-enhanced offer-card" data-offer="automate" data-animation-delay="300">
                         <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M7 15h0m5 0h0m5 0h0M7 11h0m5 0h0m5 0h0M7 7h10"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
+                            <div class="service-card__front offer-card__front">
+                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
+                                <h3 class="offer-card__title" data-i18n="offers.automate.title">Automate — Workflow Sprint</h3>
+                                <p class="offer-card__desc" data-i18n="offers.automate.desc">We connect your tools and remove the manual work: follow-ups, reminders, and reports on autopilot.</p>
+                                <div class="offer-card__price">
+                                    <span class="offer-card__setup" data-i18n="offers.automate.setup">$300–$900 setup</span>
+                                    <span class="offer-card__care" data-i18n="offers.automate.care">+ $49–$99/mo</span>
                                 </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">POS Systems</h3>
-                                    <p class="service-card__description">
-                                        Tailored point-of-sale software for retail, hospitality, and service businesses — inventory, billing, and reporting built your way
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in a custom POS system." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
+                                <ul class="offer-card__features">
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f1">Instant lead follow-up on WhatsApp</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f2">Automatic payment reminders</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f3">Google review requests after each job</span></li>
+                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f4">Weekly sales summary to your phone</span></li>
+                                </ul>
+                                <div class="offer-card__actions">
+                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in the Automate workflow package." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
+                                    <a class="offer-btn offer-btn--ghost" href="#contact" data-i18n="offers.automate.cta2">Get a free audit →</a>
                                 </div>
                             </div>
                         </div>
                     </article>
-
-                    <!-- Automation Pipelines -->
-                    <article class="service-card-enhanced" data-service="automation" data-animation-delay="400">
-                        <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
-                                </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">Automation Pipelines</h3>
-                                    <p class="service-card__description">
-                                        End-to-end business process automation — eliminate manual work, connect your tools, and let your systems run themselves
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in automation pipeline solutions." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Internal Tools -->
-                    <article class="service-card-enhanced" data-service="internal-tools" data-animation-delay="500">
-                        <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
-                                </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">Internal Tools</h3>
-                                    <p class="service-card__description">
-                                        Custom dashboards, admin panels, and internal portals that give your team exactly the tools they need — nothing more, nothing less
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm interested in custom internal tools." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- System Optimization -->
-                    <article class="service-card-enhanced" data-service="optimization" data-animation-delay="600">
-                        <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
-                                </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">System Optimization</h3>
-                                    <p class="service-card__description">
-                                        Performance audits and targeted improvements for existing software — faster load times, cleaner architecture, and lower infrastructure costs
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I need help optimizing our existing software." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Tech Consulting -->
-                    <article class="service-card-enhanced" data-service="consulting" data-animation-delay="700">
-                        <div class="service-card__inner">
-                            <div class="service-card__front">
-                                <div class="service-card__icon-container">
-                                    <div class="service-card__icon">
-                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="service-icon">
-                                            <circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/>
-                                        </svg>
-                                    </div>
-                                    <div class="service-card__glow"></div>
-                                </div>
-                                <div class="service-card__content">
-                                    <h3 class="service-card__title">Tech Consulting</h3>
-                                    <p class="service-card__description">
-                                        Strategic technology advice — architecture decisions, technology stack selection, vendor evaluation, and digital transformation roadmaps
-                                    </p>
-                                    <a href="https://wa.me/905013617795?text=Hi! I'm looking for tech consulting services." class="service-card__cta" target="_blank" rel="noopener">
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg>
-                                        Discuss Your Project
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
                 </div>
+
+                <div class="care-strip">
+                    <h3 data-i18n="offers.care_title">Every package runs on a Care Plan</h3>
+                    <p data-i18n="offers.care_desc">Hosting, SSL, daily backups, security updates, and a simple monthly report — so your system just works while you run your business.</p>
+                </div>
+                <p class="offers-custom-note"><span data-i18n="offers.custom_note">Need something custom — a mobile app, AI fine-tuning, or a bespoke build?</span> <a href="https://wa.me/905013617795?text=Hi! I'd like to ask about a custom project / paid discovery." target="_blank" rel="noopener" data-i18n="offers.custom_link">Ask about a paid discovery →</a></p>
             </div>
         </section>
 
@@ -537,9 +433,9 @@
         <section class="portfolio-enhanced" id="portfolio">
             <div class="container">
                 <header class="section__header">
-                    <h2 class="section__title" data-i18n="portfolio.title">Featured Projects</h2>
+                    <h2 class="section__title" data-i18n="portfolio.title">Live Demo Systems</h2>
                     <p class="section__description" data-i18n="portfolio.description">
-                        Showcasing our latest work and successful collaborations with measurable results
+                        Real, working systems you can try right now — live demos and our own products, not mockups. Pilot client results will be published here as they complete.
                     </p>
                 </header>
                 
@@ -1253,8 +1149,9 @@
                 <div class="footer__links">
                     <div class="footer__column">
                         <ul class="footer__list">
-                            <li><a href="#services" class="footer__link">Services</a></li>
-                            <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+                            <li><a href="#services" class="footer__link">Offers</a></li>
+                            <li><a href="/templates" class="footer__link">Templates</a></li>
+                            <li><a href="#portfolio" class="footer__link">Live Demos</a></li>
                             <li><a href="#contact" class="footer__link">Contact</a></li>
                         </ul>
                     </div>
@@ -1778,6 +1675,7 @@
 
     <!-- AI Chatbot Script -->
     <script src="js/chatbot.js" defer></script>
+    <script src="js/booking.js" defer></script>
 
 
 </body>

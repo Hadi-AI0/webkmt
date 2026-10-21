@@ -21,10 +21,12 @@ class WebsiteHealthCheckerService {
             console.log(`Starting comprehensive health analysis for: ${url}`);
 
             // Run parallel analysis for comprehensive health check
+            // Scrape is essential; PageSpeed is best-effort — section analyzers
+            // null-guard PSI data, so a PSI outage still yields an SEO/content audit.
             const [scrapingResults, pageSpeedResults, accessibilityResults] = await Promise.all([
                 this.scrapeWebsiteData(url),
-                this.getPageSpeedData(url, 'desktop', ['performance', 'seo', 'accessibility', 'best-practices']),
-                this.getPageSpeedData(url, 'mobile', ['performance', 'seo', 'accessibility', 'best-practices'])
+                this.getPageSpeedData(url, 'desktop', ['performance', 'seo', 'accessibility', 'best-practices']).catch(() => null),
+                this.getPageSpeedData(url, 'mobile', ['performance', 'seo', 'accessibility', 'best-practices']).catch(() => null)
             ]);
 
             // Combine and analyze results for comprehensive health check

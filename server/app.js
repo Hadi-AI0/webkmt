@@ -246,6 +246,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/data', authenticate, dataRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/cal', require('./routes/cal'));
 app.use('/api/mini-apps', require('../api/mini-apps/routes'));
 
 // Client-side error reporting stub (prevents 404 spam in console)
@@ -253,6 +254,11 @@ app.post('/api/errors', (req, res) => res.sendStatus(200));
 
 // Secure Gemini AI Proxy
 app.post('/api/gemini-chat', generalLimiter, handleGeminiRequest);
+
+// Template Gallery page (clean URL) — must stay above the /:username handler
+app.get('/templates', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'templates.html'));
+});
 
 // Bio-link handler for link.webkmt.com/{username}
 app.get('/:username', async (req, res) => {
