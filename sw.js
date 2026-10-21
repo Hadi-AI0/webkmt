@@ -3,8 +3,8 @@
  * Implements caching strategies for different resource types
  */
 
-const CACHE_NAME = 'webkemet-v1.0.0';
-const STATIC_CACHE = 'webkemet-static-v1';
+const CACHE_NAME = 'webkemet-v1.1.0';
+const STATIC_CACHE = 'webkemet-static-v2';
 const DYNAMIC_CACHE = 'webkemet-dynamic-v1';
 const IMAGE_CACHE = 'webkemet-images-v1';
 const API_CACHE = 'webkemet-api-v1';

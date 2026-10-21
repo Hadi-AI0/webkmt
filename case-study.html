@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title id="pageTitle">Case Study — WebKMT</title>
+    <title id="pageTitle">Demo System — WebKMT</title>
     <meta name="description" id="pageDescription" content="Deep dive case study from WebKMT — custom software solutions agency.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="WebKMT">
-    <meta property="og:title" id="ogTitle" content="Case Study — WebKMT">
+    <meta property="og:title" id="ogTitle" content="Demo System — WebKMT">
     <meta property="og:description" id="ogDesc" content="Deep dive case study from WebKMT.">
 
     <!-- Fonts -->
@@ -332,7 +332,7 @@
                 <span>›</span>
                 <a href="/#portfolio">Portfolio</a>
                 <span>›</span>
-                <span id="breadcrumbTitle">Case Study</span>
+                <span id="breadcrumbTitle">Demo System</span>
             </nav>
             <div class="cs-category-badge" id="csCategory">Project</div>
             <h1 class="cs-title" id="csTitle">Loading...</h1>
@@ -345,7 +345,7 @@
     <main class="cs-content">
         <div class="container">
             <div id="csNotFound" class="cs-not-found" style="display:none;">
-                <h2>Case Study Not Found</h2>
+                <h2>Demo System Not Found</h2>
                 <p>This project may have been moved or doesn't exist.</p>
                 <a href="/#portfolio" class="btn btn--primary" style="margin-top:2rem;display:inline-block;">View All Projects</a>
             </div>
@@ -377,7 +377,7 @@
                     </section>
 
                     <section class="cs-section">
-                        <div class="cs-section-label">Results</div>
+                        <div class="cs-section-label">What You Get</div>
                         <h2>The impact</h2>
                         <p id="csResults"></p>
                         <div class="results-grid" id="csResultsGrid"></div>
@@ -423,66 +423,259 @@
     // Embed portfolio data directly so we don't need to re-init the full portfolio manager
     const PORTFOLIO_DATA = [
       {
-        id: 1,
-        category: 'ERP / CRM',
-        title: { en: 'Next-Gen Corporate ERP System' },
-        client: { en: 'Global Manufacturing Corp' },
-        description: { en: 'Revolutionary ERP system that is 50% more efficient than Odoo and Brightpearl. We developed a comprehensive business management platform that streamlines operations, inventory tracking, financial management, and employee scheduling with real-time analytics and automated reporting.' },
-        duration: { en: '6 months' },
-        year: { en: '2024' },
-        challenge: { en: 'The client needed a unified system to replace multiple disconnected business tools, reduce operational costs by 40%, and improve data accuracy across all departments.' },
-        solution: { en: 'We built a modular ERP system with microservices architecture, enabling seamless scaling and customization. The platform includes advanced automation, real-time data synchronization, and intelligent workflow management.' },
-        results: { en: '52% improvement in operational efficiency, 60% reduction in manual data entry, and $2.3M annual cost savings.' },
-        features: { en: ['Real-time inventory tracking', 'Automated financial reporting', 'Employee scheduling system', 'Custom dashboard builder', 'Multi-currency support', 'Advanced analytics engine'] },
-        technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS'],
-        metrics: [{ number: '52%', label: 'Efficiency Gain' }, { number: '60%', label: 'Less Manual Work' }, { number: '$2.3M', label: 'Annual Savings' }, { number: '6mo', label: 'Delivery Time' }]
+            "id": 1,
+            "category": "ERP / Business System",
+            "title": {
+                  "en": "Kemet Business OS — ERP Live Demo"
+            },
+            "client": {
+                  "en": "Demo System — WebKMT Product"
+            },
+            "description": {
+                  "en": "A complete business management system — accounting, invoicing, inventory, POS, and HR — installed and pre-configured for small and mid-sized businesses. Everything Odoo does, with one flat monthly fee and unlimited users instead of per-seat pricing."
+            },
+            "duration": {
+                  "en": "Live Demo"
+            },
+            "year": {
+                  "en": "2026"
+            },
+            "challenge": {
+                  "en": "Small businesses run on Excel files, notebooks, and disconnected apps — invoices get lost, stock counts drift, and owners can't see their numbers until it's too late."
+            },
+            "solution": {
+                  "en": "Kemet Business OS bundles the proven open-source ERPNext with WebKMT's industry starter kits, simplified per-role screens, and WhatsApp notifications for invoices, stock alerts, and a nightly sales summary to the owner."
+            },
+            "results": {
+                  "en": "What you get: flat monthly pricing with unlimited users, an Arabic/Turkish/English interface, ZATCA-ready e-invoicing for Saudi businesses, and your data hosted on your own server."
+            },
+            "features": {
+                  "en": [
+                        "Invoicing & accounting",
+                        "Inventory & multi-warehouse",
+                        "Point of sale (POS)",
+                        "HR & payroll",
+                        "WhatsApp invoice & stock alerts",
+                        "Arabic / Turkish / English"
+                  ]
+            },
+            "technologies": [
+                  "ERPNext",
+                  "Frappe",
+                  "MariaDB",
+                  "Redis",
+                  "Docker",
+                  "WhatsApp API"
+            ],
+            "metrics": [
+                  {
+                        "number": "Flat",
+                        "label": "Monthly Fee"
+                  },
+                  {
+                        "number": "Unlimited",
+                        "label": "Users Included"
+                  },
+                  {
+                        "number": "3",
+                        "label": "Languages"
+                  },
+                  {
+                        "number": "100%",
+                        "label": "Open Source"
+                  }
+            ]
       },
       {
-        id: 2,
-        category: 'E-Commerce / Mobile',
-        title: { en: 'Premium Saudi Poultry E-Commerce' },
-        client: { en: 'Al-Wadi Premium Poultry' },
-        description: { en: 'Modern e-commerce platform for a premium Saudi poultry brand featuring online ordering, real-time delivery tracking, quality assurance integration, and halal certification verification. Serves over 50,000 customers across the Kingdom with 99.8% uptime.' },
-        duration: { en: '4 months' },
-        year: { en: '2024' },
-        challenge: { en: 'Building trust in online poultry purchasing while ensuring freshness, implementing complex logistics for temperature-controlled delivery, and integrating with Islamic dietary requirements.' },
-        solution: { en: 'We developed a comprehensive platform with AI-powered freshness prediction, IoT integration for cold chain monitoring, and blockchain-based halal certification tracking.' },
-        results: { en: '300% increase in online sales, 95% customer satisfaction rate, and expansion to 3 new cities within 6 months of launch.' },
-        features: { en: ['Real-time freshness tracking', 'Halal certification verification', 'Temperature-controlled delivery', 'AI-powered quality prediction', 'Customer loyalty program', 'Multi-payment gateway'] },
-        technologies: ['React Native', 'Node.js', 'MongoDB', 'Supabase', 'IoT Sensors', 'Blockchain'],
-        metrics: [{ number: '300%', label: 'Online Sales Growth' }, { number: '95%', label: 'Customer Satisfaction' }, { number: '50k+', label: 'Active Users' }, { number: '4mo', label: 'Delivery Time' }]
+            "id": 2,
+            "category": "AI / Automation",
+            "title": {
+                  "en": "WhatsApp AI Receptionist — Live Demo"
+            },
+            "client": {
+                  "en": "Demo System — Clinic Booking"
+            },
+            "description": {
+                  "en": "An AI receptionist that answers customers on WhatsApp and your website around the clock, explains your services and prices, books appointments into a real calendar, and sends reminders — with a shared inbox where your team can take over anytime."
+            },
+            "duration": {
+                  "en": "Live Demo"
+            },
+            "year": {
+                  "en": "2026"
+            },
+            "challenge": {
+                  "en": "Clinics, salons, and service businesses lose bookings every day to missed calls and WhatsApp messages that go unanswered outside working hours."
+            },
+            "solution": {
+                  "en": "We train an AI assistant on the business's own services, prices, and FAQs, connect it to WhatsApp and the website chat, and wire bookings and reminders through automation workflows."
+            },
+            "results": {
+                  "en": "What you get: instant replies 24/7 in Arabic, Turkish, and English; automatic bookings and reminders; and every lead captured into one inbox — no customer message left unanswered."
+            },
+            "features": {
+                  "en": [
+                        "24/7 WhatsApp & website answers",
+                        "Appointment booking & reminders",
+                        "Trained on your prices & FAQs",
+                        "Shared team inbox",
+                        "Human handoff anytime",
+                        "Arabic / Turkish / English"
+                  ]
+            },
+            "technologies": [
+                  "WhatsApp Cloud API",
+                  "Chatwoot",
+                  "AnythingLLM (RAG)",
+                  "n8n",
+                  "Cal.com"
+            ],
+            "metrics": [
+                  {
+                        "number": "24/7",
+                        "label": "Availability"
+                  },
+                  {
+                        "number": "3",
+                        "label": "Languages"
+                  },
+                  {
+                        "number": "2",
+                        "label": "Channels"
+                  },
+                  {
+                        "number": "1",
+                        "label": "Shared Inbox"
+                  }
+            ]
       },
       {
-        id: 3,
-        category: 'Branding / Design',
-        title: { en: 'Coffee Jadla — Brand Identity' },
-        client: { en: 'Coffee Jadla Specialty Roasters' },
-        description: { en: 'Complete brand identity design for a premium Saudi coffee roastery combining traditional Arabic heritage with modern specialty coffee culture. Including logo, packaging systems, interior design concepts, and digital brand guidelines.' },
-        duration: { en: '3 months' },
-        year: { en: '2024' },
-        challenge: { en: 'Creating a brand that appeals to both traditional Saudi coffee lovers and modern specialty coffee enthusiasts, while standing out in a competitive market dominated by international chains.' },
-        solution: { en: 'We developed a sophisticated brand identity that seamlessly blends Arabic calligraphy with contemporary design elements, creating packaging that tells the story of Saudi coffee heritage.' },
-        results: { en: '200% increase in brand recognition, successful launch of 3 retail locations, and featured in Saudi Design Week 2024.' },
-        features: { en: ['Custom Arabic typography', 'Sustainable packaging design', 'Interior concept development', 'Brand guidelines manual', 'Digital asset library', 'Marketing collateral suite'] },
-        technologies: ['Adobe Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Figma', '3D Modeling'],
-        metrics: [{ number: '200%', label: 'Brand Recognition' }, { number: '3', label: 'Retail Locations' }, { number: '3mo', label: 'Delivery Time' }, { number: '2024', label: 'Design Week Feature' }]
+            "id": 3,
+            "category": "Web Platform",
+            "title": {
+                  "en": "KMT Link — Link-in-Bio Platform"
+            },
+            "client": {
+                  "en": "Live Product — Free to Use"
+            },
+            "description": {
+                  "en": "Our own free link-in-bio platform: one page for all your links with your name on it — link.webkmt.com/you. Built for creators, Instagram sellers, and small businesses that live on social media."
+            },
+            "duration": {
+                  "en": "Free Tool"
+            },
+            "year": {
+                  "en": "2025"
+            },
+            "challenge": {
+                  "en": "Businesses on Instagram and TikTok can only share one link, so customers struggle to find their WhatsApp, location, menu, and store."
+            },
+            "solution": {
+                  "en": "KMT Link gives every user a fast, customizable profile page with unlimited links, themes, QR codes, and click analytics — free, with an optional done-for-you setup."
+            },
+            "results": {
+                  "en": "Live and free to use today: create your page in minutes, share one link everywhere, and see exactly what your audience clicks."
+            },
+            "features": {
+                  "en": [
+                        "Vanity URL: link.webkmt.com/you",
+                        "Unlimited links & themes",
+                        "QR code generator",
+                        "Click analytics",
+                        "Arabic & English interface",
+                        "Free forever plan"
+                  ]
+            },
+            "technologies": [
+                  "Node.js",
+                  "Express",
+                  "Supabase",
+                  "PostgreSQL",
+                  "Vanilla JS"
+            ],
+            "metrics": [
+                  {
+                        "number": "Free",
+                        "label": "Forever Plan"
+                  },
+                  {
+                        "number": "Unlimited",
+                        "label": "Links"
+                  },
+                  {
+                        "number": "QR",
+                        "label": "Code Generator"
+                  },
+                  {
+                        "number": "Live",
+                        "label": "Try It Now"
+                  }
+            ]
       },
       {
-        id: 4,
-        category: 'AI / SaaS Platform',
-        title: { en: 'AI-Powered Content Management Platform' },
-        client: { en: 'Digital Content Creators Network' },
-        description: { en: 'Advanced multi-platform content management system with AI-powered content suggestions, automated publishing workflows, advanced analytics dashboard, and collaborative editing tools for content creators, agencies, and enterprises.' },
-        duration: { en: '5 months' },
-        year: { en: '2024' },
-        challenge: { en: 'Content creators needed a unified platform to manage content across 15+ social media platforms, with AI assistance for content optimization and real-time performance tracking.' },
-        solution: { en: 'We built an intelligent content management platform with machine learning algorithms for content optimization, automated scheduling, and predictive analytics for optimal posting times.' },
-        results: { en: '400% increase in content engagement, 70% time savings in content management, and adoption by 500+ content creators in the first quarter.' },
-        features: { en: ['AI content optimization', 'Multi-platform publishing', 'Real-time analytics dashboard', 'Collaborative editing tools', 'Automated scheduling', 'Performance prediction'] },
-        technologies: ['Vue.js', 'Laravel', 'Python', 'TensorFlow', 'OpenAI API', 'Redis'],
-        metrics: [{ number: '400%', label: 'Engagement Increase' }, { number: '70%', label: 'Time Saved' }, { number: '500+', label: 'Creators Onboarded' }, { number: '5mo', label: 'Delivery Time' }]
+            "id": 4,
+            "category": "Web Platform",
+            "title": {
+                  "en": "WebKMT Platform — This Website & Free Tools"
+            },
+            "client": {
+                  "en": "Our Own Platform"
+            },
+            "description": {
+                  "en": "The website you're browsing right now: a bilingual (EN/AR) platform with user accounts, an AI assistant (Kemet), a blog, and a suite of free business tools — Website Analyzer, ROI Calculator, Color Palette Studio, and more."
+            },
+            "duration": {
+                  "en": "Live Now"
+            },
+            "year": {
+                  "en": "2026"
+            },
+            "challenge": {
+                  "en": "Most agency websites only claim expertise. We wanted visitors to experience working software before ever talking to us."
+            },
+            "solution": {
+                  "en": "We built our site as a product: production-grade mini-apps anyone can use free, an AI chatbot that answers from our own knowledge base, and a structured quote wizard connected to our lead flow."
+            },
+            "results": {
+                  "en": "Try everything on this page — run a free website audit, calculate your ROI, or chat with Kemet. It's the same engineering we install for clients."
+            },
+            "features": {
+                  "en": [
+                        "5 free business mini-apps",
+                        "Kemet AI assistant (Gemini)",
+                        "Bilingual EN/AR with RTL",
+                        "User accounts & admin dashboard",
+                        "5-step project quote wizard",
+                        "Blog & insights CMS"
+                  ]
+            },
+            "technologies": [
+                  "Node.js",
+                  "Express",
+                  "Supabase",
+                  "Google Gemini",
+                  "PWA"
+            ],
+            "metrics": [
+                  {
+                        "number": "5",
+                        "label": "Free Mini-Apps"
+                  },
+                  {
+                        "number": "2",
+                        "label": "Languages (EN/AR)"
+                  },
+                  {
+                        "number": "AI",
+                        "label": "Kemet Assistant"
+                  },
+                  {
+                        "number": "PWA",
+                        "label": "Installable App"
+                  }
+            ]
       }
-    ];
+];
 
     function initCaseStudy() {
       const params = new URLSearchParams(window.location.search);
@@ -501,7 +694,7 @@
 
       // Page meta
       const title = get(project.title);
-      document.getElementById('pageTitle').textContent = title + ' — WebKMT Case Study';
+      document.getElementById('pageTitle').textContent = title + ' — WebKMT Demo System';
       document.getElementById('pageDescription').content = get(project.description).slice(0, 155);
       document.getElementById('ogTitle').content = title + ' — WebKMT';
       document.getElementById('ogDesc').content = get(project.description).slice(0, 155);
