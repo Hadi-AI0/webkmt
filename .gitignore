@@ -50,3 +50,6 @@ coverage/
 
 # Archives (a committed zip once leaked production secrets)
 *.zip
+
+# Crawlee local storage (scraper runtime data)
+storage/

@@ -246,6 +246,7 @@ app.use('/api/data', authenticate, dataRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/cal', require('./routes/cal'));
+app.use('/api/scraper', require('./routes/scraper'));
 app.use('/api/mini-apps', require('../api/mini-apps/routes'));
 
 // Client-side error reporting stub (prevents 404 spam in console)
