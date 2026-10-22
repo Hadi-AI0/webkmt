@@ -47,3 +47,6 @@ coverage/
 # Cache
 .cache/
 .parcel-cache/
+
+# Archives (a committed zip once leaked production secrets)
+*.zip
