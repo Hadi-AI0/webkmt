@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "WebKMT - Communicate Your Business | Digital Solutions & Automation",
-    "description": "We help businesses communicate effectively through strategic digital transformation, workflow automation, and comprehensive online presence solutions.",
+    "title": "WebKMT — Ready-to-Run Business Systems: Websites, WhatsApp AI, ERP & Automation",
+    "description": "WebKMT installs ready-to-run business systems — websites from templates, WhatsApp AI receptionists, booking, invoicing & ERP — live in days for one monthly fee.",
     "keywords": "business communication, digital transformation, workflow automation, online presence, business solutions, ERP systems"
   },
   "navigation": {
     "home": "Home",
-    "services": "Services",
-    "portfolio": "Portfolio",
+    "services": "Offers",
+    "portfolio": "Live Demos",
     "process": "Process",
     "testimonials": "Testimonials",
     "tools": "Tools",
@@ -16,21 +16,23 @@
     "contact": "Contact",
     "get_started": "Get Started",
     "toggle_theme": "Toggle dark mode",
-    "switch_language": "Switch to Arabic"
+    "switch_language": "Switch to Arabic",
+    "templates": "Templates"
   },
   "hero": {
     "title": "Communicate Your Business",
     "title_highlight": "With Digital Excellence",
-    "title_full": "Communicate Your Business Digitally",
-    "description": "Premium web development & digital marketing solutions that boost your business growth",
+    "title_full": "Ready-to-Run Business Systems, Installed for You",
+    "description": "Website, WhatsApp AI receptionist, online booking, invoicing & CRM — live in days, for one monthly fee.",
     "start_project": "Start Project",
-    "view_portfolio": "View Portfolio",
+    "view_portfolio": "Templates & Live Demos",
     "explore_services": "Explore Services",
     "explore_mini_apps": "Try Our Free Tools",
     "website_analyzer": "Website Analyzer",
     "roi_calculator": "ROI Calculator",
     "color_palette": "Color Palette",
-    "kmt_link": "KMT Link"
+    "kmt_link": "KMT Link",
+    "book_audit": "Book a Free Audit Call"
   },
   "services": {
     "title": "How We Help You Communicate",
@@ -105,8 +107,8 @@
     }
   },
   "portfolio": {
-    "title": "Featured Projects",
-    "description": "Showcasing our latest work and successful collaborations with measurable results",
+    "title": "Live Demo Systems",
+    "description": "Real, working systems you can try right now — live demos and our own products, not mockups. Pilot client results will be published here as they complete.",
     "filters": {
       "all": "All",
       "websites": "Websites",
@@ -323,8 +325,16 @@
     "description_min": "Please provide more details (minimum 10 characters)"
   },
   "common": {
-    "sending": "Sending...",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Success!",
+    "close": "Close",
+    "open": "Open",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "more": "More",
+    "less": "Less"
   },
   "footer": {
     "description": "Crafting digital excellence for modern businesses through innovative web development, mobile applications, and strategic digital marketing solutions.",
@@ -386,16 +396,85 @@
       "view_portfolio": "Can you show me some examples of your work?"
     }
   },
-  "common": {
-    "loading": "Loading...",
-    "error": "An error occurred",
-    "success": "Success!",
-    "close": "Close",
-    "open": "Open",
-    "back": "Back",
-    "next": "Next",
-    "previous": "Previous",
-    "more": "More",
-    "less": "Less"
+  "offers": {
+    "title": "Ready-to-Run Business Systems",
+    "description": "Fixed-price packages, installed and managed for you — live in days, not months. Every package includes hosting, backups, and updates.",
+    "cta_discuss": "Discuss on WhatsApp",
+    "badge_popular": "Most Popular",
+    "care_title": "Every package runs on a Care Plan",
+    "care_desc": "Hosting, SSL, daily backups, security updates, and a simple monthly report — so your system just works while you run your business.",
+    "custom_note": "Need something custom — a mobile app, AI fine-tuning, or a bespoke build?",
+    "custom_link": "Ask about a paid discovery →",
+    "presence": {
+      "title": "Presence — Business Website",
+      "desc": "A fast website that turns visitors into calls, bookings, and WhatsApp conversations.",
+      "setup": "$399–$899 setup",
+      "care": "+ $29–$49/mo care plan",
+      "f1": "Pick from ready designs in the Template Gallery",
+      "f2": "WhatsApp chat & Google Maps built in",
+      "f3": "Online booking or quote form",
+      "f4": "Local SEO + Google Business Profile setup",
+      "cta2": "Browse templates →"
+    },
+    "receptionist": {
+      "title": "Receptionist — WhatsApp AI Assistant",
+      "desc": "An AI employee that answers customers 24/7 on WhatsApp and your website — and books appointments for you.",
+      "setup": "$499–$1,200 setup",
+      "care": "+ $79–$149/mo",
+      "f1": "Trained on your services, prices & FAQs",
+      "f2": "Books into your calendar, sends reminders",
+      "f3": "One shared inbox with human handoff",
+      "f4": "Speaks Arabic, Turkish & English",
+      "cta2": "See the live demo →"
+    },
+    "business_os": {
+      "title": "Kemet Business OS — ERP & CRM",
+      "desc": "Invoicing, inventory, POS, and HR in one system — everything Odoo does, with no per-user fees.",
+      "setup": "$800–$4,000 setup",
+      "care": "+ $49–$299/mo flat",
+      "f1": "Unlimited users — one flat monthly fee",
+      "f2": "Pre-configured for your industry",
+      "f3": "WhatsApp invoice & stock alerts",
+      "f4": "Your data on your own server",
+      "cta2": "See the live demo →"
+    },
+    "automate": {
+      "title": "Automate — Workflow Sprint",
+      "desc": "We connect your tools and remove the manual work: follow-ups, reminders, and reports on autopilot.",
+      "setup": "$300–$900 setup",
+      "care": "+ $49–$99/mo",
+      "f1": "Instant lead follow-up on WhatsApp",
+      "f2": "Automatic payment reminders",
+      "f3": "Google review requests after each job",
+      "f4": "Weekly sales summary to your phone",
+      "cta2": "Get a free audit →"
+    }
+  },
+  "templates_page": {
+    "title": "Pick a design. We launch it for you.",
+    "subtitle": "Browse ready-made website designs for your type of business. Choose one, message us, and we launch it with your branding and content within days.",
+    "step1_t": "1 · Browse & pick",
+    "step1_d": "Open the live demos and choose the design that fits your business.",
+    "step2_t": "2 · Chat & confirm",
+    "step2_d": "Message us on WhatsApp — we confirm pages, features, and your domain in one short call.",
+    "step3_t": "3 · We launch it",
+    "step3_d": "We rebrand, fill in your content, and launch on your domain. You start getting customers.",
+    "filter_all": "All",
+    "filter_clinics": "Clinics & Health",
+    "filter_food": "Food & Drink",
+    "filter_shops": "Shops & Stores",
+    "filter_realestate": "Real Estate",
+    "filter_services": "Services",
+    "filter_creators": "Creators & Personal",
+    "how_title": "How payment works — personal, not a checkout",
+    "how_1_t": "Talk first",
+    "how_1_d": "Every order starts with a conversation, so you only pay for what your business actually needs.",
+    "how_2_t": "Pay your way",
+    "how_2_d": "Bank transfer (IBAN), Wise, or a secure card payment link we send you — 50% deposit to start, 50% at launch.",
+    "how_3_t": "Care plan keeps it alive",
+    "how_3_d": "A small monthly plan covers hosting, backups, updates, and support. Cancel anytime — your site and data are yours.",
+    "cta_title": "Can't find your business type?",
+    "cta_desc": "We add new templates from real client projects all the time — tell us what you do and we'll show you the closest match.",
+    "cta_btn": "Ask on WhatsApp"
   }
 }
