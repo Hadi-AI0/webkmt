@@ -7,7 +7,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 class SpeedTesterService {
     constructor() {
-        this.pageSpeedApiKey = process.env.PAGE_SPEED_API_KEY || 'AIzaSyBtFoOAmMUdVbjqCS6w2UoYAIDvkQ8Q-YA';
+        this.pageSpeedApiKey = process.env.PAGE_SPEED_API_KEY || '';
     }
 
     /**
@@ -50,7 +50,7 @@ class SpeedTesterService {
     async getPageSpeedData(url, strategy = 'desktop', categories = ['performance']) {
         try {
             const categoryParams = categories.map(cat => `&category=${cat}`).join('');
-            const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${this.pageSpeedApiKey}&strategy=${strategy}${categoryParams}`;
+            const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}${this.pageSpeedApiKey ? '&key=' + this.pageSpeedApiKey : ''}&strategy=${strategy}${categoryParams}`;
             
             const response = await fetch(apiUrl);
             const data = await response.json();

@@ -10,7 +10,7 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 
 class WebsiteHealthCheckerService {
     constructor() {
-        this.pageSpeedApiKey = process.env.PAGE_SPEED_API_KEY || 'AIzaSyBtFoOAmMUdVbjqCS6w2UoYAIDvkQ8Q-YA';
+        this.pageSpeedApiKey = process.env.PAGE_SPEED_API_KEY || '';
     }
 
     /**
@@ -21,10 +21,12 @@ class WebsiteHealthCheckerService {
             console.log(`Starting comprehensive health analysis for: ${url}`);
 
             // Run parallel analysis for comprehensive health check
+            // Scrape is essential; PageSpeed is best-effort — section analyzers
+            // null-guard PSI data, so a PSI outage still yields an SEO/content audit.
             const [scrapingResults, pageSpeedResults, accessibilityResults] = await Promise.all([
                 this.scrapeWebsiteData(url),
-                this.getPageSpeedData(url, 'desktop', ['performance', 'seo', 'accessibility', 'best-practices']),
-                this.getPageSpeedData(url, 'mobile', ['performance', 'seo', 'accessibility', 'best-practices'])
+                this.getPageSpeedData(url, 'desktop', ['performance', 'seo', 'accessibility', 'best-practices']).catch(() => null),
+                this.getPageSpeedData(url, 'mobile', ['performance', 'seo', 'accessibility', 'best-practices']).catch(() => null)
             ]);
 
             // Combine and analyze results for comprehensive health check
@@ -162,7 +164,7 @@ class WebsiteHealthCheckerService {
     async getPageSpeedData(url, strategy = 'desktop', categories = ['performance', 'seo', 'accessibility', 'best-practices']) {
         try {
             const categoryParams = categories.map(cat => `&category=${cat}`).join('');
-            const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}&key=${this.pageSpeedApiKey}&strategy=${strategy}${categoryParams}`;
+            const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(url)}${this.pageSpeedApiKey ? '&key=' + this.pageSpeedApiKey : ''}&strategy=${strategy}${categoryParams}`;
             
             const response = await fetch(apiUrl);
             const data = await response.json();
