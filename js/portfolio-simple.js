@@ -67,22 +67,10 @@ class SimplePortfolioManager {
     // Load all testimonials for carousel
     this.testimonialsData = [
       {
-        quote: "WebKMT transformed our online presence completely. Their attention to detail and innovative approach exceeded our expectations.",
-        author: "أحمد الأحمد",
-        position: "CEO, TechStart Inc.",
-        avatar: "assets/testimonials/client-1.jpg"
-      },
-      {
-        quote: "The mobile app they developed for us has significantly improved our customer engagement. Highly recommend their services!",
-        author: "سارة الخالد",
-        position: "Founder, FitLife Pro",
-        avatar: "assets/testimonials/client-2.jpg"
-      },
-      {
-        quote: "Professional, reliable, and innovative. WebKMT delivered our e-commerce platform on time and within budget.",
-        author: "عبدالله الزهراني",
-        position: "Marketing Director, Fashion Forward",
-        avatar: "assets/testimonials/client-3.jpg"
+        quote: "We're onboarding a small number of pilot businesses right now: free setup on our Website, WhatsApp Receptionist, and Business OS packages — you only cover the monthly care plan, in exchange for honest feedback and a testimonial when you're happy.",
+        author: "WebKMT Pilot Program",
+        position: "Limited spots — apply on WhatsApp",
+        avatar: "assets/logo-white.svg"
       }
     ];
     
@@ -90,174 +78,259 @@ class SimplePortfolioManager {
 
     this.portfolioData = [
       {
-        id: 1,
-        category: 'websites',
-        title: {
-          en: 'Next-Gen Corporate ERP System',
-          ar: 'نظام تخطيط موارد المؤسسات من الجيل التالي'
-        },
-        client: {
-          en: 'Global Manufacturing Corp',
-          ar: 'شركة التصنيع العالمية'
-        },
-        description: {
-          en: 'Revolutionary ERP system that is 50% more efficient than Odoo and Brightpearl. We developed a comprehensive business management platform that streamlines operations, inventory tracking, financial management, and employee scheduling. The system features real-time analytics, automated reporting, and seamless integration with existing business tools.',
-          ar: 'نظام تخطيط موارد مؤسسي ثوري أكثر كفاءة بنسبة 50% من Odoo و Brightpearl. طورنا منصة إدارة أعمال شاملة تبسط العمليات وتتبع المخزون والإدارة المالية وجدولة الموظفين. يتميز النظام بالتحليلات الفورية والتقارير التلقائية والتكامل السلس مع أدوات العمل الحالية.'
-        },
-        duration: {
-          en: '6 months',
-          ar: '6 أشهر'
-        },
-        year: {
-          en: '2024',
-          ar: '2024'
-        },
-        challenge: {
-          en: 'The client needed a unified system to replace multiple disconnected business tools, reduce operational costs by 40%, and improve data accuracy across all departments.',
-          ar: 'احتاج العميل إلى نظام موحد ليحل محل أدوات العمل المتعددة المنفصلة، وتقليل التكاليف التشغيلية بنسبة 40%، وتحسين دقة البيانات عبر جميع الأقسام.'
-        },
-        solution: {
-          en: 'We built a modular ERP system with microservices architecture, enabling seamless scaling and customization. The platform includes advanced automation, real-time data synchronization, and intelligent workflow management.',
-          ar: 'قمنا ببناء نظام تخطيط موارد مؤسسي معياري بهيكلية الخدمات المصغرة، مما يتيح التوسع والتخصيص السلس. تشمل المنصة التشغيل التلقائي المتقدم ومزامنة البيانات الفورية وإدارة سير العمل الذكية.'
-        },
-        results: {
-          en: '52% improvement in operational efficiency, 60% reduction in manual data entry, and $2.3M annual cost savings.',
-          ar: 'تحسن بنسبة 52% في الكفاءة التشغيلية، وتقليل إدخال البيانات يدوياً بنسبة 60%، وتوفير سنوي قدره 2.3 مليون دولار.'
-        },
-        features: {
-          en: ['Real-time inventory tracking', 'Automated financial reporting', 'Employee scheduling system', 'Custom dashboard builder', 'Multi-currency support', 'Advanced analytics engine'],
-          ar: ['تتبع المخزون الفوري', 'التقارير المالية التلقائية', 'نظام جدولة الموظفين', 'منشئ لوحة القيادة المخصصة', 'دعم العملات المتعددة', 'محرك التحليلات المتقدم']
-        },
-        thumbnail: 'assets/portfolio/project-1.png',
-        technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS']
+            "id": 1,
+            "category": "systems",
+            "title": {
+                  "en": "Kemet Business OS — ERP Live Demo",
+                  "ar": "نظام كيميت للأعمال — عرض حي لنظام ERP"
+            },
+            "client": {
+                  "en": "Demo System — WebKMT Product",
+                  "ar": "نظام تجريبي — منتج WebKMT"
+            },
+            "description": {
+                  "en": "A complete business management system — accounting, invoicing, inventory, POS, and HR — installed and pre-configured for small and mid-sized businesses. Everything Odoo does, with one flat monthly fee and unlimited users instead of per-seat pricing.",
+                  "ar": "نظام متكامل لإدارة الأعمال — المحاسبة والفوترة والمخزون ونقاط البيع والموارد البشرية — يُثبَّت ويُهيَّأ مسبقاً للشركات الصغيرة والمتوسطة. كل ما يفعله Odoo، لكن برسم شهري ثابت واحد ومستخدمين بلا حدود بدلاً من التسعير لكل مستخدم."
+            },
+            "duration": {
+                  "en": "Live Demo",
+                  "ar": "عرض حي"
+            },
+            "year": {
+                  "en": "2026",
+                  "ar": "2026"
+            },
+            "challenge": {
+                  "en": "Small businesses run on Excel files, notebooks, and disconnected apps — invoices get lost, stock counts drift, and owners can't see their numbers until it's too late.",
+                  "ar": "تدير الشركات الصغيرة أعمالها عبر ملفات Excel ودفاتر ورقية وتطبيقات منفصلة — تضيع الفواتير، وتختلف أعداد المخزون، ولا يرى أصحاب العمل أرقامهم إلا بعد فوات الأوان."
+            },
+            "solution": {
+                  "en": "Kemet Business OS bundles the proven open-source ERPNext with WebKMT's industry starter kits, simplified per-role screens, and WhatsApp notifications for invoices, stock alerts, and a nightly sales summary to the owner.",
+                  "ar": "يجمع نظام كيميت للأعمال نظام ERPNext مفتوح المصدر المجرَّب مع حزم البدء المصممة لكل نشاط من WebKMT، وشاشات مبسطة حسب دور كل موظف، وإشعارات واتساب للفواتير وتنبيهات المخزون وملخص المبيعات الليلي للمالك."
+            },
+            "results": {
+                  "en": "What you get: flat monthly pricing with unlimited users, an Arabic/Turkish/English interface, ZATCA-ready e-invoicing for Saudi businesses, and your data hosted on your own server.",
+                  "ar": "ما ستحصل عليه: رسم شهري ثابت مع مستخدمين بلا حدود، وواجهة بالعربية والتركية والإنجليزية، وفوترة إلكترونية جاهزة لمتطلبات ZATCA في السعودية، وبياناتك مستضافة على خادمك الخاص."
+            },
+            "features": {
+                  "en": [
+                        "Invoicing & accounting",
+                        "Inventory & multi-warehouse",
+                        "Point of sale (POS)",
+                        "HR & payroll",
+                        "WhatsApp invoice & stock alerts",
+                        "Arabic / Turkish / English"
+                  ],
+                  "ar": [
+                        "الفوترة والمحاسبة",
+                        "المخزون والمستودعات المتعددة",
+                        "نقاط البيع",
+                        "الموارد البشرية والرواتب",
+                        "تنبيهات الفواتير والمخزون عبر واتساب",
+                        "العربية / التركية / الإنجليزية"
+                  ]
+            },
+            "thumbnail": "assets/portfolio/project-1.png",
+            "liveUrl": "/templates",
+            "technologies": [
+                  "ERPNext",
+                  "Frappe",
+                  "MariaDB",
+                  "Redis",
+                  "Docker",
+                  "WhatsApp API"
+            ]
       },
       {
-        id: 2,
-        category: 'mobile',
-        title: {
-          en: 'Premium Saudi Poultry E-Commerce',
-          ar: 'متجر إلكتروني راقي للدواجن السعودية'
-        },
-        client: {
-          en: 'Al-Wadi Premium Poultry',
-          ar: 'دواجن الوادي الفاخرة'
-        },
-        description: {
-          en: 'Modern e-commerce platform for a premium Saudi poultry brand featuring online ordering, real-time delivery tracking, quality assurance integration, and halal certification verification. The platform serves over 50,000 customers across the Kingdom with 99.8% uptime.',
-          ar: 'منصة تجارة إلكترونية حديثة لعلامة دواجن سعودية راقية تتميز بالطلب عبر الإنترنت وتتبع التوصيل الفوري وتكامل ضمان الجودة والتحقق من شهادة الحلال. تخدم المنصة أكثر من 50,000 عميل عبر المملكة بنسبة تشغيل 99.8%.'
-        },
-        duration: {
-          en: '4 months',
-          ar: '4 أشهر'
-        },
-        year: {
-          en: '2024',
-          ar: '2024'
-        },
-        challenge: {
-          en: 'Building trust in online poultry purchasing while ensuring freshness, implementing complex logistics for temperature-controlled delivery, and integrating with Islamic dietary requirements.',
-          ar: 'بناء الثقة في شراء الدواجن عبر الإنترنت مع ضمان الطازجة، وتنفيذ خدمات لوجستية معقدة للتوصيل المبرد، والتكامل مع متطلبات النظام الغذائي الإسلامي.'
-        },
-        solution: {
-          en: 'We developed a comprehensive platform with AI-powered freshness prediction, IoT integration for cold chain monitoring, and blockchain-based halal certification tracking.',
-          ar: 'طورنا منصة شاملة مع التنبؤ بالطزاجة بالذكاء الاصطناعي، وتكامل إنترنت الأشياء لمراقبة السلسلة الباردة، وتتبع شهادة الحلال المبني على البلوك تشين.'
-        },
-        results: {
-          en: '300% increase in online sales, 95% customer satisfaction rate, and expansion to 3 new cities within 6 months.',
-          ar: 'زيادة المبيعات عبر الإنترنت بنسبة 300%، ومعدل رضا العملاء 95%، والتوسع إلى 3 مدن جديدة خلال 6 أشهر.'
-        },
-        features: {
-          en: ['Real-time freshness tracking', 'Halal certification verification', 'Temperature-controlled delivery', 'AI-powered quality prediction', 'Customer loyalty program', 'Multi-payment gateway'],
-          ar: ['تتبع الطزاجة الفوري', 'التحقق من شهادة الحلال', 'التوصيل المبرد', 'التنبؤ بالجودة بالذكاء الاصطناعي', 'برنامج ولاء العملاء', 'بوابة دفع متعددة']
-        },
-        thumbnail: 'assets/portfolio/project-2.png',
-        technologies: ['React Native', 'Node.js', 'MongoDB', 'Supabase', 'IoT Sensors', 'Blockchain']
+            "id": 2,
+            "category": "automation",
+            "title": {
+                  "en": "WhatsApp AI Receptionist — Live Demo",
+                  "ar": "موظف استقبال واتساب الذكي — عرض حي"
+            },
+            "client": {
+                  "en": "Demo System — Clinic Booking",
+                  "ar": "نظام تجريبي — حجوزات العيادات"
+            },
+            "description": {
+                  "en": "An AI receptionist that answers customers on WhatsApp and your website around the clock, explains your services and prices, books appointments into a real calendar, and sends reminders — with a shared inbox where your team can take over anytime.",
+                  "ar": "موظف استقبال بالذكاء الاصطناعي يرد على العملاء عبر واتساب وموقعك على مدار الساعة، يشرح خدماتك وأسعارك، يحجز المواعيد في تقويم حقيقي، ويرسل التذكيرات — مع صندوق وارد مشترك يستطيع فريقك التدخل فيه في أي وقت."
+            },
+            "duration": {
+                  "en": "Live Demo",
+                  "ar": "عرض حي"
+            },
+            "year": {
+                  "en": "2026",
+                  "ar": "2026"
+            },
+            "challenge": {
+                  "en": "Clinics, salons, and service businesses lose bookings every day to missed calls and WhatsApp messages that go unanswered outside working hours.",
+                  "ar": "تخسر العيادات والصالونات وشركات الخدمات حجوزات كل يوم بسبب المكالمات الفائتة ورسائل واتساب التي لا يُرد عليها خارج ساعات العمل."
+            },
+            "solution": {
+                  "en": "We train an AI assistant on the business's own services, prices, and FAQs, connect it to WhatsApp and the website chat, and wire bookings and reminders through automation workflows.",
+                  "ar": "ندرّب مساعداً ذكياً على خدمات نشاطك وأسعاره وأسئلته الشائعة، ونربطه بواتساب ومحادثة الموقع، ونوصل الحجوزات والتذكيرات عبر تدفقات أتمتة."
+            },
+            "results": {
+                  "en": "What you get: instant replies 24/7 in Arabic, Turkish, and English; automatic bookings and reminders; and every lead captured into one inbox — no customer message left unanswered.",
+                  "ar": "ما ستحصل عليه: ردود فورية على مدار الساعة بالعربية والتركية والإنجليزية، وحجوزات وتذكيرات تلقائية، وكل عميل محتمل يُسجَّل في صندوق وارد واحد — لا رسالة عميل دون رد."
+            },
+            "features": {
+                  "en": [
+                        "24/7 WhatsApp & website answers",
+                        "Appointment booking & reminders",
+                        "Trained on your prices & FAQs",
+                        "Shared team inbox",
+                        "Human handoff anytime",
+                        "Arabic / Turkish / English"
+                  ],
+                  "ar": [
+                        "ردود واتساب والموقع على مدار الساعة",
+                        "حجز المواعيد والتذكيرات",
+                        "مدرَّب على أسعارك وأسئلتك الشائعة",
+                        "صندوق وارد مشترك للفريق",
+                        "تحويل لموظف بشري في أي وقت",
+                        "العربية / التركية / الإنجليزية"
+                  ]
+            },
+            "thumbnail": "assets/portfolio/project-2.png",
+            "liveUrl": "https://wa.me/905013617795?text=Hi! I would like to see the WhatsApp AI Receptionist live demo.",
+            "technologies": [
+                  "WhatsApp Cloud API",
+                  "Chatwoot",
+                  "AnythingLLM (RAG)",
+                  "n8n",
+                  "Cal.com"
+            ]
       },
       {
-        id: 3,
-        category: 'branding',
-        title: {
-          en: 'Coffee Jadla - Complete Brand Identity',
-          ar: 'قهوة جدلة - الهوية التجارية الكاملة'
-        },
-        client: {
-          en: 'Coffee Jadla Specialty Roasters',
-          ar: 'محمصة قهوة جدلة المتخصصة'
-        },
-        description: {
-          en: 'Complete brand identity design for a premium Saudi coffee roastery combining traditional Arabic heritage with modern specialty coffee culture. The project included logo design, packaging systems, interior design concepts, marketing materials, and digital brand guidelines that honor Saudi coffee traditions.',
-          ar: 'تصميم هوية علامة تجارية كاملة لمحمصة قهوة سعودية راقية تجمع بين التراث العربي التقليدي وثقافة القهوة المتخصصة الحديثة. شمل المشروع تصميم الشعار وأنظمة التعبئة ومفاهيم التصميم الداخلي والمواد التسويقية والدلائل الرقمية للعلامة التجارية التي تكرم تقاليد القهوة السعودية.'
-        },
-        duration: {
-          en: '3 months',
-          ar: '3 أشهر'
-        },
-        year: {
-          en: '2024',
-          ar: '2024'
-        },
-        challenge: {
-          en: 'Creating a brand that appeals to both traditional Saudi coffee lovers and modern specialty coffee enthusiasts, while standing out in a competitive market dominated by international chains.',
-          ar: 'إنشاء علامة تجارية تجذب كلاً من محبي القهوة السعودية التقليدية وعشاق القهوة المتخصصة الحديثة، مع التميز في سوق تنافسي تهيمن عليه السلاسل الدولية.'
-        },
-        solution: {
-          en: 'We developed a sophisticated brand identity that seamlessly blends Arabic calligraphy with contemporary design elements, creating packaging that tells the story of Saudi coffee heritage while appealing to modern consumers.',
-          ar: 'طورنا هوية علامة تجارية متطورة تمزج بسلاسة بين الخط العربي وعناصر التصميم المعاصر، وإنشاء تعبئة تحكي قصة تراث القهوة السعودية مع جذب المستهلكين الحديثين.'
-        },
-        results: {
-          en: '200% increase in brand recognition, successful launch of 3 retail locations, and featured in Saudi Design Week 2024.',
-          ar: 'زيادة التعرف على العلامة التجارية بنسبة 200%، وإطلاق ناجح لـ 3 مواقع بيع بالتجزئة، والمشاركة في أسبوع التصميم السعودي 2024.'
-        },
-        features: {
-          en: ['Custom Arabic typography', 'Sustainable packaging design', 'Interior concept development', 'Brand guidelines manual', 'Digital asset library', 'Marketing collateral suite'],
-          ar: ['طباعة عربية مخصصة', 'تصميم تعبئة مستدامة', 'تطوير مفهوم التصميم الداخلي', 'دليل إرشادات العلامة التجارية', 'مكتبة الأصول الرقمية', 'مجموعة المواد التسويقية']
-        },
-        thumbnail: 'assets/portfolio/project-3.png',
-        technologies: ['Adobe Illustrator', 'Photoshop', 'InDesign', 'After Effects', 'Figma', '3D Modeling']
+            "id": 3,
+            "category": "websites",
+            "title": {
+                  "en": "KMT Link — Link-in-Bio Platform",
+                  "ar": "KMT Link — منصة صفحة الروابط"
+            },
+            "client": {
+                  "en": "Live Product — Free to Use",
+                  "ar": "منتج حي — مجاني للاستخدام"
+            },
+            "description": {
+                  "en": "Our own free link-in-bio platform: one page for all your links with your name on it — link.webkmt.com/you. Built for creators, Instagram sellers, and small businesses that live on social media.",
+                  "ar": "منصتنا المجانية لصفحة الروابط: صفحة واحدة لكل روابطك باسمك — link.webkmt.com/اسمك. مصممة للمبدعين وبائعي إنستغرام والشركات الصغيرة التي تعيش على وسائل التواصل."
+            },
+            "duration": {
+                  "en": "Free Tool",
+                  "ar": "أداة مجانية"
+            },
+            "year": {
+                  "en": "2025",
+                  "ar": "2025"
+            },
+            "challenge": {
+                  "en": "Businesses on Instagram and TikTok can only share one link, so customers struggle to find their WhatsApp, location, menu, and store.",
+                  "ar": "لا تستطيع الأنشطة على إنستغرام وتيك توك مشاركة سوى رابط واحد، فيجد العملاء صعوبة في الوصول إلى واتساب والموقع والقائمة والمتجر."
+            },
+            "solution": {
+                  "en": "KMT Link gives every user a fast, customizable profile page with unlimited links, themes, QR codes, and click analytics — free, with an optional done-for-you setup.",
+                  "ar": "تمنح KMT Link كل مستخدم صفحة ملف سريعة وقابلة للتخصيص مع روابط غير محدودة وقوالب ورموز QR وتحليلات للنقرات — مجاناً، مع خيار الإعداد الكامل نيابة عنك."
+            },
+            "results": {
+                  "en": "Live and free to use today: create your page in minutes, share one link everywhere, and see exactly what your audience clicks.",
+                  "ar": "متاح ومجاني اليوم: أنشئ صفحتك في دقائق، شارك رابطاً واحداً في كل مكان، واعرف بالضبط ما ينقر عليه جمهورك."
+            },
+            "features": {
+                  "en": [
+                        "Vanity URL: link.webkmt.com/you",
+                        "Unlimited links & themes",
+                        "QR code generator",
+                        "Click analytics",
+                        "Arabic & English interface",
+                        "Free forever plan"
+                  ],
+                  "ar": [
+                        "رابط مخصص: link.webkmt.com/اسمك",
+                        "روابط وقوالب بلا حدود",
+                        "مولّد رموز QR",
+                        "تحليلات النقرات",
+                        "يعمل بالعربية والإنجليزية",
+                        "خطة مجانية للأبد"
+                  ]
+            },
+            "thumbnail": "assets/portfolio/project-3.png",
+            "liveUrl": "https://link.webkmt.com",
+            "technologies": [
+                  "Node.js",
+                  "Express",
+                  "Supabase",
+                  "PostgreSQL",
+                  "Vanilla JS"
+            ]
       },
       {
-        id: 4,
-        category: 'websites',
-        title: {
-          en: 'AI-Powered Content Management Platform',
-          ar: 'منصة إدارة المحتوى بالذكاء الاصطناعي'
-        },
-        client: {
-          en: 'Digital Content Creators Network',
-          ar: 'شبكة منشئي المحتوى الرقمي'
-        },
-        description: {
-          en: 'Advanced multi-platform content management system with AI-powered content suggestions, automated publishing workflows, advanced analytics dashboard, and collaborative editing tools. The platform serves content creators, agencies, and enterprises looking to streamline their content operations across multiple channels.',
-          ar: 'نظام إدارة محتوى متقدم متعدد المنصات مع اقتراحات المحتوى بالذكاء الاصطناعي، وسير عمل النشر التلقائي، ولوحة تحليلات متقدمة، وأدوات التحرير التعاونية. تخدم المنصة منشئي المحتوى والوكالات والمؤسسات التي تسعى لتبسيط عمليات المحتوى عبر قنوات متعددة.'
-        },
-        duration: {
-          en: '5 months',
-          ar: '5 أشهر'
-        },
-        year: {
-          en: '2024',
-          ar: '2024'
-        },
-        challenge: {
-          en: 'Content creators needed a unified platform to manage content across 15+ social media platforms, with AI assistance for content optimization and real-time performance tracking.',
-          ar: 'احتاج منشئو المحتوى إلى منصة موحدة لإدارة المحتوى عبر أكثر من 15 منصة وسائل التواصل الاجتماعي، مع مساعدة الذكاء الاصطناعي لتحسين المحتوى وتتبع الأداء الفوري.'
-        },
-        solution: {
-          en: 'We built an intelligent content management platform with machine learning algorithms for content optimization, automated scheduling, and predictive analytics for optimal posting times.',
-          ar: 'قمنا ببناء منصة إدارة محتوى ذكية مع خوارزميات التعلم الآلي لتحسين المحتوى، والجدولة التلقائية، والتحليلات التنبؤية لأوقات النشر المثلى.'
-        },
-        results: {
-          en: '400% increase in content engagement, 70% time savings in content management, and adoption by 500+ content creators in the first quarter.',
-          ar: 'زيادة تفاعل المحتوى بنسبة 400%، وتوفير الوقت في إدارة المحتوى بنسبة 70%، واعتماد أكثر من 500 منشئ محتوى في الربع الأول.'
-        },
-        features: {
-          en: ['AI content optimization', 'Multi-platform publishing', 'Real-time analytics dashboard', 'Collaborative editing tools', 'Automated scheduling', 'Performance prediction'],
-          ar: ['تحسين المحتوى بالذكاء الاصطناعي', 'النشر متعدد المنصات', 'لوحة التحليلات الفورية', 'أدوات التحرير التعاونية', 'الجدولة التلقائية', 'التنبؤ بالأداء']
-        },
-        thumbnail: 'assets/portfolio/project-4.png',
-        technologies: ['Vue.js', 'Laravel', 'Python', 'TensorFlow', 'OpenAI API', 'Redis']
+            "id": 4,
+            "category": "websites",
+            "title": {
+                  "en": "WebKMT Platform — This Website & Free Tools",
+                  "ar": "منصة WebKMT — هذا الموقع وأدواته المجانية"
+            },
+            "client": {
+                  "en": "Our Own Platform",
+                  "ar": "منصتنا الخاصة"
+            },
+            "description": {
+                  "en": "The website you're browsing right now: a bilingual (EN/AR) platform with user accounts, an AI assistant (Kemet), a blog, and a suite of free business tools — Website Analyzer, ROI Calculator, Color Palette Studio, and more.",
+                  "ar": "الموقع الذي تتصفحه الآن: منصة ثنائية اللغة (EN/AR) مع حسابات مستخدمين ومساعد ذكاء اصطناعي (كيميت) ومدونة ومجموعة أدوات أعمال مجانية — محلل المواقع، وحاسبة العائد على الاستثمار، واستوديو الألوان، والمزيد."
+            },
+            "duration": {
+                  "en": "Live Now",
+                  "ar": "مباشر الآن"
+            },
+            "year": {
+                  "en": "2026",
+                  "ar": "2026"
+            },
+            "challenge": {
+                  "en": "Most agency websites only claim expertise. We wanted visitors to experience working software before ever talking to us.",
+                  "ar": "تدّعي معظم مواقع الوكالات الخبرة فقط. أردنا أن يجرّب الزوار برمجيات تعمل فعلاً قبل أن يتحدثوا إلينا."
+            },
+            "solution": {
+                  "en": "We built our site as a product: production-grade mini-apps anyone can use free, an AI chatbot that answers from our own knowledge base, and a structured quote wizard connected to our lead flow.",
+                  "ar": "بنينا موقعنا كمنتج: تطبيقات مصغرة بمستوى إنتاجي يمكن لأي شخص استخدامها مجاناً، وروبوت محادثة يجيب من قاعدة معرفتنا الخاصة، ومعالج عرض سعر منظم متصل بتدفق العملاء لدينا."
+            },
+            "results": {
+                  "en": "Try everything on this page — run a free website audit, calculate your ROI, or chat with Kemet. It's the same engineering we install for clients.",
+                  "ar": "جرّب كل شيء في هذه الصفحة — أجرِ تحليلاً مجانياً لموقعك، احسب عائد استثمارك، أو تحدث مع كيميت. إنها نفس الهندسة التي نثبّتها لعملائنا."
+            },
+            "features": {
+                  "en": [
+                        "5 free business mini-apps",
+                        "Kemet AI assistant (Gemini)",
+                        "Bilingual EN/AR with RTL",
+                        "User accounts & admin dashboard",
+                        "5-step project quote wizard",
+                        "Blog & insights CMS"
+                  ],
+                  "ar": [
+                        "5 تطبيقات أعمال مصغرة مجانية",
+                        "مساعد كيميت الذكي (Gemini)",
+                        "ثنائي اللغة EN/AR مع دعم RTL",
+                        "حسابات مستخدمين ولوحة إدارة",
+                        "معالج عرض سعر من 5 خطوات",
+                        "مدونة ونظام إدارة محتوى"
+                  ]
+            },
+            "thumbnail": "assets/portfolio/project-4.png",
+            "liveUrl": "/#mini-apps",
+            "technologies": [
+                  "Node.js",
+                  "Express",
+                  "Supabase",
+                  "Google Gemini",
+                  "PWA"
+            ]
       }
-    ];
+];
   }
 
   setupElements() {
@@ -497,7 +570,7 @@ class SimplePortfolioManager {
     card.innerHTML = `
       <div class="testimonial-card-content">
         <div class="testimonial-header">
-          <h3 class="testimonial-title">Client Testimonials</h3>
+          <h3 class="testimonial-title">Pilot Program</h3>
           <div class="testimonial-counter">
             <span class="current">${this.currentTestimonialIndex + 1}</span> / <span class="total">${this.testimonialsData.length}</span>
           </div>
@@ -642,6 +715,7 @@ class SimplePortfolioManager {
   getCategoryName(category, lang = 'en') {
     const categoryNames = {
       websites: { en: 'Websites', ar: 'المواقع الإلكترونية' },
+      systems: { en: 'Business Systems', ar: 'أنظمة الأعمال' },
       branding: { en: 'Branding', ar: 'الهوية التجارية' },
       automation: { en: 'Automation', ar: 'الأتمتة' },
       mobile: { en: 'Mobile Apps', ar: 'تطبيقات الهاتف' }
