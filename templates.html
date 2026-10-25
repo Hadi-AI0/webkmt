@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Templates — Pick a Design, We Launch It | WebKMT</title>
+    <meta name="description" content="Browse ready-made website designs for clinics, restaurants, shops, real estate and more. Pick one, message us on WhatsApp, and WebKMT launches it with your branding within days.">
+    <meta name="keywords" content="website templates, business website, clinic website, restaurant website, online store, WebKMT">
+    <meta property="og:title" content="Website Templates — Pick a Design, We Launch It | WebKMT">
+    <meta property="og:description" content="Ready-made website designs by business type. Pick one, chat with us, launch in days — personal payment, no checkout maze.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://webkmt.com/templates">
+    <link rel="icon" href="assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Initialize theme before CSS to prevent FOUC (same as homepage) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <link rel="stylesheet" href="css/main-bundle.css">
+    <link rel="stylesheet" href="css/components-bundle.css">
+    <link rel="stylesheet" href="css/hero-enhanced.css">
+    <link rel="stylesheet" href="css/mobile-collapse.css">
+    <link rel="stylesheet" href="css/responsive-fixes.css">
+    <link rel="stylesheet" href="css/offers-templates.css">
+</head>
+<body>
+    <header class="header-enhanced" role="banner">
+        <div class="container">
+            <nav class="nav-enhanced" role="navigation" aria-label="Main navigation">
+                <a href="/" class="logo-enhanced" aria-label="WebKMT Home" style="display: flex; align-items: center; gap: 12px;">
+                    <img src="assets/logo-white.svg" alt="WebKMT Logo" width="200" height="70">
+                    <span style="font-size: 24px; font-weight: 700; color: var(--text-primary); letter-spacing: 1px;">WEBKMT</span>
+                </a>
+
+                <ul class="nav-menu-enhanced">
+                    <li class="nav-item-enhanced"><a href="/#services" class="nav-link-enhanced" data-i18n="navigation.services">Offers</a></li>
+                    <li class="nav-item-enhanced"><a href="/templates" class="nav-link-enhanced is-active" aria-current="page" data-i18n="navigation.templates">Templates</a></li>
+                    <li class="nav-item-enhanced"><a href="/#portfolio" class="nav-link-enhanced" data-i18n="navigation.portfolio">Live Demos</a></li>
+                    <li class="nav-item-enhanced"><a href="/#mini-apps" class="nav-link-enhanced" data-i18n="navigation.tools">Free Tools</a></li>
+                    <li class="nav-item-enhanced"><a href="/#contact" class="nav-link-enhanced" data-i18n="navigation.contact">Contact</a></li>
+                </ul>
+
+                <div class="nav-controls-enhanced">
+                    <button class="theme-toggle-enhanced" aria-label="Toggle dark mode" data-i18n-aria="navigation.toggle_theme">
+                        <svg class="theme-toggle__icon theme-toggle__sun" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                        <svg class="theme-toggle__icon theme-toggle__moon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    <button class="lang-toggle-enhanced" aria-label="Switch language" data-i18n-aria="navigation.switch_language">EN</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main" role="main">
+        <section class="tpl-hero">
+            <div class="container">
+                <h1 data-i18n="templates_page.title">Pick a design. We launch it for you.</h1>
+                <p class="tpl-hero__sub" data-i18n="templates_page.subtitle">Browse ready-made website designs for your type of business. Choose one, message us, and we launch it with your branding and content within days.</p>
+
+                <div class="tpl-steps">
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.step1_t">1 · Browse &amp; pick</h3>
+                        <p data-i18n="templates_page.step1_d">Open the live demos and choose the design that fits your business.</p>
+                    </div>
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.step2_t">2 · Chat &amp; confirm</h3>
+                        <p data-i18n="templates_page.step2_d">Message us on WhatsApp — we confirm pages, features, and your domain in one short call.</p>
+                    </div>
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.step3_t">3 · We launch it</h3>
+                        <p data-i18n="templates_page.step3_d">We rebrand, fill in your content, and launch on your domain. You start getting customers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tpl-gallery">
+            <div class="container">
+                <div class="tpl-filters" role="group" aria-label="Filter templates by business type">
+                    <button class="tpl-filter-btn is-active" data-filter="all" data-i18n="templates_page.filter_all">All</button>
+                    <button class="tpl-filter-btn" data-filter="clinics" data-i18n="templates_page.filter_clinics">Clinics &amp; Health</button>
+                    <button class="tpl-filter-btn" data-filter="food" data-i18n="templates_page.filter_food">Food &amp; Drink</button>
+                    <button class="tpl-filter-btn" data-filter="shops" data-i18n="templates_page.filter_shops">Shops &amp; Stores</button>
+                    <button class="tpl-filter-btn" data-filter="realestate" data-i18n="templates_page.filter_realestate">Real Estate</button>
+                    <button class="tpl-filter-btn" data-filter="services" data-i18n="templates_page.filter_services">Services</button>
+                    <button class="tpl-filter-btn" data-filter="creators" data-i18n="templates_page.filter_creators">Creators &amp; Personal</button>
+                </div>
+
+                <div class="tpl-grid" id="templatesGrid">
+                    <!-- Template cards rendered by js/templates-gallery.js from js/templates-data.js -->
+                </div>
+            </div>
+        </section>
+
+        <section class="tpl-how">
+            <div class="container">
+                <header class="section__header">
+                    <h2 class="section__title" data-i18n="templates_page.how_title">How payment works — personal, not a checkout</h2>
+                </header>
+                <div class="tpl-steps">
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.how_1_t">Talk first</h3>
+                        <p data-i18n="templates_page.how_1_d">Every order starts with a conversation, so you only pay for what your business actually needs.</p>
+                    </div>
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.how_2_t">Pay your way</h3>
+                        <p data-i18n="templates_page.how_2_d">Bank transfer (IBAN), Wise, or a secure card payment link we send you — 50% deposit to start, 50% at launch.</p>
+                    </div>
+                    <div class="tpl-step">
+                        <h3 data-i18n="templates_page.how_3_t">Care plan keeps it alive</h3>
+                        <p data-i18n="templates_page.how_3_d">A small monthly plan covers hosting, backups, updates, and support. Cancel anytime — your site and data are yours.</p>
+                    </div>
+                </div>
+
+                <div class="tpl-cta-band">
+                    <h2 data-i18n="templates_page.cta_title">Can't find your business type?</h2>
+                    <p data-i18n="templates_page.cta_desc">We add new templates from real client projects all the time — tell us what you do and we'll show you the closest match.</p>
+                    <a class="tpl-btn tpl-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm looking for a website template for my business." target="_blank" rel="noopener" data-i18n="templates_page.cta_btn">Ask on WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align:center;padding:3rem 2rem;border-top:1px solid var(--glass-border,rgba(255,255,255,0.08));color:var(--text-secondary);font-size:0.9rem;">
+        <p>© 2026 WebKMT. All rights reserved. <a href="/" style="color:var(--color-primary);">Back to Home</a> · <a href="/#services" style="color:var(--color-primary);">Offers &amp; Pricing</a></p>
+    </footer>
+
+    <script src="js/modules/language-manager.js" defer></script>
+    <script src="js/templates-data.js" defer></script>
+    <script src="js/templates-gallery.js" defer></script>
+</body>
+</html>

@@ -109,8 +109,9 @@ class IntegratedMiniApps {
             return;
         }
 
-        // Check if user is authenticated before opening mini-apps
-        if (!this.checkAuthentication()) {
+        // Website Analyzer is open to guests (public audit / lead tool);
+        // other mini-apps still require sign-in.
+        if (appId !== 'website-analyzer' && !this.checkAuthentication()) {
             this.showAuthPrompt();
             return;
         }
@@ -149,6 +150,12 @@ class IntegratedMiniApps {
 
     switchApp(appId) {
         if (!this.apps[appId] || this.currentApp === appId) return;
+
+        // Guests may only use the Website Analyzer — don't let tab-switching bypass the gate
+        if (appId !== 'website-analyzer' && !this.checkAuthentication()) {
+            this.showAuthPrompt();
+            return;
+        }
 
         console.log('Switching to app:', appId);
         
@@ -192,7 +199,7 @@ class IntegratedMiniApps {
         iframe.className = 'app-iframe';
         iframe.src = app.url;
         iframe.title = app.name;
-        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation');
+        iframe.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation allow-downloads');
         
         // Handle iframe load
         iframe.onload = () => {
