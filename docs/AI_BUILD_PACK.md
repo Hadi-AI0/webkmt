@@ -10,8 +10,10 @@
 > - [`TEMPLATE_GALLERY.md`](./TEMPLATE_GALLERY.md) — website-template sales model
 > - [`API_KEYS.md`](./API_KEYS.md) — current website keys and production runbook
 > - [`N8N_WORKFLOW_SELECTION_GUIDE.md`](./N8N_WORKFLOW_SELECTION_GUIDE.md) — how to research/rebuild workflows from the Zie619 n8n collection
+> - [`AGENT_PROMPT_SEQUENCE.md`](./AGENT_PROMPT_SEQUENCE.md) — exact ordered prompts, upload sets, owner gates, and recommended skill packs including Design and Security
+> - [`products/`](./products/README.md) — dedicated standalone build spec for each of the five products
 >
-> **How to use this file:** paste **§3 Master System Prompt** as the agent's system/developer instruction. Then paste the relevant product prompt from §8–§12 plus a task brief created from §6. If the agent platform supports persistent “skills”, split §4 into one skill per subsection.
+> **How to use this file:** paste **§3 Master System Prompt** as the agent's system/developer instruction. For the exact owner/agent sequence, follow [`AGENT_PROMPT_SEQUENCE.md`](./AGENT_PROMPT_SEQUENCE.md). Then load the dedicated spec in [`products/`](./products/README.md) (or the matching summary/prompt in §8–§12) plus a task brief created from §6. If the agent platform supports persistent “skills”, split §4 into one skill per subsection and add the Design/Security packs recommended in the prompt sequence.
 
 ---
 
@@ -463,6 +465,7 @@ Build Shared Platform v1 under the WebKMT Master System Prompt. Inspect the curr
 ---
 
 ## 8. Product ① — Kemet Business OS (ERP)
+> **Dedicated standalone spec:** [`products/01_KEMET_BUSINESS_OS.md`](./products/01_KEMET_BUSINESS_OS.md) — use that file as the product-specific source of truth when building this product.
 
 ### Commercial contract
 
@@ -522,6 +525,7 @@ Build Kemet Business OS v1 under the WebKMT Master System Prompt and ERP_PRODUCT
 ---
 
 ## 9. Product ② — Kemet Store (E-commerce)
+> **Dedicated standalone spec:** [`products/02_KEMET_STORE.md`](./products/02_KEMET_STORE.md) — use that file as the product-specific source of truth when building this product.
 
 ### Commercial contract
 
@@ -574,6 +578,7 @@ Build Kemet Store v1 under the WebKMT Master System Prompt. Use Bagisto as a per
 ---
 
 ## 10. Product ③ — Kemet Receptionist (Service & Acquisition AI)
+> **Dedicated standalone spec:** [`products/03_KEMET_RECEPTIONIST.md`](./products/03_KEMET_RECEPTIONIST.md) — use that file as the product-specific source of truth when building this product.
 
 ### Commercial contract
 
@@ -629,6 +634,7 @@ Build Kemet Receptionist v1 under the WebKMT Master System Prompt as the flagshi
 ---
 
 ## 11. Product ④ — Kemet Websites (Templates + Client-Managed CMS)
+> **Dedicated standalone spec:** [`products/04_KEMET_WEBSITES.md`](./products/04_KEMET_WEBSITES.md) — use that file as the product-specific source of truth when building this product.
 
 ### Commercial contract
 
@@ -674,6 +680,7 @@ Build Kemet Websites v1 under the WebKMT Master System Prompt. Use Payload CMS a
 ---
 
 ## 12. Product ⑤ — Kemet Marketing Suite
+> **Dedicated standalone spec:** [`products/05_KEMET_MARKETING_SUITE.md`](./products/05_KEMET_MARKETING_SUITE.md) — use that file as the product-specific source of truth when building this product.
 
 ### Commercial contract
 

@@ -1,7 +1,7 @@
 # WebKMT Product Stack — The 5 Products (frozen v3)
 
 > ✏️ Easily edited — names/prices marked ✏️ are yours to change.
-> Companions: [`OPEN_SOURCE_STACK.md`](./OPEN_SOURCE_STACK.md) (component licenses) · [`RESCUE_PLAN.md`](./RESCUE_PLAN.md) (offers & pricing) · [`ERP_PRODUCT.md`](./ERP_PRODUCT.md) (Business OS spec) · [`TEMPLATE_GALLERY.md`](./TEMPLATE_GALLERY.md) · [`API_KEYS.md`](./API_KEYS.md)
+> Companions: [`OPEN_SOURCE_STACK.md`](./OPEN_SOURCE_STACK.md) (component licenses) · [`RESCUE_PLAN.md`](./RESCUE_PLAN.md) (offers & pricing) · [`AI_BUILD_PACK.md`](./AI_BUILD_PACK.md) (master build system) · [`AGENT_PROMPT_SEQUENCE.md`](./AGENT_PROMPT_SEQUENCE.md) (ordered prompts + skill packs) · [`products/`](./products/README.md) (dedicated product specs) · [`ERP_PRODUCT.md`](./ERP_PRODUCT.md) (ERP deep research) · [`TEMPLATE_GALLERY.md`](./TEMPLATE_GALLERY.md) · [`API_KEYS.md`](./API_KEYS.md)
 >
 > **What WebKMT sells — five owned, ready-to-run business systems**, assembled from open-source, white-labeled, customized per client, cloned from golden templates (never rebuilt from scratch):
 > **① ERP** (Odoo-class) · **② E-commerce** · **③ Customer-service & client-acquisition AI** (chat + WhatsApp) · **④ Template websites with client-managed CMS** · **⑤ Full-scale marketing suite** (email, social scheduling, unified conversations, social intelligence & sentiment, competitor tracking, automations).
