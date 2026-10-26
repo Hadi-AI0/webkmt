@@ -4,7 +4,7 @@
 >
 > **Mission:** hand-pick the *exact workflow patterns* WebKMT should adapt or rebuild for its five products. The output is an audited shortlist and rebuild backlog — not a pile of blindly imported JSON files.
 >
-> **Read first:** [`AI_BUILD_PACK.md`](./AI_BUILD_PACK.md), [`PRODUCT_STACK.md`](./PRODUCT_STACK.md), and [`OPEN_SOURCE_STACK.md`](./OPEN_SOURCE_STACK.md). If this guide conflicts with the frozen product/license decisions in those files, stop and flag the conflict.
+> **Read first:** [`AI_BUILD_PACK.md`](./AI_BUILD_PACK.md), [`AGENT_PROMPT_SEQUENCE.md`](./AGENT_PROMPT_SEQUENCE.md), [`PRODUCT_STACK.md`](./PRODUCT_STACK.md), the relevant dedicated spec in [`products/`](./products/README.md), and [`OPEN_SOURCE_STACK.md`](./OPEN_SOURCE_STACK.md). If this guide conflicts with the frozen product/license decisions in those files, stop and flag the conflict.
 
 ---
 
