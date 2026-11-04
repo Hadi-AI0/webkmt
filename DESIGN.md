@@ -1,152 +1,168 @@
-# WEBKMT website design audit and direction
+# WEBKMT website design direction
 
-Status: locked for the 2026 public-website refactor.
-Content source of truth: `docs/DEMO_KNOWLEDGE_PACK_WEBKMT.md` v0.8.
+Status: **Loud and flat (street poster)** — locked 2026-11-04 via the tasteskill run
+(`Leonxlnx/taste-skill`, skill `design-taste-frontend`). Supersedes Operational
+Cartography (2026-11-03), which the owner rejected as not the look he wanted.
+Content source of truth: `docs/DEMO_KNOWLEDGE_PACK_WEBKMT.md` (v0.9).
 
-## Tooling installed / checked
+## 1. The idea
 
-- UI/UX Pro Max CLI 2.15.0 installed globally in the sandbox and initialized for Claude with `uipro init --ai claude`.
-- Anthropic `frontend-design` skill installed from `anthropics/skills`.
-- Impeccable CLI 4.8.0 was run through npm. Its direct project installer could not download from `impeccable.style` in this sandbox, so the same Impeccable skill was installed from `pbakaus/impeccable` on GitHub. The Impeccable detector itself runs from npm.
-- Audit command used: `npx impeccable detect index.html templates.html case-study.html css`.
+WEBKMT's un-copyable asset is that it prints its prices and talks plainly.
+So the public site is built like the notice other agencies will not pin in
+their window: **the published price list becomes a street poster** — blunt
+statements and prices at poster scale, flat colour fields, and photographs of
+the businesses it serves stuck on. A "request a quote" competitor cannot run
+this page; that is the test the idea passed.
 
-## Existing design-token map
+The page opens and closes on the name: `WEBKMT` set full-bleed in the hero
+("name across the middle") and again, at the same scale, at the foot of the
+footer — a bracket the scroll closes.
 
-The website does have tokens; the problem is drift and duplication, not total absence.
+## 2. Direction and redraws (tasteskill record)
 
-| Area | Current state found |
-| --- | --- |
-| CSS inventory | 17 CSS files, about 322 KB. The main pages link 12 bundles directly, and bundles import more files. |
-| Variables | 276 custom-property declarations / about 199 unique matched definitions, with repeated and conflicting values. |
-| Colour | Primary teal `#0aacb8` competes with secondary indigo `#6366f1`, dark-theme violet `#7c3aed`, amber `#f59e0b`, and one-off rainbow tool gradients. 67 unique hex colours were found. |
-| Typography | CSS names Inter/Poppins, but those Latin fonts are not loaded on the homepage. Cairo and Noto Sans Arabic are loaded. Latin therefore falls back unpredictably by OS. |
-| Elevation | 135 `box-shadow` declarations and 64 unique shadow recipes; glass/inset highlights are used as decoration. |
-| Radius | 285 radius declarations and 35 unique values, mixing token radii with hard-coded 6–50px values. |
-| Responsive rules | 102 media queries across 20 forms, including 479/480, 767/768 and 1023/1024 variants. |
-| Gradients | 107 gradient declarations and 45 unique recipes. The visual language is gradient-led rather than content-led. |
-| Inline styling | 64 inline `style=` attributes in `index.html`, including the hero, tool buttons and technology chips. |
-| Brand asset | Homepage references missing `assets/logo.svg`. `assets/logo-white.svg` and `assets/favicon.ico` are the same 1.19 MB SVG payload. |
+- Drawn: `draw.mjs --sector agency --tone warm --sections features,showcase,how-it-works,about,proof,list,cta,footer`
+  → three candidates; chose **`loud-flat-poster`** (seed 201687926).
+- Redraw 1 `--redraw palette`: the dealt post-red/mustard-on-bone fought the
+  existing blue/cyan brand mark; the second draw (acid mint/orange with
+  black-and-white photos) fought the warm/human brief. Resolution per the
+  skill's own rule ("keep the dealt proportions, take colours from the
+  subject"): dealt *proportions* (one ground, one ink, one action colour, flat
+  full-strength fields, one colour per panel) with the *subject's* colours —
+  ink navy, brand blue/cyan fields, WhatsApp green as the single action
+  colour, low-chroma bone paper. Photographs stay full-colour and warm.
+- Redraw 2 `--redraw section:about=about-photo-tile-facts`: the dealt about
+  blueprint needs people portraits; WEBKMT has none and inventing people
+  would be fake proof. The redrawn blueprint (wide photo + colour tile +
+  facts) carries real facts: base, hours, languages, published prices.
+- Role swap: the dealt `list` blueprint (giant word + filled bar rows) cannot
+  hold blog articles but holds the **price list** exactly, so `#prices` uses
+  it and the blog keeps its existing frame, restyled.
+- Adaptation: Anton and Work Sans have no Arabic (the asset does not exist),
+  so Arabic display type is **Cairo 800/900** and Arabic text is **IBM Plex
+  Sans Arabic** — two faces per script, declared in `css/poster.css`.
 
-## Impeccable detector findings
-
-Baseline: **62 primary anti-patterns + 13 advisory notes**.
-
-Highest-frequency issues:
-
-- 19 low-contrast findings.
-- 15 thick side-tab/card-stripe patterns.
-- 12 gradient-text patterns.
-- 4 undersized functional text instances.
-- 4 kicker-above-heading patterns.
-- 3 broken/empty images.
-- 3 overused-font findings.
-- 2 icon-tile-stack feature-card patterns.
-- Purple/violet AI-palette and dark-glow findings.
-- Bounce easing and em-dash overuse advisories.
-
-Manual findings that matter commercially:
-
-1. The hero spends its strongest visual area on four rainbow free-tool buttons. It does not show WEBKMT's actual job: connecting first enquiry to operations.
-2. Glassmorphism, particles, gradient washes and identical offer cards make the company look like a generic SaaS template rather than an accountable systems installer.
-3. Offer copy and prices conflict with Knowledge Pack v0.8 throughout HTML, both locale files, template data, portfolio data and chatbot context.
-4. The portfolio architecture is built around client testimonials, ratings and metrics, while the approved proof policy is confidential clients + live products/demos/tools only.
-5. Technology chips use 10px letters and hard-coded brand colours; they are neither legible nor a useful buying signal.
-
-## Locked visual direction: Operational Cartography
-
-Style archetype: **refined B2B editorial minimalism**.
-
-The memorable device is a restrained route map derived from the WEBKMT mark: connected nodes and diagonal spans show the customer's path through a business. The hero's job is to make the operating system visible, not to display decorative cards or statistics.
-
-Concept wireframe:
-
-```text
-[ WEBKMT mark ]                         Systems  Templates  Demos  Contact
-
-Ready-to-run systems                    First enquiry
-for growing Middle East businesses           │
-                                             ● Instant reply
-Websites, WhatsApp AI, commerce,            │
-ERP and automation.                          ● Qualified lead
-                                             │
-[ Request discovery ] [ View systems ]       ● Order / job record
-                                             │
-                                             ● Operations + follow-up
-```
-
-### Palette
+## 3. Palette (css/poster.css tokens, mirrored in css/design-system.css)
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `--wk-ink-950` | `#071B33` | Hero/footer fields, headings on light surfaces |
-| `--wk-ink-800` | `#102A43` | Primary text |
-| `--wk-blue-700` | `#0F6FA8` | Primary action/link colour (AA on white and surface-soft) |
-| `--wk-cyan-500` | `#20C4D8` | Logo/route accent only; never body text on white |
-| `--wk-teal-600` | `#0E9488` | Secondary route/status accent |
-| `--wk-paper` | `#F7FAFC` | Light page field |
-| `--wk-surface` | `#FFFFFF` | Cards and forms |
-| `--wk-muted` | `#526B7D` | Secondary text on light surfaces |
-| `--wk-line` | `#D8E6EF` | Hairlines and component borders |
-| `--wk-whatsapp` | `#157A3C` | WhatsApp action only (AA vs white) |
+| `--p-bg` | `#f4f3f1` | Page ground (low-chroma bone, not yellow cream) |
+| `--p-surface` | `#e9e7e2` | Filled tiles, cards, bars |
+| `--p-ink` | `#0a1e33` | All running text on light grounds |
+| `--p-muted` | `#54636f` | Secondary notes only, never running text |
+| `--p-accent` | `#127a3e` | The single action colour (Book, BOOK band, chat) |
+| `--p-field-ink` | `#071b33` | Hero/footer/steps-of-ink fields |
+| `--p-field-blue` | `#0f6fa8` | Mosaic head + process staircase field |
+| `--p-field-cyan` | `#22c3d6` | Figure tile, map tile, one detail line |
+| `--p-field-paper` | `#f4f3f1` | Output slips |
 
-Purple and amber are retired from the public brand layer. Gradients may appear only inside the supplied logo mark, template artwork, or a very subtle navy hero field. Text is always solid.
+Rules: square corners everywhere (radius 0); no gradients; no shadow at rest
+(only the real overlays: dropdown, modals); no hairlines or outlined boxes
+except genuine form fields and the `data-ui` chat fragment; no glass
+(backdrop-filter neutralised site-wide under `body.wk26`); no index numbers,
+eyebrows or icon-card rows. Dark theme keeps the same fields, inverted ground.
 
-### Typography
+## 4. Typography
 
-- Latin: **Manrope**, 400–800. It is geometric and commercial without defaulting to Inter.
-- Arabic: **IBM Plex Sans Arabic**, 400–700. It pairs with Manrope's technical tone better than a traditional Naskh display face for this product.
-- Arabic rule: when `lang="ar"` or `dir="rtl"`, the Arabic family becomes primary for headings and body.
-- Type scale: display clamp(2.65rem, 6vw, 4.7rem); H2 clamp(2rem, 4vw, 3rem); H3 1.25rem; body 1rem/1.65; small functional text minimum 0.8125rem.
-- Default alignment is start-aligned. Centred type is reserved for the final contact call.
+Self-hosted OFL faces (built to woff2 statics from the google/fonts repo,
+2026-11-04; licences in `assets/fonts/`), declared in `css/poster.css`:
 
-### Layout and component rules
+- Latin display: **Anton** (hero/footer wordmark, section titles, poster words).
+- Latin text: **Work Sans** 400/600.
+- Arabic display: **Cairo** 800/900; Arabic text: **IBM Plex Sans Arabic** 400/600.
+- **Manrope** 400/700 kept for legacy modal chrome only.
+- Five public steps: small 13–14 / body 17–19 / lead 20–26 / head
+  clamp(2.5rem, 1.2rem+5vw, 5.5rem) / wordmark ~26.5vw. Kept app chrome
+  (auth, booking, admin, mini-app modals) retains its own functional scale.
+- Headlines ≤ 2 lines at 1440/768/390; statements ≤ 36px desktop / 24px phone;
+  body never below 16px; `text-wrap: balance/pretty`; tabular numerals on prices.
 
-- 12-column desktop container capped at 1240px; section rhythm 7rem desktop / 4.5rem mobile.
-- Borders carry structure: 1px `--wk-line`; major panels use `--wk-radius-panel: 20px`; controls use 12px; pills are status-only.
-- Shadow hierarchy is intentionally shallow:
-  - resting: `0 1px 2px rgb(7 27 51 / .05)`
-  - raised: `0 16px 40px rgb(7 27 51 / .10)`
-  - floating/modal: `0 24px 64px rgb(7 27 51 / .18)`
-- Offer information is presented as an editorial product ledger with status, outcome, exact entry price and inclusions. Do not chop every fact into identical floating cards.
-- Icons sit inline with headings or in the route map. No 64px icon tile stacked above every heading.
-- Hero motion: one route-line/node sequence. No particles, bounce easing, parallax or reveal-every-section choreography. `prefers-reduced-motion` renders the final state.
-- All interactive targets are at least 44px high where practical; focus is a 3px cyan/blue outline with offset.
+## 5. Layout
 
-### Content rules locked with the design
+- One page margin everywhere: `--margin: clamp(16px, 3.2vw, 28px)`; section
+  gap `clamp(88px, 8vw, 120px)`.
+- Section order is the argument: name → pick your first system (mosaic of
+  unlike tiles) → what you actually get (output slips over a full-bleed
+  photo) → how we work (lines that step across) → yours to keep (photo +
+  facts) → try it yourself (names-as-one-sentence + live analyzer) → PRICES
+  (giant word + filled bars) → inspect the products (kept gallery) → latest
+  insights (kept list) → contact (kept form) → BOOK (one word is the button)
+  → footer (phone number as the headline, name bracket).
+- Kept JS surfaces (portfolio masonry, blog grid, contact/newsletter forms,
+  auth + mini-apps modals, chat widget) keep their behaviour; poster.css
+  restyles them flat and folds them into the same frame.
+- Motion (gated on `prefers-reduced-motion: no-preference` via
+  `html.wk26-anim`): settle-in reveals, a slow drift on the showcase photo,
+  the wordmark scaling toward its footer size across the first screen, and
+  one tool name lit at a time in the proof sentence. The reduced-motion page
+  is the finished page: every hidden start state lives inside the media
+  query, and dialogs are display-gated, not visibility-gated.
 
-- Use current public names: WEBKMT Websites, WEBKMT Chat, WEBKMT Store, WEBKMT ERP, WEBKMT Automate. WEBKMT Marketing is roadmap only.
-- Use only approved prices from Knowledge Pack v0.8. Automate, Store add-ons/management and Marketing are official-quote items.
-- WEBKMT Chat is a pilot deployment. It answers from approved knowledge; it is not “trained” or fine-tuned. Appointment requests are captured for human confirmation.
-- Do not publish client identities, testimonials, ratings, counts or outcome metrics. Proof surfaces are products, template demos, free tools and the business profile.
-- Do not claim native ZATCA compliance. Saudi payment/tax/e-invoicing scope is validated per merchant during implementation.
-- Public contacts are `info@webkmt.com`, WhatsApp `+90 501 361 7795`, LinkedIn company page, X `@webkemet`, Instagram `@webkmt`.
+## 6. Content rules (unchanged from v0.9 knowledge pack, plus one new rule)
 
-## Implementation map
+- Public names: WEBKMT Websites / Chat / Store / ERP / Automate; Marketing is
+  roadmap only. Prices only as published (150 / 300–799 / 800–1,599 / 300+29 /
+  899 / 1,400 + care 59/119/229); Automate, Store add-ons and taxes are
+  official-quote items.
+- No client identities, testimonials, ratings, counts or outcome metrics.
+  Proof = products, demos, free tools, business profile.
+- No ZATCA/compliance claims; merchant-owned validation during implementation.
+- Contacts: info@webkmt.com, WhatsApp +90 501 361 7795 (WEBKMT general
+  contact), LinkedIn company page, X @webkemet, Instagram @webkmt.
+- **New (owner instruction 2026-11-04): the base stack is never named in
+  public content.** No ERPNext, Bagisto, Payload, Dify, Gemini, Supabase,
+  framework or open-source-project names in pages, locales, portfolio data,
+  chatbot knowledge or PDFs. Products are WEBKMT systems; configuration
+  detail belongs in the official written quote. The knowledge pack records
+  this as boundary rule 19 (v0.9).
 
-- `css/design-system.css` is the single late-loaded public design layer. It defines `--wk-*` primitives and maps legacy variables/components to them while older bundles are retired incrementally.
-- `index.html`, `templates.html`, `case-study.html`, both locale files, template data/gallery, portfolio data and chatbot context are aligned to v0.8.
-- Template cards use one shared 3-plan model instead of conflicting per-template setup/care prices.
-- The business profile PDF is exposed from `assets/` and linked as a proof/contact asset.
+## 7. Implementation map
 
-## QA record — 2026-11-04 (live-detector + browser pass)
+- `css/poster.css` — the poster layer (tokens, @font-face, composition,
+  legacy neutralizers under `body.wk26`). Loaded last on all three pages.
+- `css/design-system.css` — shared `--wk-*` primitives retokened to the
+  poster palette for kept components and subpages.
+- `js/poster.js` — reveal observer, name scaling, proof-name cycling; all
+  gated behind `html.wk26-anim`.
+- `index.html` — rebuilt public sections; kept ids/anchors (`#services`,
+  `#portfolio`, `#process`, `#tools`, `#mini-apps`, `#insights`, `#contact`,
+  `#newsletter`), kept form/auth/modal hooks, `data-i18n` on all new copy.
+- `locales/{en,ar}.json` — `poster.*` keys for every new string, both scripts.
+- `mini-apps/website-analyzer.html` — accepts `?url=` from the proof form and
+  runs the same check the visitor asked for (the page's live thing).
+- Legacy bundles (`main-bundle`, `components-bundle`, …) still load beneath
+  the poster layer; retiring them remains a later increment.
 
-Verified in a real Chromium (Puppeteer) against a local server, EN + AR (RTL), desktop 1440px and mobile 390px:
+## 8. QA record — 2026-11-04 (tasteskill lint + inspect, Chromium 153)
 
-- **Scenarios (8/8 pass):** home desktop/mobile, templates desktop/mobile, ERP overview, Chat overview (mobile), home Arabic, templates Arabic (mobile). No horizontal overflow, no broken images, no stale v0.8-conflicting strings, exactly one chatbot widget, modal opens with zero stars/testimonials and a populated scope list, template filter narrows 7 → 1 correctly.
-- **Impeccable live mode** (`impeccable@4.8.0 detect <url>`, computed styles — authoritative over static file mode):
-
-  | Page | Warnings before → after | Advisories before → after |
-  | --- | --- | --- |
-  | `/` | 21 → 2 | 18 → 0 |
-  | `/templates.html` | 15 → 5 | 20 → 0 |
-  | `/case-study.html?id=1` | 6 → 0 | 6 → 0 |
-
-- **Contrast corrections measured, not eyeballed:** primary `--wk-blue-700` `#147FB8` → `#0F6FA8` (4.4:1 → 5.4:1 on white; 4.0:1 → 5.0:1 on surface-soft) and `--wk-whatsapp` `#178A44` → `#157A3C` (white text 4.4:1 → 5.4:1). Live low-contrast findings went to zero on all three pages. Dark-on-dark defects fixed the same pass: footer wordmark and templates CTA-band copy now use the dark-surface ramp; form placeholders use `--wk-muted` at full opacity.
-- **Static file mode caveat:** `detect` on the HTML/CSS files still reports findings from the legacy bundles that load *under* `css/design-system.css` (it does not resolve the final cascade). Those counts fall as legacy bundles are retired; they are not what visitors render.
-- **Accepted warnings (deliberate, do not “fix” blindly):**
-  - `icon-tile-stack` on offer cards — the 42px glyph is part of the product-ledger header row with status + price; headings/prices dominate.
-  - `border-accent-on-rounded` on `.loading-spinner` — a functional spinner, not a card accent.
-  - `ai-color-palette` on template-card previews — gradients are sampled from the owner-supplied WEBKMT mark and appear only as product artwork; all UI chrome is flat token colour.
-- **Mini-apps:** all six tools serve 200 with no page errors and no stale commercial claims. The legacy violet/indigo/pink palette was token-mapped to `--wk-blue-700` / `--wk-ink-950` / `--wk-teal-600` values and the two unbranded titles now carry WEBKMT. Tool-internal layouts otherwise unchanged.
-- **Inline-style sweep:** `templates.html` and `case-study.html` contain zero inline styles. `index.html` retains 40, all functional: `display:none` state toggles flipped by scripts (auth, form steps) and padding on hidden admin/dashboard tables. The overhaul introduced none.
-- **Left for a later increment:** retire legacy CSS bundles beneath the design layer; hide the chat toggle pill while the widget is open; revisit mini-app internal layouts if tools are ever restyled end-to-end.
+- Static lint on the five touched front-end files: **0 findings** (the wider
+  repo lint still reports the legacy bundles that load beneath the layer).
+- `inspect.mjs` at 1440/768/390, before (Operational Cartography):
+  **14 FAIL / 5 WARN**. After: **0 FAIL / 4 WARN**.
+- Defended WARNs (deliberate, listed per skill): `card-rows` (the kept
+  JS-driven gallery and blog list are grids by function, restyled flat);
+  `size-count` (kept app chrome keeps its functional scale; the public
+  reading surface runs five steps); `no-footage` (no honest clip exists for
+  this subject and none could be sourced from the sandbox; the showcase
+  photo carries a slow drift as the moving picture); `ragged-edges` (the
+  staircase indents and tile insets are the dealt blueprints' geometry, not
+  placement drift).
+- RTL verified in Chromium with `localStorage.language=ar`: `dir=rtl`,
+  mirrored composition, Arabic display in Cairo, wordmark stays Latin Anton
+  (legacy `[dir=rtl] h1..h3` element rules are overridden explicitly).
+- Critique round 1 (references/critique.md): design 8 · usability 8 ·
+  creativity 8 · content 8 → **overall 8.0**, no caps applied. Top problems
+  found and fixed in-round: hero wordmark falling back to the Arabic stack
+  in RTL; the insights grid spinning forever without a CMS (now an honest
+  empty state); masonry cards leaving white pockets (cards now fill cells).
+- Critique round 2 (re-run in environment, full log in
+  `.taste-skill/notes.md`): meter still 0 FAIL / 4 WARN; three visible
+  problems fixed (masonry track override restored to the bundle auto-fit
+  with narrow cards stretched; tablet hero rhythm and in-flow photo strip;
+  desktop hero base rest) plus one composition hole (gallery first paint
+  left three empty tracks beside the last card; `js/poster.js` now stretches
+  the final card's row via inline `grid-column: start / -1`). Scores:
+  design 8.5 · usability 8 · creativity 8 · content 8 → **overall 8.2**.
+  Loop stopped at round 2 of the skill's 3-round cap: no further
+  stranger-visible problem in the sheets.
+- Screenshots: `.taste-skill/before/home/` (previous look) and
+  `.taste-skill/after/home/` incl. `rtl-*.jpg` (working files, not committed).

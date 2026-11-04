@@ -148,6 +148,16 @@ class BlogManager {
 
         const publishedPosts = this.posts.filter(post => post.published !== false);
 
+        if (publishedPosts.length === 0) {
+            // Degrade gracefully (no Supabase / no posts yet): an honest note,
+            // never an endless spinner and never invented articles.
+            if (!container.querySelector('.wk26-insights-empty')) {
+                container.innerHTML = '<div class="wk26-insights-empty"><p data-i18n="poster.insights_empty">No articles published yet. The free tools and product demos above are working today.</p></div>';
+                if (window.languageManager && window.languageManager.translatePage) window.languageManager.translatePage();
+            }
+            return;
+        }
+
         container.innerHTML = publishedPosts.slice(0, 3).map(post => `
             <article class="insight-card" data-post-id="${post.id}">
                 <div class="insight-card__image">

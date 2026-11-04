@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="WEBKMT installs websites, WhatsApp AI, e-commerce, ERP and automation for SMBs in Saudi Arabia, the Gulf and wider Middle East. Published entry prices, official written scope.">
-    <meta name="keywords" content="business systems Saudi Arabia, WhatsApp AI assistant, ERPNext implementation, e-commerce system, website templates, workflow automation, Arabic business software">
+    <meta name="keywords" content="business systems Saudi Arabia, WhatsApp AI assistant, ERP systems, e-commerce system, website templates, workflow automation, Arabic business software">
     <meta name="author" content="WebKMT">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="WEBKMT — Ready-to-Run Business Systems for Middle East SMBs">
+    <meta property="og:title" content="WEBKMT: Ready-to-Run Business Systems for Middle East SMBs">
     <meta property="og:description" content="Websites, WhatsApp AI, e-commerce, ERP and automation installed for growing Middle East businesses.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://webkmt.com">
@@ -19,11 +19,11 @@
     
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WEBKMT — Ready-to-Run Business Systems for Middle East SMBs">
+    <meta name="twitter:title" content="WEBKMT: Ready-to-Run Business Systems for Middle East SMBs">
     <meta name="twitter:description" content="Websites, WhatsApp AI, e-commerce, ERP and automation installed for growing Middle East businesses.">
     <meta name="twitter:image" content="https://webkmt.com/assets/webkmt-mark.png">
     
-    <title>WEBKMT — Ready-to-Run Business Systems for Middle East SMBs</title>
+    <title>WEBKMT: Ready-to-Run Business Systems for Middle East SMBs</title>
 
     <!-- Supabase SDK Import Map -->
     <script type="importmap">
@@ -35,11 +35,8 @@
     </script>
 
     <!-- Preconnect for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <!-- Arabic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Simple inline SVG icons - No external dependencies -->
 
@@ -60,7 +57,7 @@
       @media (prefers-color-scheme: dark) {
         :root:not([data-theme]) { --color-primary: #20C4D8; --bg-primary: #071B33; --text-primary: #EEF7FB; }
       }
-      body { font-family: 'Manrope', 'IBM Plex Sans Arabic', system-ui, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: all 300ms ease; }
+      body { font-family: 'Work Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif; background: var(--bg-primary); color: var(--text-primary); transition: background-color 300ms ease, color 300ms ease; }
       .theme-loading * { transition: none !important; }
 
       /* Admin Toggle Button Styles */
@@ -76,7 +73,7 @@
         font-size: 14px;
         font-weight: 500;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: background-color 0.3s ease, transform 0.3s ease;
         margin-right: 12px;
         z-index: 999;
         position: relative;
@@ -89,8 +86,7 @@
       }
 
       .admin-toggle-btn.active {
-        background: #10b981;
-        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        background: #127a3e;
       }
 
       @media (max-width: 768px) {
@@ -114,6 +110,8 @@
     <link rel="stylesheet" href="css/booking.css">
     <!-- WEBKMT design layer: see DESIGN.md. Loaded last so --wk-* tokens govern the public surfaces. -->
     <link rel="stylesheet" href="css/design-system.css">
+    <!-- Poster redesign layer (tasteskill, see DESIGN.md): homepage composition + flat overrides. -->
+    <link rel="stylesheet" href="css/poster.css">
 
     <!-- Favicon: optimized WEBKMT mark (replaces missing/heavy legacy logo assets) -->
     <link rel="icon" type="image/png" href="assets/webkmt-mark.png">
@@ -132,7 +130,7 @@
 </script>
 
 
-<body>
+<body class="wk26">
     <header class="header-enhanced" role="banner">
         <div class="container">
             <nav class="nav-enhanced" role="navigation" aria-label="Main navigation">
@@ -144,10 +142,8 @@
                 <ul class="nav-menu-enhanced">
                     <li class="nav-item-enhanced"><a href="#services" class="nav-link-enhanced" data-i18n="navigation.services">Systems</a></li>
                     <li class="nav-item-enhanced"><a href="/templates" class="nav-link-enhanced" data-i18n="navigation.templates">Templates</a></li>
-                    <li class="nav-item-enhanced"><a href="#portfolio" class="nav-link-enhanced" data-i18n="navigation.portfolio">Demos &amp; Tools</a></li>
+                    <li class="nav-item-enhanced"><a href="#prices" class="nav-link-enhanced" data-i18n="navigation.prices">Prices</a></li>
                     <li class="nav-item-enhanced"><a href="#process" class="nav-link-enhanced" data-i18n="navigation.process">Process</a></li>
-                    <li class="nav-item-enhanced"><a href="#mini-apps" class="nav-link-enhanced" data-i18n="navigation.tools">Free Tools</a></li>
-                    <li class="nav-item-enhanced"><a href="#tools" class="nav-link-enhanced" data-i18n="navigation.foundations">Foundations</a></li>
                     <li class="nav-item-enhanced"><a href="#contact" class="nav-link-enhanced" data-i18n="navigation.contact">Contact</a></li>
                 </ul>
                 
@@ -215,6 +211,7 @@
             <ul class="mobile-nav-menu">
                 <li><a href="#services" class="mobile-nav-link" data-i18n="navigation.services">Systems</a></li>
                 <li><a href="/templates" class="mobile-nav-link" data-i18n="navigation.templates">Templates</a></li>
+                <li><a href="#prices" class="mobile-nav-link" data-i18n="navigation.prices">Prices</a></li>
                 <li><a href="#portfolio" class="mobile-nav-link" data-i18n="navigation.portfolio">Demos &amp; Tools</a></li>
                 <li><a href="#process" class="mobile-nav-link" data-i18n="navigation.process">Process</a></li>
                 <li><a href="#mini-apps" class="mobile-nav-link" data-i18n="navigation.tools">Free Tools</a></li>
@@ -232,190 +229,119 @@
     </header>
 
     <main class="main" role="main">
-        <!-- Hero: Operational Cartography route map (see DESIGN.md §4).
-             The visual explains the product route instead of decorating with
-             particles, glass panels or rainbow shortcut buttons. -->
-        <section class="hero-enhanced" id="home">
-            <div class="container">
-                <div class="hero-layout wk-hero-layout">
-                    <div class="hero-content-enhanced">
-                        <h1 class="hero-title-enhanced"><span data-i18n="hero.title_full">Ready-to-run systems for growing Middle East businesses</span></h1>
-                        <p class="hero-subtitle" data-i18n="hero.description">WEBKMT installs the website, customer-response, selling and operating systems your business needs, then helps you run them in Arabic and English.</p>
-                        <div class="hero-cta-group">
-                            <a href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." class="cta-primary" target="_blank" rel="noopener"><span data-i18n="hero.book_audit">Request a discovery call</span></a>
-                            <a href="/templates" class="cta-secondary"><span data-i18n="hero.view_portfolio">View systems &amp; templates</span></a>
-                            <a href="#mini-apps" class="cta-tertiary"><span data-i18n="hero.explore_mini_apps">Try the free tools</span></a>
-                        </div>
-                        <ul class="wk-hero-facts" aria-label="WEBKMT facts">
-                            <li data-i18n="hero.fact_location">Based in Türkiye</li>
-                            <li data-i18n="hero.fact_market">Saudi Arabia, Gulf &amp; Middle East</li>
-                            <li data-i18n="hero.fact_languages">Arabic + English</li>
-                            <li data-i18n="hero.fact_pricing">Published entry prices</li>
-                        </ul>
-                    </div>
+        <!-- Hero: name across the middle (poster direction, DESIGN.md).
+             The name is the headline; the top-left sentence says what WEBKMT is. -->
+        <section class="wk26-hero" id="home">
+            <div class="wk26-hero__top" data-reveal>
+                <p class="wk26-hero__sentence" data-i18n="poster.hero_sentence">Ready-to-run websites, WhatsApp AI, online store, ERP and automation for Saudi and Gulf businesses. Published prices, in Arabic and English.</p>
+                <a href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." class="wk26-btn" target="_blank" rel="noopener" data-i18n="poster.book_call">Book a call</a>
+            </div>
+            <h1 class="wk26-hero__name" id="wk26HeroName" dir="ltr">WEBKMT</h1>
+            <div class="wk26-hero__bottom">
+                <p data-i18n="poster.hero_corner_left">Based in Türkiye. Working 24/7.</p>
+                <nav class="wk26-hero__links" aria-label="Explore WEBKMT">
+                    <a href="#mini-apps" data-i18n="poster.hero_link_tools">Free tools</a>
+                    <a href="#portfolio" data-i18n="poster.hero_link_demos">Demos</a>
+                    <a href="#tools" data-i18n="poster.hero_link_ownership">Ownership</a>
+                </nav>
+                <p class="wk26-hero__arabic" lang="ar" dir="rtl">أنظمة جاهزة للتشغيل تنمو مع نشاطك</p>
+            </div>
+            <div class="wk26-hero__photo" aria-hidden="true">
+                <img src="assets/img/cafe-counter.jpg" alt="" width="1200" height="800">
+            </div>
+        </section>
 
-                    <div class="wk-system-map" aria-labelledby="systemMapTitle">
-                        <div class="wk-system-map__head">
-                            <div>
-                                <p class="wk-system-map__label" data-i18n="hero.system_label">The connected route</p>
-                                <h2 id="systemMapTitle" data-i18n="hero.system_title">From first message to daily operations</h2>
-                            </div>
-                            <img src="assets/webkmt-mark.png" alt="" width="64" height="58" loading="lazy">
-                        </div>
-                        <ol class="wk-route">
-                            <li><span class="wk-route__node" aria-hidden="true"></span><div><h3 data-i18n="hero.route1_title">Front door</h3><p data-i18n="hero.route1_desc">A clear website or store turns attention into an enquiry or order.</p></div><span class="wk-route__tag" data-i18n="hero.route1_tag">Websites · Store</span></li>
-                            <li><span class="wk-route__node" aria-hidden="true"></span><div><h3 data-i18n="hero.route2_title">Instant response</h3><p data-i18n="hero.route2_desc">WEBKMT Chat acknowledges and answers from approved business information.</p></div><span class="wk-route__tag" data-i18n="hero.route2_tag">WEBKMT Chat</span></li>
-                            <li><span class="wk-route__node" aria-hidden="true"></span><div><h3 data-i18n="hero.route3_title">Qualified handoff</h3><p data-i18n="hero.route3_desc">Need, timing and contact details are captured for human follow-up.</p></div><span class="wk-route__tag" data-i18n="hero.route3_tag">Lead capture</span></li>
-                            <li><span class="wk-route__node" aria-hidden="true"></span><div><h3 data-i18n="hero.route4_title">Business record</h3><p data-i18n="hero.route4_desc">Orders, stock, invoices and customers move into one operating system.</p></div><span class="wk-route__tag" data-i18n="hero.route4_tag">Store · ERP</span></li>
-                            <li><span class="wk-route__node" aria-hidden="true"></span><div><h3 data-i18n="hero.route5_title">Less manual work</h3><p data-i18n="hero.route5_desc">Reminders, summaries and repeat steps are automated where they prove useful.</p></div><span class="wk-route__tag" data-i18n="hero.route5_tag">Automate</span></li>
-                        </ol>
-                        <p class="wk-system-map__note" data-i18n="hero.system_note">Start with the bottleneck costing you enquiries, sales or staff time. Connect the next system when the first is working.</p>
-                    </div>
+        <!-- Systems: mosaic of unlike tiles (poster direction). Prices in full: #prices. -->
+        <section class="wk26-section" id="services">
+            <div class="wk26-mosaic">
+                <div class="wk26-tile wk26-tile--head" data-reveal>
+                    <h2 data-i18n="poster.features_title">Pick your first system</h2>
+                    <p data-i18n="poster.features_sub">Five systems, one route. Start where it hurts, connect the next when the first is working.</p>
+                </div>
+                <div class="wk26-tile wk26-tile--photo" data-reveal>
+                    <img src="assets/img/store-interior.jpg" alt="Inside a small clothing store, garments on rails and a counter" width="1200" height="800" loading="lazy">
+                </div>
+                <div class="wk26-tile wk26-tile--figure" data-reveal>
+                    <span class="wk26-figure">$150</span>
+                    <p data-i18n="poster.figure_caption">where our published prices start</p>
+                </div>
+                <div class="wk26-tile wk26-tile--sentence is-green" data-reveal>
+                    <p data-i18n="poster.sentence_own">You own what you pay for.</p>
+                </div>
+                <div class="wk26-tile wk26-tile--list" data-reveal>
+                    <h3 data-i18n="poster.route_title">The route your customer travels</h3>
+                    <ul>
+                        <li data-i18n="poster.route_1">Websites: get found</li>
+                        <li data-i18n="poster.route_2">Chat: answer in seconds</li>
+                        <li data-i18n="poster.route_3">Store: sell online</li>
+                        <li data-i18n="poster.route_4">ERP: run the business</li>
+                        <li data-i18n="poster.route_5">Automate: remove the repeat work</li>
+                    </ul>
+                </div>
+                <div class="wk26-tile wk26-tile--sentence is-ink wk26-tile--wide" data-reveal>
+                    <p data-i18n="poster.sentence_answer">Answered in seconds. Even at midnight.</p>
+                </div>
+                <div class="wk26-tile wk26-tile--sentence wk26-tile--wide" data-reveal>
+                    <p data-i18n="poster.sentence_rent">No per-user rent. Ever.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Enhanced Services Section -->
-        <section class="services-enhanced" id="services">
-            <div class="container">
-                <header class="section__header">
-                    <h2 class="section__title" data-i18n="offers.title">Choose the system your business needs first</h2>
-                    <p class="section__description" data-i18n="offers.description">Published entry prices for standard packages. Your official quote confirms scope, timeline, inclusions and third-party charges before work begins.</p>
-                </header>
-
-                <div class="services__grid-enhanced" id="servicesGrid">
-                    <article class="service-card-enhanced offer-card" data-offer="presence" data-animation-delay="0">
-                        <div class="service-card__inner">
-                            <div class="service-card__front offer-card__front">
-                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-                                <span class="offer-card__badge offer-card__badge--neutral" data-i18n="offers.presence.status">Available now</span>
-                                <h3 class="offer-card__title" data-i18n="offers.presence.title">WEBKMT Websites</h3>
-                                <p class="offer-card__desc" data-i18n="offers.presence.desc">Start from a ready-made business design and choose files only, customized files, or a fully managed first year.</p>
-                                <div class="offer-card__price">
-                                    <span class="offer-card__setup" data-i18n="offers.presence.setup">Plan 1 · USD 150 files only</span>
-                                    <span class="offer-card__care" data-i18n="offers.presence.care">Plan 2 USD 300–799 · Ultimate USD 800–1,599</span>
-                                </div>
-                                <ul class="offer-card__features">
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f1">Template files delivered within 2 days after payment</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f2">Own the purchased template after full payment</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f3">Ultimate adds content writing, hosting and annual maintenance</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.presence.f4">Arabic/English-ready structure with a WhatsApp enquiry path</span></li>
-                                </ul>
-                                <div class="offer-card__actions">
-                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in WEBKMT Websites." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
-                                    <a class="offer-btn offer-btn--ghost" href="/templates" data-i18n="offers.presence.cta2">Browse templates</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="service-card-enhanced offer-card offer-card--featured" data-offer="receptionist" data-animation-delay="100">
-                        <div class="service-card__inner">
-                            <div class="service-card__front offer-card__front">
-                                <span class="offer-card__badge" data-i18n="offers.receptionist.status">Pilot deployments</span>
-                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="8" width="16" height="11" rx="2"/><path d="M12 8V4"/><circle cx="12" cy="3" r="1"/><path d="M9.5 16.5h5"/></svg></div>
-                                <h3 class="offer-card__title" data-i18n="offers.receptionist.title">WEBKMT Chat — WhatsApp + website AI</h3>
-                                <p class="offer-card__desc" data-i18n="offers.receptionist.desc">An Arabic/English receptionist that responds instantly, answers from approved information and brings a human in when needed.</p>
-                                <div class="offer-card__price">
-                                    <span class="offer-card__setup" data-i18n="offers.receptionist.setup">USD 300 setup</span>
-                                    <span class="offer-card__care" data-i18n="offers.receptionist.care">+ USD 29/month within fair use</span>
-                                </div>
-                                <ul class="offer-card__features">
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f1">Instant acknowledgement on WhatsApp and your website</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f2">Answers grounded in your approved services, prices and FAQs</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f3">Qualifies enquiries and captures contact details with consent</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.receptionist.f4">Appointment requests captured for human confirmation</span></li>
-                                </ul>
-                                <div class="offer-card__actions">
-                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in WEBKMT Chat (WhatsApp + website AI)." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
-                                    <a class="offer-btn offer-btn--ghost" href="#portfolio" data-i18n="offers.receptionist.cta2">See how the pilot works</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="service-card-enhanced offer-card" data-offer="store" data-animation-delay="200">
-                        <div class="service-card__inner">
-                            <div class="service-card__front offer-card__front">
-                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/></svg></div>
-                                <span class="offer-card__badge offer-card__badge--neutral" data-i18n="offers.store.status">Scoped implementation</span>
-                                <h3 class="offer-card__title" data-i18n="offers.store.title">WEBKMT Store</h3>
-                                <p class="offer-card__desc" data-i18n="offers.store.desc">A complete e-commerce foundation for businesses ready to move beyond taking every order through chat.</p>
-                                <div class="offer-card__price">
-                                    <span class="offer-card__setup" data-i18n="offers.store.setup">USD 899 basic</span>
-                                    <span class="offer-card__care" data-i18n="offers.store.care">Initial setup + 1 year hosting only</span>
-                                </div>
-                                <ul class="offer-card__features">
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.store.f1">Catalogue, checkout, customers and order management</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.store.f2">Arabic/English-ready RTL/LTR storefront</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.store.f3">Payment, shipping and country rules scoped per merchant</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.store.f4">Add-ons, content and management itemized in the official quote</span></li>
-                                </ul>
-                                <div class="offer-card__actions">
-                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in WEBKMT Store." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
-                                    <a class="offer-btn offer-btn--ghost" href="#contact" data-i18n="offers.store.cta2">Discuss your store</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="service-card-enhanced offer-card" data-offer="business_os" data-animation-delay="200">
-                        <div class="service-card__inner">
-                            <div class="service-card__front offer-card__front">
-                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
-                                <span class="offer-card__badge offer-card__badge--neutral" data-i18n="offers.business_os.status">Scoped implementation</span>
-                                <h3 class="offer-card__title" data-i18n="offers.business_os.title">WEBKMT ERP</h3>
-                                <p class="offer-card__desc" data-i18n="offers.business_os.desc">Finance, inventory, sales, people and operations in one ERPNext-based system, configured around your business.</p>
-                                <div class="offer-card__price">
-                                    <span class="offer-card__setup" data-i18n="offers.business_os.setup">USD 1,400 flat setup</span>
-                                    <span class="offer-card__care" data-i18n="offers.business_os.care">Care USD 59 / 119 / 229 per month</span>
-                                </div>
-                                <ul class="offer-card__features">
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f1">No WEBKMT per-user licence; care follows workload</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f2">Accounting, stock, sales/CRM, HR and project modules by scope</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f3">Arabic/English interface with RTL support</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.business_os.f4">Managed updates, backups, monitoring and minor changes by tier</span></li>
-                                </ul>
-                                <div class="offer-card__actions">
-                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in WEBKMT ERP." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
-                                    <a class="offer-btn offer-btn--ghost" href="#contact" data-i18n="offers.business_os.cta2">Discuss implementation</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="service-card-enhanced offer-card" data-offer="automate" data-animation-delay="300">
-                        <div class="service-card__inner">
-                            <div class="service-card__front offer-card__front">
-                                <div class="offer-card__icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></div>
-                                <span class="offer-card__badge offer-card__badge--neutral" data-i18n="offers.automate.status">Scoped projects</span>
-                                <h3 class="offer-card__title" data-i18n="offers.automate.title">WEBKMT Automate</h3>
-                                <p class="offer-card__desc" data-i18n="offers.automate.desc">Connect the tools you already use and remove repeat manual steps, with a human fallback for exceptions.</p>
-                                <div class="offer-card__price">
-                                    <span class="offer-card__setup" data-i18n="offers.automate.setup">Official quote</span>
-                                    <span class="offer-card__care" data-i18n="offers.automate.care">Priced after discovery</span>
-                                </div>
-                                <ul class="offer-card__features">
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f1">Lead alerts and follow-up workflows</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f2">Payment and operational reminders</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f3">Document intake and structured task routing</span></li>
-                                    <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="offers.automate.f4">Scheduled sales and operations summaries</span></li>
-                                </ul>
-                                <div class="offer-card__actions">
-                                    <a class="offer-btn offer-btn--primary" href="https://wa.me/905013617795?text=Hi! I'm interested in WEBKMT Automate." target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.122 1.535 5.856L0 24l6.335-1.512A11.955 11.955 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.814 9.814 0 0 1-5.031-1.388l-.361-.214-3.762.897.937-3.664-.235-.375A9.818 9.818 0 0 1 2.182 12C2.182 6.58 6.58 2.182 12 2.182S21.818 6.58 21.818 12 17.42 21.818 12 21.818z"/></svg><span data-i18n="offers.cta_discuss">Discuss on WhatsApp</span></a>
-                                    <a class="offer-btn offer-btn--ghost" href="#contact" data-i18n="offers.automate.cta2">Request an audit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="care-strip">
-                    <h3 data-i18n="offers.care_title">Care depends on the system you choose</h3>
-                    <p data-i18n="offers.care_desc">Website Ultimate includes annual maintenance and minor edits. WEBKMT Chat includes fair-use operations. WEBKMT ERP care is tiered by workload. Store Basic includes one year of hosting only. The exact boundary is written in your quote.</p>
-                </div>
-                <p class="offers-custom-note" data-i18n="offers.roadmap_note">WEBKMT Marketing is in development. Early partner enquiries are welcome; it is not sold as a finished standard package yet.</p>
-                <p class="offers-custom-note"><span data-i18n="offers.custom_note">Need a website, web app, fix, hosting help or an AI/automation workflow outside these packages?</span> <a href="https://wa.me/905013617795?text=Hi! I'd like to scope a custom website, web app, AI or automation project." target="_blank" rel="noopener" data-i18n="offers.custom_link">Ask us to scope it</a></p>
+        <!-- Showcase: output slips along the edge (poster direction).
+             The slips are real output formats with approved WEBKMT facts. -->
+        <section class="wk26-slips" id="output" aria-labelledby="outputTitle">
+            <div class="wk26-slips__bg" aria-hidden="true">
+                <img src="assets/img/desk-output.jpg" alt="" width="1600" height="1000" loading="lazy">
+            </div>
+            <div class="wk26-slips__intro" data-reveal>
+                <h2 id="outputTitle" data-i18n="poster.slips_title">What you actually get</h2>
+                <p data-i18n="poster.slips_p1">Not a login to someone else's platform. Documents, messages and records with your name on them.</p>
+                <p data-i18n="poster.slips_p2">Six samples of the output, as it lands.</p>
+            </div>
+            <div class="wk26-slips__row">
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip1_t">Official quote</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <p data-i18n="poster.slip1_a">WEBKMT Websites, Ultimate plan</p>
+                    <p data-i18n="poster.slip1_b">USD 800–1,599</p>
+                    <p data-i18n="poster.slip1_c">Scope, timeline and inclusions in writing, before work begins.</p>
+                </article>
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip2_t">WhatsApp answer</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <div class="wk26-chat" data-ui>
+                        <p class="wk26-chat__msg wk26-chat__msg--in" data-i18n="poster.slip2_q">What does a website cost?</p>
+                        <p class="wk26-chat__msg wk26-chat__msg--out" data-i18n="poster.slip2_a">Plans start at USD 150 for the template files. Customized files are USD 300–799. Want the details here, or a short call?</p>
+                    </div>
+                </article>
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip3_t">Order confirmed</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <p data-i18n="poster.slip3_a">Order 1042</p>
+                    <p data-i18n="poster.slip3_b">3 items, payment confirmed</p>
+                    <p data-i18n="poster.slip3_c">Delivery details are in your account.</p>
+                </article>
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip4_t">Invoice</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <p data-i18n="poster.slip4_a">Invoice INV-2026-031</p>
+                    <p data-i18n="poster.slip4_b">Total SAR 1,240</p>
+                    <p data-i18n="poster.slip4_c">Issued from your own system, in Arabic and English.</p>
+                </article>
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip5_t">Weekly summary</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <p data-i18n="poster.slip5_a">38 enquiries answered</p>
+                    <p data-i18n="poster.slip5_b">9 handed to a human</p>
+                    <p data-i18n="poster.slip5_c">None left waiting.</p>
+                </article>
+                <article class="wk26-slip" data-reveal>
+                    <h3 data-i18n="poster.slip6_t">Care note</h3>
+                    <p class="wk26-slip__rule" aria-hidden="true">· · · · ·</p>
+                    <p data-i18n="poster.slip6_a">Monthly care</p>
+                    <p data-i18n="poster.slip6_b">Backup verified. Updates applied.</p>
+                    <p data-i18n="poster.slip6_c">2 of your 4 small changes used.</p>
+                </article>
             </div>
         </section>
 
@@ -423,7 +349,7 @@
         <section class="portfolio-enhanced" id="portfolio">
             <div class="container">
                 <header class="section__header">
-                    <h2 class="section__title" data-i18n="portfolio.title">Products and demos you can inspect</h2>
+                    <h2 class="section__title" data-i18n="portfolio.title">Inspect the products</h2>
                     <p class="section__description" data-i18n="portfolio.description">Client identities stay confidential. Evaluate WEBKMT through our own products, template gallery, free tools and business profile. Items labelled pilot or scoped are not presented as finished client case studies.</p>
                 </header>
                 
@@ -552,137 +478,92 @@
         </section>
 
         <!-- Process Section -->
-        <section class="process" id="process">
-            <div class="container">
-                <header class="section__header">
-                    <h2 class="section__title" data-i18n="process.title">How we work</h2>
-                    <p class="section__description" data-i18n="process.description">A clear path from first conversation to a running system. Timelines are confirmed in the official quote after scope and client inputs are known.</p>
-                </header>
-                
-                <div class="process__timeline">
-                    <div class="process-step">
-                        <div class="process-step__number">01</div>
-                        <div class="process-step__content">
-                            <h3 class="process-step__title" data-i18n="process.steps.discovery.title">Discover</h3>
-                            <p class="process-step__description" data-i18n="process.steps.discovery.description">We identify the bottleneck, current tools, users and success criteria.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="process-step__number">02</div>
-                        <div class="process-step__content">
-                            <h3 class="process-step__title" data-i18n="process.steps.design.title">Scope &amp; official quote</h3>
-                            <p class="process-step__description" data-i18n="process.steps.design.description">We recommend the smallest suitable system and separate inclusions, exclusions and third-party costs.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="process-step__number">03</div>
-                        <div class="process-step__content">
-                            <h3 class="process-step__title" data-i18n="process.steps.development.title">Configure or build</h3>
-                            <p class="process-step__description" data-i18n="process.steps.development.description">We install, brand and configure content, data, workflows and integrations in the agreed scope.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="process-step__number">04</div>
-                        <div class="process-step__content">
-                            <h3 class="process-step__title" data-i18n="process.steps.testing.title">Review &amp; train</h3>
-                            <p class="process-step__description" data-i18n="process.steps.testing.description">We test realistic cases with the people who will use the system and correct the agreed items.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="process-step">
-                        <div class="process-step__number">05</div>
-                        <div class="process-step__content">
-                            <h3 class="process-step__title" data-i18n="process.steps.launch.title">Launch &amp; care</h3>
-                            <p class="process-step__description" data-i18n="process.steps.launch.description">We go live, monitor first use and maintain or improve the system under the selected programme.</p>
-                        </div>
-                    </div>
+        <!-- How we work: lines that step across (poster direction). -->
+        <section class="wk26-section wk26-steps" id="process">
+            <div class="wk26-steps__grid">
+                <div class="wk26-step" data-reveal>
+                    <h2 class="wk26-step__line" data-i18n="poster.step1_line">First, tell us where it hurts.</h2>
+                    <p data-i18n="poster.step1_text">A 30-minute call. We find the bottleneck costing you enquiries, sales or staff time.</p>
+                </div>
+                <div class="wk26-step" data-reveal>
+                    <p class="wk26-step__line" data-i18n="poster.step2_line">Then one written quote.</p>
+                    <p data-i18n="poster.step2_text">Scope, timeline, inclusions and exclusions on paper. No surprises later.</p>
+                </div>
+                <div class="wk26-step" data-reveal>
+                    <p class="wk26-step__line" data-i18n="poster.step3_line">We configure, not improvise.</p>
+                    <p data-i18n="poster.step3_text">Your system is installed from a maintained golden build, branded and set up around your content and data.</p>
+                </div>
+                <div class="wk26-step" data-reveal>
+                    <p class="wk26-step__line" data-i18n="poster.step4_line">Your team learns on real cases.</p>
+                    <p data-i18n="poster.step4_text">We test realistic work with the people who will use it, and correct the setup with them.</p>
+                </div>
+                <div class="wk26-step" data-reveal>
+                    <p class="wk26-step__line" data-i18n="poster.step5_line">Live, and looked after.</p>
+                    <p data-i18n="poster.step5_text">We go live, watch first use, and keep it updated, backed up and answered for under care.</p>
                 </div>
             </div>
         </section>
 
-
-        <!-- Foundations: replaces the former generic technology logo wall.
-             The copy explains ownership/open-source/Arabic-first principles
-             without turning internal implementation choices into promises. -->
-        <section class="tools wk-foundations-section" id="tools">
-            <div class="container">
-                <header class="section__header">
-                    <h2 class="section__title" data-i18n="foundations.title">Built on foundations you can keep</h2>
-                    <p class="section__description" data-i18n="foundations.description">WEBKMT packages proven open-source platforms into configured business systems, so the client is buying an operating asset rather than another blank software account.</p>
-                </header>
-                <div class="wk-foundations">
-                    <article class="wk-foundation"><span class="wk-foundation__mark" aria-hidden="true"></span><h3 data-i18n="foundations.f1_title">Open-source cores</h3><p data-i18n="foundations.f1_desc">Repeatable ERP, commerce, website and automation foundations that can be tailored per client.</p></article>
-                    <article class="wk-foundation"><span class="wk-foundation__mark" aria-hidden="true"></span><h3 data-i18n="foundations.f2_title">Arabic and English by design</h3><p data-i18n="foundations.f2_desc">Saudi/Gulf-friendly customer language, RTL-aware interfaces and English for partners and staff.</p></article>
-                    <article class="wk-foundation"><span class="wk-foundation__mark" aria-hidden="true"></span><h3 data-i18n="foundations.f3_title">Approved information only</h3><p data-i18n="foundations.f3_desc">AI answers are grounded in the services, prices and policies the business approves, with human escalation.</p></article>
-                    <article class="wk-foundation"><span class="wk-foundation__mark" aria-hidden="true"></span><h3 data-i18n="foundations.f4_title">Ownership and care</h3><p data-i18n="foundations.f4_desc">Your business data remains yours. Hosting, backup and support boundaries are written into each programme.</p></article>
+        <!-- Ownership: wide photo, colour tile, facts (poster direction).
+             No base stack is named anywhere on this page (owner instruction). -->
+        <section class="wk26-section" id="tools">
+            <header class="wk26-about__head" data-reveal>
+                <h2 data-i18n="foundations.title">Yours to keep</h2>
+                <p class="wk26-about__lead" data-i18n="foundations.description">Every WEBKMT system is installed under your own accounts and handed over with the keys, so you are buying an operating asset rather than another blank software account.</p>
+            </header>
+            <div class="wk26-about__tiles">
+                <div class="wk26-about__photo" data-reveal>
+                    <img src="assets/img/istanbul-street.jpg" alt="A street of small shops in Istanbul at dusk" width="1600" height="1000" loading="lazy">
+                    <div class="wk26-about__overlay">
+                        <p data-i18n="poster.about_overlay">Leave any time and take your files, data and exports with you. That is written into every program, not added as a favour.</p>
+                    </div>
+                </div>
+                <div class="wk26-about__side" data-reveal>
+                    <div class="wk26-about__map" aria-hidden="true">
+                        <svg viewBox="0 0 320 190" fill="none" aria-hidden="true">
+                            <path d="M28 156 C 110 60, 210 44, 292 30" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 14"/>
+                            <circle cx="28" cy="156" r="11" fill="currentColor"/>
+                            <circle cx="292" cy="30" r="11" fill="currentColor"/>
+                        </svg>
+                        <p data-i18n="poster.about_map">Türkiye to the Gulf, one conversation.</p>
+                    </div>
+                    <dl class="wk26-facts">
+                        <div><dt data-i18n="poster.fact_based_l">Based</dt><dd data-i18n="poster.fact_based_v">Türkiye</dd></div>
+                        <div><dt data-i18n="poster.fact_hours_l">Hours</dt><dd data-i18n="poster.fact_hours_v">24/7, online</dd></div>
+                        <div><dt data-i18n="poster.fact_lang_l">Languages</dt><dd data-i18n="poster.fact_lang_v">Arabic + English</dd></div>
+                        <div><dt data-i18n="poster.fact_prices_l">Prices</dt><dd data-i18n="poster.fact_prices_v">Published, in USD</dd></div>
+                    </dl>
                 </div>
             </div>
         </section>
 
-        <!-- Mini-Apps Section -->
-        <section class="mini-apps" id="mini-apps">
-            <div class="container">
-                <header class="section__header">
-                    <h2 class="section__title">Tools We've Built For You</h2>
-                    <p class="section__description">Free to use — each one is a real product we developed, showcasing what we can build for your company.<br>Sign up for a free account to unlock full access.</p>
-                </header>
-                
-                <div class="mini-apps-grid">
-                    <button class="mini-app-card" data-app="website-analyzer">
-                        <div class="app-icon analyzer-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.35-4.35"/>
-                                <path d="M12 7v5l3 3"/>
-                            </svg>
-                        </div>
-                        <h3>Website Analyzer</h3>
-                        <p>Comprehensive website analysis - performance, SEO, and accessibility</p>
-                    </button>
-                    
-                    <button class="mini-app-card" data-app="color-palette">
-                        <div class="app-icon palette-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="13.5" cy="6.5" r=".5"/>
-                                <circle cx="17.5" cy="10.5" r=".5"/>
-                                <circle cx="8.5" cy="7.5" r=".5"/>
-                                <circle cx="6.5" cy="12.5" r=".5"/>
-                                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
-                            </svg>
-                        </div>
-                        <h3>Color Palette</h3>
-                        <p>Generate beautiful color palettes</p>
-                    </button>
-
-                    <button class="mini-app-card" data-app="roi-calculator">
-                        <div class="app-icon roi-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <line x1="12" y1="1" x2="12" y2="23"/>
-                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                            </svg>
-                        </div>
-                        <h3>ROI Calculator</h3>
-                        <p>Calculate marketing return on investment</p>
-                    </button>
-
-                    <button class="mini-app-card" data-app="kmt-link">
-                        <div class="app-icon link-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
-                                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
-                            </svg>
-                        </div>
-                        <h3>KMT Link</h3>
-                        <p>Smart link management tool</p>
-                    </button>
+        <!-- Proof: names as one sentence (poster direction). The names are the
+             free tools; buttons keep .mini-app-card + data-app so the existing
+             mini-apps modal still opens. The analyzer form is the live thing. -->
+        <section class="wk26-section mini-apps" id="mini-apps">
+            <div class="wk26-proof">
+                <div class="wk26-proof__main">
+                <h2 data-i18n="poster.proof_title">Try it yourself</h2>
+                <p class="wk26-names">
+                    <button type="button" class="mini-app-card wk26-name is-lit" data-app="website-analyzer">Website Analyzer</button>,
+                    <button type="button" class="mini-app-card wk26-name" data-app="color-palette">Color Palette</button>,
+                    <button type="button" class="mini-app-card wk26-name" data-app="roi-calculator">ROI Calculator</button>,
+                    <button type="button" class="mini-app-card wk26-name" data-app="kmt-link">KMT Link</button>
+                    <span data-i18n="poster.proof_mid">and the</span>
+                    <a class="wk26-name" href="/templates" data-i18n="poster.proof_gallery">template gallery</a><span data-i18n="poster.proof_tail"> are free and working.</span>
+                </p>
+                <form class="wk26-analyzer" action="/mini-apps/website-analyzer.html" method="get">
+                    <label for="wk26AnalyzerUrl" data-i18n="poster.analyzer_label">Check your own website, free</label>
+                    <input id="wk26AnalyzerUrl" name="url" type="text" inputmode="url" autocomplete="url" required placeholder="yourwebsite.com">
+                    <button type="submit" data-i18n="poster.analyzer_btn">Analyze</button>
+                </form>
+                <p class="wk26-proof__note" data-i18n="poster.proof_note">Client names stay confidential, for legal reasons. Judge us by the products above instead.</p>
                 </div>
+                <figure class="wk26-proof__photo">
+                    <img src="assets/img/warehouse.jpg" alt="Shelves of packed boxes in a small warehouse" width="1200" height="900" loading="lazy">
+                </figure>
             </div>
-        </section>
-        
-        <!-- Mini-Apps Modal -->
+
         <div class="mini-apps-modal" id="miniAppsModal">
             <div class="modal-backdrop"></div>
             <div class="modal-container">
@@ -742,19 +623,76 @@
         </div>
 
         <!-- Insights Section -->
+        <!-- Prices: giant word, filled bar rows (poster direction).
+             The published price list, whole. Numbers: Knowledge Pack v0.9. -->
+        <section class="wk26-section" id="prices">
+            <div class="wk26-prices__col">
+                <h2 class="wk26-prices__word" data-i18n="poster.prices_word">Prices</h2>
+                <details class="wk26-bar" open>
+                    <summary>WEBKMT Websites</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_web_1">Template files only</span><b>USD 150</b></div>
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_web_2">Customized files</span><b>USD 300–799</b></div>
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_web_3">Ultimate, first year managed</span><b>USD 800–1,599</b></div>
+                        <p class="wk26-bar__note" data-i18n="poster.p_web_n">Files within 2 days of payment. Yours 100% after full payment.</p>
+                    </div>
+                </details>
+                <details class="wk26-bar">
+                    <summary>WEBKMT Chat</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_chat_1">Setup</span><b>USD 300</b></div>
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_chat_2">Monthly, within fair use</span><b>USD 29</b></div>
+                        <p class="wk26-bar__note" data-i18n="poster.p_chat_n">Pilot deployments. 5,000 messages classified and 3,000 AI answers a month.</p>
+                    </div>
+                </details>
+                <details class="wk26-bar">
+                    <summary>WEBKMT Store</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_store_1">Basic setup + 1 year hosting</span><b>USD 899</b></div>
+                        <p class="wk26-bar__note" data-i18n="poster.p_store_n">Payments, shipping and add-ons are scoped in your quote.</p>
+                    </div>
+                </details>
+                <details class="wk26-bar">
+                    <summary>WEBKMT ERP</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_erp_1">Flat setup</span><b>USD 1,400</b></div>
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_erp_2">Care, monthly by workload</span><b>USD 59 / 119 / 229</b></div>
+                        <p class="wk26-bar__note" data-i18n="poster.p_erp_n">No per-user pricing.</p>
+                    </div>
+                </details>
+                <details class="wk26-bar">
+                    <summary>WEBKMT Automate</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_auto_1">Scoped per workflow</span><b data-i18n="poster.p_auto_1b">Official quote</b></div>
+                        <p class="wk26-bar__note" data-i18n="poster.p_auto_n">Starts with a free audit.</p>
+                    </div>
+                </details>
+                <details class="wk26-bar">
+                    <summary>WEBKMT Marketing</summary>
+                    <div class="wk26-bar__panel">
+                        <div class="wk26-bar__row"><span data-i18n="poster.p_mkt_1">In development</span><b data-i18n="poster.p_mkt_1b">Partner enquiries</b></div>
+                        <p class="wk26-bar__note" data-i18n="offers.roadmap_note">WEBKMT Marketing is in development. Early partner enquiries are welcome; it is not sold as a finished standard package yet.</p>
+                    </div>
+                </details>
+                <p class="wk26-prices__fine" data-i18n="poster.prices_fine">Entry prices in USD. Your official written quote itemises scope, taxes and third-party fees before work begins.</p>
+                <p class="wk26-prices__fine" data-i18n="offers.care_desc">Website Ultimate includes annual maintenance and minor edits. WEBKMT Chat includes fair-use operations. WEBKMT ERP care is tiered by workload. Store Basic includes one year of hosting only. The exact boundary is written in your quote.</p>
+                <p class="wk26-prices__fine"><span data-i18n="offers.custom_note">Need a website, web app, fix, hosting help or an AI/automation workflow outside these packages?</span> <a href="https://wa.me/905013617795?text=Hi! I'd like to scope a custom website, web app, AI or automation project." target="_blank" rel="noopener" data-i18n="offers.custom_link">Ask us to scope it</a></p>
+            </div>
+        </section>
+
         <section class="insights" id="insights">
             <div class="container">
                 <header class="section__header">
-                    <h2 class="section__title">Latest Insights</h2>
+                    <h2 class="section__title" data-i18n="poster.insights_title">Latest insights</h2>
                     <p class="section__description">
-                        Practical guides and deep dives on software engineering, AI tooling, and business automation
+                        <span data-i18n="poster.insights_desc">Practical guides and deep dives on software engineering, AI tooling, and business automation</span>
                     </p>
                 </header>
                 
                 <div class="insights__grid">
                     <!-- Blog posts will be dynamically loaded here -->
-                    <div class="blog-loading">
-                        <p>Loading latest insights...</p>
+                    <div class="wk26-insights-empty">
+                        <p data-i18n="poster.insights_empty">No articles published yet. The free tools and product demos above are working today.</p>
                     </div>
                 </div>
             </div>
@@ -764,7 +702,7 @@
         <section class="contact" id="contact">
             <div class="container">
                 <header class="section__header">
-                    <h2 class="section__title" data-i18n="contact.title">Tell us what your business needs</h2>
+                    <h2 class="section__title" data-i18n="contact.title">Tell us what you need</h2>
                     <p class="section__description" data-i18n="contact.description">Share the outcome you need and we will recommend the smallest suitable system or scope the work in an official quote.</p>
                 </header>
                 
@@ -949,7 +887,7 @@
 
                         <!-- Success State -->
                         <div class="form-step success-state" data-step="success" style="display: none; text-align: center; padding: 2rem 0;">
-                            <div class="success-icon" style="font-size: 3rem; color: #10b981; margin-bottom: 1rem;">✓</div>
+                            <div class="success-icon" style="margin-bottom: 1rem;"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#127a3e" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 L9.5 18 L20 6.5"/></svg></div>
                             <h3>Got it!</h3>
                             <p style="margin-bottom: 1.5rem;">We'll review your brief and reply through your preferred channel.</p>
                             <a href="https://wa.me/905013617795" target="_blank" class="btn btn--secondary" style="display: inline-flex; align-items: center; gap: 0.5rem;">
@@ -987,64 +925,44 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer footer--minimal" id="footer" role="contentinfo">
-        <div class="container">
-            <div class="footer__content">
-                <div class="footer__brand">
-                    <a href="#home" class="footer__logo">
-                        <img src="assets/webkmt-mark.png" alt="" width="46" height="42">
-                        <span class="footer__logo-text">WEBKMT</span>
-                    </a>
-                    <p class="footer__description" data-i18n="footer.description">Ready-to-run websites, WhatsApp AI, e-commerce, ERP and automation for SMBs in Saudi Arabia, the Gulf and wider Middle East.</p>
-                </div>
-                
-                <div class="footer__links">
-                    <div class="footer__column">
-                        <ul class="footer__list">
-                            <li><a href="#services" class="footer__link">Systems</a></li>
-                            <li><a href="/templates" class="footer__link">Templates</a></li>
-                            <li><a href="#portfolio" class="footer__link">Demos &amp; Tools</a></li>
-                            <li><a href="#contact" class="footer__link">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer__column">
-                        <address class="footer__address">
-                            <p><a href="mailto:info@webkmt.com">info@webkmt.com</a></p>
-                            <p><a href="tel:+905013617795">+90 501 361 7795</a></p>
-                            <p><a href="/assets/WEBKMT_Business_Profile_2026.pdf" target="_blank" rel="noopener">Business Profile (PDF)</a></p>
-                        </address>
-                    </div>
-                </div>
+        <!-- CTA: one word is the button (poster direction). Opens the booking
+             modal via [data-book-call]; falls back to the contact section. -->
+        <a class="wk26-book" href="#contact" data-book-call>
+            <p class="wk26-book__sentence" data-i18n="poster.book_sentence">Tell us where the route breaks. Thirty minutes ends with a written quote.</p>
+            <svg class="wk26-book__arrow" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M10 38 L38 10 M15 10 h23 v23"/></svg>
+            <span class="wk26-book__word" data-i18n="poster.book_word">Book</span>
+        </a>
 
-                <div class="footer__social">
-                    <a href="https://www.linkedin.com/company/webkmt" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
-                    </a>
-                    <a href="https://x.com/webkemet" class="footer__social-link" aria-label="X (Twitter)" target="_blank" rel="noopener">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
-                        </svg>
-                    </a>
-                    <a href="https://www.instagram.com/webkmt/" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                        </svg>
-                    </a>
-                </div>
+    <!-- Footer: contact as the headline (poster direction). The name returns
+         at full width, closing the bracket the hero opened. -->
+    <footer class="footer wk26-footer" id="footer" role="contentinfo">
+        <div class="wk26-footer__notes">
+            <div>
+                <p data-i18n="footer.description">Ready-to-run websites, WhatsApp AI, e-commerce, ERP and automation for SMBs in Saudi Arabia, the Gulf and wider Middle East.</p>
+                <p data-i18n="poster.footer_hours">Working 24/7, online.</p>
             </div>
-            
-            <div class="footer__bottom">
-                <div class="footer__bottom-content">
-                    <p class="footer__copyright" data-i18n="footer.legal.copyright">© 2026 WEBKMT. All rights reserved.</p>
-                    <nav class="footer__legal" aria-label="Legal navigation">
-                        <a href="#" class="footer__legal-link">Privacy</a>
-                        <a href="#" class="footer__legal-link">Terms</a>
-                    </nav>
-                </div>
+            <a class="wk26-footer__top" href="#home" data-i18n="poster.footer_top">Back to top</a>
+        </div>
+        <div>
+            <a class="wk26-footer__phone" href="https://wa.me/905013617795" target="_blank" rel="noopener" dir="ltr">+90 501 361 7795</a>
+            <a class="wk26-footer__mail" href="mailto:info@webkmt.com">info@webkmt.com</a>
+            <div class="wk26-footer__meta">
+                <nav aria-label="Footer">
+                    <a href="#services" data-i18n="navigation.services">Systems</a>
+                    <a href="/templates" data-i18n="navigation.templates">Templates</a>
+                    <a href="#prices" data-i18n="navigation.prices">Prices</a>
+                    <a href="#process" data-i18n="navigation.process">Process</a>
+                    <a href="#contact" data-i18n="navigation.contact">Contact</a>
+                    <a href="/assets/WEBKMT_Business_Profile_2026.pdf" data-i18n="poster.footer_profile">Business profile (PDF)</a>
+                    <a href="/assets/WEBKMT_Catalog_2026.pdf" data-i18n="poster.footer_catalog">Systems catalog (PDF)</a>
+                    <a href="https://www.linkedin.com/company/webkmt" target="_blank" rel="noopener">LinkedIn</a>
+                    <a href="https://x.com/webkemet" target="_blank" rel="noopener">X</a>
+                    <a href="https://www.instagram.com/webkmt/" target="_blank" rel="noopener">Instagram</a>
+                </nav>
+                <span data-i18n="poster.footer_credits">Photographs generated for WEBKMT</span>
+                <span><span data-i18n="footer.legal.copyright">© 2026 WEBKMT. All rights reserved.</span> · Istanbul</span>
             </div>
+            <p class="wk26-footer__name" id="wk26FooterName" dir="ltr" aria-hidden="true">WEBKMT</p>
         </div>
     </footer>
 
@@ -1195,7 +1113,7 @@
                         </svg>
                     </button>
                 </div>
-                <div class="admin-tabs" style="display: flex; gap: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
+                <div class="admin-tabs" style="display: flex; gap: 1rem; background: rgba(255,255,255,0.04);">
                     <button class="admin-tab active" data-tab="blog" style="background: none; border: none; color: white; padding: 0.5rem 1rem; cursor: pointer; border-bottom: 2px solid var(--color-primary);">Blog</button>
                     <button class="admin-tab" data-tab="leads" style="background: none; border: none; color: rgba(255, 255, 255, 0.7); padding: 0.5rem 1rem; cursor: pointer;">Leads</button>
                     <button class="admin-tab" data-tab="users" style="background: none; border: none; color: rgba(255, 255, 255, 0.7); padding: 0.5rem 1rem; cursor: pointer;">Users</button>
@@ -1348,7 +1266,7 @@
                     <div class="table-container" style="overflow-x: auto;">
                         <table style="width: 100%; text-align: left; border-collapse: collapse; color: white;">
                             <thead>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <tr style="background: rgba(255,255,255,0.04);">
                                     <th style="padding: 0.75rem;">Date</th>
                                     <th style="padding: 0.75rem;">Name</th>
                                     <th style="padding: 0.75rem;">Email</th>
@@ -1372,7 +1290,7 @@
                     <div class="table-container" style="overflow-x: auto;">
                         <table style="width: 100%; text-align: left; border-collapse: collapse; color: white;">
                             <thead>
-                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <tr style="background: rgba(255,255,255,0.04);">
                                     <th style="padding: 0.75rem;">Joined</th>
                                     <th style="padding: 0.75rem;">Email</th>
                                     <th style="padding: 0.75rem;">ID</th>
@@ -1443,14 +1361,14 @@
 
     // Listen for auth state changes to update admin status
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Setting up admin authentication listener...');
+        console.log('Setting up admin authentication listener...');
 
         // Wait for auth manager and blog manager to be available
         function setupAdminListener() {
             if (window.authManager && window.blogManager) {
                 // Subscribe to auth state changes
                 window.authManager.subscribe(async (authData) => {
-                    console.log('🔐 Auth state changed, checking admin status...');
+                    console.log('Auth state changed, checking admin status...');
 
                     if (authData.isAuthenticated && authData.user) {
                         // Re-check admin status when user logs in
@@ -1475,7 +1393,7 @@
                     }
                 });
 
-                console.log('✅ Admin authentication listener setup complete');
+                console.log('Admin authentication listener setup complete');
             } else {
                 // Retry in 500ms
                 setTimeout(setupAdminListener, 500);
@@ -1513,6 +1431,7 @@
     <!-- AI Chatbot Script -->
     <script src="js/chatbot.js" defer></script>
     <script src="js/booking.js" defer></script>
+    <script src="js/poster.js" defer></script>
 
 
 </body>
