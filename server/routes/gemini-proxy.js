@@ -8,7 +8,10 @@ const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch
 class GeminiProxy {
     constructor() {
         this.apiKey = process.env.GEMINI_API_KEY;
-        this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-001:generateContent';
+        // gemini-1.5-flash-001 was retired by Google; default to the current
+        // low-cost Flash-Lite. Override with GEMINI_MODEL in .env if needed.
+        const model = process.env.GEMINI_MODEL || 'gemini-2.5-flash-lite';
+        this.apiEndpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
         
         if (!this.apiKey) {
             console.warn('⚠️ Gemini API key not found in environment variables');
