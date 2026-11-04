@@ -1,5 +1,0 @@
-pypdf
-reportlab
-pillow
-arabic-reshaper
-python-bidi
