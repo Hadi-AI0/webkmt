@@ -134,6 +134,8 @@ app.use(cors({
     const allowedOrigins = getAllowedOrigins();
     if (!origin && process.env.NODE_ENV !== 'production') return callback(null, true);
     if (!origin || allowedOrigins.includes(origin)) callback(null, true);
+    // Sandbox preview hosts (https://8083-<id>.e2b.app) in development
+    if (process.env.NODE_ENV !== 'production' && /^https:\/\/[a-z0-9-]+\.e2b\.app$/.test(origin)) return callback(null, true);
     else callback(new Error(`Origin ${origin} not allowed by CORS`));
   },
   credentials: true,
@@ -233,11 +235,28 @@ export { supabaseManager };
 `);
 });
 
+// Dev preview: force revalidation on documents and dynamic routes so browsers
+// and proxies never serve a stale page after edits.
+if (process.env.NODE_ENV !== 'production') {
+  app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+  });
+}
+
 // Static files
+// In development serve with revalidation only (no-cache): preview browsers and
+// proxies must never hold a day-old copy of HTML/CSS/JS after a redesign.
 app.use(express.static(path.join(__dirname, '../'), {
-  maxAge: '1d',
   etag: true,
-  lastModified: true
+  lastModified: true,
+  setHeaders: (res) => {
+    if (process.env.NODE_ENV !== 'production') {
+      res.setHeader('Cache-Control', 'no-cache');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    }
+  }
 }));
 
 // API Routes
