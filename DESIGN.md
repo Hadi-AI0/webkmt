@@ -149,10 +149,20 @@ Self-hosted OFL faces (built to woff2 statics from the google/fonts repo,
 - RTL verified in Chromium with `localStorage.language=ar`: `dir=rtl`,
   mirrored composition, Arabic display in Cairo, wordmark stays Latin Anton
   (legacy `[dir=rtl] h1..h3` element rules are overridden explicitly).
-- Critique round (references/critique.md): design 8 · usability 8 ·
+- Critique round 1 (references/critique.md): design 8 · usability 8 ·
   creativity 8 · content 8 → **overall 8.0**, no caps applied. Top problems
   found and fixed in-round: hero wordmark falling back to the Arabic stack
   in RTL; the insights grid spinning forever without a CMS (now an honest
   empty state); masonry cards leaving white pockets (cards now fill cells).
+- Critique round 2 (re-run in environment, full log in
+  `.taste-skill/notes.md`): meter still 0 FAIL / 4 WARN; three visible
+  problems fixed (masonry track override restored to the bundle auto-fit
+  with narrow cards stretched; tablet hero rhythm and in-flow photo strip;
+  desktop hero base rest) plus one composition hole (gallery first paint
+  left three empty tracks beside the last card; `js/poster.js` now stretches
+  the final card's row via inline `grid-column: start / -1`). Scores:
+  design 8.5 · usability 8 · creativity 8 · content 8 → **overall 8.2**.
+  Loop stopped at round 2 of the skill's 3-round cap: no further
+  stranger-visible problem in the sheets.
 - Screenshots: `.taste-skill/before/home/` (previous look) and
   `.taste-skill/after/home/` incl. `rtl-*.jpg` (working files, not committed).

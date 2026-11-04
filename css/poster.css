@@ -165,7 +165,7 @@ body.wk26 .section__description { font-size: var(--step-lead); color: var(--p-in
   background: var(--p-field-ink); color: var(--p-field-ink-ink);
   min-height: calc(100svh - 72px);
   display: flex; flex-direction: column; justify-content: space-between;
-  padding: clamp(20px, 4vh, 44px) var(--margin) clamp(20px, 3.5vh, 36px);
+  padding: clamp(20px, 4vh, 44px) var(--margin) clamp(12px, 2vh, 20px);
   overflow: hidden; position: relative;
 }
 .wk26-hero__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
@@ -173,7 +173,7 @@ body.wk26 .section__description { font-size: var(--step-lead); color: var(--p-in
 .wk26-hero__top .wk26-btn { flex-shrink: 0; }
 .wk26-hero__name {
   font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
-  font-size: clamp(5rem, 26.5vw, 30rem); line-height: 0.86; letter-spacing: -0.01em;
+  font-size: clamp(5rem, 26.5vw, 30rem); line-height: 0.82; letter-spacing: -0.01em;
   white-space: nowrap; margin: 0; color: var(--p-field-ink-ink);
   transform-origin: left center; will-change: transform;
 }
@@ -187,6 +187,17 @@ body.wk26 .section__description { font-size: var(--step-lead); color: var(--p-in
 .wk26-hero__links a:hover { color: var(--p-field-cyan); }
 .wk26-hero__arabic { font-family: "Cairo", "IBM Plex Sans Arabic", sans-serif; font-weight: 800; font-size: 1.25rem; }
 .wk26-hero__photo { display: none; }
+
+@media (max-width: 980px) and (min-width: 721px) {
+  .wk26-hero { justify-content: flex-start; }
+  .wk26-hero__name { margin-top: clamp(2rem, 7vh, 5rem); }
+  .wk26-hero__bottom { margin-top: auto; }
+  .wk26-hero__photo {
+    display: block; order: 5; height: 24svh; overflow: hidden;
+    margin: 1.5rem calc(-1 * var(--margin)) 0;
+  }
+  .wk26-hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+}
 
 @media (max-width: 720px) {
   .wk26-hero { min-height: 0; justify-content: flex-start; gap: 1.25rem; padding-bottom: 0; }
@@ -413,7 +424,7 @@ body.wk26 :is(#portfolio, #insights, #contact, #newsletter) a { color: #0a5b8c; 
 .wk26-prices__fine { font-size: 1rem; color: var(--p-muted); margin-top: 1.25rem; }
 
 /* ---------- Portfolio (kept JS): flat tiles -------------------------------- */
-body.wk26 .portfolio__grid-masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+body.wk26 .portfolio__grid-masonry { gap: 8px; }
 body.wk26 .portfolio-card-masonry {
   background: var(--p-surface) !important; border: none !important; border-radius: 0 !important;
   box-shadow: none !important; overflow: hidden; /* taste-skill-ignore: this line removes a legacy shadow */
@@ -429,7 +440,9 @@ body.wk26 .card-technologies > * {
   padding: 0 !important; font-size: var(--step-small); color: var(--p-muted); box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
 }
 body.wk26 .card-category { background: none !important; border: none !important; color: var(--p-muted); padding: 0 !important; }
-@media (max-width: 720px) { body.wk26 .portfolio__grid-masonry { grid-template-columns: 1fr; } }
+/* Narrow cards were centred at 250px inside wider tracks, leaving pockets;
+   on this page every card fills its track. */
+body.wk26 .portfolio-card-masonry.card-narrow { max-width: none; justify-self: stretch; }
 
 /* ---------- Insights (kept JS) --------------------------------------------- */
 body.wk26 .insights__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }

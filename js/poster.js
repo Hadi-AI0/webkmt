@@ -70,4 +70,35 @@
             });
         }, { passive: true });
     }
+
+    /* Portfolio gallery: the kept masonry shows four cards first, which can
+       leave the last grid row partly empty (a hole beside the final card).
+       Stretch the final card to the row's end whenever the row is short.
+       Runs on render, on "show more", and on resize. */
+    var grid = document.getElementById('portfolioGrid');
+    if (grid) {
+        var fillLastRow = function () {
+            var cards = grid.children;
+            if (!cards.length) return;
+            var tracks = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+            var last = cards[cards.length - 1];
+            last.style.gridColumn = '';
+            var cs = getComputedStyle(last);
+            var start = parseInt(cs.gridColumnStart, 10) || 1;
+            var gap = parseFloat(cs.columnGap || '0') || 0;
+            var trackW = (grid.getBoundingClientRect().width - gap * (tracks - 1)) / tracks;
+            var used = Math.round((last.getBoundingClientRect().width + gap) / (trackW + gap));
+            if (start + used - 1 < tracks) {
+                last.style.gridColumn = start + ' / -1';
+            }
+        };
+        var timer = 0;
+        var schedule = function () {
+            window.clearTimeout(timer);
+            timer = window.setTimeout(fillLastRow, 120);
+        };
+        new MutationObserver(schedule).observe(grid, { childList: true, subtree: false });
+        window.addEventListener('resize', schedule, { passive: true });
+        schedule();
+    }
 })();
