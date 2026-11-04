@@ -664,6 +664,16 @@
             analyzeWebsite();
         });
 
+        // Homepage handoff (poster proof form): ?url= prefills the input and
+        // runs the same check the visitor asked for. analyzeWebsite validates
+        // and normalizes the value itself.
+        (() => {
+            const shared = new URLSearchParams(window.location.search).get('url');
+            if (!shared) return;
+            document.getElementById('websiteUrl').value = shared;
+            analyzeWebsite();
+        })();
+
         function showError(msg) {
             const box = document.getElementById('errorBox');
             box.innerHTML = msg;

@@ -1,5 +1,6 @@
 /*
-  WEBKMT public design system — Operational Cartography
+  WEBKMT public design system — token layer (poster redesign 2026-11: see DESIGN.md;
+  new homepage composition lives in css/poster.css, this file carries shared tokens)
   ---------------------------------------------------------------------------
   Why this layer exists:
   - The legacy bundles define the same tokens several times and mix teal,
@@ -20,25 +21,26 @@
   --wk-blue-600: #159cd8;
   --wk-cyan-500: #20c4d8;
   --wk-teal-600: #0e9488;
-  --wk-paper: #f7fafc;
+  --wk-paper: #f4f3f1;
   --wk-surface: #ffffff;
-  --wk-surface-soft: #eef6fa;
-  --wk-muted: #526b7d;
-  --wk-line: #d8e6ef;
-  --wk-line-strong: #b9d2e2;
-  --wk-whatsapp: #157a3c;
+  --wk-surface-soft: #e9e7e2;
+  --wk-muted: #5c6b78;
+  --wk-line: #e3ded2;
+  --wk-line-strong: #cfc8b8;
+  --wk-whatsapp: #127a3e;
   --wk-danger: #c2413b;
 
-  /* Type: Manrope carries Latin UI; IBM Plex Sans Arabic carries Arabic. */
-  --wk-font-latin: "Manrope", "Segoe UI", Arial, sans-serif;
+  /* Type: Anton/Cairo display, Work Sans text, IBM Plex Sans Arabic for Arabic. */
+  --wk-font-display: "Anton", "Cairo", "Arial Narrow", sans-serif;
+  --wk-font-latin: "Work Sans", "Segoe UI", Arial, sans-serif;
   --wk-font-arabic: "IBM Plex Sans Arabic", "Noto Sans Arabic", Tahoma, sans-serif;
 
   /* One radius and elevation hierarchy replaces dozens of local recipes. */
-  --wk-radius-control: 12px;
-  --wk-radius-card: 18px;
-  --wk-radius-panel: 24px;
-  --wk-shadow-resting: 0 1px 2px rgb(7 27 51 / 0.05);
-  --wk-shadow-raised: 0 16px 40px rgb(7 27 51 / 0.1);
+  --wk-radius-control: 0px;
+  --wk-radius-card: 0px;
+  --wk-radius-panel: 0px;
+  --wk-shadow-resting: none;
+  --wk-shadow-raised: none;
   --wk-shadow-floating: 0 24px 64px rgb(7 27 51 / 0.18);
   --wk-section-space: clamp(4.5rem, 9vw, 7rem);
   --wk-container: 1240px;
@@ -56,7 +58,7 @@
   --color-accent-dark: var(--wk-blue-700);
   --bg-primary: var(--wk-paper);
   --bg-secondary: var(--wk-surface-soft);
-  --bg-tertiary: #e2eef5;
+  --bg-tertiary: #dedcd5;
   --color-surface: var(--wk-surface);
   --text-primary: var(--wk-ink-800);
   --text-secondary: var(--wk-muted);
@@ -74,23 +76,24 @@
   --font-family-secondary: var(--wk-font-latin);
   --font-family-arabic-primary: var(--wk-font-arabic);
   --font-family-arabic-secondary: var(--wk-font-arabic);
-  --radius-sm: 6px;
-  --radius-base: 8px;
-  --radius-md: 10px;
+  --radius-sm: 0px;
+  --radius-base: 0px;
+  --radius-md: 0px;
   --radius-lg: var(--wk-radius-control);
   --radius-xl: var(--wk-radius-card);
   --radius-2xl: var(--wk-radius-panel);
   --radius-3xl: 28px;
   --shadow-sm: var(--wk-shadow-resting);
   --shadow-base: var(--wk-shadow-resting);
-  --shadow-md: 0 8px 24px rgb(7 27 51 / 0.08);
+  --shadow-md: none;
   --shadow-lg: var(--wk-shadow-raised);
   --shadow-xl: var(--wk-shadow-floating);
   --shadow-2xl: var(--wk-shadow-floating);
-  --gradient-primary: linear-gradient(135deg, var(--wk-blue-700), var(--wk-teal-600));
-  --gradient-secondary: linear-gradient(135deg, var(--wk-teal-600), var(--wk-blue-700));
-  --gradient-accent: linear-gradient(135deg, var(--wk-cyan-500), var(--wk-blue-700));
-  --gradient-hero: linear-gradient(150deg, #041426 0%, var(--wk-ink-950) 58%, #0d355f 100%);
+  /* Poster rule: no gradients. Legacy gradient tokens now resolve to flat fields. */
+  --gradient-primary: var(--wk-blue-700);
+  --gradient-secondary: var(--wk-whatsapp);
+  --gradient-accent: var(--wk-cyan-500);
+  --gradient-hero: var(--wk-ink-950);
 }
 
 [data-theme="dark"] {

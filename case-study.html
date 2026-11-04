@@ -4,20 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title id="pageTitle">Product Overview — WEBKMT</title>
+    <title id="pageTitle">Product Overview | WEBKMT</title>
     <meta name="description" id="pageDescription" content="A status-labelled WEBKMT product overview. Client identities and testimonials are not published; inspect the product scope, foundations and next step instead.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="WEBKMT">
-    <meta property="og:title" id="ogTitle" content="Product Overview — WEBKMT">
+    <meta property="og:title" id="ogTitle" content="Product Overview | WEBKMT">
     <meta property="og:description" id="ogDesc" content="A status-labelled WEBKMT product overview.">
     <meta property="og:image" content="https://webkmt.com/assets/webkmt-mark.png">
 
     <!-- Type system: Manrope for Latin, IBM Plex Sans Arabic for Arabic. -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Theme init (prevents FOUC) -->
     <script>
@@ -33,10 +30,11 @@
          other .cs-* rules in css/design-system.css; this page has no local
          colour/gradient recipes. -->
     <link rel="stylesheet" href="css/design-system.css">
+    <link rel="stylesheet" href="css/poster.css">
     <link rel="icon" type="image/png" href="assets/webkmt-mark.png">
     <link rel="apple-touch-icon" href="assets/webkmt-mark.png">
 </head>
-<body>
+<body class="wk26">
     <!-- Minimal product-overview navigation -->
     <nav class="cs-nav" aria-label="Product overview navigation">
         <a href="/" class="cs-nav-logo" aria-label="WEBKMT home">
@@ -105,7 +103,7 @@
                     </section>
 
                     <section class="cs-section">
-                        <h2 id="statusTitle">What this page proves — and what it does not</h2>
+                        <h2 id="statusTitle">What this page proves, and what it does not</h2>
                         <div class="cs-status-note">
                             <p id="csResults"></p>
                         </div>
@@ -164,7 +162,7 @@
           notFoundTitle: 'Product overview not found', notFoundText: 'This product overview may have moved or does not exist.', notFoundButton: 'View products & demos',
           overview: 'Overview', challengeLabel: 'The business problem', challengeTitle: 'What this system addresses',
           approachLabel: 'WEBKMT approach', approachTitle: 'How it is configured', featuresLabel: 'Scope', featuresTitle: 'What to inspect',
-          statusLabel: 'Current status', statusTitle: 'What this page proves — and what it does not',
+          statusLabel: 'Current status', statusTitle: 'What this page proves, and what it does not',
           ctaTitle: 'Discuss this system for your business', ctaText: 'Tell us the outcome you need. We’ll confirm fit, scope and price in an official quote before work begins.',
           quote: 'Request an official quote', whatsapp: 'WhatsApp us', tech: 'Foundations', details: 'Product details',
           type: 'Type', status: 'Status', year: 'Reference year', category: 'Category', open: 'Open', discuss: 'Discuss this system',
@@ -175,7 +173,7 @@
           notFoundTitle: 'لم تُوجد نظرة المنتج', notFoundText: 'ربما نُقلت نظرة المنتج هذه أو لم تعد موجودة.', notFoundButton: 'عرض المنتجات والعروض',
           overview: 'نظرة عامة', challengeLabel: 'مشكلة النشاط', challengeTitle: 'ما الذي يعالجه هذا النظام؟',
           approachLabel: 'نهج WEBKMT', approachTitle: 'كيف يُهيأ النظام؟', featuresLabel: 'النطاق', featuresTitle: 'ما الذي يجب فحصه؟',
-          statusLabel: 'الحالة الحالية', statusTitle: 'ما تثبته هذه الصفحة — وما لا تثبته',
+          statusLabel: 'الحالة الحالية', statusTitle: 'ما تثبته هذه الصفحة، وما لا تثبته',
           ctaTitle: 'ناقش هذا النظام لنشاطك', ctaText: 'أخبرنا بالنتيجة التي تحتاجها. وسنؤكد الملاءمة والنطاق والسعر في عرض سعر رسمي قبل بدء العمل.',
           quote: 'اطلب عرض سعر رسمياً', whatsapp: 'راسلنا واتساب', tech: 'الأسس', details: 'تفاصيل المنتج',
           type: 'النوع', status: 'الحالة', year: 'سنة المرجع', category: 'الفئة', open: 'افتح', discuss: 'ناقش هذا النظام',
@@ -228,9 +226,9 @@
         var description = get(project.description);
         var category = (CATEGORIES[project.category] || {})[lang] || project.category || '';
 
-        document.getElementById('pageTitle').textContent = title + ' — WEBKMT';
+        document.getElementById('pageTitle').textContent = title + ' | WEBKMT';
         document.getElementById('pageDescription').content = description.slice(0, 155);
-        document.getElementById('ogTitle').content = title + ' — WEBKMT';
+        document.getElementById('ogTitle').content = title + ' | WEBKMT';
         document.getElementById('ogDesc').content = description.slice(0, 155);
 
         setText('breadcrumbTitle', title);

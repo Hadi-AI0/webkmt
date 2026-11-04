@@ -1,0 +1,664 @@
+/*
+  WEBKMT poster layer — "Loud and flat" (tasteskill draw, seed 201687926)
+  ---------------------------------------------------------------------------
+  Idea: WEBKMT's published price list, the notice other agencies will not pin
+  in the window, becomes a street poster — blunt statements and prices at
+  poster scale, flat fields, photographs of the client's world stuck on.
+  Palette: dealt proportions (one ground, one ink, one accent, flat fields)
+  with the subject's own colours (ink navy, brand blue/cyan, WhatsApp green,
+  warm paper). Square corners everywhere. No gradients, no resting shadows,
+  no hairlines, no outlined boxes, no glass, no index numbers.
+  Load order: after design-system.css. Scope: body.wk26 only.
+  Type: Anton (Latin display) / Cairo (Arabic display) / Work Sans (Latin
+  text) / IBM Plex Sans Arabic (Arabic text) — Anton+Work Sans have no
+  Arabic, hence the per-script pairing (recorded in DESIGN.md).
+*/
+
+/* Self-hosted OFL faces (Google Fonts repo, built to woff2 statics 2026-11-04).
+   Keeps the poster type independent of any CDN; licences in assets/fonts/. */
+@font-face { font-family: "Anton"; src: url("../assets/fonts/anton-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Work Sans"; src: url("../assets/fonts/worksans-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Work Sans"; src: url("../assets/fonts/worksans-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Cairo"; src: url("../assets/fonts/cairo-800.woff2") format("woff2"); font-weight: 800; font-display: swap; }
+@font-face { font-family: "Cairo"; src: url("../assets/fonts/cairo-900.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Arabic"; src: url("../assets/fonts/plexarabic-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Arabic"; src: url("../assets/fonts/plexarabic-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-400.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Manrope"; src: url("../assets/fonts/manrope-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+
+body.wk26 {
+  /* Palette roles (subject colours in dealt proportions) */
+  --p-bg: #f4f3f1;
+  --p-surface: #e9e7e2;
+  --p-ink: #0a1e33;
+  --p-muted: #54636f;
+  --p-accent: #127a3e;
+  --p-accent-ink: #ffffff;
+  --p-field-ink: #071b33;
+  --p-field-ink-ink: #f4f3f1;
+  --p-field-blue: #0f6fa8;
+  --p-field-blue-ink: #ffffff;
+  --p-field-cyan: #22c3d6;
+  --p-field-cyan-ink: #07293d;
+  --p-field-paper: #f4f3f1;
+
+  /* Five type steps only (sheet §3) */
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2.5rem, 1.2rem + 5vw, 5.5rem);
+  --step-statement: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+
+  --margin: clamp(16px, 3.2vw, 28px);
+  --section-gap: clamp(88px, 8vw, 120px);
+
+  background: var(--p-bg);
+  color: var(--p-ink);
+  font-family: "Work Sans", "IBM Plex Sans Arabic", "Segoe UI", sans-serif;
+  font-size: var(--step-body);
+  line-height: 1.5;
+}
+
+[data-theme="dark"] body.wk26 {
+  --p-bg: #071b33;
+  --p-surface: #0e2b47;
+  --p-ink: #f5f1e8;
+  --p-muted: #a9bece;
+  --p-field-paper: #071b33;
+}
+
+body.wk26 ::selection { background: var(--p-field-cyan); color: var(--p-field-cyan-ink); }
+body.wk26 :focus-visible { outline: 3px solid var(--p-accent); outline-offset: 3px; }
+body.wk26 p { text-wrap: pretty; color: inherit; }
+body.wk26 :is(h1, h2, h3, h4, h5, h6) { color: inherit; }
+body.wk26 :is(button, input, select, textarea, summary) { font-family: inherit; }
+body.wk26 h1, body.wk26 h2, body.wk26 h3 { text-wrap: balance; }
+
+.wk26-display {
+  font-family: "Anton", "Cairo", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+[dir="rtl"] .wk26-display {
+  font-family: "Cairo", "IBM Plex Sans Arabic", sans-serif;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.05;
+  text-transform: none;
+}
+[dir="rtl"] body.wk26 {
+  font-family: "IBM Plex Sans Arabic", "Work Sans", Tahoma, sans-serif;
+}
+
+/* ---------- Legacy neutralizers (kept chrome: header, modals, cards) ---- */
+body.wk26 header, body.wk26 section, body.wk26 footer { box-shadow: none; } /* taste-skill-ignore: this line removes a legacy shadow */
+body.wk26 :where(.portfolio-card-masonry, .insight-card, .blog-post, .contact-item,
+  .mini-app-card, .service-card-enhanced, .wk-foundation, .process-step) {
+  box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 * { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; } /* taste-skill-ignore: this line removes legacy glass */
+/* insight cards: visible base; animation only when motion is welcome */
+body.wk26 .insight-card { opacity: 1 !important; transform: none !important; animation: none !important; }
+/* Small-text floor on kept components */
+body.wk26 .card-description, body.wk26 .blog-post-content, body.wk26 .section__description {
+  font-size: 1rem; line-height: 1.55; color: var(--p-ink);
+}
+body.wk26 .card-category, body.wk26 .card-duration, body.wk26 .blog-post-category,
+body.wk26 .insight-card__meta, body.wk26 .insight-card__read-time { font-size: var(--step-small); }
+
+/* ---------- Header: a plain bar ------------------------------------------ */
+body.wk26 .header-enhanced {
+  background: var(--p-bg);
+  border: none !important;
+  box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+[data-theme="dark"] body.wk26 .header-enhanced { background: var(--p-field-ink); }
+body.wk26 .header-enhanced .container { max-width: none; padding-inline: var(--margin); }
+body.wk26 .logo-enhanced span {
+  font-family: "Work Sans", sans-serif; font-weight: 600; font-size: 1.125rem;
+  color: var(--p-ink); letter-spacing: 0;
+}
+body.wk26 .nav-link-enhanced {
+  font-size: 1rem; font-weight: 400; color: var(--p-ink); text-decoration: none;
+}
+body.wk26 .nav-link-enhanced:hover { color: var(--p-accent); }
+body.wk26 .auth-btn, body.wk26 .theme-toggle-enhanced, body.wk26 .lang-toggle-enhanced {
+  border-radius: 0 !important; border: none !important; box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+  background: var(--p-surface); color: var(--p-ink);
+  font-family: inherit; font-size: 0.9375rem; font-weight: 600;
+}
+body.wk26 .auth-btn:hover, body.wk26 .theme-toggle-enhanced:hover, body.wk26 .lang-toggle-enhanced:hover {
+  background: var(--p-ink); color: var(--p-bg);
+}
+body.wk26 .mobile-menu-enhanced { background: var(--p-bg); box-shadow: none !important; border: none !important; } /* taste-skill-ignore: this line removes a legacy shadow */
+body.wk26 .mobile-nav-link { border: none !important; font-size: 1.25rem; color: var(--p-ink); }
+body.wk26 .user-dropdown { border-radius: 0; box-shadow: 0 24px 64px rgb(7 27 51 / 0.18) !important; } /* taste-skill-ignore: real overlay menu, the allowed shadow case */
+
+/* ---------- Shared section frame ----------------------------------------- */
+.wk26-section { padding: var(--section-gap) var(--margin); }
+.wk26-section > * { max-width: none; }
+body.wk26 .section__title {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: var(--step-head); line-height: 0.92; letter-spacing: -0.01em; color: var(--p-ink);
+  margin: 0 0 1.5rem; text-align: start;
+}
+[dir="rtl"] body.wk26 .section__title { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; line-height: 1.1; }
+body.wk26 .section__header { text-align: start; margin-bottom: 3rem; max-width: none; }
+body.wk26 .section__header .section__description { max-width: 62ch; }
+body.wk26 .section__description { font-size: var(--step-lead); color: var(--p-ink); }
+
+/* Buttons: flat, square, one fill */
+.wk26-btn {
+  display: inline-block; background: var(--p-accent); color: var(--p-accent-ink);
+  font-weight: 600; font-size: 1.0625rem; line-height: 1; text-decoration: none;
+  padding: 1.125rem 1.75rem; border: none; border-radius: 0; cursor: pointer;
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+.wk26-btn:hover { transform: translateY(-2px); }
+.wk26-btn:active { transform: translateY(1px); }
+.wk26-btn--ink { background: var(--p-ink); color: var(--p-bg); }
+
+/* ---------- Hero: name across the middle ---------------------------------- */
+.wk26-hero {
+  background: var(--p-field-ink); color: var(--p-field-ink-ink);
+  min-height: calc(100svh - 72px);
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: clamp(20px, 4vh, 44px) var(--margin) clamp(20px, 3.5vh, 36px);
+  overflow: hidden; position: relative;
+}
+.wk26-hero__top { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
+.wk26-hero__sentence { font-size: 1.125rem; line-height: 1.5; margin: 0; max-width: 36ch; color: #d9e4ee; }
+.wk26-hero__top .wk26-btn { flex-shrink: 0; }
+.wk26-hero__name {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(5rem, 26.5vw, 30rem); line-height: 0.86; letter-spacing: -0.01em;
+  white-space: nowrap; margin: 0; color: var(--p-field-ink-ink);
+  transform-origin: left center; will-change: transform;
+}
+.wk26-hero__bottom {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; flex-wrap: wrap;
+  font-size: 1rem; color: #c6d4de;
+}
+.wk26-hero__bottom p { margin: 0; }
+.wk26-hero__links { display: flex; gap: 1.5rem; }
+.wk26-hero__links a { color: #c6d4de; text-decoration: none; font-weight: 600; font-size: 0.9375rem; }
+.wk26-hero__links a:hover { color: var(--p-field-cyan); }
+.wk26-hero__arabic { font-family: "Cairo", "IBM Plex Sans Arabic", sans-serif; font-weight: 800; font-size: 1.25rem; }
+.wk26-hero__photo { display: none; }
+
+@media (max-width: 720px) {
+  .wk26-hero { min-height: 0; justify-content: flex-start; gap: 1.25rem; padding-bottom: 0; }
+  .wk26-hero__top { flex-direction: column; gap: 1rem; order: 2; }
+  .wk26-hero__name { font-size: 24.5vw; order: 1; }
+  .wk26-hero__bottom { order: 3; }
+  .wk26-hero__photo {
+    display: block; order: 4; height: 34svh; overflow: hidden;
+    margin: 0.5rem calc(-1 * var(--margin)) 0;
+  }
+  .wk26-hero__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+}
+
+/* ---------- Features: mosaic of unlike tiles ------------------------------ */
+.wk26-mosaic {
+  display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 96px; gap: 8px;
+}
+.wk26-tile { padding: 1.5rem; overflow: hidden; position: relative; }
+.wk26-tile p { margin: 0; }
+/* Legacy bundles grey every <p>; tiles speak in their own field ink. */
+body.wk26 .wk26-tile p, body.wk26 .wk26-tile li, body.wk26 .wk26-tile h3 { color: inherit; }
+.wk26-tile--head { grid-column: span 6; grid-row: span 3; background: var(--p-field-blue); color: var(--p-field-blue-ink); }
+.wk26-tile--head h2 {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.5rem, 3.9vw, 3.9rem); line-height: 0.92; margin: 0; max-width: 12ch;
+}
+[dir="rtl"] .wk26-tile--head h2 { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; line-height: 1.1; }
+.wk26-tile--head p { margin-top: 1rem; font-size: var(--step-body); max-width: 30ch; }
+.wk26-tile--photo { grid-column: span 6; grid-row: span 5; padding: 0; }
+.wk26-tile--photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wk26-tile--figure { grid-column: span 3; grid-row: span 2; background: var(--p-field-cyan); color: var(--p-field-cyan-ink); }
+.wk26-tile--figure .wk26-figure {
+  font-family: "Anton", sans-serif; font-size: clamp(3.5rem, 6vw, 6rem); line-height: 0.9; display: block;
+}
+.wk26-tile--figure p { font-size: 1rem; font-weight: 600; margin-top: 0.5rem; }
+.wk26-tile--sentence { grid-column: span 3; grid-row: span 2; background: var(--p-surface); color: var(--p-ink); display: flex; align-items: flex-end; }
+.wk26-tile--sentence p { font-size: clamp(1.375rem, 1.9vw, 1.875rem); line-height: 1.15; font-weight: 600; max-width: 12ch; }
+.wk26-tile--sentence.is-green { background: var(--p-accent); color: #fff; }
+.wk26-tile--sentence.is-ink { background: var(--p-field-ink); color: var(--p-field-ink-ink); }
+.wk26-tile--list { grid-column: span 6; grid-row: span 3; background: var(--p-surface); color: var(--p-ink); }
+.wk26-tile--list h3 { font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem; }
+.wk26-tile--list ul { list-style: none; margin: 0; padding: 0; font-size: 1.25rem; line-height: 1.9; font-weight: 600; }
+.wk26-tile--list li span { font-weight: 400; color: var(--p-muted); }
+.wk26-tile--wide { grid-column: span 3; grid-row: span 3; }
+
+@media (max-width: 720px) {
+  .wk26-mosaic { grid-template-columns: repeat(2, 1fr); grid-auto-rows: minmax(120px, auto); gap: 6px; }
+  .wk26-tile--head, .wk26-tile--photo, .wk26-tile--list { grid-column: span 2; }
+  .wk26-tile--photo { grid-row: span 2; min-height: 260px; }
+  .wk26-tile--figure, .wk26-tile--sentence, .wk26-tile--wide { grid-column: span 1; grid-row: span 1; }
+  .wk26-tile--sentence p { font-size: 1.25rem; }
+}
+
+/* ---------- Showcase: output slips along the edge ------------------------- */
+.wk26-slips {
+  position: relative; min-height: 96svh; overflow: hidden; color: #fff;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.wk26-slips__bg { position: absolute; inset: 0; overflow: hidden; }
+.wk26-slips__bg img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wk26-slips__intro {
+  position: relative; z-index: 2; margin: clamp(24px, 6vh, 72px) var(--margin) 0;
+  margin-inline-start: var(--margin); max-width: 38ch;
+  background: var(--p-field-ink); padding: 1.75rem;
+}
+.wk26-slips__intro h2 { font-size: var(--step-lead); font-weight: 600; margin: 0 0 0.75rem; line-height: 1.2; }
+.wk26-slips__intro p { font-size: var(--step-body); line-height: 1.45; margin: 0 0 0.75rem; }
+body.wk26 .wk26-slips__intro p, body.wk26 .wk26-slips__intro h2 { color: var(--p-field-ink-ink); }
+.wk26-slips__intro p:last-child { margin-bottom: 0; }
+.wk26-slips__row {
+  position: relative; z-index: 2; display: flex; gap: 12px; align-items: flex-end;
+  padding: 0 var(--margin); margin-top: 3rem;
+}
+.wk26-slip {
+  flex: 1 1 0; background: var(--p-field-paper); color: var(--p-ink);
+  padding: 1.25rem 1.25rem 2.5rem; font-size: 1rem; line-height: 1.5;
+  transform: translateY(28px);
+}
+.wk26-slip h3 { font-size: 1rem; font-weight: 600; margin: 0 0 0.25rem; }
+.wk26-slip .wk26-slip__rule { letter-spacing: 0.35em; color: var(--p-muted); margin: 0.35rem 0 0.6rem; font-size: 0.8125rem; }
+.wk26-slip p { margin: 0 0 0.35rem; }
+.wk26-slip:nth-child(1) { height: 40svh; }
+.wk26-slip:nth-child(2) { height: 30svh; transform: translateY(28px) rotate(-1.4deg); }
+.wk26-slip:nth-child(3) { height: 44svh; }
+.wk26-slip:nth-child(4) { height: 34svh; transform: translateY(28px) rotate(1.2deg); }
+.wk26-slip:nth-child(5) { height: 27svh; }
+.wk26-slip:nth-child(6) { height: 38svh; }
+/* chat slip: a real interface fragment (data-ui) */
+.wk26-chat { display: grid; gap: 0.5rem; }
+.wk26-chat__msg { padding: 0.55rem 0.75rem; max-width: 92%; font-size: 0.875rem; line-height: 1.45; }
+.wk26-chat__msg--in { background: var(--p-surface); justify-self: start; }
+.wk26-chat__msg--out { background: #dcf3e3; justify-self: end; }
+[data-theme="dark"] .wk26-chat__msg--out { background: #14401f; color: #eaf6ee; }
+
+@media (max-width: 980px) {
+  .wk26-slips__row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-inline: var(--margin); }
+  .wk26-slip { height: auto !important; transform: none !important; }
+}
+
+@media (max-width: 720px) {
+  .wk26-slips { min-height: 100svh; }
+  .wk26-slips__intro { margin-inline: var(--margin); margin-top: 20px; }
+  .wk26-slips__intro p { font-size: 1.25rem; }
+  .wk26-slips__row { padding-bottom: 0; }
+  .wk26-slip { font-size: 1rem; }
+}
+
+/* ---------- How we work: lines that step across --------------------------- */
+.wk26-steps { background: var(--p-field-blue); color: var(--p-field-blue-ink); }
+.wk26-steps__grid { display: grid; grid-template-columns: repeat(12, 1fr); }
+.wk26-step { grid-column: 1 / -1; margin-bottom: 3.5rem; }
+.wk26-step:last-child { margin-bottom: 0; }
+.wk26-step:nth-child(1) { grid-column-start: 1; }
+.wk26-step:nth-child(2) { grid-column-start: 3; }
+.wk26-step:nth-child(3) { grid-column-start: 5; }
+.wk26-step:nth-child(4) { grid-column-start: 7; }
+.wk26-step:nth-child(5) { grid-column-start: 9; }
+.wk26-step__line {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.25rem, 4.6vw, 4.75rem); line-height: 1.0; margin: 0;
+}
+[dir="rtl"] .wk26-step__line { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; line-height: 1.15; }
+.wk26-step:last-child .wk26-step__line { color: #86e6f0; } /* lighter cyan: 4.6:1 on the blue field */
+body.wk26 .wk26-step p { font-size: 1.0625rem; line-height: 1.5; max-width: 38ch; margin: 0.75rem 0 0; color: var(--p-field-blue-ink); }
+body.wk26 .wk26-step__line {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.25rem, 4.6vw, 4.75rem) !important; line-height: 1.0; letter-spacing: 0;
+  max-width: none; color: var(--p-field-blue-ink);
+}
+
+@media (max-width: 720px) {
+  .wk26-step { margin-bottom: 2.5rem; }
+  .wk26-step:nth-child(2) { margin-inline-start: 6vw; }
+  .wk26-step:nth-child(3) { margin-inline-start: 12vw; }
+  .wk26-step:nth-child(4) { margin-inline-start: 18vw; }
+  .wk26-step:nth-child(5) { margin-inline-start: 24vw; }
+  .wk26-step { grid-column-start: 1 !important; }
+  .wk26-step__line { font-size: 8.4vw; }
+}
+
+/* ---------- About: wide photo, colour tile, facts ------------------------- */
+.wk26-about__head { max-width: none; }
+.wk26-about__head h2 {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(2.5rem, 4vw, 3.75rem); line-height: 0.95; margin: 0;
+}
+[dir="rtl"] .wk26-about__head h2 { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; }
+.wk26-about__lead { font-size: 1.3125rem; line-height: 1.45; max-width: 52ch; margin: 1.5rem 0 0; }
+.wk26-about__tiles { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 4.5rem; align-items: start; }
+.wk26-about__photo { grid-column: 1 / 9; position: relative; }
+.wk26-about__photo img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.wk26-about__overlay {
+  position: absolute; top: 0; inset-inline-end: 0; width: 320px; max-width: 80%;
+  background: var(--p-bg); color: var(--p-ink); padding: 1.25rem; font-size: 1rem; line-height: 1.5;
+}
+.wk26-about__overlay p { margin: 0; }
+.wk26-about__side { grid-column: 9 / 13; }
+.wk26-about__map { background: var(--p-field-cyan); color: var(--p-field-cyan-ink); padding: 1.5rem; }
+.wk26-about__map svg { width: 100%; height: auto; display: block; }
+.wk26-about__map p { margin: 0.75rem 0 0; font-weight: 600; font-size: 1rem; }
+.wk26-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; margin-top: 1.5rem; }
+.wk26-facts dt { font-size: var(--step-small); color: var(--p-muted); margin: 0; }
+.wk26-facts dd { font-size: 1rem; font-weight: 600; margin: 0.15rem 0 0; }
+
+@media (max-width: 720px) {
+  .wk26-about__photo, .wk26-about__side { grid-column: 1 / -1; }
+  .wk26-about__photo img { aspect-ratio: 4 / 3; }
+  .wk26-about__overlay { position: static; width: auto; max-width: none; padding: 1.25rem 0 0; background: none; }
+}
+
+/* ---------- Proof: names as one sentence ---------------------------------- */
+.wk26-proof h2 { font-size: var(--step-statement); font-weight: 600; margin: 0 0 0.5rem; line-height: 1.15; }
+.wk26-names { font-size: var(--step-statement); line-height: 1.3; margin: 0; font-weight: 600; }
+/* The mini-app card classes drag grid/box styles into the sentence; strip them here. */
+body.wk26 .wk26-names .wk26-name { white-space: nowrap; width: auto; height: auto; display: inline; margin: 0; }
+@media (max-width: 720px) { body.wk26 .wk26-names { font-size: 1.25rem; } }
+.wk26-names .wk26-name {
+  font: inherit; background: none; border: none; padding: 0; cursor: pointer;
+  color: #8b99a5; text-decoration: underline; text-decoration-thickness: 3px;
+  text-underline-offset: 6px; transition: color 400ms ease;
+}
+.wk26-names .wk26-name.is-lit, .wk26-names .wk26-name:hover, .wk26-names .wk26-name:focus-visible { color: var(--p-ink); }
+[data-theme="dark"] .wk26-names .wk26-name { color: #6f8aa3; }
+[data-theme="dark"] .wk26-names .wk26-name.is-lit { color: var(--p-ink); }
+.wk26-analyzer { margin-top: 3rem; display: flex; gap: 0; max-width: 640px; flex-wrap: wrap; }
+.wk26-analyzer label { flex-basis: 100%; font-weight: 600; font-size: 1.125rem; margin-bottom: 0.75rem; }
+.wk26-analyzer input {
+  flex: 1 1 280px; font: inherit; font-size: 1.0625rem; padding: 1rem 1.125rem;
+  border: 2px solid var(--p-ink); border-radius: 0; background: #fff; color: var(--p-ink); min-width: 0;
+}
+[data-theme="dark"] .wk26-analyzer input { background: var(--p-surface); border-color: var(--p-ink); }
+.wk26-analyzer button {
+  background: var(--p-ink); color: var(--p-bg); border: 2px solid var(--p-ink);
+  font: inherit; font-weight: 600; padding: 1rem 1.5rem; cursor: pointer; border-radius: 0;
+}
+.wk26-analyzer button:hover { background: var(--p-accent); border-color: var(--p-accent); color: #fff; }
+.wk26-proof__note { margin-top: 1rem; font-size: 1rem; color: var(--p-muted); max-width: 52ch; }
+/* Kept-section links: one darker brand blue so body links clear 4.5:1. */
+body.wk26 :is(#portfolio, #insights, #contact, #newsletter) a { color: #0a5b8c; }
+
+/* ---------- Prices: giant word, filled bar rows --------------------------- */
+.wk26-prices__col { max-width: 640px; margin-inline: auto; container-type: inline-size; }
+.wk26-prices__word {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: 29cqw; line-height: 0.82; margin: 0 0 1.25rem; letter-spacing: -0.01em;
+}
+[dir="rtl"] .wk26-prices__word { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; font-size: 24cqw; line-height: 1; }
+.wk26-bar { background: var(--p-surface); margin-bottom: 6px; }
+.wk26-bar summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  min-height: 56px; padding: 0.5rem 1.125rem; font-weight: 600; font-size: 1.0625rem;
+}
+.wk26-bar summary::-webkit-details-marker { display: none; }
+.wk26-bar summary::after { content: "+"; font-size: 1.5rem; line-height: 1; font-weight: 400; }
+.wk26-bar[open] summary::after { content: "−"; }
+.wk26-bar summary:hover { background: var(--p-ink); color: var(--p-bg); }
+.wk26-bar__panel { padding: 0.25rem 1.125rem 1.25rem; }
+.wk26-bar__row {
+  display: flex; justify-content: space-between; gap: 1.5rem; padding: 0.4375rem 0;
+  font-size: 1rem; font-variant-numeric: tabular-nums;
+}
+.wk26-bar__row b { font-weight: 600; text-align: end; white-space: nowrap; }
+.wk26-bar__note { font-size: 1rem; color: var(--p-muted); margin: 0.5rem 0 0; }
+.wk26-prices__fine { font-size: 1rem; color: var(--p-muted); margin-top: 1.25rem; }
+
+/* ---------- Portfolio (kept JS): flat tiles -------------------------------- */
+body.wk26 .portfolio__grid-masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+body.wk26 .portfolio-card-masonry {
+  background: var(--p-surface) !important; border: none !important; border-radius: 0 !important;
+  box-shadow: none !important; overflow: hidden; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 .card-image { border-radius: 0 !important; }
+/* Cards fill their grid cell so short cards leave surface, not holes. */
+body.wk26 .portfolio-card-masonry { height: 100%; display: flex; flex-direction: column; }
+body.wk26 .portfolio-card-masonry .card-content { flex: 1 1 auto; }
+body.wk26 .card-title { font-size: 1.375rem; font-weight: 600; color: var(--p-ink); }
+body.wk26 .card-technologies { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+body.wk26 .card-technologies > * {
+  border: none !important; background: none !important; border-radius: 0 !important;
+  padding: 0 !important; font-size: var(--step-small); color: var(--p-muted); box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 .card-category { background: none !important; border: none !important; color: var(--p-muted); padding: 0 !important; }
+@media (max-width: 720px) { body.wk26 .portfolio__grid-masonry { grid-template-columns: 1fr; } }
+
+/* ---------- Insights (kept JS) --------------------------------------------- */
+body.wk26 .insights__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+body.wk26 .insight-card, body.wk26 .blog-post {
+  background: var(--p-surface) !important; border: none !important; border-radius: 0 !important; box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 .insight-card__title, body.wk26 .blog-post__title { font-size: 1.25rem; font-weight: 600; color: var(--p-ink); }
+/* Honest empty state: articles come from the CMS; until one exists the grid
+   says so instead of spinning forever or showing invented posts. */
+body.wk26 .wk26-insights-empty { grid-column: 1 / -1; }
+body.wk26 .wk26-insights-empty p { font-size: var(--step-lead); color: var(--p-muted); max-width: 46ch; }
+@media (max-width: 900px) { body.wk26 .insights__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { body.wk26 .insights__grid { grid-template-columns: 1fr; } }
+
+/* ---------- Contact + newsletter (kept forms) ------------------------------ */
+body.wk26 .contact-item__icon { display: none !important; }
+body.wk26 .contact-item { border: none !important; background: none !important; box-shadow: none !important; padding: 0 0 1.5rem !important; } /* taste-skill-ignore: this line removes a legacy shadow */
+body.wk26 .contact-item__title { font-size: 1.25rem; font-weight: 600; }
+body.wk26 .contact-item__details, body.wk26 .contact-item__details a { font-size: 1.125rem; color: var(--p-ink); }
+body.wk26 .quote__form input, body.wk26 .quote__form select, body.wk26 .quote__form textarea,
+body.wk26 .newsletter__form input {
+  border-radius: 0 !important; font-size: 1.0625rem !important; box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 .newsletter__title { font-size: var(--step-lead); font-weight: 600; max-width: 24ch; }
+
+/* ---------- CTA: one word is the button ------------------------------------ */
+.wk26-book {
+  display: block; background: var(--p-accent); color: #fff; text-decoration: none;
+  min-height: 42svh; position: relative; overflow: hidden;
+  padding: 1.5rem var(--margin) 0;
+}
+.wk26-book:hover, .wk26-book:focus-visible { background: var(--p-ink); }
+.wk26-book:hover .wk26-book__word, .wk26-book:focus-visible .wk26-book__word { color: var(--p-field-cyan); }
+.wk26-book__sentence { font-size: 1.25rem; font-weight: 600; max-width: 34ch; margin: 0; line-height: 1.4; }
+.wk26-book__arrow { position: absolute; top: 1.5rem; inset-inline-end: var(--margin); width: 48px; height: 48px; }
+.wk26-book__word {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(6rem, 27vw, 30rem); line-height: 0.82; letter-spacing: -0.01em;
+  position: absolute; bottom: 1rem; inset-inline-start: var(--margin); white-space: nowrap;
+}
+[dir="rtl"] .wk26-book__word { font-family: "Cairo", sans-serif; font-weight: 900; text-transform: none; font-size: clamp(6rem, 24vw, 26rem); }
+@media (max-width: 720px) {
+  .wk26-book { min-height: 46svh; }
+  .wk26-book__word { font-size: 30vw; }
+  .wk26-book__sentence { font-size: 1.0625rem; max-width: 26ch; }
+  .wk26-book__arrow { width: 32px; height: 32px; }
+}
+
+/* ---------- Footer: contact as the headline -------------------------------- */
+.wk26-footer {
+  background: var(--p-field-ink); color: var(--p-field-ink-ink);
+  min-height: 90svh; display: flex; flex-direction: column; justify-content: space-between;
+  padding: 2.5rem var(--margin) 1.25rem; overflow: hidden;
+}
+.wk26-footer__notes { display: flex; justify-content: space-between; gap: 2rem; flex-wrap: wrap; font-size: 1rem; }
+.wk26-footer__notes div p { margin: 0 0 0.35rem; }
+.wk26-footer a { color: inherit; }
+.wk26-footer__top { font-weight: 600; text-decoration: none; }
+.wk26-footer__phone {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400;
+  font-size: clamp(2.75rem, 8.6vw, 9.5rem); line-height: 0.95; letter-spacing: 0;
+  text-decoration: none; display: block; margin-top: 12svh; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.wk26-footer__phone:hover { color: var(--p-field-cyan); }
+.wk26-footer__mail { font-size: 1.25rem; font-weight: 600; }
+.wk26-footer__meta {
+  display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  font-size: var(--step-small); margin-top: 2rem;
+}
+.wk26-footer__meta nav { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+.wk26-footer__meta a { text-decoration: none; font-weight: 600; }
+.wk26-footer__meta a:hover { color: var(--p-field-cyan); }
+.wk26-footer__name {
+  font-family: "Anton", "Cairo", sans-serif; font-weight: 400; text-transform: uppercase;
+  font-size: clamp(5rem, 26.5vw, 30rem); line-height: 0.82; white-space: nowrap;
+  margin: 3svh 0 -0.08em; transform-origin: left bottom; will-change: transform;
+}
+@media (max-width: 720px) {
+  .wk26-footer__phone { font-size: 11.5vw; }
+  .wk26-footer__name { font-size: 24.5vw; }
+  .wk26-footer__meta { flex-direction: column; gap: 0.5rem; }
+}
+
+/* ---------- Motion (step 9): gated, transform/opacity only ----------------- */
+@media (prefers-reduced-motion: no-preference) {
+  .wk26-anim [data-reveal] { opacity: 0; transform: translateY(26px); }
+  .wk26-anim [data-reveal].is-in {
+    opacity: 1; transform: none;
+    transition: opacity 700ms ease, transform 700ms cubic-bezier(0.2, 0.6, 0.2, 1);
+    transition-delay: var(--d, 0ms);
+  }
+  .wk26-slips__bg img { animation: wk26-drift 26s ease-in-out infinite alternate; }
+  .wk26-tile--photo img, .wk26-about__photo img { transition: transform 600ms ease; }
+}
+@keyframes wk26-drift { from { transform: scale(1); } to { transform: scale(1.07); } }
+
+/* Kept legacy sections sit inside the same page frame as the poster sections. */
+body.wk26 :is(section.portfolio-enhanced, section.insights, section.contact, section.newsletter) {
+  padding-block: var(--section-gap);
+  padding-inline: 0;
+}
+body.wk26 :is(#portfolio, #insights, #contact, #newsletter) .container {
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--margin);
+}
+body.wk26 #insights .section__header,
+body.wk26 #contact .section__header { text-align: start; }
+body.wk26 #insights .section__description,
+body.wk26 #contact .section__description { margin-inline: 0; max-width: 64ch; }
+
+/* Header wordmark is the display face, small. */
+body.wk26 .nav-brand-enhanced .brand-name {
+  font-family: "Anton", "Cairo", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  font-size: 1.35rem;
+}
+
+/* The hero name scales from the inline start edge (poster.js, desktop only). */
+.wk26-anim .wk26-hero__name { transform-origin: left center; }
+html[dir="rtl"] .wk26-hero__name { transform-origin: right center; }
+/* The legacy bundle sets [dir="rtl"] h1..h3 to the Arabic stack at (0,1,1);
+   the wordmark is Latin in both directions and must keep Anton. */
+html[dir="rtl"] .wk26-hero__name {
+  font-family: "Anton", "Cairo", sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+/* One tool name lit at a time (poster.js); colour moves, text never does. */
+body.wk26 .wk26-name { transition: background-color 500ms ease, color 500ms ease; }
+body.wk26 .wk26-name.is-lit { color: var(--p-ink); }
+
+/* Chat slip: the WhatsApp sample. Square bubbles; the answer carries the action colour. */
+body.wk26 .wk26-chat { display: grid; gap: 8px; }
+body.wk26 .wk26-chat__msg {
+  padding: 0.625rem 0.75rem;
+  font-size: var(--step-body);
+  margin: 0;
+}
+
+/* Slip rule: torn-edge dots under each slip title. */
+body.wk26 .wk26-slip__rule {
+  letter-spacing: 0.35em;
+  color: var(--p-muted);
+  margin: 0.25rem 0 0.75rem;
+  font-size: var(--step-small);
+}
+
+/* ---------- QA pass 1 (inspect 2026-11-04: 14 FAIL / 13 WARN) ---------------
+   Each rule below answers a named inspector finding on the kept, JS-driven
+   sections. New composition fixes were edited in place above; these are the
+   legacy-surface neutralizers that must win over the old bundles. */
+
+/* [proof lopsided + few-pictures] sentence one side, warehouse photo other. */
+body.wk26 .wk26-proof {
+  display: grid; grid-template-columns: repeat(12, 1fr); gap: 2rem; align-items: start;
+}
+body.wk26 .wk26-proof__main { grid-column: 1 / 8; }
+body.wk26 .wk26-proof__photo { grid-column: 8 / 13; margin: 0; }
+body.wk26 .wk26-proof__photo img { width: 100%; height: 100%; max-height: 520px; object-fit: cover; display: block; }
+@media (max-width: 900px) {
+  body.wk26 .wk26-proof__main, body.wk26 .wk26-proof__photo { grid-column: 1 / -1; }
+}
+
+/* [outlined-box] kept sections are fills only; form fields and the chat
+   fragment keep their lines because they are real fields/interfaces. */
+body.wk26 :is(#portfolio, #insights, #contact, #newsletter, #mini-apps)
+  :not(input):not(textarea):not(select):not([data-ui]):not([data-ui] *) {
+  border: 0 !important;
+}
+
+/* [button-fx] nothing rests with a box-shadow inside kept sections. */
+body.wk26 :is(#portfolio, #insights, #contact, #newsletter, #mini-apps) :is(button, a, .card, [class*="card"], [class*="btn"]) {
+  box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+}
+body.wk26 .view-project-btn {
+  box-shadow: none !important; border-radius: 0 !important; border: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+  background: var(--p-ink) !important; color: var(--p-bg) !important;
+}
+
+/* [hairline] section rules and the mobile controls rule come off. */
+body.wk26 section#portfolio, body.wk26 section#insights { border: none !important; }
+body.wk26 .mobile-controls { border: none !important; }
+
+/* [outlined-box] kept cards and filter chips are fills, not outlines.
+   Form fields keep their lines (real fields, the allowed case). */
+body.wk26 :is(#portfolio, #insights) :is(.portfolio-card-masonry, .insight-card, .blog-post, [class*="filter"], .card-technologies > *, .card-category) {
+  border: none !important; outline: none;
+}
+body.wk26 .portfolio-filters button, body.wk26 [class*="filter-btn"] {
+  border: none !important; border-radius: 0 !important; background: var(--p-surface) !important; color: var(--p-ink) !important;
+}
+
+/* [reduced-hidden] visible base states for kept animated cards and tabs.
+   The mini-apps modal itself stays hidden until .active; its children
+   must not depend on an animation to appear. */
+@media (prefers-reduced-motion: reduce) {
+  body.wk26 :is(.portfolio-card-masonry, .insight-card, .blog-post, .app-tab, .tab-button, .mini-app-card, .card-body, .card-image) {
+    opacity: 1 !important; transform: none !important; animation: none !important;
+  }
+}
+body.wk26 .portfolio-card-masonry { opacity: 1 !important; }
+
+/* The chat trigger joins the poster: square, flat, no glow. */
+body.wk26 .chatbot-trigger {
+  border-radius: 0 !important; border: none !important;
+  box-shadow: none !important; /* taste-skill-ignore: this line removes a legacy shadow */
+  background: var(--p-accent) !important; color: #fff !important;
+  font-family: "Work Sans", "IBM Plex Sans Arabic", sans-serif; font-weight: 600;
+  width: 56px; height: 56px; padding: 0 !important; gap: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+body.wk26 .chatbot-trigger .chatbot-label { display: none; }
+body.wk26 .chatbot-trigger:hover, body.wk26 .chatbot-trigger:focus-visible {
+  background: var(--p-ink) !important; width: auto; padding-inline: 1.125rem !important; gap: 0.5rem;
+}
+body.wk26 .chatbot-trigger:hover .chatbot-label,
+body.wk26 .chatbot-trigger:focus-visible .chatbot-label { display: inline; }
+/* The chat panel is display-gated so the reduced-motion page shows everything
+   the normal page shows; nothing waits on an animation to exist. */
+body.wk26 .chatbot-widget { display: none; }
+body.wk26 .chatbot-widget.active { display: flex; opacity: 1; transform: none; }
+
+/* [side-scroll + edge-text] slips stack on phones instead of scrolling off. */
+@media (max-width: 720px) {
+  .wk26-slips__row { grid-template-columns: 1fr; overflow-x: visible; }
+  .wk26-slip { flex: none; height: auto !important; transform: none !important; }
+}

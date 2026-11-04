@@ -61,7 +61,7 @@ class ChatBot {
             "Plan 2: USD 300–799 customized files",
             "Plan 3 (Ultimate): USD 800–1,599 including customization, content writing, hosting, annual maintenance and minor edits"
           ],
-          ownership: "After full payment, the buyer owns the purchased template and may modify or resell it; third-party components keep their own licences."
+          ownership: "After full payment, the buyer owns the purchased template and may modify or resell it; included fonts and libraries keep their own licences."
         },
         chat: {
           name: "WEBKMT Chat — WhatsApp + website AI",
@@ -81,7 +81,7 @@ class ChatBot {
           name: "WEBKMT ERP",
           status: "Scoped implementation",
           price: "USD 1,400 flat setup + care at USD 59, USD 119 or USD 229/month depending on workload",
-          scope: "ERPNext-based finance, inventory, sales/CRM, people and operations configured per client. There is no WEBKMT per-user licence; do not promise unlimited users or every feature of another ERP."
+          scope: "Finance, inventory, sales/CRM, people and operations in one system, configured per client. There is no WEBKMT per-user licence; do not promise unlimited users or every feature of another ERP."
         },
         automate: {
           name: "WEBKMT Automate",
@@ -415,7 +415,7 @@ class ChatBot {
             service: 'general'
           })
         });
-        console.log('✅ Chatbot lead captured and saved to Supabase');
+        console.log('Chatbot lead captured and saved');
       } catch (error) {
         console.error('Failed to save chatbot lead:', error);
       }

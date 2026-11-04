@@ -19,8 +19,8 @@ window.WEBKMT_PORTFOLIO_DATA = [
       "ar": "منتج WEBKMT · تنفيذ حسب النطاق"
     },
     "description": {
-      "en": "An ERPNext-based business system for finance, inventory, sales/CRM, people and operations. This is a guided product overview, not a client case study or self-service live demo.",
-      "ar": "نظام أعمال مبني على ERPNext للمالية والمخزون والمبيعات/CRM والأشخاص والعمليات. هذه نظرة موجّهة إلى المنتج، وليست دراسة حالة عميل أو عرضاً حياً ذاتياً."
+      "en": "A complete business system for finance, inventory, sales/CRM, people and operations. This is a guided product overview, not a client case study or self-service live demo.",
+      "ar": "نظام أعمال متكامل للمالية والمخزون والمبيعات/CRM والأشخاص والعمليات. هذه نظرة موجّهة إلى المنتج، وليست دراسة حالة عميل أو عرضاً حياً ذاتياً."
     },
     "duration": {
       "en": "Scoped implementation",
@@ -35,8 +35,8 @@ window.WEBKMT_PORTFOLIO_DATA = [
       "ar": "تعمل كثير من الشركات الصغيرة عبر جداول ودفاتر وتطبيقات منفصلة، فتتشتت الفواتير والمخزون وسجلات العملاء."
     },
     "solution": {
-      "en": "WEBKMT configures the proven open-source ERPNext foundation around the client’s accounts, warehouses, users, items and workflows, then supports it under the selected care tier.",
-      "ar": "تهيئ WEBKMT أساس ERPNext مفتوح المصدر المجرّب حول حسابات العميل ومستودعاته ومستخدميه وأصنافه وسير عمله، ثم تدعمه وفق فئة الرعاية المختارة."
+      "en": "WEBKMT configures the system around the client’s accounts, warehouses, users, items and workflows, then supports it under the selected care tier.",
+      "ar": "تهيئ WEBKMT النظام حول حسابات العميل ومستودعاته ومستخدميه وأصنافه وسير عمله، ثم تدعمه وفق فئة الرعاية المختارة."
     },
     "results": {
       "en": "What to inspect: module scope, Arabic/English interface, care boundaries and the data preparation needed before go-live. Country e-invoicing, including ZATCA, is scoped only after the merchant’s requirements are validated.",
@@ -86,11 +86,10 @@ window.WEBKMT_PORTFOLIO_DATA = [
     "liveUrl": null,
     "caseStudyUrl": "case-study.html?id=1",
     "technologies": [
-      "ERPNext",
-      "Frappe",
-      "MariaDB",
-      "Redis",
-      "Docker"
+      "Accounting & invoicing",
+      "Inventory & warehouses",
+      "Arabic/English with RTL",
+      "Care by workload"
     ]
   },
   {
@@ -341,10 +340,10 @@ window.WEBKMT_PORTFOLIO_DATA = [
     "liveUrl": "/#mini-apps",
     "caseStudyUrl": "case-study.html?id=4",
     "technologies": [
-      "Node.js",
-      "Express",
-      "Supabase",
-      "Vanilla JS"
+      "Bilingual website",
+      "Free working tools",
+      "Customer accounts",
+      "Business profile"
     ]
   }
 ];
