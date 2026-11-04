@@ -1,9 +1,14 @@
 /**
- * WebKMT Template Gallery — renderer
+ * WEBKMT Template Gallery — renderer
  * Renders cards from window.WEBKMT_TEMPLATES (templates-data.js),
  * handles category filters, EN/AR re-rendering (via <html lang>
  * observer, works with the site LanguageManager), and the theme
  * toggle on the templates page.
+ *
+ * Commercial rule: prices come once from WEBKMT_WEBSITE_PLANS. Cards must
+ * not reintroduce per-template setup/care prices or call a design "live"
+ * when demoUrl is null. Visual rule: preview colors are constrained by
+ * the tokenized data file and styled by css/design-system.css.
  */
 (function () {
   'use strict';
@@ -12,28 +17,22 @@
 
   var STRINGS = {
     en: {
-      setup: 'Setup',
-      care: 'Care plan',
-      perMonth: '/mo',
-      free: 'Free',
-      launch: 'Launch This',
-      viewDemo: 'View Live Demo',
-      demoOnRequest: 'Live Demo on Request',
-      launchIn: 'Launch in',
-      waLaunch: function (name) { return "Hi! I'm interested in the \"" + name + "\" template for my business."; },
-      waDemo: function (name) { return "Hi! I'd like to see a live demo of the \"" + name + "\" template."; }
+      title: 'Website Templates — Three Clear Plans | WEBKMT',
+      plans: 'Same 3 plans for every design',
+      launch: 'Discuss This Design',
+      viewDemo: 'View Demo',
+      demoOnRequest: 'Request a Walkthrough',
+      waLaunch: function (name) { return "Hi! I'd like to discuss the \"" + name + "\" website design and choose a plan."; },
+      waDemo: function (name) { return "Hi! I'd like a walkthrough of the \"" + name + "\" website design."; }
     },
     ar: {
-      setup: 'الإعداد',
-      care: 'خطة الرعاية',
-      perMonth: '/شهر',
-      free: 'مجاني',
-      launch: 'أطلق هذا القالب',
-      viewDemo: 'شاهد العرض الحي',
-      demoOnRequest: 'اطلب عرضاً حياً',
-      launchIn: 'الإطلاق خلال',
-      waLaunch: function (name) { return 'مرحباً! أنا مهتم بقالب "' + name + '" لنشاطي التجاري.'; },
-      waDemo: function (name) { return 'مرحباً! أود مشاهدة عرض حي لقالب "' + name + '".'; }
+      title: 'قوالب المواقع — ثلاث خطط واضحة | WEBKMT',
+      plans: 'الخطط الثلاث نفسها لكل تصميم',
+      launch: 'ناقش هذا التصميم',
+      viewDemo: 'شاهد العرض',
+      demoOnRequest: 'اطلب جولة إرشادية',
+      waLaunch: function (name) { return 'مرحباً! أود مناقشة تصميم موقع "' + name + '" واختيار الخطة.'; },
+      waDemo: function (name) { return 'مرحباً! أود جولة إرشادية لتصميم موقع "' + name + '".'; }
     }
   };
 
@@ -69,17 +68,24 @@
     return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
   }
 
-  function priceText(value, s, isMonthly) {
-    if (value === 'Free') return s.free;
-    return value + (isMonthly ? s.perMonth : '');
+  function planLines(lang) {
+    var plans = window.WEBKMT_WEBSITE_PLANS || {};
+    return '<span>' + pick(plans.files, lang) + '</span>' +
+      '<span>' + pick(plans.customized, lang) + '</span>' +
+      '<span>' + pick(plans.ultimate, lang) + '</span>';
   }
 
   var activeFilter = 'all';
+
+  function syncTitle() {
+    document.title = STRINGS[currentLang()].title;
+  }
 
   function render() {
     var grid = document.getElementById('templatesGrid');
     if (!grid || !window.WEBKMT_TEMPLATES) return;
     var lang = currentLang();
+    syncTitle();
     var s = STRINGS[lang];
     var html = '';
 
@@ -105,11 +111,7 @@
             '<h3 class="tpl-card__name">' + name + '</h3>' +
             '<p class="tpl-card__tagline">' + pick(t.tagline, lang) + '</p>' +
             '<ul class="tpl-card__features">' + feats + '</ul>' +
-            '<div class="tpl-card__meta">' +
-              '<span><strong>' + s.setup + ':</strong> ' + priceText(t.setup, s, false) + '</span>' +
-              '<span><strong>' + s.care + ':</strong> ' + priceText(t.care, s, true) + '</span>' +
-              '<span><strong>' + s.launchIn + ':</strong> ' + pick(t.days, lang) + '</span>' +
-            '</div>' +
+            '<div class="tpl-card__plans"><strong>' + s.plans + '</strong>' + planLines(lang) + '</div>' +
             '<div class="tpl-card__actions">' +
               '<a class="tpl-btn tpl-btn--primary" href="' + waLink(s.waLaunch(nameEn)) + '" target="_blank" rel="noopener">' + WA_ICON + s.launch + '</a>' +
               demoBtn +
@@ -152,6 +154,7 @@
       if (now !== last) { last = now; render(); }
     });
     obs.observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    document.addEventListener('languageChanged', syncTitle);
   }
 
   function init() {

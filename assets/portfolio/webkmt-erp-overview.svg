@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">WEBKMT ERP guided system overview</title>
+  <desc id="desc">A route diagram connecting finance, inventory, sales and people modules.</desc>
+  <rect width="1200" height="760" fill="#F7FAFC"/>
+  <rect width="1200" height="168" fill="#071B33"/>
+  <circle cx="1050" cy="84" r="42" fill="none" stroke="#20C4D8" stroke-width="8"/>
+  <circle cx="1050" cy="84" r="12" fill="#20C4D8"/>
+  <text x="64" y="78" font-family="Manrope, Arial, sans-serif" font-size="48" font-weight="800" fill="#FFFFFF">WEBKMT ERP</text>
+  <text x="64" y="122" font-family="Manrope, Arial, sans-serif" font-size="24" fill="#CDEBF3">Guided system overview · Scoped implementation</text>
+  <path d="M120 430 C310 340 420 520 600 430 S900 340 1080 430" fill="none" stroke="#0F6FA8" stroke-width="6" stroke-linecap="round" opacity=".35"/>
+  <g font-family="Manrope, Arial, sans-serif" text-anchor="middle">
+    <rect x="64" y="260" width="240" height="180" rx="24" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="2"/><circle cx="184" cy="320" r="25" fill="#0F6FA8"/><text x="184" y="385" font-size="28" font-weight="800" fill="#071B33">Finance</text><text x="184" y="416" font-size="19" fill="#526B7D">Accounts · Invoices</text>
+    <rect x="344" y="260" width="240" height="180" rx="24" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="2"/><circle cx="464" cy="320" r="25" fill="#0E9488"/><text x="464" y="385" font-size="28" font-weight="800" fill="#071B33">Inventory</text><text x="464" y="416" font-size="19" fill="#526B7D">Items · Warehouses</text>
+    <rect x="624" y="260" width="240" height="180" rx="24" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="2"/><circle cx="744" cy="320" r="25" fill="#20C4D8"/><text x="744" y="385" font-size="28" font-weight="800" fill="#071B33">Sales</text><text x="744" y="416" font-size="19" fill="#526B7D">Customers · Orders</text>
+    <rect x="904" y="260" width="240" height="180" rx="24" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="2"/><circle cx="1024" cy="320" r="25" fill="#071B33"/><text x="1024" y="385" font-size="28" font-weight="800" fill="#071B33">People</text><text x="1024" y="416" font-size="19" fill="#526B7D">HR · Projects</text>
+  </g>
+  <rect x="64" y="540" width="1072" height="112" rx="24" fill="#EAF5F8"/>
+  <text x="600" y="588" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="26" font-weight="800" fill="#071B33">One operating record, configured around the business</text>
+  <text x="600" y="626" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="20" fill="#526B7D">Arabic / English · Care boundaries confirmed in the official quote</text>
+</svg>
