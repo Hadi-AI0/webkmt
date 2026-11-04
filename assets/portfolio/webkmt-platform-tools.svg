@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">WEBKMT platform and free tools</title>
+  <desc id="desc">A route map connecting the website analyzer, ROI calculator, colour palette, link tool and business profile.</desc>
+  <rect width="1200" height="760" fill="#071B33"/>
+  <text x="64" y="82" font-family="Manrope, Arial, sans-serif" font-size="48" font-weight="800" fill="#FFFFFF">WEBKMT Platform</text>
+  <text x="64" y="126" font-family="Manrope, Arial, sans-serif" font-size="24" fill="#CDEBF3">Working tools and product information you can inspect</text>
+  <path d="M600 392 L254 250 M600 392 L946 250 M600 392 L254 566 M600 392 L946 566 M600 392 L600 620" stroke="#0F6FA8" stroke-width="5" opacity=".65"/>
+  <circle cx="600" cy="392" r="88" fill="#102A43" stroke="#20C4D8" stroke-width="5"/>
+  <text x="600" y="386" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="25" font-weight="800" fill="#FFFFFF">WEBKMT</text>
+  <text x="600" y="420" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="18" fill="#CDEBF3">webkmt.com</text>
+  <g font-family="Manrope, Arial, sans-serif" text-anchor="middle">
+    <circle cx="254" cy="250" r="82" fill="#F7FAFC"/><text x="254" y="244" font-size="23" font-weight="800" fill="#071B33">Website</text><text x="254" y="274" font-size="23" font-weight="800" fill="#071B33">Analyzer</text>
+    <circle cx="946" cy="250" r="82" fill="#F7FAFC"/><text x="946" y="244" font-size="23" font-weight="800" fill="#071B33">ROI</text><text x="946" y="274" font-size="23" font-weight="800" fill="#071B33">Calculator</text>
+    <circle cx="254" cy="566" r="82" fill="#F7FAFC"/><text x="254" y="560" font-size="23" font-weight="800" fill="#071B33">Colour</text><text x="254" y="590" font-size="23" font-weight="800" fill="#071B33">Palette</text>
+    <circle cx="946" cy="566" r="82" fill="#F7FAFC"/><text x="946" y="574" font-size="24" font-weight="800" fill="#071B33">KMT Link</text>
+    <circle cx="600" cy="636" r="62" fill="#0F6FA8"/><text x="600" y="632" font-size="20" font-weight="800" fill="#FFFFFF">Business</text><text x="600" y="660" font-size="20" font-weight="800" fill="#FFFFFF">Profile</text>
+  </g>
+</svg>

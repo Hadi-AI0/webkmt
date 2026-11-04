@@ -1,6 +1,10 @@
 /**
- * Simple Portfolio System
- * Features: Basic portfolio display with modal functionality
+ * WEBKMT product-proof portfolio
+ * --------------------------------
+ * Proof policy (Knowledge Pack v0.8): client identities, testimonials,
+ * ratings, result metrics and “live demo” labels are not published here.
+ * Cards describe WEBKMT products/tools and their honest status instead.
+ * Thumbnails are abstract SVG product diagrams, never client screenshots.
  */
 
 class SimplePortfolioManager {
@@ -64,275 +68,10 @@ class SimplePortfolioManager {
   }
 
   loadPortfolioData() {
-    // Load all testimonials for carousel
-    this.testimonialsData = [
-      {
-        quote: "We're onboarding a small number of pilot businesses right now: free setup on our Website, WhatsApp Receptionist, and Business OS packages — you only cover the monthly care plan, in exchange for honest feedback and a testimonial when you're happy.",
-        author: "WebKMT Pilot Program",
-        position: "Limited spots — apply on WhatsApp",
-        avatar: "assets/logo-white.svg"
-      }
-    ];
-    
-    this.currentTestimonialIndex = 0;
-
-    this.portfolioData = [
-      {
-            "id": 1,
-            "category": "systems",
-            "title": {
-                  "en": "Kemet Business OS — ERP Live Demo",
-                  "ar": "نظام كيميت للأعمال — عرض حي لنظام ERP"
-            },
-            "client": {
-                  "en": "Demo System — WebKMT Product",
-                  "ar": "نظام تجريبي — منتج WebKMT"
-            },
-            "description": {
-                  "en": "A complete business management system — accounting, invoicing, inventory, POS, and HR — installed and pre-configured for small and mid-sized businesses. Everything Odoo does, with one flat monthly fee and unlimited users instead of per-seat pricing.",
-                  "ar": "نظام متكامل لإدارة الأعمال — المحاسبة والفوترة والمخزون ونقاط البيع والموارد البشرية — يُثبَّت ويُهيَّأ مسبقاً للشركات الصغيرة والمتوسطة. كل ما يفعله Odoo، لكن برسم شهري ثابت واحد ومستخدمين بلا حدود بدلاً من التسعير لكل مستخدم."
-            },
-            "duration": {
-                  "en": "Live Demo",
-                  "ar": "عرض حي"
-            },
-            "year": {
-                  "en": "2026",
-                  "ar": "2026"
-            },
-            "challenge": {
-                  "en": "Small businesses run on Excel files, notebooks, and disconnected apps — invoices get lost, stock counts drift, and owners can't see their numbers until it's too late.",
-                  "ar": "تدير الشركات الصغيرة أعمالها عبر ملفات Excel ودفاتر ورقية وتطبيقات منفصلة — تضيع الفواتير، وتختلف أعداد المخزون، ولا يرى أصحاب العمل أرقامهم إلا بعد فوات الأوان."
-            },
-            "solution": {
-                  "en": "Kemet Business OS bundles the proven open-source ERPNext with WebKMT's industry starter kits, simplified per-role screens, and WhatsApp notifications for invoices, stock alerts, and a nightly sales summary to the owner.",
-                  "ar": "يجمع نظام كيميت للأعمال نظام ERPNext مفتوح المصدر المجرَّب مع حزم البدء المصممة لكل نشاط من WebKMT، وشاشات مبسطة حسب دور كل موظف، وإشعارات واتساب للفواتير وتنبيهات المخزون وملخص المبيعات الليلي للمالك."
-            },
-            "results": {
-                  "en": "What you get: flat monthly pricing with unlimited users, an Arabic/Turkish/English interface, ZATCA-ready e-invoicing for Saudi businesses, and your data hosted on your own server.",
-                  "ar": "ما ستحصل عليه: رسم شهري ثابت مع مستخدمين بلا حدود، وواجهة بالعربية والتركية والإنجليزية، وفوترة إلكترونية جاهزة لمتطلبات ZATCA في السعودية، وبياناتك مستضافة على خادمك الخاص."
-            },
-            "features": {
-                  "en": [
-                        "Invoicing & accounting",
-                        "Inventory & multi-warehouse",
-                        "Point of sale (POS)",
-                        "HR & payroll",
-                        "WhatsApp invoice & stock alerts",
-                        "Arabic / Turkish / English"
-                  ],
-                  "ar": [
-                        "الفوترة والمحاسبة",
-                        "المخزون والمستودعات المتعددة",
-                        "نقاط البيع",
-                        "الموارد البشرية والرواتب",
-                        "تنبيهات الفواتير والمخزون عبر واتساب",
-                        "العربية / التركية / الإنجليزية"
-                  ]
-            },
-            "thumbnail": "assets/portfolio/project-1.png",
-            "liveUrl": "/templates",
-            "technologies": [
-                  "ERPNext",
-                  "Frappe",
-                  "MariaDB",
-                  "Redis",
-                  "Docker",
-                  "WhatsApp API"
-            ]
-      },
-      {
-            "id": 2,
-            "category": "automation",
-            "title": {
-                  "en": "WhatsApp AI Receptionist — Live Demo",
-                  "ar": "موظف استقبال واتساب الذكي — عرض حي"
-            },
-            "client": {
-                  "en": "Demo System — Clinic Booking",
-                  "ar": "نظام تجريبي — حجوزات العيادات"
-            },
-            "description": {
-                  "en": "An AI receptionist that answers customers on WhatsApp and your website around the clock, explains your services and prices, books appointments into a real calendar, and sends reminders — with a shared inbox where your team can take over anytime.",
-                  "ar": "موظف استقبال بالذكاء الاصطناعي يرد على العملاء عبر واتساب وموقعك على مدار الساعة، يشرح خدماتك وأسعارك، يحجز المواعيد في تقويم حقيقي، ويرسل التذكيرات — مع صندوق وارد مشترك يستطيع فريقك التدخل فيه في أي وقت."
-            },
-            "duration": {
-                  "en": "Live Demo",
-                  "ar": "عرض حي"
-            },
-            "year": {
-                  "en": "2026",
-                  "ar": "2026"
-            },
-            "challenge": {
-                  "en": "Clinics, salons, and service businesses lose bookings every day to missed calls and WhatsApp messages that go unanswered outside working hours.",
-                  "ar": "تخسر العيادات والصالونات وشركات الخدمات حجوزات كل يوم بسبب المكالمات الفائتة ورسائل واتساب التي لا يُرد عليها خارج ساعات العمل."
-            },
-            "solution": {
-                  "en": "We train an AI assistant on the business's own services, prices, and FAQs, connect it to WhatsApp and the website chat, and wire bookings and reminders through automation workflows.",
-                  "ar": "ندرّب مساعداً ذكياً على خدمات نشاطك وأسعاره وأسئلته الشائعة، ونربطه بواتساب ومحادثة الموقع، ونوصل الحجوزات والتذكيرات عبر تدفقات أتمتة."
-            },
-            "results": {
-                  "en": "What you get: instant replies 24/7 in Arabic, Turkish, and English; automatic bookings and reminders; and every lead captured into one inbox — no customer message left unanswered.",
-                  "ar": "ما ستحصل عليه: ردود فورية على مدار الساعة بالعربية والتركية والإنجليزية، وحجوزات وتذكيرات تلقائية، وكل عميل محتمل يُسجَّل في صندوق وارد واحد — لا رسالة عميل دون رد."
-            },
-            "features": {
-                  "en": [
-                        "24/7 WhatsApp & website answers",
-                        "Appointment booking & reminders",
-                        "Trained on your prices & FAQs",
-                        "Shared team inbox",
-                        "Human handoff anytime",
-                        "Arabic / Turkish / English"
-                  ],
-                  "ar": [
-                        "ردود واتساب والموقع على مدار الساعة",
-                        "حجز المواعيد والتذكيرات",
-                        "مدرَّب على أسعارك وأسئلتك الشائعة",
-                        "صندوق وارد مشترك للفريق",
-                        "تحويل لموظف بشري في أي وقت",
-                        "العربية / التركية / الإنجليزية"
-                  ]
-            },
-            "thumbnail": "assets/portfolio/project-2.png",
-            "liveUrl": "https://wa.me/905013617795?text=Hi! I would like to see the WhatsApp AI Receptionist live demo.",
-            "technologies": [
-                  "WhatsApp Cloud API",
-                  "Chatwoot",
-                  "AnythingLLM (RAG)",
-                  "n8n",
-                  "Cal.com"
-            ]
-      },
-      {
-            "id": 3,
-            "category": "websites",
-            "title": {
-                  "en": "KMT Link — Link-in-Bio Platform",
-                  "ar": "KMT Link — منصة صفحة الروابط"
-            },
-            "client": {
-                  "en": "Live Product — Free to Use",
-                  "ar": "منتج حي — مجاني للاستخدام"
-            },
-            "description": {
-                  "en": "Our own free link-in-bio platform: one page for all your links with your name on it — link.webkmt.com/you. Built for creators, Instagram sellers, and small businesses that live on social media.",
-                  "ar": "منصتنا المجانية لصفحة الروابط: صفحة واحدة لكل روابطك باسمك — link.webkmt.com/اسمك. مصممة للمبدعين وبائعي إنستغرام والشركات الصغيرة التي تعيش على وسائل التواصل."
-            },
-            "duration": {
-                  "en": "Free Tool",
-                  "ar": "أداة مجانية"
-            },
-            "year": {
-                  "en": "2025",
-                  "ar": "2025"
-            },
-            "challenge": {
-                  "en": "Businesses on Instagram and TikTok can only share one link, so customers struggle to find their WhatsApp, location, menu, and store.",
-                  "ar": "لا تستطيع الأنشطة على إنستغرام وتيك توك مشاركة سوى رابط واحد، فيجد العملاء صعوبة في الوصول إلى واتساب والموقع والقائمة والمتجر."
-            },
-            "solution": {
-                  "en": "KMT Link gives every user a fast, customizable profile page with unlimited links, themes, QR codes, and click analytics — free, with an optional done-for-you setup.",
-                  "ar": "تمنح KMT Link كل مستخدم صفحة ملف سريعة وقابلة للتخصيص مع روابط غير محدودة وقوالب ورموز QR وتحليلات للنقرات — مجاناً، مع خيار الإعداد الكامل نيابة عنك."
-            },
-            "results": {
-                  "en": "Live and free to use today: create your page in minutes, share one link everywhere, and see exactly what your audience clicks.",
-                  "ar": "متاح ومجاني اليوم: أنشئ صفحتك في دقائق، شارك رابطاً واحداً في كل مكان، واعرف بالضبط ما ينقر عليه جمهورك."
-            },
-            "features": {
-                  "en": [
-                        "Vanity URL: link.webkmt.com/you",
-                        "Unlimited links & themes",
-                        "QR code generator",
-                        "Click analytics",
-                        "Arabic & English interface",
-                        "Free forever plan"
-                  ],
-                  "ar": [
-                        "رابط مخصص: link.webkmt.com/اسمك",
-                        "روابط وقوالب بلا حدود",
-                        "مولّد رموز QR",
-                        "تحليلات النقرات",
-                        "يعمل بالعربية والإنجليزية",
-                        "خطة مجانية للأبد"
-                  ]
-            },
-            "thumbnail": "assets/portfolio/project-3.png",
-            "liveUrl": "https://link.webkmt.com",
-            "technologies": [
-                  "Node.js",
-                  "Express",
-                  "Supabase",
-                  "PostgreSQL",
-                  "Vanilla JS"
-            ]
-      },
-      {
-            "id": 4,
-            "category": "websites",
-            "title": {
-                  "en": "WebKMT Platform — This Website & Free Tools",
-                  "ar": "منصة WebKMT — هذا الموقع وأدواته المجانية"
-            },
-            "client": {
-                  "en": "Our Own Platform",
-                  "ar": "منصتنا الخاصة"
-            },
-            "description": {
-                  "en": "The website you're browsing right now: a bilingual (EN/AR) platform with user accounts, an AI assistant (Kemet), a blog, and a suite of free business tools — Website Analyzer, ROI Calculator, Color Palette Studio, and more.",
-                  "ar": "الموقع الذي تتصفحه الآن: منصة ثنائية اللغة (EN/AR) مع حسابات مستخدمين ومساعد ذكاء اصطناعي (كيميت) ومدونة ومجموعة أدوات أعمال مجانية — محلل المواقع، وحاسبة العائد على الاستثمار، واستوديو الألوان، والمزيد."
-            },
-            "duration": {
-                  "en": "Live Now",
-                  "ar": "مباشر الآن"
-            },
-            "year": {
-                  "en": "2026",
-                  "ar": "2026"
-            },
-            "challenge": {
-                  "en": "Most agency websites only claim expertise. We wanted visitors to experience working software before ever talking to us.",
-                  "ar": "تدّعي معظم مواقع الوكالات الخبرة فقط. أردنا أن يجرّب الزوار برمجيات تعمل فعلاً قبل أن يتحدثوا إلينا."
-            },
-            "solution": {
-                  "en": "We built our site as a product: production-grade mini-apps anyone can use free, an AI chatbot that answers from our own knowledge base, and a structured quote wizard connected to our lead flow.",
-                  "ar": "بنينا موقعنا كمنتج: تطبيقات مصغرة بمستوى إنتاجي يمكن لأي شخص استخدامها مجاناً، وروبوت محادثة يجيب من قاعدة معرفتنا الخاصة، ومعالج عرض سعر منظم متصل بتدفق العملاء لدينا."
-            },
-            "results": {
-                  "en": "Try everything on this page — run a free website audit, calculate your ROI, or chat with Kemet. It's the same engineering we install for clients.",
-                  "ar": "جرّب كل شيء في هذه الصفحة — أجرِ تحليلاً مجانياً لموقعك، احسب عائد استثمارك، أو تحدث مع كيميت. إنها نفس الهندسة التي نثبّتها لعملائنا."
-            },
-            "features": {
-                  "en": [
-                        "5 free business mini-apps",
-                        "Kemet AI assistant (Gemini)",
-                        "Bilingual EN/AR with RTL",
-                        "User accounts & admin dashboard",
-                        "5-step project quote wizard",
-                        "Blog & insights CMS"
-                  ],
-                  "ar": [
-                        "5 تطبيقات أعمال مصغرة مجانية",
-                        "مساعد كيميت الذكي (Gemini)",
-                        "ثنائي اللغة EN/AR مع دعم RTL",
-                        "حسابات مستخدمين ولوحة إدارة",
-                        "معالج عرض سعر من 5 خطوات",
-                        "مدونة ونظام إدارة محتوى"
-                  ]
-            },
-            "thumbnail": "assets/portfolio/project-4.png",
-            "liveUrl": "/#mini-apps",
-            "technologies": [
-                  "Node.js",
-                  "Express",
-                  "Supabase",
-                  "Google Gemini",
-                  "PWA"
-            ]
-      }
-];
+    // No testimonial carousel: WEBKMT does not publish client testimonials,
+    // star ratings or exchange-for-review pilot offers.
+    this.portfolioData = Array.isArray(window.WEBKMT_PORTFOLIO_DATA) ? window.WEBKMT_PORTFOLIO_DATA : [];
   }
-
   setupElements() {
     this.portfolioGrid = document.getElementById('portfolioGrid');
     this.modal = document.getElementById('portfolioModal');
@@ -456,7 +195,7 @@ class SimplePortfolioManager {
 
     this.portfolioGrid.innerHTML = '';
 
-    // Mix portfolio cards with testimonial
+    // Product-proof cards only; no testimonial cards are inserted.
     let cardIndex = 0;
 
     try {
@@ -466,13 +205,6 @@ class SimplePortfolioManager {
         this.portfolioGrid.appendChild(card);
         cardIndex++;
 
-        // Insert testimonial card after 2nd project
-        if (index === 1) {
-          console.log('🎨 Creating testimonial card');
-          const testimonialCard = this.createTestimonialCard(cardIndex);
-          this.portfolioGrid.appendChild(testimonialCard);
-          cardIndex++;
-        }
       });
       console.log('✅ Portfolio rendering completed, total cards:', this.portfolioGrid.children.length);
     } catch (error) {
@@ -530,7 +262,7 @@ class SimplePortfolioManager {
         <div class="card-technologies">
           ${technologies}
         </div>
-        <div class="card-footer-row" style="display:flex;align-items:center;justify-content:space-between;margin-top:0.75rem;">
+        <div class="card-footer-row">
           <div class="card-duration">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"/>
@@ -538,8 +270,8 @@ class SimplePortfolioManager {
             </svg>
             ${item.duration[currentLang] || item.duration?.en || ''}
           </div>
-          <a href="case-study.html?id=${item.id}" class="case-study-link" style="font-size:0.8rem;color:var(--color-primary);text-decoration:none;font-weight:600;display:flex;align-items:center;gap:0.25rem;" onclick="event.stopPropagation();">
-            Case Study →
+          <a href="case-study.html?id=${item.id}" class="case-study-link" onclick="event.stopPropagation();">
+            ${currentLang === 'ar' ? 'عرض التفاصيل' : 'View details'} →
           </a>
         </div>
       </div>
@@ -557,159 +289,6 @@ class SimplePortfolioManager {
     }
 
     return card;
-  }
-
-  createTestimonialCard(index) {
-    const card = document.createElement('article');
-    card.className = 'portfolio-card-masonry card-testimonial card-medium card-normal';
-    card.style.animationDelay = `${index * 0.15}s`;
-    card.id = 'testimonialCard';
-
-    const currentTestimonial = this.testimonialsData[this.currentTestimonialIndex];
-
-    card.innerHTML = `
-      <div class="testimonial-card-content">
-        <div class="testimonial-header">
-          <h3 class="testimonial-title">Pilot Program</h3>
-          <div class="testimonial-counter">
-            <span class="current">${this.currentTestimonialIndex + 1}</span> / <span class="total">${this.testimonialsData.length}</span>
-          </div>
-        </div>
-        
-        <div class="testimonial-content">
-          <div class="testimonial-quote" id="testimonialQuote">${currentTestimonial.quote}</div>
-          <div class="testimonial-author">
-            <img class="testimonial-avatar" id="testimonialAvatar" src="${currentTestimonial.avatar}" alt="${currentTestimonial.author}" loading="lazy">
-            <div class="testimonial-info">
-              <h4 id="testimonialAuthor">${currentTestimonial.author}</h4>
-              <p id="testimonialPosition">${currentTestimonial.position}</p>
-            </div>
-          </div>
-          <div class="testimonial-stars">
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-            <span class="star">★</span>
-          </div>
-        </div>
-        
-        <div class="testimonial-navigation">
-          <button class="testimonial-nav-btn prev-btn" id="prevTestimonial" aria-label="Previous testimonial">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="15,18 9,12 15,6"></polyline>
-            </svg>
-          </button>
-          
-          <div class="testimonial-dots" id="testimonialDots">
-            ${this.testimonialsData.map((_, i) => 
-              `<button class="dot ${i === this.currentTestimonialIndex ? 'active' : ''}" data-index="${i}"></button>`
-            ).join('')}
-          </div>
-          
-          <button class="testimonial-nav-btn next-btn" id="nextTestimonial" aria-label="Next testimonial">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9,18 15,12 9,6"></polyline>
-            </svg>
-          </button>
-        </div>
-      </div>
-    `;
-
-    // Add event listeners for carousel navigation
-    this.setupTestimonialCarousel(card);
-
-    return card;
-  }
-
-  setupTestimonialCarousel(card) {
-    const prevBtn = card.querySelector('#prevTestimonial');
-    const nextBtn = card.querySelector('#nextTestimonial');
-    const dots = card.querySelectorAll('.dot');
-
-    // Previous button
-    prevBtn.addEventListener('click', () => {
-      this.currentTestimonialIndex = this.currentTestimonialIndex === 0 
-        ? this.testimonialsData.length - 1 
-        : this.currentTestimonialIndex - 1;
-      this.updateTestimonialContent();
-    });
-
-    // Next button
-    nextBtn.addEventListener('click', () => {
-      this.currentTestimonialIndex = (this.currentTestimonialIndex + 1) % this.testimonialsData.length;
-      this.updateTestimonialContent();
-    });
-
-    // Dot navigation
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        this.currentTestimonialIndex = index;
-        this.updateTestimonialContent();
-      });
-    });
-
-    // Auto-rotate testimonials every 5 seconds
-    this.startTestimonialAutoRotate();
-  }
-
-  updateTestimonialContent() {
-    const currentTestimonial = this.testimonialsData[this.currentTestimonialIndex];
-    const card = document.getElementById('testimonialCard');
-    
-    if (!card) return;
-
-    // Update content with fade effect
-    const quote = card.querySelector('#testimonialQuote');
-    const avatar = card.querySelector('#testimonialAvatar');
-    const author = card.querySelector('#testimonialAuthor');
-    const position = card.querySelector('#testimonialPosition');
-    const counter = card.querySelector('.current');
-    const dots = card.querySelectorAll('.dot');
-
-    // Add fade out effect
-    const content = card.querySelector('.testimonial-content');
-    content.style.opacity = '0.5';
-    content.style.transform = 'translateY(10px)';
-
-    setTimeout(() => {
-      // Update content
-      quote.textContent = currentTestimonial.quote;
-      avatar.src = currentTestimonial.avatar;
-      avatar.alt = currentTestimonial.author;
-      author.textContent = currentTestimonial.author;
-      position.textContent = currentTestimonial.position;
-      counter.textContent = this.currentTestimonialIndex + 1;
-
-      // Update dots
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === this.currentTestimonialIndex);
-      });
-
-      // Fade back in
-      content.style.opacity = '1';
-      content.style.transform = 'translateY(0)';
-    }, 200);
-  }
-
-  startTestimonialAutoRotate() {
-    // Clear any existing interval
-    if (this.testimonialInterval) {
-      clearInterval(this.testimonialInterval);
-    }
-
-    // Start new interval
-    this.testimonialInterval = setInterval(() => {
-      this.currentTestimonialIndex = (this.currentTestimonialIndex + 1) % this.testimonialsData.length;
-      this.updateTestimonialContent();
-    }, 5000);
-  }
-
-  stopTestimonialAutoRotate() {
-    if (this.testimonialInterval) {
-      clearInterval(this.testimonialInterval);
-      this.testimonialInterval = null;
-    }
   }
 
   getCategoryName(category, lang = 'en') {
@@ -1109,7 +688,7 @@ class SimplePortfolioManager {
     }
     
     if (modalTeamSize) {
-      modalTeamSize.textContent = (project.teamSize && project.teamSize[currentLang]) || (project.teamSize && project.teamSize.en) || '3-5 members';
+      modalTeamSize.textContent = (project.teamSize && project.teamSize[currentLang]) || (project.teamSize && project.teamSize.en) || '';
     }
 
     if (modalLaunchDate) {
@@ -1117,11 +696,11 @@ class SimplePortfolioManager {
     }
 
     if (modalPlatform) {
-      modalPlatform.textContent = (project.platform && project.platform[currentLang]) || (project.platform && project.platform.en) || 'Web & Mobile';
+      modalPlatform.textContent = (project.platform && project.platform[currentLang]) || (project.platform && project.platform.en) || '';
     }
     
     // Services Grid
-    const servicesGrid = this.modal.querySelector('#servicesGrid');
+    const servicesGrid = this.modal.querySelector('#servicesGridModal');
     if (servicesGrid) {
       if (project.services && project.services[currentLang]) {
         const services = project.services[currentLang] || project.services?.en || [];
@@ -1129,11 +708,8 @@ class SimplePortfolioManager {
           `<div class="service-tag">${service}</div>`
         ).join('');
       } else {
-        // Default services if not provided
-        const defaultServices = ['Web Development', 'UI/UX Design', 'Database Design', 'API Integration'];
-        servicesGrid.innerHTML = defaultServices.map(service =>
-          `<div class="service-tag">${service}</div>`
-        ).join('');
+        // Never invent services for a product card.
+        servicesGrid.innerHTML = '';
       }
     }
     
@@ -1152,13 +728,9 @@ class SimplePortfolioManager {
     const metricsGrid = this.modal.querySelector('#metricsGrid');
     if (metricsGrid && project.results) {
       const results = project.results[currentLang] || project.results?.en || '';
-      // Extract metrics from results text
-      const successLabel = window.languageManager?.translate('portfolio.modal.project_success') || (currentLang === 'ar' ? 'نجاح المشروع' : 'Project Success');
+      // Status/inspection note only. The former fixed 100% “success” metric
+      // was not evidence and must not return.
       metricsGrid.innerHTML = `
-        <div class="metric-card">
-          <div class="metric-value">100%</div>
-          <div class="metric-label">${successLabel}</div>
-        </div>
         <div class="metric-description">
           <p>${results}</p>
         </div>
@@ -1168,8 +740,8 @@ class SimplePortfolioManager {
     // Features List
     this.populateFeaturesList(project, currentLang);
     
-    // Testimonial Section
-    this.populateTestimonial(project, currentLang);
+    // No testimonial section is populated: proof is status + inspectable
+    // products/tools, not attributed client praise.
 
     // Update button states
     this.updateActionButtons(project);
@@ -1246,37 +818,6 @@ class SimplePortfolioManager {
     }
   }
 
-  populateTestimonial(project, currentLang) {
-    const testimonialSection = this.modal.querySelector('.testimonial-section');
-    if (testimonialSection && project.testimonial) {
-      const testimonial = project.testimonial[currentLang] || project.testimonial?.en || {};
-      const testimonialText = this.modal.querySelector('.testimonial-text');
-      const authorName = this.modal.querySelector('.author-name');
-      const authorPosition = this.modal.querySelector('.author-position');
-      const avatarImage = this.modal.querySelector('.avatar-image');
-      
-      if (testimonialText) {
-        const defaultText = window.languageManager?.translate('portfolio.modal.default_testimonial') || (currentLang === 'ar' ? 'عمل ممتاز ومهني للغاية.' : 'Excellent and professional work.');
-        testimonialText.textContent = testimonial.text || defaultText;
-      }
-      
-      if (authorName) {
-        const defaultAuthor = window.languageManager?.translate('portfolio.modal.satisfied_client') || (currentLang === 'ar' ? 'عميل راض' : 'Satisfied Client');
-        authorName.textContent = testimonial.author || defaultAuthor;
-      }
-      
-      if (authorPosition) {
-        const defaultPosition = window.languageManager?.translate('portfolio.modal.project_manager') || (currentLang === 'ar' ? 'مدير المشروع' : 'Project Manager');
-        authorPosition.textContent = testimonial.position || defaultPosition;
-      }
-      
-      if (avatarImage) {
-        avatarImage.src = testimonial.avatar || 'assets/testimonials/default-avatar.jpg';
-        avatarImage.alt = testimonial.author || 'Client Avatar';
-      }
-    }
-  }
-
   handleModalClick(e) {
     console.log('🔧 handleModalClick triggered');
     console.log('🔧 Target element:', e.target.tagName);
@@ -1331,7 +872,7 @@ class SimplePortfolioManager {
     if (this.caseStudyBtn) {
       // Always link to the dedicated case study page
       this.caseStudyBtn.style.display = 'flex';
-      this.caseStudyBtn.href = `case-study.html?id=${project.id}`;
+      this.caseStudyBtn.href = project.caseStudyUrl || `case-study.html?id=${project.id}`;
     }
   }
 
@@ -1339,8 +880,8 @@ class SimplePortfolioManager {
     if (this.currentProject && this.currentProject.liveUrl) {
       window.open(this.currentProject.liveUrl, '_blank', 'noopener,noreferrer');
     } else {
-      // Demo URL for projects without live URLs
-      window.open('#', '_blank', 'noopener,noreferrer');
+      // No public URL means guided/contact access only; never open a fake demo.
+      return;
     }
   }
 
@@ -1366,7 +907,7 @@ class SimplePortfolioManager {
     if (navigator.share) {
       // Use native Web Share API if available
       navigator.share({
-        title: `WebKMT Portfolio - ${projectTitle}`,
+        title: `WEBKMT — ${projectTitle}`,
         text: projectDescription,
         url: window.location.href
       }).catch(err => console.log('Error sharing:', err));

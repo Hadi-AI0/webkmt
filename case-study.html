@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
-    <title id="pageTitle">Demo System — WebKMT</title>
-    <meta name="description" id="pageDescription" content="Deep dive case study from WebKMT — custom software solutions agency.">
+    <title id="pageTitle">Product Overview — WEBKMT</title>
+    <meta name="description" id="pageDescription" content="A status-labelled WEBKMT product overview. Client identities and testimonials are not published; inspect the product scope, foundations and next step instead.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="WebKMT">
-    <meta property="og:title" id="ogTitle" content="Demo System — WebKMT">
-    <meta property="og:description" id="ogDesc" content="Deep dive case study from WebKMT.">
+    <meta property="og:site_name" content="WEBKMT">
+    <meta property="og:title" id="ogTitle" content="Product Overview — WEBKMT">
+    <meta property="og:description" id="ogDesc" content="A status-labelled WEBKMT product overview.">
+    <meta property="og:image" content="https://webkmt.com/assets/webkmt-mark.png">
 
-    <!-- Fonts -->
+    <!-- Type system: Manrope for Latin, IBM Plex Sans Arabic for Arabic. -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Theme init (prevents FOUC) -->
     <script>
@@ -28,722 +29,256 @@
 
     <link rel="stylesheet" href="css/main-bundle.css">
     <link rel="stylesheet" href="css/components-bundle.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-
-    <style>
-      body { font-family: 'Inter', sans-serif; }
-
-      .cs-hero {
-        min-height: 60vh;
-        display: flex;
-        align-items: flex-end;
-        padding: 6rem 0 3rem;
-        background: linear-gradient(135deg, rgba(124, 58, 237, 0.15) 0%, rgba(59, 130, 246, 0.08) 100%);
-        border-bottom: 1px solid var(--glass-border, rgba(255,255,255,0.1));
-        position: relative;
-        overflow: hidden;
-      }
-
-      .cs-hero::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(ellipse 70% 70% at 80% 20%, rgba(124,58,237,0.1) 0%, transparent 60%);
-        pointer-events: none;
-      }
-
-      .cs-breadcrumb {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .cs-breadcrumb a {
-        color: var(--color-primary);
-        text-decoration: none;
-      }
-
-      .cs-category-badge {
-        display: inline-block;
-        padding: 0.35rem 1rem;
-        background: rgba(124, 58, 237, 0.15);
-        border: 1px solid rgba(124, 58, 237, 0.3);
-        border-radius: 100px;
-        font-size: 0.85rem;
-        color: var(--color-primary);
-        margin-bottom: 1rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .cs-title {
-        font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 800;
-        line-height: 1.1;
-        color: var(--text-primary);
-        margin: 0 0 1rem 0;
-        max-width: 800px;
-      }
-
-      .cs-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        margin-top: 2rem;
-      }
-
-      .cs-meta-item {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-      }
-
-      .cs-meta-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--text-secondary);
-      }
-
-      .cs-meta-value {
-        font-size: 1rem;
-        font-weight: 600;
-        color: var(--text-primary);
-      }
-
-      .cs-content {
-        padding: 5rem 0;
-      }
-
-      .cs-grid {
-        display: grid;
-        grid-template-columns: 1fr 340px;
-        gap: 4rem;
-        align-items: start;
-      }
-
-      @media (max-width: 900px) {
-        .cs-grid { grid-template-columns: 1fr; }
-      }
-
-      .cs-section {
-        margin-bottom: 3rem;
-      }
-
-      .cs-section-label {
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--color-primary);
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-      }
-
-      .cs-section h2 {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--text-primary);
-        margin: 0 0 1rem 0;
-      }
-
-      .cs-section p {
-        color: var(--text-secondary);
-        line-height: 1.8;
-        font-size: 1.05rem;
-      }
-
-      .cs-sidebar {
-        position: sticky;
-        top: 100px;
-      }
-
-      .cs-sidebar-card {
-        background: var(--bg-glass, rgba(255,255,255,0.05));
-        border: 1px solid var(--glass-border, rgba(255,255,255,0.1));
-        border-radius: 1rem;
-        padding: 1.5rem;
-        margin-bottom: 1.5rem;
-        backdrop-filter: blur(12px);
-      }
-
-      .cs-sidebar-card h3 {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--text-secondary);
-        margin: 0 0 1rem 0;
-      }
-
-      .tech-grid {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .tech-tag {
-        background: rgba(124, 58, 237, 0.12);
-        border: 1px solid rgba(124, 58, 237, 0.25);
-        color: var(--color-primary);
-        padding: 0.3rem 0.75rem;
-        border-radius: 100px;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      .results-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 1.5rem;
-      }
-
-      .result-card {
-        background: var(--bg-glass, rgba(255,255,255,0.04));
-        border: 1px solid var(--glass-border, rgba(255,255,255,0.08));
-        border-radius: 0.75rem;
-        padding: 1.25rem;
-        text-align: center;
-      }
-
-      .result-number {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--color-primary);
-        line-height: 1;
-        margin-bottom: 0.25rem;
-      }
-
-      .result-label {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
-        line-height: 1.3;
-      }
-
-      .features-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .features-list li {
-        padding: 0.6rem 0;
-        border-bottom: 1px solid var(--glass-border, rgba(255,255,255,0.06));
-        color: var(--text-secondary);
-        font-size: 0.95rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-
-      .features-list li::before {
-        content: '✓';
-        color: #10b981;
-        font-weight: 700;
-        flex-shrink: 0;
-      }
-
-      .cs-cta {
-        background: linear-gradient(135deg, var(--color-primary) 0%, #3b82f6 100%);
-        border-radius: 1.5rem;
-        padding: 3rem;
-        text-align: center;
-        margin-top: 4rem;
-        color: white;
-      }
-
-      .cs-cta h2 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin: 0 0 1rem 0;
-      }
-
-      .cs-cta p {
-        opacity: 0.85;
-        margin-bottom: 2rem;
-      }
-
-      .cs-not-found {
-        text-align: center;
-        padding: 10rem 2rem;
-        color: var(--text-secondary);
-      }
-
-      /* Nav bar (simplified) */
-      .cs-nav {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 1rem 2rem;
-        background: rgba(0,0,0,0.7);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-
-      .cs-nav-logo {
-        font-size: 1.25rem;
-        font-weight: 800;
-        color: var(--text-primary);
-        text-decoration: none;
-      }
-
-      .cs-nav-logo span { color: var(--color-primary); }
-
-      .cs-nav-back {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-secondary);
-        text-decoration: none;
-        font-size: 0.9rem;
-        transition: color 0.2s;
-      }
-
-      .cs-nav-back:hover { color: var(--color-primary); }
-
-      .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-    </style>
+    <!-- Shared design layer loaded last. Page layout rules live with the
+         other .cs-* rules in css/design-system.css; this page has no local
+         colour/gradient recipes. -->
+    <link rel="stylesheet" href="css/design-system.css">
+    <link rel="icon" type="image/png" href="assets/webkmt-mark.png">
+    <link rel="apple-touch-icon" href="assets/webkmt-mark.png">
 </head>
 <body>
-
-    <!-- Minimal Nav -->
-    <nav class="cs-nav">
-        <a href="/" class="cs-nav-logo">Web<span>KMT</span></a>
+    <!-- Minimal product-overview navigation -->
+    <nav class="cs-nav" aria-label="Product overview navigation">
+        <a href="/" class="cs-nav-logo" aria-label="WEBKMT home">
+            <img src="assets/webkmt-mark.png" alt="" width="42" height="38">
+            <span>WEBKMT</span>
+        </a>
         <a href="/#portfolio" class="cs-nav-back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <path d="M19 12H5"/><path d="m12 19-7-7 7-7"/>
             </svg>
-            Back to Portfolio
+            <span id="csBackText">Back to products &amp; demos</span>
         </a>
     </nav>
 
     <!-- Hero -->
     <header class="cs-hero" id="csHero">
         <div class="container">
-            <nav class="cs-breadcrumb">
-                <a href="/">WebKMT</a>
-                <span>›</span>
-                <a href="/#portfolio">Portfolio</a>
-                <span>›</span>
-                <span id="breadcrumbTitle">Demo System</span>
+            <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+                <a href="/" id="crumbHome">WEBKMT</a>
+                <span aria-hidden="true">›</span>
+                <a href="/#portfolio" id="crumbOverview">Products &amp; Demos</a>
+                <span aria-hidden="true">›</span>
+                <span id="breadcrumbTitle">Product overview</span>
             </nav>
-            <div class="cs-category-badge" id="csCategory">Project</div>
-            <h1 class="cs-title" id="csTitle">Loading...</h1>
-            <p id="csClient" style="color:var(--text-secondary);font-size:1.1rem;"></p>
+            <div class="cs-category-badge" id="csCategory">Product</div>
+            <h1 class="cs-title" id="csTitle">Loading…</h1>
+            <p class="cs-client" id="csClient"></p>
             <div class="cs-meta" id="csMeta"></div>
         </div>
     </header>
 
-    <!-- Content -->
+    <!-- Content: this is deliberately an overview/status page, not a client
+         case study. It uses the same proof-safe dataset as the homepage. -->
     <main class="cs-content">
         <div class="container">
-            <div id="csNotFound" class="cs-not-found" style="display:none;">
-                <h2>Demo System Not Found</h2>
-                <p>This project may have been moved or doesn't exist.</p>
-                <a href="/#portfolio" class="btn btn--primary" style="margin-top:2rem;display:inline-block;">View All Projects</a>
+            <div id="csNotFound" class="cs-not-found" hidden>
+                <h2 id="csNotFoundTitle">Product overview not found</h2>
+                <p id="csNotFoundText">This product overview may have moved or does not exist.</p>
+                <a href="/#portfolio" class="btn btn--primary" id="csNotFoundButton">View products &amp; demos</a>
             </div>
 
             <div class="cs-grid" id="csGrid">
-                <!-- Main Content -->
                 <div>
+                    <figure class="cs-visual">
+                        <img id="csImage" src="assets/webkmt-mark.png" alt="" width="1200" height="760">
+                    </figure>
+
                     <section class="cs-section">
-                        <div class="cs-section-label">Overview</div>
+                        <h2 id="overviewLabel">Overview</h2>
                         <p id="csDescription"></p>
                     </section>
 
                     <section class="cs-section">
-                        <div class="cs-section-label">The Challenge</div>
-                        <h2>What we were solving</h2>
+                        <h2 id="challengeTitle">What this system addresses</h2>
                         <p id="csChallenge"></p>
                     </section>
 
                     <section class="cs-section">
-                        <div class="cs-section-label">Our Approach</div>
-                        <h2>How we built it</h2>
+                        <h2 id="approachTitle">How it is configured</h2>
                         <p id="csSolution"></p>
                     </section>
 
                     <section class="cs-section">
-                        <div class="cs-section-label">Key Features</div>
-                        <h2>What was delivered</h2>
+                        <h2 id="featuresTitle">What to inspect</h2>
                         <ul class="features-list" id="csFeatures"></ul>
                     </section>
 
                     <section class="cs-section">
-                        <div class="cs-section-label">What You Get</div>
-                        <h2>The impact</h2>
-                        <p id="csResults"></p>
-                        <div class="results-grid" id="csResultsGrid"></div>
+                        <h2 id="statusTitle">What this page proves — and what it does not</h2>
+                        <div class="cs-status-note">
+                            <p id="csResults"></p>
+                        </div>
                     </section>
 
-                    <!-- CTA -->
                     <div class="cs-cta">
-                        <h2>Ready to build something similar?</h2>
-                        <p>Tell us what you need and we'll put together a custom scope for your business.</p>
-                        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-                            <a href="/#contact" class="btn" style="background:white;color:#7c3aed;padding:0.875rem 2rem;border-radius:0.5rem;font-weight:600;text-decoration:none;">Get a Quote</a>
-                            <a href="https://wa.me/905013617795" target="_blank" class="btn" style="background:rgba(255,255,255,0.15);color:white;border:1px solid rgba(255,255,255,0.3);padding:0.875rem 2rem;border-radius:0.5rem;font-weight:600;text-decoration:none;">WhatsApp Us</a>
+                        <h2 id="ctaTitle">Discuss this system for your business</h2>
+                        <p id="ctaText">Tell us the outcome you need. We’ll confirm fit, scope and price in an official quote before work begins.</p>
+                        <div class="cs-cta-actions">
+                            <a href="/#contact" class="btn cs-cta__primary" id="ctaQuote">Request an official quote</a>
+                            <a href="https://wa.me/905013617795" target="_blank" rel="noopener" class="btn cs-cta__secondary" id="ctaWhatsApp">WhatsApp us</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- Sidebar -->
                 <aside class="cs-sidebar">
                     <div class="cs-sidebar-card">
-                        <h3>Technologies Used</h3>
+                        <h3 id="techTitle">Foundations</h3>
                         <div class="tech-grid" id="csTechGrid"></div>
                     </div>
 
                     <div class="cs-sidebar-card">
-                        <h3>Project Details</h3>
-                        <div id="csProjectDetails" style="display:flex;flex-direction:column;gap:1rem;"></div>
+                        <h3 id="detailsTitle">Product details</h3>
+                        <div class="cs-details" id="csProjectDetails"></div>
                     </div>
 
-                    <a href="/#contact" class="btn btn--primary" style="display:block;text-align:center;padding:1rem;border-radius:0.75rem;text-decoration:none;background:var(--color-primary);color:white;font-weight:600;margin-top:0.5rem;">
-                        Start a Similar Project →
-                    </a>
+                    <div class="cs-sidebar-actions">
+                        <a href="#" class="btn btn--primary cs-start-link" id="csOpenLink" hidden>Open</a>
+                        <a href="/#contact" class="btn btn--primary cs-start-link" id="csStartLink">Discuss this system</a>
+                        <a href="/assets/WEBKMT_Business_Profile_2026.pdf" target="_blank" rel="noopener" class="btn cs-profile-link" id="csProfileLink">Business Profile (PDF)</a>
+                    </div>
                 </aside>
             </div>
         </div>
     </main>
 
-    <footer style="text-align:center;padding:3rem 2rem;border-top:1px solid var(--glass-border,rgba(255,255,255,0.08));color:var(--text-secondary);font-size:0.9rem;">
-        <p>© 2024 WebKMT. All rights reserved. <a href="/" style="color:var(--color-primary);">Back to Home</a></p>
+    <footer class="wk-simple-footer">
+        <p><span id="footerText">© 2026 WEBKMT. All rights reserved.</span> <a href="/">Home</a> · <a href="/#services">Systems &amp; Pricing</a> · <a href="mailto:info@webkmt.com">info@webkmt.com</a></p>
     </footer>
 
-    <script src="js/portfolio-simple.js" defer></script>
+    <!-- Single source of truth shared with the homepage portfolio cards. -->
+    <script src="js/portfolio-data.js"></script>
     <script>
-    // Embed portfolio data directly so we don't need to re-init the full portfolio manager
-    const PORTFOLIO_DATA = [
-      {
-            "id": 1,
-            "category": "ERP / Business System",
-            "title": {
-                  "en": "Kemet Business OS — ERP Live Demo"
-            },
-            "client": {
-                  "en": "Demo System — WebKMT Product"
-            },
-            "description": {
-                  "en": "A complete business management system — accounting, invoicing, inventory, POS, and HR — installed and pre-configured for small and mid-sized businesses. Everything Odoo does, with one flat monthly fee and unlimited users instead of per-seat pricing."
-            },
-            "duration": {
-                  "en": "Live Demo"
-            },
-            "year": {
-                  "en": "2026"
-            },
-            "challenge": {
-                  "en": "Small businesses run on Excel files, notebooks, and disconnected apps — invoices get lost, stock counts drift, and owners can't see their numbers until it's too late."
-            },
-            "solution": {
-                  "en": "Kemet Business OS bundles the proven open-source ERPNext with WebKMT's industry starter kits, simplified per-role screens, and WhatsApp notifications for invoices, stock alerts, and a nightly sales summary to the owner."
-            },
-            "results": {
-                  "en": "What you get: flat monthly pricing with unlimited users, an Arabic/Turkish/English interface, ZATCA-ready e-invoicing for Saudi businesses, and your data hosted on your own server."
-            },
-            "features": {
-                  "en": [
-                        "Invoicing & accounting",
-                        "Inventory & multi-warehouse",
-                        "Point of sale (POS)",
-                        "HR & payroll",
-                        "WhatsApp invoice & stock alerts",
-                        "Arabic / Turkish / English"
-                  ]
-            },
-            "technologies": [
-                  "ERPNext",
-                  "Frappe",
-                  "MariaDB",
-                  "Redis",
-                  "Docker",
-                  "WhatsApp API"
-            ],
-            "metrics": [
-                  {
-                        "number": "Flat",
-                        "label": "Monthly Fee"
-                  },
-                  {
-                        "number": "Unlimited",
-                        "label": "Users Included"
-                  },
-                  {
-                        "number": "3",
-                        "label": "Languages"
-                  },
-                  {
-                        "number": "100%",
-                        "label": "Open Source"
-                  }
-            ]
-      },
-      {
-            "id": 2,
-            "category": "AI / Automation",
-            "title": {
-                  "en": "WhatsApp AI Receptionist — Live Demo"
-            },
-            "client": {
-                  "en": "Demo System — Clinic Booking"
-            },
-            "description": {
-                  "en": "An AI receptionist that answers customers on WhatsApp and your website around the clock, explains your services and prices, books appointments into a real calendar, and sends reminders — with a shared inbox where your team can take over anytime."
-            },
-            "duration": {
-                  "en": "Live Demo"
-            },
-            "year": {
-                  "en": "2026"
-            },
-            "challenge": {
-                  "en": "Clinics, salons, and service businesses lose bookings every day to missed calls and WhatsApp messages that go unanswered outside working hours."
-            },
-            "solution": {
-                  "en": "We train an AI assistant on the business's own services, prices, and FAQs, connect it to WhatsApp and the website chat, and wire bookings and reminders through automation workflows."
-            },
-            "results": {
-                  "en": "What you get: instant replies 24/7 in Arabic, Turkish, and English; automatic bookings and reminders; and every lead captured into one inbox — no customer message left unanswered."
-            },
-            "features": {
-                  "en": [
-                        "24/7 WhatsApp & website answers",
-                        "Appointment booking & reminders",
-                        "Trained on your prices & FAQs",
-                        "Shared team inbox",
-                        "Human handoff anytime",
-                        "Arabic / Turkish / English"
-                  ]
-            },
-            "technologies": [
-                  "WhatsApp Cloud API",
-                  "Chatwoot",
-                  "AnythingLLM (RAG)",
-                  "n8n",
-                  "Cal.com"
-            ],
-            "metrics": [
-                  {
-                        "number": "24/7",
-                        "label": "Availability"
-                  },
-                  {
-                        "number": "3",
-                        "label": "Languages"
-                  },
-                  {
-                        "number": "2",
-                        "label": "Channels"
-                  },
-                  {
-                        "number": "1",
-                        "label": "Shared Inbox"
-                  }
-            ]
-      },
-      {
-            "id": 3,
-            "category": "Web Platform",
-            "title": {
-                  "en": "KMT Link — Link-in-Bio Platform"
-            },
-            "client": {
-                  "en": "Live Product — Free to Use"
-            },
-            "description": {
-                  "en": "Our own free link-in-bio platform: one page for all your links with your name on it — link.webkmt.com/you. Built for creators, Instagram sellers, and small businesses that live on social media."
-            },
-            "duration": {
-                  "en": "Free Tool"
-            },
-            "year": {
-                  "en": "2025"
-            },
-            "challenge": {
-                  "en": "Businesses on Instagram and TikTok can only share one link, so customers struggle to find their WhatsApp, location, menu, and store."
-            },
-            "solution": {
-                  "en": "KMT Link gives every user a fast, customizable profile page with unlimited links, themes, QR codes, and click analytics — free, with an optional done-for-you setup."
-            },
-            "results": {
-                  "en": "Live and free to use today: create your page in minutes, share one link everywhere, and see exactly what your audience clicks."
-            },
-            "features": {
-                  "en": [
-                        "Vanity URL: link.webkmt.com/you",
-                        "Unlimited links & themes",
-                        "QR code generator",
-                        "Click analytics",
-                        "Arabic & English interface",
-                        "Free forever plan"
-                  ]
-            },
-            "technologies": [
-                  "Node.js",
-                  "Express",
-                  "Supabase",
-                  "PostgreSQL",
-                  "Vanilla JS"
-            ],
-            "metrics": [
-                  {
-                        "number": "Free",
-                        "label": "Forever Plan"
-                  },
-                  {
-                        "number": "Unlimited",
-                        "label": "Links"
-                  },
-                  {
-                        "number": "QR",
-                        "label": "Code Generator"
-                  },
-                  {
-                        "number": "Live",
-                        "label": "Try It Now"
-                  }
-            ]
-      },
-      {
-            "id": 4,
-            "category": "Web Platform",
-            "title": {
-                  "en": "WebKMT Platform — This Website & Free Tools"
-            },
-            "client": {
-                  "en": "Our Own Platform"
-            },
-            "description": {
-                  "en": "The website you're browsing right now: a bilingual (EN/AR) platform with user accounts, an AI assistant (Kemet), a blog, and a suite of free business tools — Website Analyzer, ROI Calculator, Color Palette Studio, and more."
-            },
-            "duration": {
-                  "en": "Live Now"
-            },
-            "year": {
-                  "en": "2026"
-            },
-            "challenge": {
-                  "en": "Most agency websites only claim expertise. We wanted visitors to experience working software before ever talking to us."
-            },
-            "solution": {
-                  "en": "We built our site as a product: production-grade mini-apps anyone can use free, an AI chatbot that answers from our own knowledge base, and a structured quote wizard connected to our lead flow."
-            },
-            "results": {
-                  "en": "Try everything on this page — run a free website audit, calculate your ROI, or chat with Kemet. It's the same engineering we install for clients."
-            },
-            "features": {
-                  "en": [
-                        "5 free business mini-apps",
-                        "Kemet AI assistant (Gemini)",
-                        "Bilingual EN/AR with RTL",
-                        "User accounts & admin dashboard",
-                        "5-step project quote wizard",
-                        "Blog & insights CMS"
-                  ]
-            },
-            "technologies": [
-                  "Node.js",
-                  "Express",
-                  "Supabase",
-                  "Google Gemini",
-                  "PWA"
-            ],
-            "metrics": [
-                  {
-                        "number": "5",
-                        "label": "Free Mini-Apps"
-                  },
-                  {
-                        "number": "2",
-                        "label": "Languages (EN/AR)"
-                  },
-                  {
-                        "number": "AI",
-                        "label": "Kemet Assistant"
-                  },
-                  {
-                        "number": "PWA",
-                        "label": "Installable App"
-                  }
-            ]
+    (function () {
+      'use strict';
+
+      var savedLang = '';
+      try { savedLang = localStorage.getItem('language') || ''; } catch (e) { savedLang = ''; }
+      var lang = String(savedLang || navigator.language || 'en').toLowerCase().indexOf('ar') === 0 ? 'ar' : 'en';
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      var UI = {
+        en: {
+          back: 'Back to products & demos', overviewCrumb: 'Products & Demos',
+          notFoundTitle: 'Product overview not found', notFoundText: 'This product overview may have moved or does not exist.', notFoundButton: 'View products & demos',
+          overview: 'Overview', challengeLabel: 'The business problem', challengeTitle: 'What this system addresses',
+          approachLabel: 'WEBKMT approach', approachTitle: 'How it is configured', featuresLabel: 'Scope', featuresTitle: 'What to inspect',
+          statusLabel: 'Current status', statusTitle: 'What this page proves — and what it does not',
+          ctaTitle: 'Discuss this system for your business', ctaText: 'Tell us the outcome you need. We’ll confirm fit, scope and price in an official quote before work begins.',
+          quote: 'Request an official quote', whatsapp: 'WhatsApp us', tech: 'Foundations', details: 'Product details',
+          type: 'Type', status: 'Status', year: 'Reference year', category: 'Category', open: 'Open', discuss: 'Discuss this system',
+          profile: 'Business Profile (PDF)', footer: '© 2026 WEBKMT. All rights reserved.'
+        },
+        ar: {
+          back: 'عودة إلى المنتجات والعروض', overviewCrumb: 'المنتجات والعروض',
+          notFoundTitle: 'لم تُوجد نظرة المنتج', notFoundText: 'ربما نُقلت نظرة المنتج هذه أو لم تعد موجودة.', notFoundButton: 'عرض المنتجات والعروض',
+          overview: 'نظرة عامة', challengeLabel: 'مشكلة النشاط', challengeTitle: 'ما الذي يعالجه هذا النظام؟',
+          approachLabel: 'نهج WEBKMT', approachTitle: 'كيف يُهيأ النظام؟', featuresLabel: 'النطاق', featuresTitle: 'ما الذي يجب فحصه؟',
+          statusLabel: 'الحالة الحالية', statusTitle: 'ما تثبته هذه الصفحة — وما لا تثبته',
+          ctaTitle: 'ناقش هذا النظام لنشاطك', ctaText: 'أخبرنا بالنتيجة التي تحتاجها. وسنؤكد الملاءمة والنطاق والسعر في عرض سعر رسمي قبل بدء العمل.',
+          quote: 'اطلب عرض سعر رسمياً', whatsapp: 'راسلنا واتساب', tech: 'الأسس', details: 'تفاصيل المنتج',
+          type: 'النوع', status: 'الحالة', year: 'سنة المرجع', category: 'الفئة', open: 'افتح', discuss: 'ناقش هذا النظام',
+          profile: 'الملف التعريفي (PDF)', footer: '© 2026 WEBKMT. جميع الحقوق محفوظة.'
+        }
+      }[lang];
+
+      var CATEGORIES = {
+        systems: { en: 'Business Systems', ar: 'أنظمة الأعمال' },
+        automation: { en: 'Customer Response', ar: 'الرد على العملاء' },
+        websites: { en: 'Websites & Platform', ar: 'المواقع والمنصة' }
+      };
+
+      function setText(id, value) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = value;
       }
-];
-
-    function initCaseStudy() {
-      const params = new URLSearchParams(window.location.search);
-      const id = parseInt(params.get('id'));
-      const project = PORTFOLIO_DATA.find(p => p.id === id);
-
-      if (!project) {
-        document.getElementById('csGrid').style.display = 'none';
-        document.getElementById('csNotFound').style.display = 'block';
-        document.getElementById('csTitle').textContent = 'Not Found';
-        return;
+      function applyStaticText() {
+        setText('csBackText', UI.back); setText('crumbOverview', UI.overviewCrumb);
+        setText('csNotFoundTitle', UI.notFoundTitle); setText('csNotFoundText', UI.notFoundText); setText('csNotFoundButton', UI.notFoundButton);
+        setText('overviewLabel', UI.overview); setText('challengeTitle', UI.challengeTitle);
+        setText('approachTitle', UI.approachTitle);
+        setText('featuresTitle', UI.featuresTitle);
+        setText('statusTitle', UI.statusTitle);
+        setText('ctaTitle', UI.ctaTitle); setText('ctaText', UI.ctaText); setText('ctaQuote', UI.quote); setText('ctaWhatsApp', UI.whatsapp);
+        setText('techTitle', UI.tech); setText('detailsTitle', UI.details); setText('csOpenLink', UI.open);
+        setText('csStartLink', UI.discuss); setText('csProfileLink', UI.profile); setText('footerText', UI.footer);
       }
 
-      const lang = 'en';
-      const get = (obj) => obj?.[lang] || obj?.en || '';
+      function initProductOverview() {
+        applyStaticText();
+        var products = Array.isArray(window.WEBKMT_PORTFOLIO_DATA) ? window.WEBKMT_PORTFOLIO_DATA : [];
+        var id = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
+        var project = products.find(function (p) { return p.id === id; });
+        var grid = document.getElementById('csGrid');
+        var notFound = document.getElementById('csNotFound');
 
-      // Page meta
-      const title = get(project.title);
-      document.getElementById('pageTitle').textContent = title + ' — WebKMT Demo System';
-      document.getElementById('pageDescription').content = get(project.description).slice(0, 155);
-      document.getElementById('ogTitle').content = title + ' — WebKMT';
-      document.getElementById('ogDesc').content = get(project.description).slice(0, 155);
+        if (!project) {
+          if (grid) grid.hidden = true;
+          if (notFound) notFound.hidden = false;
+          setText('csTitle', UI.notFoundTitle);
+          setText('breadcrumbTitle', UI.notFoundTitle);
+          setText('csCategory', 'WEBKMT');
+          setText('csClient', '');
+          return;
+        }
 
-      // Hero
-      document.getElementById('breadcrumbTitle').textContent = title;
-      document.getElementById('csCategory').textContent = project.category;
-      document.getElementById('csTitle').textContent = title;
-      document.getElementById('csClient').textContent = 'Client: ' + get(project.client);
+        function get(obj) { return (obj && (obj[lang] || obj.en)) || ''; }
+        var title = get(project.title);
+        var description = get(project.description);
+        var category = (CATEGORIES[project.category] || {})[lang] || project.category || '';
 
-      document.getElementById('csMeta').innerHTML = `
-        <div class="cs-meta-item"><span class="cs-meta-label">Duration</span><span class="cs-meta-value">${get(project.duration)}</span></div>
-        <div class="cs-meta-item"><span class="cs-meta-label">Year</span><span class="cs-meta-value">${get(project.year)}</span></div>
-        <div class="cs-meta-item"><span class="cs-meta-label">Category</span><span class="cs-meta-value">${project.category}</span></div>
-      `;
+        document.getElementById('pageTitle').textContent = title + ' — WEBKMT';
+        document.getElementById('pageDescription').content = description.slice(0, 155);
+        document.getElementById('ogTitle').content = title + ' — WEBKMT';
+        document.getElementById('ogDesc').content = description.slice(0, 155);
 
-      // Main content
-      document.getElementById('csDescription').textContent = get(project.description);
-      document.getElementById('csChallenge').textContent = get(project.challenge);
-      document.getElementById('csSolution').textContent = get(project.solution);
-      document.getElementById('csResults').textContent = get(project.results);
+        setText('breadcrumbTitle', title);
+        setText('csCategory', category);
+        setText('csTitle', title);
+        setText('csClient', UI.type + ': ' + get(project.client));
 
-      // Features list
-      const features = get(project.features);
-      document.getElementById('csFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join('');
+        var image = document.getElementById('csImage');
+        if (image && project.thumbnail) {
+          image.src = project.thumbnail;
+          image.alt = title;
+        }
 
-      // Metrics
-      if (project.metrics) {
-        document.getElementById('csResultsGrid').innerHTML = project.metrics.map(m => `
-          <div class="result-card">
-            <div class="result-number">${m.number}</div>
-            <div class="result-label">${m.label}</div>
-          </div>
-        `).join('');
+        document.getElementById('csMeta').innerHTML =
+          '<div class="cs-meta-item"><span class="cs-meta-label">' + UI.status + '</span><span class="cs-meta-value">' + get(project.duration) + '</span></div>' +
+          '<div class="cs-meta-item"><span class="cs-meta-label">' + UI.year + '</span><span class="cs-meta-value">' + get(project.year) + '</span></div>' +
+          '<div class="cs-meta-item"><span class="cs-meta-label">' + UI.category + '</span><span class="cs-meta-value">' + category + '</span></div>';
+
+        setText('csDescription', description);
+        setText('csChallenge', get(project.challenge));
+        setText('csSolution', get(project.solution));
+        setText('csResults', get(project.results));
+
+        var features = get(project.features) || [];
+        document.getElementById('csFeatures').innerHTML = features.map(function (f) { return '<li>' + f + '</li>'; }).join('');
+        document.getElementById('csTechGrid').innerHTML = (project.technologies || []).map(function (t) { return '<span class="tech-tag">' + t + '</span>'; }).join('');
+        document.getElementById('csProjectDetails').innerHTML =
+          '<div><span class="cs-detail-label">' + UI.type + '</span><strong>' + get(project.client) + '</strong></div>' +
+          '<div><span class="cs-detail-label">' + UI.status + '</span><strong>' + get(project.duration) + '</strong></div>' +
+          '<div><span class="cs-detail-label">' + UI.year + '</span><strong>' + get(project.year) + '</strong></div>' +
+          '<div><span class="cs-detail-label">' + UI.category + '</span><strong>' + category + '</strong></div>';
+
+        var openLink = document.getElementById('csOpenLink');
+        if (openLink && project.liveUrl) {
+          openLink.href = project.liveUrl;
+          openLink.hidden = false;
+        }
+        var whatsapp = document.getElementById('ctaWhatsApp');
+        if (whatsapp) {
+          var message = lang === 'ar'
+            ? 'مرحباً، أود مناقشة "' + title + '" لنشاطي.'
+            : 'Hello, I would like to discuss "' + title + '" for my business.';
+          whatsapp.href = 'https://wa.me/905013617795?text=' + encodeURIComponent(message);
+        }
       }
 
-      // Tech
-      document.getElementById('csTechGrid').innerHTML = (project.technologies || []).map(t => `<span class="tech-tag">${t}</span>`).join('');
-
-      // Sidebar details
-      document.getElementById('csProjectDetails').innerHTML = `
-        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">CLIENT</span><strong>${get(project.client)}</strong></div>
-        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">DURATION</span><strong>${get(project.duration)}</strong></div>
-        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">YEAR</span><strong>${get(project.year)}</strong></div>
-        <div><span style="font-size:0.8rem;color:var(--text-secondary);display:block;margin-bottom:0.25rem;">CATEGORY</span><strong>${project.category}</strong></div>
-      `;
-    }
-
-    initCaseStudy();
+      initProductOverview();
+    })();
     </script>
 </body>
 </html>

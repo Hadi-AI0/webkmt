@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">WEBKMT Chat pilot receptionist</title>
+  <desc id="desc">A message route from instant acknowledgement to approved answers and human handoff.</desc>
+  <rect width="1200" height="760" fill="#F7FAFC"/>
+  <rect width="500" height="760" fill="#071B33"/>
+  <text x="56" y="104" font-family="Manrope, Arial, sans-serif" font-size="46" font-weight="800" fill="#FFFFFF">WEBKMT Chat</text>
+  <text x="56" y="148" font-family="Manrope, Arial, sans-serif" font-size="23" fill="#CDEBF3">Pilot deployments</text>
+  <g font-family="Manrope, Arial, sans-serif" font-size="23" fill="#EEF7FB">
+    <circle cx="80" cy="250" r="14" fill="#20C4D8"/><text x="116" y="258">Instant acknowledgement</text>
+    <circle cx="80" cy="328" r="14" fill="#0E9488"/><text x="116" y="336">Approved information only</text>
+    <circle cx="80" cy="406" r="14" fill="#0F6FA8"/><text x="116" y="414">Qualified lead capture</text>
+    <circle cx="80" cy="484" r="14" fill="#FFFFFF"/><text x="116" y="492">Human handoff</text>
+  </g>
+  <rect x="612" y="70" width="430" height="620" rx="44" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="3"/>
+  <rect x="762" y="94" width="130" height="18" rx="9" fill="#D8E6EF"/>
+  <g font-family="Manrope, Arial, sans-serif">
+    <rect x="648" y="158" width="300" height="82" rx="24" fill="#EAF5F8"/><text x="676" y="194" font-size="21" fill="#071B33">Hello — what do you offer?</text><text x="676" y="222" font-size="17" fill="#526B7D">Customer enquiry</text>
+    <rect x="706" y="286" width="300" height="98" rx="24" fill="#0F6FA8"/><text x="734" y="324" font-size="21" fill="#FFFFFF">Approved answer.</text><text x="734" y="354" font-size="17" fill="#D8F1F8">Arabic / English</text>
+    <rect x="648" y="430" width="300" height="82" rx="24" fill="#EAF5F8"/><text x="676" y="466" font-size="21" fill="#071B33">I need a person to confirm.</text><text x="676" y="494" font-size="17" fill="#526B7D">Contact captured with consent</text>
+    <rect x="706" y="558" width="300" height="82" rx="24" fill="#0E9488"/><text x="734" y="594" font-size="21" fill="#FFFFFF">A human takes over.</text><text x="734" y="622" font-size="17" fill="#D8F5EF">No message is left stranded</text>
+  </g>
+</svg>

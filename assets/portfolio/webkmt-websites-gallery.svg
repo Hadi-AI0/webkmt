@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">WEBKMT Websites template gallery</title>
+  <desc id="desc">Three shared website plans: files only, customized files and Ultimate.</desc>
+  <rect width="1200" height="760" fill="#F7FAFC"/>
+  <rect width="1200" height="166" fill="#071B33"/>
+  <text x="64" y="78" font-family="Manrope, Arial, sans-serif" font-size="48" font-weight="800" fill="#FFFFFF">WEBKMT Websites</text>
+  <text x="64" y="122" font-family="Manrope, Arial, sans-serif" font-size="24" fill="#CDEBF3">Template gallery · Same three plans for every design</text>
+  <g font-family="Manrope, Arial, sans-serif">
+    <rect x="64" y="244" width="328" height="340" rx="26" fill="#FFFFFF" stroke="#D8E6EF" stroke-width="2"/><rect x="64" y="244" width="328" height="54" rx="26" fill="#EAF5F8"/><circle cx="98" cy="271" r="8" fill="#0F6FA8"/><circle cx="126" cy="271" r="8" fill="#20C4D8"/><circle cx="154" cy="271" r="8" fill="#0E9488"/><text x="94" y="366" font-size="23" font-weight="800" fill="#526B7D">PLAN 1</text><text x="94" y="424" font-size="43" font-weight="800" fill="#071B33">USD 150</text><text x="94" y="468" font-size="23" fill="#526B7D">Files only</text><text x="94" y="526" font-size="19" fill="#526B7D">Delivered within 2 days</text>
+    <rect x="436" y="244" width="328" height="340" rx="26" fill="#FFFFFF" stroke="#0F6FA8" stroke-width="3"/><rect x="436" y="244" width="328" height="54" rx="26" fill="#EAF5F8"/><circle cx="470" cy="271" r="8" fill="#0F6FA8"/><circle cx="498" cy="271" r="8" fill="#20C4D8"/><circle cx="526" cy="271" r="8" fill="#0E9488"/><text x="466" y="366" font-size="23" font-weight="800" fill="#526B7D">PLAN 2</text><text x="466" y="424" font-size="40" font-weight="800" fill="#071B33">USD 300–799</text><text x="466" y="468" font-size="23" fill="#526B7D">Customized files</text><text x="466" y="526" font-size="19" fill="#526B7D">Scope confirmed before quote</text>
+    <rect x="808" y="244" width="328" height="340" rx="26" fill="#071B33"/><rect x="808" y="244" width="328" height="54" rx="26" fill="#102A43"/><circle cx="842" cy="271" r="8" fill="#0F6FA8"/><circle cx="870" cy="271" r="8" fill="#20C4D8"/><circle cx="898" cy="271" r="8" fill="#0E9488"/><text x="838" y="366" font-size="23" font-weight="800" fill="#CDEBF3">PLAN 3</text><text x="838" y="424" font-size="33" font-weight="800" fill="#FFFFFF">USD 800–1,599</text><text x="838" y="468" font-size="23" fill="#CDEBF3">Ultimate</text><text x="838" y="526" font-size="19" fill="#CDEBF3">Content · Hosting · Care</text>
+  </g>
+  <text x="600" y="668" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="21" fill="#526B7D">The purchased template is yours after full payment, subject to third-party licences.</text>
+</svg>
