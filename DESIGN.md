@@ -154,6 +154,16 @@ Self-hosted OFL faces (built to woff2 statics from the google/fonts repo,
   found and fixed in-round: hero wordmark falling back to the Arabic stack
   in RTL; the insights grid spinning forever without a CMS (now an honest
   empty state); masonry cards leaving white pockets (cards now fill cells).
+- Owner round 3 (six modifications): navy is now a TEXT colour only (hero,
+  slips, steps, footer retokened to bone/surface/paper; green and cyan carry
+  the colour fields); #services rebuilt as five prominent product cards with
+  published price chips and booking links plus a start-here card; a three-door
+  journey (hero CTA row, journey strip, BOOK / SIGN UP / MESSAGE conversion
+  band, auth modal opened in sign-up mode); five regenerated Gulf-SMB
+  photographs with explicit aspect-ratio + object-fit containment; contact
+  voids and overlap closed; staircase and card grids made responsive at
+  1440/768/390. Meter 0 FAIL / 6 defended WARN; critique round 3 scored
+  8.5/8.5/8/8 -> 8.4. Full log in `.taste-skill/notes.md`.
 - Critique round 2 (re-run in environment, full log in
   `.taste-skill/notes.md`): meter still 0 FAIL / 4 WARN; three visible
   problems fixed (masonry track override restored to the bundle auto-fit

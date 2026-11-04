@@ -134,8 +134,10 @@ app.use(cors({
     const allowedOrigins = getAllowedOrigins();
     if (!origin && process.env.NODE_ENV !== 'production') return callback(null, true);
     if (!origin || allowedOrigins.includes(origin)) callback(null, true);
-    // Sandbox preview hosts (https://8083-<id>.e2b.app) in development
-    if (process.env.NODE_ENV !== 'production' && /^https:\/\/[a-z0-9-]+\.e2b\.app$/.test(origin)) return callback(null, true);
+    // Development hosts: any localhost port and sandbox preview origins
+    if (process.env.NODE_ENV !== 'production' &&
+        (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin) ||
+         /^https:\/\/[a-z0-9-]+\.e2b\.app$/.test(origin))) return callback(null, true);
     else callback(new Error(`Origin ${origin} not allowed by CORS`));
   },
   credentials: true,

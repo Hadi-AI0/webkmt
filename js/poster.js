@@ -71,6 +71,20 @@
         }, { passive: true });
     }
 
+    /* Journey: [data-signup] opens the kept auth modal in sign-up mode. */
+    document.addEventListener('click', function (ev) {
+        var trigger = ev.target.closest ? ev.target.closest('[data-signup]') : null;
+        if (!trigger) return;
+        ev.preventDefault();
+        var login = document.getElementById('loginBtn');
+        if (login) login.click();
+        window.setTimeout(function () {
+            var title = document.getElementById('authModalTitle');
+            var swap = document.getElementById('authSwitchBtn');
+            if (title && swap && /sign in/i.test(title.textContent || '')) swap.click();
+        }, 60);
+    });
+
     /* Portfolio gallery: the kept masonry shows four cards first, which can
        leave the last grid row partly empty (a hole beside the final card).
        Stretch the final card to the row's end whenever the row is short.

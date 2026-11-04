@@ -234,9 +234,13 @@
         <section class="wk26-hero" id="home">
             <div class="wk26-hero__top" data-reveal>
                 <p class="wk26-hero__sentence" data-i18n="poster.hero_sentence">Ready-to-run websites, WhatsApp AI, online store, ERP and automation for Saudi and Gulf businesses. Published prices, in Arabic and English.</p>
-                <a href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." class="wk26-btn" target="_blank" rel="noopener" data-i18n="poster.book_call">Book a call</a>
             </div>
             <h1 class="wk26-hero__name" id="wk26HeroName" dir="ltr">WEBKMT</h1>
+            <div class="wk26-hero__ctas" data-reveal>
+                <a class="wk26-btn" href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." target="_blank" rel="noopener" data-i18n="poster.hero_cta_book">Book a free call</a>
+                <a class="wk26-btn wk26-btn--line" href="#mini-apps" data-i18n="poster.hero_cta_tools">Try a free tool</a>
+                <a class="wk26-hero__wa" href="https://wa.me/905013617795" target="_blank" rel="noopener" dir="ltr" data-i18n="poster.hero_cta_wa">WhatsApp +90 501 361 7795</a>
+            </div>
             <div class="wk26-hero__bottom">
                 <p data-i18n="poster.hero_corner_left">Based in Türkiye. Working 24/7.</p>
                 <nav class="wk26-hero__links" aria-label="Explore WEBKMT">
@@ -251,39 +255,81 @@
             </div>
         </section>
 
-        <!-- Systems: mosaic of unlike tiles (poster direction). Prices in full: #prices. -->
+        <!-- Systems: five product cards, prominent and scannable.
+             Prices as published (Knowledge Pack v0.9); full table: #prices. -->
         <section class="wk26-section" id="services">
-            <div class="wk26-mosaic">
-                <div class="wk26-tile wk26-tile--head" data-reveal>
-                    <h2 data-i18n="poster.features_title">Pick your first system</h2>
-                    <p data-i18n="poster.features_sub">Five systems, one route. Start where it hurts, connect the next when the first is working.</p>
-                </div>
-                <div class="wk26-tile wk26-tile--photo" data-reveal>
-                    <img src="assets/img/store-interior.jpg" alt="Inside a small clothing store, garments on rails and a counter" width="1200" height="800" loading="lazy">
-                </div>
-                <div class="wk26-tile wk26-tile--figure" data-reveal>
-                    <span class="wk26-figure">$150</span>
-                    <p data-i18n="poster.figure_caption">where our published prices start</p>
-                </div>
-                <div class="wk26-tile wk26-tile--sentence is-green" data-reveal>
-                    <p data-i18n="poster.sentence_own">You own what you pay for.</p>
-                </div>
-                <div class="wk26-tile wk26-tile--list" data-reveal>
-                    <h3 data-i18n="poster.route_title">The route your customer travels</h3>
-                    <ul>
-                        <li data-i18n="poster.route_1">Websites: get found</li>
-                        <li data-i18n="poster.route_2">Chat: answer in seconds</li>
-                        <li data-i18n="poster.route_3">Store: sell online</li>
-                        <li data-i18n="poster.route_4">ERP: run the business</li>
-                        <li data-i18n="poster.route_5">Automate: remove the repeat work</li>
-                    </ul>
-                </div>
-                <div class="wk26-tile wk26-tile--sentence is-ink wk26-tile--wide" data-reveal>
-                    <p data-i18n="poster.sentence_answer">Answered in seconds. Even at midnight.</p>
-                </div>
-                <div class="wk26-tile wk26-tile--sentence wk26-tile--wide" data-reveal>
-                    <p data-i18n="poster.sentence_rent">No per-user rent. Ever.</p>
-                </div>
+            <header class="wk26-cards__head" data-reveal>
+                <h2 class="wk26-display" data-i18n="poster.features_title">Pick your first system</h2>
+                <p data-i18n="poster.features_sub">Five systems, one route. Start where it hurts, connect the next when the first is working.</p>
+            </header>
+            <div class="wk26-cards">
+                <article class="wk26-card" data-reveal>
+                    <p class="wk26-card__kicker" data-i18n="poster.cards.kicker_websites">Websites &amp; templates</p>
+                    <h3 class="wk26-card__name">WEBKMT Websites</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.line_websites">Bilingual business sites and fully owned templates, built from a maintained build.</p>
+                    <p class="wk26-card__price" data-i18n="poster.cards.price_websites">from $150</p>
+                    <p class="wk26-card__actions">
+                        <a href="https://wa.me/905013617795?text=Hello!%20I%20want%20to%20book%20WEBKMT%20Websites." target="_blank" rel="noopener" data-i18n="poster.cards.book">Book this system</a>
+                        <a class="wk26-card__see" href="#portfolio" data-i18n="poster.cards.see">See overview</a>
+                    </p>
+                </article>
+                <article class="wk26-card" data-reveal>
+                    <p class="wk26-card__kicker" data-i18n="poster.cards.kicker_chat">WhatsApp + website AI</p>
+                    <h3 class="wk26-card__name">WEBKMT Chat</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.line_chat">AI that answers customers on WhatsApp and your site, and hands over to a human when needed.</p>
+                    <p class="wk26-card__price" data-i18n="poster.cards.price_chat">$300 setup + $29/mo</p>
+                    <p class="wk26-card__actions">
+                        <a href="https://wa.me/905013617795?text=Hello!%20I%20want%20to%20book%20WEBKMT%20Chat." target="_blank" rel="noopener" data-i18n="poster.cards.book">Book this system</a>
+                        <a class="wk26-card__see" href="#portfolio" data-i18n="poster.cards.see">See overview</a>
+                    </p>
+                </article>
+                <article class="wk26-card" data-reveal>
+                    <p class="wk26-card__kicker" data-i18n="poster.cards.kicker_store">Online store</p>
+                    <h3 class="wk26-card__name">WEBKMT Store</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.line_store">Your own storefront: catalog, orders and payments, in Arabic and English.</p>
+                    <p class="wk26-card__price" data-i18n="poster.cards.price_store">$899 setup</p>
+                    <p class="wk26-card__actions">
+                        <a href="https://wa.me/905013617795?text=Hello!%20I%20want%20to%20book%20WEBKMT%20Store." target="_blank" rel="noopener" data-i18n="poster.cards.book">Book this system</a>
+                        <a class="wk26-card__see" href="#portfolio" data-i18n="poster.cards.see">See overview</a>
+                    </p>
+                </article>
+                <article class="wk26-card" data-reveal>
+                    <p class="wk26-card__kicker" data-i18n="poster.cards.kicker_erp">ERP &amp; operations</p>
+                    <h3 class="wk26-card__name">WEBKMT ERP</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.line_erp">One record for finance, inventory, sales and people, configured around your business.</p>
+                    <p class="wk26-card__price" data-i18n="poster.cards.price_erp">$1,400 + care from $59/mo</p>
+                    <p class="wk26-card__actions">
+                        <a href="https://wa.me/905013617795?text=Hello!%20I%20want%20to%20book%20WEBKMT%20ERP." target="_blank" rel="noopener" data-i18n="poster.cards.book">Book this system</a>
+                        <a class="wk26-card__see" href="#portfolio" data-i18n="poster.cards.see">See overview</a>
+                    </p>
+                </article>
+                <article class="wk26-card" data-reveal>
+                    <p class="wk26-card__kicker" data-i18n="poster.cards.kicker_automate">Automation &amp; marketing</p>
+                    <h3 class="wk26-card__name">WEBKMT Automate</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.line_automate">Workflows that remove the repeat work. Marketing desk in development.</p>
+                    <p class="wk26-card__price" data-i18n="poster.cards.price_automate">quoted per scope</p>
+                    <p class="wk26-card__actions">
+                        <a href="https://wa.me/905013617795?text=Hello!%20I%20want%20to%20scope%20an%20automation%20or%20marketing%20workflow." target="_blank" rel="noopener" data-i18n="poster.cards.book">Book this system</a>
+                        <a class="wk26-card__see" href="#portfolio" data-i18n="poster.cards.see">See overview</a>
+                    </p>
+                </article>
+                <article class="wk26-card wk26-card--cta" data-reveal>
+                    <h3 class="wk26-card__name" data-i18n="poster.cards.cta_title">Not sure where to start?</h3>
+                    <p class="wk26-card__line" data-i18n="poster.cards.cta_sub">Thirty minutes on a call ends with a written quote for the smallest system that fits.</p>
+                    <p class="wk26-card__actions">
+                        <a class="wk26-btn wk26-btn--paper" href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." target="_blank" rel="noopener" data-i18n="poster.book_call">Book a call</a>
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Journey strip: the three doors, stated early and repeated late. -->
+        <section class="wk26-journey" aria-label="How to start with WEBKMT">
+            <p data-i18n="poster.journey_line">Three ways in, whichever suits you today:</p>
+            <div class="wk26-journey__doors">
+                <a class="wk26-btn" href="https://wa.me/905013617795?text=Hello%2C%20I%27d%20like%20a%20discovery%20call%20about%20my%20business%20systems." target="_blank" rel="noopener" data-i18n="poster.journey_book">Book a service call</a>
+                <a class="wk26-btn wk26-btn--line" href="#mini-apps" data-i18n="poster.journey_tools">Try a free tool</a>
+                <a class="wk26-btn wk26-btn--line" href="#" data-signup data-i18n="poster.journey_signup">Create a free account</a>
             </div>
         </section>
 
@@ -513,7 +559,7 @@
             </header>
             <div class="wk26-about__tiles">
                 <div class="wk26-about__photo" data-reveal>
-                    <img src="assets/img/istanbul-street.jpg" alt="A street of small shops in Istanbul at dusk" width="1600" height="1000" loading="lazy">
+                    <img src="assets/img/gulf-storefront.jpg" alt="A modern Gulf storefront at dusk, warm light behind the glass" width="1600" height="1000" loading="lazy">
                     <div class="wk26-about__overlay">
                         <p data-i18n="poster.about_overlay">Leave any time and take your files, data and exports with you. That is written into every program, not added as a favour.</p>
                     </div>
@@ -927,11 +973,20 @@
     <!-- Footer -->
         <!-- CTA: one word is the button (poster direction). Opens the booking
              modal via [data-book-call]; falls back to the contact section. -->
-        <a class="wk26-book" href="#contact" data-book-call>
-            <p class="wk26-book__sentence" data-i18n="poster.book_sentence">Tell us where the route breaks. Thirty minutes ends with a written quote.</p>
-            <svg class="wk26-book__arrow" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="square" aria-hidden="true"><path d="M10 38 L38 10 M15 10 h23 v23"/></svg>
-            <span class="wk26-book__word" data-i18n="poster.book_word">Book</span>
-        </a>
+        <section class="wk26-paths" aria-label="Start with WEBKMT">
+            <a class="wk26-path" href="#contact" data-book-call>
+                <span class="wk26-path__word" data-i18n="poster.path_book_word">Book</span>
+                <p class="wk26-path__sub" data-i18n="poster.path_book_sub">A service call: thirty minutes, ends with a written quote.</p>
+            </a>
+            <a class="wk26-path" href="#" data-signup>
+                <span class="wk26-path__word" data-i18n="poster.path_signup_word">Sign up</span>
+                <p class="wk26-path__sub" data-i18n="poster.path_signup_sub">A free account for the tools: analyzer, template gallery, business profile.</p>
+            </a>
+            <a class="wk26-path" href="https://wa.me/905013617795" target="_blank" rel="noopener">
+                <span class="wk26-path__word" data-i18n="poster.path_chat_word">Message</span>
+                <p class="wk26-path__sub" data-i18n="poster.path_chat_sub">WhatsApp or email: a human answers, 24/7.</p>
+            </a>
+        </section>
 
     <!-- Footer: contact as the headline (poster direction). The name returns
          at full width, closing the bracket the hero opened. -->
